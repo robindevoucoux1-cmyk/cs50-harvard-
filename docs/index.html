@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sites generes - Pipeline lead-finder</title>
+<meta name="description" content="6 sites web personnalises generes automatiquement a partir de profils Instagram d'esthéticiennes a Bordeaux">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #faf7f3 0%, #fdfaf6 100%);
+  color: #2c2c2c; line-height: 1.6;
+  min-height: 100vh;
+}
+.hero {
+  padding: 80px 24px 60px; text-align: center;
+  max-width: 880px; margin: 0 auto;
+}
+.hero .tag-top {
+  display: inline-block; padding: 6px 16px; background: rgba(155,27,48,0.08);
+  color: #9B1B30; border-radius: 100px; font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em;
+}
+.hero .lead {
+  font-size: 1.15rem; opacity: 0.78; max-width: 640px; margin: 0 auto 40px;
+}
+.stats {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.06);
+}
+.stat .num {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #9B1B30;
+  display: block; line-height: 1;
+}
+.stat .label {
+  font-size: 0.85rem; opacity: 0.65; margin-top: 6px; display: block;
+}
+.grid {
+  max-width: 1280px; margin: 0 auto; padding: 40px 24px 100px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+.card {
+  display: block; background: white; border-radius: 16px; overflow: hidden;
+  text-decoration: none; color: inherit;
+  box-shadow: 0 4px 20px -8px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -15px rgba(0,0,0,0.18);
+}
+.thumb {
+  position: relative; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.thumb img {
+  width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+  border: 4px solid white; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.palette-strip {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; height: 4px;
+}
+.palette-strip span { flex: 1; }
+.card-body { padding: 24px 24px 28px; }
+.meta {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.82rem; opacity: 0.65; margin-bottom: 14px;
+}
+.handle { font-weight: 500; color: var(--accent); opacity: 1; }
+.card h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600;
+  line-height: 1.3; margin-bottom: 8px;
+}
+.tagline {
+  font-size: 0.92rem; opacity: 0.7; margin-bottom: 18px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tags {
+  display: flex; gap: 6px; margin-bottom: 18px;
+}
+.tag {
+  font-size: 0.72rem; padding: 3px 10px; border-radius: 100px;
+  background: rgba(0,0,0,0.05); color: rgba(0,0,0,0.65);
+  letter-spacing: 0.03em; text-transform: lowercase;
+}
+.cta {
+  display: inline-block; font-size: 0.92rem; color: var(--accent);
+  font-weight: 500; letter-spacing: 0.02em;
+}
+footer {
+  text-align: center; padding: 40px 24px; font-size: 0.85rem; opacity: 0.5;
+  border-top: 1px solid rgba(0,0,0,0.05); background: white;
+}
+footer a { color: #9B1B30; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="tag-top">Pipeline lead-finder • Demo</span>
+  <h1>6 sites web personnalises, generes automatiquement</h1>
+  <p class="lead">A partir de 6 comptes Instagram d'esthéticiennes a Bordeaux qui n'ont pas (encore) de site,
+  notre pipeline a produit 6 sites web complets et distincts. Chaque palette, h1, ton et selection
+  de photos est specifique a la marque.</p>
+  <div class="stats">
+    <div class="stat"><span class="num">6</span><span class="label">sites generes</span></div>
+    <div class="stat"><span class="num">~3min</span><span class="label">par site</span></div>
+    <div class="stat"><span class="num">$0.11</span><span class="label">cout par site</span></div>
+    <div class="stat"><span class="num">100%</span><span class="label">personnalise</span></div>
+  </div>
+</header>
+
+<main class="grid">
+
+    <a class="card" href="art-innel/" style="--accent: #C8837A; --accent2: #E8C4BF;">
+      <div class="thumb">
+        <img src="art-innel/assets/profil.jpg" alt="ESTHÉTICIENNE À BDX✨">
+        <div class="palette-strip">
+          <span style="background:#C8837A"></span>
+          <span style="background:#E8C4BF"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta">
+          <span class="handle">@art_innel</span>
+          <span class="followers">1649 followers</span>
+        </div>
+        <h3>L'art du soin, à la française.</h3>
+        <p class="tagline">Technique ukrainienne haut de gamme • 15 ans d'expérience • Bordeaux</p>
+        <div class="tags">
+          <span class="tag">luxe</span>
+          <span class="tag">beaute_nail_luxe</span>
+        </div>
+        <span class="cta">Ouvrir le site →</span>
+      </div>
+    </a>
+
+    <a class="card" href="beaute-oks/" style="--accent: #8B1A2F; --accent2: #C9A97A;">
+      <div class="thumb">
+        <img src="beaute-oks/assets/profil.jpg" alt="Esthéticienne Bordeaux diplômée, certifié 🇫🇷🇺🇦/ Косметолог Бордо">
+        <div class="palette-strip">
+          <span style="background:#8B1A2F"></span>
+          <span style="background:#C9A97A"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta">
+          <span class="handle">@beaute_oks</span>
+          <span class="followers">891 followers</span>
+        </div>
+        <h3>L'esthétique médicale au service de votre peau</h3>
+        <p class="tagline">Protocoles certifiés, technologies de pointe — résultats visibles à Bordeaux.</p>
+        <div class="tags">
+          <span class="tag">expert</span>
+          <span class="tag">beaute_medical_premium</span>
+        </div>
+        <span class="cta">Ouvrir le site →</span>
+      </div>
+    </a>
+
+    <a class="card" href="beautepureinstitut/" style="--accent: #8B2635; --accent2: #E8C4C0;">
+      <div class="thumb">
+        <img src="beautepureinstitut/assets/profil.jpg" alt="NELLY | ESTHÉTICIENNE BORDEAUX">
+        <div class="palette-strip">
+          <span style="background:#8B2635"></span>
+          <span style="background:#E8C4C0"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta">
+          <span class="handle">@beautepureinstitut</span>
+          <span class="followers">593 followers</span>
+        </div>
+        <h3>Beauté pure, soins qui te ressemblent</h3>
+        <p class="tagline">Un lieu simple & chaleureux à deux pas de Bordeaux, pour prendre soin de toi en douceur.</p>
+        <div class="tags">
+          <span class="tag">accessible</span>
+          <span class="tag">beaute_naturel_chaleureux</span>
+        </div>
+        <span class="cta">Ouvrir le site →</span>
+      </div>
+    </a>
+
+    <a class="card" href="institut-beauty-bar/" style="--accent: #9B1B30; --accent2: #D4A0A7;">
+      <div class="thumb">
+        <img src="institut-beauty-bar/assets/profil.jpg" alt="Institut Beauty Bar">
+        <div class="palette-strip">
+          <span style="background:#9B1B30"></span>
+          <span style="background:#D4A0A7"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta">
+          <span class="handle">@institut_beauty_bar</span>
+          <span class="followers">2077 followers</span>
+        </div>
+        <h3>Ongles & Cils à Bordeaux Caudéran</h3>
+        <p class="tagline">Votre beauty bar de quartier pour des résultats qui parlent d'eux-mêmes.</p>
+        <div class="tags">
+          <span class="tag">accessible</span>
+          <span class="tag">beaute_onglerie</span>
+        </div>
+        <span class="cta">Ouvrir le site →</span>
+      </div>
+    </a>
+
+    <a class="card" href="mari-estheticienne-bordeaux/" style="--accent: #8B5E52; --accent2: #C9A99A;">
+      <div class="thumb">
+        <img src="mari-estheticienne-bordeaux/assets/profil.jpg" alt="Soin & massage visage • Maquillage mariage • Bordeaux">
+        <div class="palette-strip">
+          <span style="background:#8B5E52"></span>
+          <span style="background:#C9A99A"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta">
+          <span class="handle">@mari_estheticienne_bordeaux</span>
+          <span class="followers">528 followers</span>
+        </div>
+        <h3>Soins visage & maquillage à Bordeaux</h3>
+        <p class="tagline">Rituels manuels approfondis dans un studio privé aux Chartrons, sur rendez-vous.</p>
+        <div class="tags">
+          <span class="tag">expert</span>
+          <span class="tag">beaute_rituel_intime</span>
+        </div>
+        <span class="cta">Ouvrir le site →</span>
+      </div>
+    </a>
+
+    <a class="card" href="marianne-miseenbeaute/" style="--accent: #8B3A52; --accent2: #C9A992;">
+      <div class="thumb">
+        <img src="marianne-miseenbeaute/assets/profil.jpg" alt="Marianne | Esthéticienne | Spécialiste peau et laser | Bordeaux">
+        <div class="palette-strip">
+          <span style="background:#8B3A52"></span>
+          <span style="background:#C9A992"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta">
+          <span class="handle">@marianne_miseenbeaute</span>
+          <span class="followers">893 followers</span>
+        </div>
+        <h3>Ta peau mérite enfin une vraie solution</h3>
+        <p class="tagline">Spécialiste laser et soins du visage à Mérignac — pour les peaux qui en ont assez d'essayer.</p>
+        <div class="tags">
+          <span class="tag">expert</span>
+          <span class="tag">beaute_soin_expert</span>
+        </div>
+        <span class="cta">Ouvrir le site →</span>
+      </div>
+    </a>
+
+</main>
+
+<footer>
+  Pipeline complet : <a href="https://github.com/robindevoucoux1-cmyk/cs50-harvard-/tree/claude/lead-finder-tool-YijRs">voir le code sur GitHub</a>
+  &nbsp;·&nbsp; Apify + Claude Vision + Claude Sonnet 4.6 + Jinja2
+</footer>
+
+</body>
+</html>
