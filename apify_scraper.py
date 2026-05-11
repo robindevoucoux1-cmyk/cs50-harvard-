@@ -71,15 +71,16 @@ def _client() -> "ApifyClient":
     return ApifyClient(token)
 
 
-def cherche_handle(nom: str, ville: str, max_resultats: int = 5) -> str | None:
-    """Cherche un compte Insta a partir d'un nom de commerce + ville.
+def cherche_handle(nom: str, ville: str, metier: str = "", max_resultats: int = 5) -> str | None:
+    """Cherche un compte Insta a partir d'un nom de commerce + ville + metier.
 
-    Strategie : on combine nom + ville en requete texte, type user.
-    On retient le premier resultat plausible (handle bien forme).
+    Strategie : on combine nom + ville + metier en requete texte.
+    Le metier reduit drastiquement les faux positifs (ex: "Carpe Diem
+    Bordeaux esthéticienne" filtre les crêperies en Idaho).
     Tarif : ~$0.0015 par appel.
     """
     client = _client()
-    requete = f"{nom} {ville}".strip()
+    requete = " ".join(p for p in (nom, ville, metier) if p).strip()
     run_input = {
         "search": requete,
         "searchType": "user",
@@ -148,6 +149,57 @@ def scrape_profil(handle: str, max_posts: int = 6) -> ProfilInsta | None:
         url_photo_profil=profil_brut.get("profilePicUrl") or "",
         posts=posts,
     )
+
+
+def _normalise(s: str) -> str:
+    """Lowercase + retire accents + garde lettres/chiffres/espaces."""
+    import unicodedata
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return "".join(c if c.isalnum() else " " for c in s)
+
+
+def match_plausible(profil: ProfilInsta, nom: str, ville: str, metier: str = "") -> tuple[bool, str]:
+    """Verifie si un profil scrape correspond vraiment au prospect cherche.
+
+    Renvoie (ok, raison). Strict : il faut au moins 2 signaux sur 3 :
+    1. Le nom commercial (ou un mot >=4 lettres) apparait dans nom_complet/bio/handle
+    2. La ville apparait dans la bio
+    3. Le metier (ou synonyme) apparait dans bio/categorie
+
+    Sinon = faux positif probable (ex: meme nom mais mauvais pays).
+    """
+    blob = _normalise(" ".join([
+        profil.handle,
+        profil.nom_complet,
+        profil.bio,
+        profil.categorie,
+        profil.site_web,
+    ]))
+    nom_norm = _normalise(nom)
+    ville_norm = _normalise(ville)
+    metier_norm = _normalise(metier)
+
+    mots_nom_significatifs = [m for m in nom_norm.split() if len(m) >= 4]
+    signal_nom = any(m in blob for m in mots_nom_significatifs) if mots_nom_significatifs else nom_norm in blob
+    signal_ville = bool(ville_norm) and ville_norm in blob
+    signal_metier = False
+    if metier_norm:
+        mots_metier = [m for m in metier_norm.split() if len(m) >= 4]
+        signal_metier = any(m in blob for m in mots_metier) if mots_metier else metier_norm in blob
+        synonymes = {
+            "estheticienne": ["beaute", "beauty", "soin", "epilation", "institut"],
+            "sophrologue": ["sophro", "relaxation", "bien etre"],
+            "naturopathe": ["naturo", "naturopathie"],
+            "coach": ["coaching", "fitness", "sport"],
+        }
+        for cle, syns in synonymes.items():
+            if cle in metier_norm:
+                signal_metier = signal_metier or any(s in blob for s in syns)
+
+    score = sum([signal_nom, signal_ville, signal_metier])
+    raison = f"nom={signal_nom} ville={signal_ville} metier={signal_metier}"
+    return (score >= 2, raison)
 
 
 def profil_to_dict(profil: ProfilInsta) -> dict:

@@ -32,25 +32,36 @@ def slugifie(s: str) -> str:
 
 
 def enrichi_un_apify(prospect: dict, dossier_profils: Path) -> dict:
-    """Variante Apify : 1 appel search + 1 appel scrape par prospect."""
-    from apify_scraper import cherche_handle, scrape_profil, profil_to_dict
+    """Variante Apify : 1 appel search + 1 appel scrape + filtre strict."""
+    from apify_scraper import cherche_handle, scrape_profil, profil_to_dict, match_plausible
 
     nom = prospect.get("nom", "")
     ville = prospect.get("ville", "")
-    print(f"  -> {nom} ({ville})")
+    metier = prospect.get("metier", "")
+    print(f"  -> {nom} ({ville}, {metier})")
 
-    handle = cherche_handle(nom, ville)
-    prospect["insta_handle"] = handle or ""
+    handle = cherche_handle(nom, ville, metier)
     if not handle:
         print("    pas d'Insta trouve")
+        prospect["insta_handle"] = ""
         return prospect
 
     print(f"    @{handle} - scrape...")
     profil = scrape_profil(handle, max_posts=6)
     if not profil:
         print("    scrape echoue")
+        prospect["insta_handle"] = ""
         return prospect
 
+    ok, raison = match_plausible(profil, nom, ville, metier)
+    if not ok:
+        print(f"    REJET (faux positif probable) : {raison}")
+        print(f"      handle teste : @{handle}, bio : {profil.bio[:60]!r}")
+        prospect["insta_handle"] = ""
+        prospect["insta_rejet_raison"] = f"@{handle} | {raison}"
+        return prospect
+
+    prospect["insta_handle"] = handle
     prospect["insta_followers"] = profil.nb_followers
     prospect["insta_bio"] = profil.bio.replace("\n", " ")[:300]
     prospect["insta_site_web"] = profil.site_web
