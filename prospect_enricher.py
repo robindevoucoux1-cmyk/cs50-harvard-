@@ -1,14 +1,20 @@
 """Enrichit un CSV de prospects avec leur Instagram (handle, bio, photos).
 
 Pipeline pour chaque ligne :
-1. cherche le handle Insta via DuckDuckGo (nom + ville)
+1. cherche le handle Insta (Apify ou DuckDuckGo selon --backend)
 2. si trouve, scrape le profil (bio, photos, posts)
 3. ajoute les donnees au prospect
 4. ecrit prospect_<nom>.json par prospect + prospects_enriched.csv
 
 Usage:
-    python prospect_enricher.py --input output/prospects.csv
-    python prospect_enricher.py --input output/test_bordeaux.csv --limit 10
+    # Avec Apify (recommande, requiert APIFY_TOKEN dans .env) :
+    python prospect_enricher.py --input output/prospects.csv --backend apify
+
+    # Avec instaloader (gratuit mais limite) :
+    python prospect_enricher.py --input output/prospects.csv --backend instaloader
+
+    # Test rapide sur 5 prospects :
+    python prospect_enricher.py --input output/prospects.csv --limit 5
 """
 
 import argparse
@@ -18,9 +24,6 @@ import sys
 import time
 from pathlib import Path
 
-from insta_finder import cherche_handle
-from insta_scraper import InstaScraper, profil_to_dict
-
 
 def slugifie(s: str) -> str:
     autorise = "abcdefghijklmnopqrstuvwxyz0123456789-"
@@ -28,8 +31,46 @@ def slugifie(s: str) -> str:
     return "".join(c for c in s if c in autorise)[:60] or "prospect"
 
 
-def enrichi_un(prospect: dict, scraper: InstaScraper, dossier_profils: Path) -> dict:
-    """Enrichit un prospect avec Insta. Mute et renvoie le dict."""
+def enrichi_un_apify(prospect: dict, dossier_profils: Path) -> dict:
+    """Variante Apify : 1 appel search + 1 appel scrape par prospect."""
+    from apify_scraper import cherche_handle, scrape_profil, profil_to_dict
+
+    nom = prospect.get("nom", "")
+    ville = prospect.get("ville", "")
+    print(f"  -> {nom} ({ville})")
+
+    handle = cherche_handle(nom, ville)
+    prospect["insta_handle"] = handle or ""
+    if not handle:
+        print("    pas d'Insta trouve")
+        return prospect
+
+    print(f"    @{handle} - scrape...")
+    profil = scrape_profil(handle, max_posts=6)
+    if not profil:
+        print("    scrape echoue")
+        return prospect
+
+    prospect["insta_followers"] = profil.nb_followers
+    prospect["insta_bio"] = profil.bio.replace("\n", " ")[:300]
+    prospect["insta_site_web"] = profil.site_web
+    prospect["insta_nb_posts"] = profil.nb_posts
+    prospect["insta_categorie"] = profil.categorie
+
+    chemin = dossier_profils / f"{slugifie(nom)}.json"
+    chemin.write_text(
+        json.dumps(profil_to_dict(profil), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    print(f"    sauve : {chemin.name} ({profil.nb_followers} followers, {len(profil.posts)} posts)")
+    return prospect
+
+
+def enrichi_un_instaloader(prospect: dict, scraper, dossier_profils: Path) -> dict:
+    """Variante gratuite : DuckDuckGo + instaloader."""
+    from insta_finder import cherche_handle
+    from insta_scraper import profil_to_dict
+
     nom = prospect.get("nom", "")
     ville = prospect.get("ville", "")
     print(f"  -> {nom} ({ville})")
@@ -57,7 +98,7 @@ def enrichi_un(prospect: dict, scraper: InstaScraper, dossier_profils: Path) -> 
         json.dumps(profil_to_dict(profil), indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
-    print(f"    profil sauve dans {chemin.name} ({profil.nb_followers} followers, {len(profil.posts)} posts)")
+    print(f"    sauve : {chemin.name} ({profil.nb_followers} followers, {len(profil.posts)} posts)")
     return prospect
 
 
@@ -65,8 +106,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Enrichit un CSV de prospects avec leur Insta.")
     parser.add_argument("--input", required=True, help="CSV produit par lead_finder.py")
     parser.add_argument("--output", default=None, help="CSV enrichi (defaut: <input>_enriched.csv)")
-    parser.add_argument("--limit", type=int, default=0, help="Limite de prospects a traiter (0 = tous)")
-    parser.add_argument("--delai", type=float, default=20.0, help="Delai entre 2 prospects (secondes)")
+    parser.add_argument("--limit", type=int, default=0, help="Limite de prospects (0 = tous)")
+    parser.add_argument("--backend", choices=["apify", "instaloader"], default="apify",
+                        help="Backend de scraping. apify = fiable, payant (~$0.005/prospect). "
+                             "instaloader = gratuit mais risque de blocage.")
+    parser.add_argument("--delai", type=float, default=20.0,
+                        help="Delai entre prospects en secondes (utilise seulement avec instaloader)")
     args = parser.parse_args()
 
     chemin_in = Path(args.input)
@@ -84,15 +129,23 @@ def main() -> int:
     if args.limit:
         prospects = prospects[: args.limit]
 
-    print(f"Enrichissement de {len(prospects)} prospects (delai {args.delai}s entre chaque)\n")
-    scraper = InstaScraper(delai_entre_requetes=args.delai)
+    print(f"Enrichissement de {len(prospects)} prospects via {args.backend}\n")
+
+    scraper_instaloader = None
+    if args.backend == "instaloader":
+        from insta_scraper import InstaScraper
+
+        scraper_instaloader = InstaScraper(delai_entre_requetes=args.delai)
 
     enrichis = []
     for i, p in enumerate(prospects, 1):
         print(f"[{i}/{len(prospects)}]")
-        enrichis.append(enrichi_un(p, scraper, dossier_profils))
-        if i < len(prospects):
-            time.sleep(args.delai)
+        if args.backend == "apify":
+            enrichis.append(enrichi_un_apify(p, dossier_profils))
+        else:
+            enrichis.append(enrichi_un_instaloader(p, scraper_instaloader, dossier_profils))
+            if i < len(prospects):
+                time.sleep(args.delai)
 
     champs = list({k for p in enrichis for k in p.keys()})
     with chemin_out.open("w", newline="", encoding="utf-8") as f:
