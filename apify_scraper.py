@@ -1,10 +1,10 @@
 """Backend Instagram via Apify (recommande pour la production).
 
-Deux actors utilises :
+Deux actors utilises (officiels Apify) :
 - apify/instagram-search-scraper : trouve un compte a partir d'un nom + ville
   Tarif : $1.50 / 1 000 resultats
-- apidojo/instagram-scraper : scrape bio + posts d'un profil
-  Tarif : $0.50 / 1 000 posts
+- apify/instagram-scraper : scrape bio + posts d'un profil
+  Tarif : $2.30 / 1 000 posts (~$0.014 pour 6 posts)
 
 Pourquoi Apify plutot qu'instaloader :
 - Aucun risque de ban de ton compte Insta perso
@@ -32,7 +32,7 @@ except ImportError:  # pragma: no cover
 load_dotenv()
 
 ACTOR_SEARCH = "apify/instagram-search-scraper"
-ACTOR_SCRAPER = "apidojo/instagram-scraper"
+ACTOR_SCRAPER = "apify/instagram-scraper"
 
 REGEX_HANDLE = re.compile(r"^[A-Za-z0-9_.]+$")
 
@@ -100,24 +100,28 @@ def cherche_handle(nom: str, ville: str, max_resultats: int = 5) -> str | None:
 
 def _normalise_post(raw: dict) -> PostInsta:
     return PostInsta(
-        date=raw.get("timestamp") or raw.get("takenAt") or "",
+        date=raw.get("timestamp") or "",
         caption=(raw.get("caption") or "")[:500],
-        url_image=raw.get("displayUrl") or raw.get("imageUrl") or "",
-        nb_likes=raw.get("likesCount") or raw.get("likes") or 0,
-        url_post=raw.get("url") or raw.get("permalink") or "",
+        url_image=raw.get("displayUrl") or "",
+        nb_likes=raw.get("likesCount") or 0,
+        url_post=raw.get("url") or "",
     )
 
 
 def scrape_profil(handle: str, max_posts: int = 6) -> ProfilInsta | None:
     """Scrape le profil complet d'un handle Insta.
 
-    Tarif : ~$0.0005 par post + le profil. Soit ~$0.0035 pour bio + 6 posts.
+    Strategie : un seul run avec resultsType=details qui renvoie un item
+    "profile" contenant bio + un tableau latestPosts. Cout : ~$2.30/1k
+    posts donc ~$0.014 pour bio + 6 posts.
     """
     client = _client()
     url = f"https://www.instagram.com/{handle}/"
     run_input = {
-        "startUrls": [url],
-        "maxItems": max_posts + 1,
+        "directUrls": [url],
+        "resultsType": "details",
+        "resultsLimit": max_posts,
+        "addParentData": False,
     }
     try:
         run = client.actor(ACTOR_SCRAPER).call(run_input=run_input)
@@ -129,19 +133,19 @@ def scrape_profil(handle: str, max_posts: int = 6) -> ProfilInsta | None:
     if not items:
         return None
 
-    profil_brut = next((i for i in items if i.get("type") == "profile" or i.get("biography") is not None), items[0])
-    posts_bruts = [i for i in items if (i.get("type") in {"post", "reel"}) or i.get("caption") is not None]
+    profil_brut = items[0]
+    posts_bruts = profil_brut.get("latestPosts") or []
     posts = [_normalise_post(p) for p in posts_bruts[:max_posts]]
 
     return ProfilInsta(
         handle=handle,
-        nom_complet=profil_brut.get("fullName") or profil_brut.get("full_name") or "",
-        bio=profil_brut.get("biography") or profil_brut.get("bio") or "",
-        site_web=profil_brut.get("externalUrl") or profil_brut.get("website") or "",
-        categorie=profil_brut.get("businessCategoryName") or profil_brut.get("category") or "",
-        nb_followers=profil_brut.get("followersCount") or profil_brut.get("followers") or 0,
-        nb_posts=profil_brut.get("postsCount") or profil_brut.get("mediaCount") or 0,
-        url_photo_profil=profil_brut.get("profilePicUrl") or profil_brut.get("profilePictureUrl") or "",
+        nom_complet=profil_brut.get("fullName") or "",
+        bio=profil_brut.get("biography") or "",
+        site_web=profil_brut.get("externalUrl") or "",
+        categorie=profil_brut.get("businessCategoryName") or "",
+        nb_followers=profil_brut.get("followersCount") or 0,
+        nb_posts=profil_brut.get("postsCount") or 0,
+        url_photo_profil=profil_brut.get("profilePicUrl") or "",
         posts=posts,
     )
 

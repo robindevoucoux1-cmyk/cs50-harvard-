@@ -38,7 +38,7 @@ Sortie : un rapport JSON + Markdown listant pages communes, CTA, couleurs, polic
 
 ### Option A : Apify (recommande)
 
-Pourquoi : pas de risque de ban, donnees structurees, fiable. Tarif reel : ~$0.005 par prospect, et la free tier Apify offre $5/mois (~1 000 prospects gratuits).
+Pourquoi : pas de risque de ban, donnees structurees, fiable, maintenu par Apify directement (actors `apify/instagram-search-scraper` + `apify/instagram-scraper`). Tarif reel : ~$0.015 par prospect (search $1.50/1k + scrape $2.30/1k posts). Free tier Apify : $5/mois = ~330 prospects gratuits.
 
 1. Creer un compte Apify : https://console.apify.com/sign-up
 2. Recuperer le token : https://console.apify.com/account/integrations
