@@ -1,4 +1,18 @@
-"""Configuration: villes ciblees, metiers vises, exclusions."""
+"""Configuration: cibles prioritaires pour la prospection.
+
+Strategie : cibler les "professions du bien-etre" + esthetique, basee sur
+les donnees du marche francais 2024 (sources dans le README) :
+- Marche en croissance forte (medecines alternatives 2,5 Md€ -> 4 Md€ en 2027)
+- Faible saturation par les agences web
+- Decideurs uniques (solo praticiens) = vente rapide
+- Insta-natifs = DM accessible
+
+Note sur la couverture OSM :
+- Instituts de beaute, salles de sport, salons : tres bonne couverture (vitrines).
+- Sophrologues, naturopathes, coachs sportifs : couverture partielle (souvent
+  domicile/cabinet partage non cartographies). Pour ces metiers, completer
+  avec une recherche directe Instagram (hashtags geolocalises).
+"""
 
 VILLES = [
     "Paris",
@@ -13,34 +27,20 @@ VILLES = [
     "Rennes",
     "Nice",
     "Grenoble",
+    "Toulon",
+    "Angers",
+    "Le Mans",
 ]
 
 METIERS = [
-    "restaurant",
-    "ostéopathe",
-    "kinésithérapeute",
-    "coiffeur",
-    "barbier",
-    "salon de beauté",
     "esthéticienne",
-    "photographe",
-    "fleuriste",
-    "boulangerie artisanale",
-    "menuisier",
-    "plombier",
-    "électricien",
-    "architecte d'intérieur",
-    "avocat",
-    "notaire",
-    "dentiste",
-    "psychologue",
-    "naturopathe",
-    "coach sportif",
+    "salon de beauté",
     "salle de sport",
     "yoga studio",
-    "tatoueur",
-    "bijoutier",
-    "traiteur",
+    "naturopathe",
+    "sophrologue",
+    "coach sportif",
+    "ostéopathe",
 ]
 
 CATEGORIES_EXCLUES = {
