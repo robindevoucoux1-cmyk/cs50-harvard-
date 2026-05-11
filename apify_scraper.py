@@ -80,7 +80,11 @@ def cherche_handle(nom: str, ville: str, metier: str = "", max_resultats: int = 
     Tarif : ~$0.0015 par appel.
     """
     client = _client()
-    requete = " ".join(p for p in (nom, ville, metier) if p).strip()
+    brut = " ".join(p for p in (nom, ville, metier) if p)
+    requete = re.sub(r"[!?.,:;\-+=*&%$#@/\\~^|<>()\[\]{}\"'`]+", " ", brut)
+    requete = re.sub(r"\s+", " ", requete).strip()
+    if not requete:
+        return None
     run_input = {
         "search": requete,
         "searchType": "user",
@@ -159,15 +163,24 @@ def _normalise(s: str) -> str:
     return "".join(c if c.isalnum() else " " for c in s)
 
 
+STOPWORDS_NOM = {"le", "la", "les", "de", "du", "des", "un", "une", "et", "salon",
+                 "institut", "centre", "boutique", "studio", "cabinet", "espace",
+                 "maison", "atelier", "chez"}
+
+
 def match_plausible(profil: ProfilInsta, nom: str, ville: str, metier: str = "") -> tuple[bool, str]:
     """Verifie si un profil scrape correspond vraiment au prospect cherche.
 
-    Renvoie (ok, raison). Strict : il faut au moins 2 signaux sur 3 :
-    1. Le nom commercial (ou un mot >=4 lettres) apparait dans nom_complet/bio/handle
-    2. La ville apparait dans la bio
-    3. Le metier (ou synonyme) apparait dans bio/categorie
+    Strategie : la ville est OBLIGATOIRE (signal le plus fiable pour un
+    commerce local). En plus, il faut soit le nom distinctif, soit le metier.
 
-    Sinon = faux positif probable (ex: meme nom mais mauvais pays).
+    Signaux :
+    1. signal_nom : un mot DISTINCTIF du nom (sans stopwords) dans le profil
+    2. signal_ville : la ville apparait dans le profil (handle/bio/site)
+    3. signal_metier : le metier ou un synonyme apparait dans bio/categorie
+
+    Regle : signal_ville=True ET (signal_nom OR signal_metier).
+    Rejette les profils internationaux meme s'ils partagent un mot generique.
     """
     blob = _normalise(" ".join([
         profil.handle,
@@ -180,15 +193,20 @@ def match_plausible(profil: ProfilInsta, nom: str, ville: str, metier: str = "")
     ville_norm = _normalise(ville)
     metier_norm = _normalise(metier)
 
-    mots_nom_significatifs = [m for m in nom_norm.split() if len(m) >= 4]
-    signal_nom = any(m in blob for m in mots_nom_significatifs) if mots_nom_significatifs else nom_norm in blob
+    mots_nom_distinctifs = [m for m in nom_norm.split() if len(m) >= 4 and m not in STOPWORDS_NOM]
+    if mots_nom_distinctifs:
+        signal_nom = any(m in blob for m in mots_nom_distinctifs)
+    else:
+        signal_nom = nom_norm in blob if nom_norm else False
+
     signal_ville = bool(ville_norm) and ville_norm in blob
+
     signal_metier = False
     if metier_norm:
         mots_metier = [m for m in metier_norm.split() if len(m) >= 4]
         signal_metier = any(m in blob for m in mots_metier) if mots_metier else metier_norm in blob
         synonymes = {
-            "estheticienne": ["beaute", "beauty", "soin", "epilation", "institut"],
+            "estheticienne": ["beaute", "beauty", "soin", "epilation", "manucure", "onglerie", "spa"],
             "sophrologue": ["sophro", "relaxation", "bien etre"],
             "naturopathe": ["naturo", "naturopathie"],
             "coach": ["coaching", "fitness", "sport"],
@@ -197,9 +215,9 @@ def match_plausible(profil: ProfilInsta, nom: str, ville: str, metier: str = "")
             if cle in metier_norm:
                 signal_metier = signal_metier or any(s in blob for s in syns)
 
-    score = sum([signal_nom, signal_ville, signal_metier])
-    raison = f"nom={signal_nom} ville={signal_ville} metier={signal_metier}"
-    return (score >= 2, raison)
+    ok = signal_ville and (signal_nom or signal_metier)
+    raison = f"ville={signal_ville} nom={signal_nom} metier={signal_metier}"
+    return (ok, raison)
 
 
 def profil_to_dict(profil: ProfilInsta) -> dict:
