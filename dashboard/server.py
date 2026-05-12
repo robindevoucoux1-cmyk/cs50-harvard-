@@ -287,6 +287,201 @@ def apply_patch(slug: str, body: dict):
     return {"ok": True}
 
 
+# --- Planity import ---
+
+
+class PlanityImportRequest(BaseModel):
+    url: str
+    slug: str | None = None
+    theme: str = "esthetique-rose"
+
+
+@app.post("/api/import/planity")
+def import_planity(req: PlanityImportRequest):
+    """Scrape a Planity URL and create a new site.json from it."""
+    url = req.url.strip()
+    if not url.startswith(("http://", "https://")) or "planity.com" not in url:
+        raise HTTPException(400, "URL Planity invalide (doit contenir planity.com)")
+
+    # Step 1 : run scraper (planity_scraper.py) — writes to a temp file
+    scraper = ROOT / "planity_scraper.py"
+    if not scraper.exists():
+        raise HTTPException(500, "planity_scraper.py introuvable a la racine du projet")
+
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmpdir:
+        planity_json = Path(tmpdir) / "planity.json"
+        # Inline call : we import the function directly to avoid double-Playwright launch
+        try:
+            sys.path.insert(0, str(ROOT))
+            from planity_scraper import scrape_planity
+            data = scrape_planity(url, debug=False)
+        except ImportError as e:
+            raise HTTPException(500, f"Playwright manquant ? Installe avec : pip3 install playwright && python3 -m playwright install chromium. Erreur : {e}")
+        except Exception as e:
+            raise HTTPException(500, f"Erreur scrape : {e}")
+        finally:
+            if str(ROOT) in sys.path:
+                sys.path.remove(str(ROOT))
+
+        if not data:
+            raise HTTPException(500, "Le scraper n'a rien retourne (page bloquee, cookies, ou structure changee)")
+
+        planity_json.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+        # Step 2 : map planity.json -> site.json
+        sys.path.insert(0, str(TE))
+        try:
+            from planity_to_site import planity_to_site, slugify
+        finally:
+            if str(TE) in sys.path:
+                sys.path.remove(str(TE))
+
+        slug = req.slug or slugify(data.get("nom", "site"))
+        slug = _safe_slug(slug)
+        site = planity_to_site(data, slug, theme=req.theme)
+
+        # Step 3 : save and generate HTML
+        site_path = SITES_DIR / f"{slug}.json"
+        site_path.write_text(json.dumps(site, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        subprocess.run(
+            [sys.executable, str(TE / "generate.py"), str(site_path)],
+            check=True,
+            capture_output=True,
+        )
+
+    return {
+        "ok": True,
+        "slug": slug,
+        "name": site["brand"]["name"],
+        "n_services": sum(len(f["items"]) for f in site["services"]["families"]),
+        "n_families": len(site["services"]["families"]),
+    }
+
+
+# --- Netlify deploy ---
+
+
+class DeployRequest(BaseModel):
+    site_id: str | None = None  # if known, redeploy to same Netlify site
+
+
+# Persisted map slug -> netlify site_id (so redeploys reuse the same URL)
+_NETLIFY_MAP = TE / "netlify_sites.json"
+
+
+def _load_netlify_map() -> dict:
+    if _NETLIFY_MAP.exists():
+        return json.loads(_NETLIFY_MAP.read_text(encoding="utf-8"))
+    return {}
+
+
+def _save_netlify_map(m: dict):
+    _NETLIFY_MAP.write_text(json.dumps(m, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+@app.post("/api/sites/{slug}/deploy")
+def deploy_site(slug: str):
+    """Deploy the generated site to Netlify via API. Reuses existing Netlify site if present."""
+    slug = _safe_slug(slug)
+    token = os.environ.get("NETLIFY_TOKEN", "").strip()
+    if not token:
+        raise HTTPException(400, "NETLIFY_TOKEN manquant dans dashboard/.env")
+
+    # Ensure freshly generated
+    site_json = SITES_DIR / f"{slug}.json"
+    if not site_json.exists():
+        raise HTTPException(404, "Site inconnu")
+    subprocess.run(
+        [sys.executable, str(TE / "generate.py"), str(site_json)],
+        check=True,
+        capture_output=True,
+    )
+
+    out_dir = OUT_DIR / slug
+    if not (out_dir / "index.html").exists():
+        raise HTTPException(500, "HTML non genere")
+
+    # Copy assets from docs/{slug}/assets if present
+    assets_src = DOCS_DIR / slug / "assets"
+    assets_dst = out_dir / "assets"
+    if assets_src.exists() and not assets_dst.exists():
+        import shutil
+        shutil.copytree(assets_src, assets_dst)
+
+    # Zip the output folder
+    import io
+    import zipfile
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in out_dir.rglob("*"):
+            if f.is_file():
+                z.write(f, f.relative_to(out_dir))
+    zip_bytes = buf.getvalue()
+
+    import urllib.request
+    headers = {"Authorization": f"Bearer {token}"}
+    nmap = _load_netlify_map()
+    site_id = nmap.get(slug)
+
+    # Create site if needed
+    if not site_id:
+        body = json.dumps({"name": f"{slug}-preview"}).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.netlify.com/api/v1/sites",
+            data=body,
+            headers={**headers, "Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                resp = json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            err = e.read().decode("utf-8", errors="ignore")
+            raise HTTPException(e.code, f"Netlify create error : {err}")
+        site_id = resp["id"]
+        nmap[slug] = site_id
+        _save_netlify_map(nmap)
+
+    # Deploy ZIP
+    deploy_url = f"https://api.netlify.com/api/v1/sites/{site_id}/deploys"
+    req = urllib.request.Request(
+        deploy_url,
+        data=zip_bytes,
+        headers={**headers, "Content-Type": "application/zip"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            deploy = json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        err = e.read().decode("utf-8", errors="ignore")
+        raise HTTPException(e.code, f"Netlify deploy error : {err}")
+
+    url = deploy.get("ssl_url") or deploy.get("url") or ""
+    return {
+        "ok": True,
+        "slug": slug,
+        "site_id": site_id,
+        "url": url,
+        "state": deploy.get("state"),
+    }
+
+
+@app.get("/api/sites/{slug}/netlify")
+def get_netlify_info(slug: str):
+    slug = _safe_slug(slug)
+    nmap = _load_netlify_map()
+    site_id = nmap.get(slug)
+    if not site_id:
+        return {"deployed": False}
+    return {
+        "deployed": True,
+        "site_id": site_id,
+        "url": f"https://{slug}-preview.netlify.app",
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("server:app", host="127.0.0.1", port=8000, reload=True)

@@ -35,6 +35,7 @@ async function loadSites() {
   state.themes = await api('/api/themes');
   renderSitesList();
   renderThemesGrid();
+  fillImportThemes();
   if (state.sites.length) selectSite(state.sites[0].slug);
 }
 
@@ -273,9 +274,75 @@ $('#btn-regenerate').onclick = async () => {
   }
 };
 
-$('#btn-deploy').onclick = () => {
-  alert('Deploy Netlify : a implementer dans la prochaine etape. Pour l\'instant tu peux uploader le ZIP manuellement.');
+$('#btn-deploy').onclick = async () => {
+  if (!state.currentSlug) return;
+  if (!confirm(`Déployer "${state.currentSlug}" sur Netlify ?`)) return;
+  setStatus('Déploiement Netlify...');
+  try {
+    const resp = await api(`/api/sites/${state.currentSlug}/deploy`, { method: 'POST' });
+    setStatus('Déployé : ' + resp.url);
+    addChatMsg('system', `✓ Déployé sur Netlify : ${resp.url}`);
+    window.open(resp.url, '_blank');
+  } catch (e) {
+    setStatus('Erreur deploy : ' + e.message, true);
+    addChatMsg('system', 'Erreur déploiement : ' + e.message);
+  }
 };
+
+// --- IMPORT PLANITY ---
+function fillImportThemes() {
+  const sel = $('#import-theme');
+  if (!sel) return;
+  sel.innerHTML = '';
+  for (const t of state.themes) {
+    const opt = document.createElement('option');
+    opt.value = t.name;
+    opt.textContent = `${t.name} — ${t.profession}`;
+    sel.appendChild(opt);
+  }
+}
+
+const importForm = $('#import-form');
+if (importForm) {
+  importForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const url = $('#import-url').value.trim();
+    const theme = $('#import-theme').value;
+    const status = $('#import-status');
+    status.classList.remove('hidden');
+    status.textContent = 'Scraping en cours (10-30 sec)...';
+    status.className = 'text-xs text-ink-600 mt-1';
+    try {
+      const resp = await api('/api/import/planity', {
+        method: 'POST',
+        body: JSON.stringify({ url, theme }),
+      });
+      status.textContent = `✓ ${resp.name} importé (${resp.n_services} services, ${resp.n_families} familles)`;
+      status.className = 'text-xs text-green-700 mt-1';
+      $('#import-url').value = '';
+      // Refresh sites list and switch to it
+      state.sites = await api('/api/sites');
+      renderSitesList();
+      selectSite(resp.slug);
+    } catch (e) {
+      status.textContent = '✗ ' + e.message;
+      status.className = 'text-xs text-red-600 mt-1';
+    }
+  };
+}
+
+// --- SEARCH SITES ---
+const searchInput = $('#sites-search');
+if (searchInput) {
+  searchInput.oninput = (e) => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('#sites-list .site-item').forEach(el => {
+      const name = el.querySelector('.site-name')?.textContent.toLowerCase() || '';
+      const meta = el.querySelector('.site-meta')?.textContent.toLowerCase() || '';
+      el.style.display = (name.includes(q) || meta.includes(q)) ? '' : 'none';
+    });
+  };
+}
 
 // --- CHAT IA ---
 const chatLog = $('#chat-log');

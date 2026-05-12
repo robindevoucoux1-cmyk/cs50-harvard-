@@ -39,10 +39,29 @@
 
 <main class="max-w-[1600px] mx-auto px-6 py-6 grid gap-6" style="grid-template-columns: 260px 1fr 360px;">
 
-  <!-- COLONNE 1 : Liste des sites -->
-  <aside class="space-y-2">
-    <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-3 px-2">Sites</h2>
-    <div id="sites-list" class="space-y-1"></div>
+  <!-- COLONNE 1 : Liste des sites + Import -->
+  <aside class="space-y-4">
+    <!-- Import section -->
+    <div class="section-card !p-3">
+      <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-2">Nouveau prospect</h2>
+      <form id="import-form" class="space-y-2">
+        <input type="url" id="import-url" placeholder="https://www.planity.com/..." class="w-full px-2 py-1.5 text-sm border border-paper-300 rounded focus:outline-none focus:border-accent" required>
+        <select id="import-theme" class="w-full px-2 py-1.5 text-sm border border-paper-300 rounded">
+          <!-- populated by JS -->
+        </select>
+        <button type="submit" class="w-full px-3 py-2 bg-accent text-white text-xs uppercase tracking-wider rounded hover:bg-accent-600 transition">Importer + Générer</button>
+        <div id="import-status" class="text-xs text-ink-600 mt-1 hidden"></div>
+      </form>
+    </div>
+
+    <!-- Sites list -->
+    <div>
+      <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-3 px-2 flex items-center justify-between">
+        <span>Sites</span>
+        <input type="search" id="sites-search" placeholder="Filtrer..." class="text-xs px-2 py-1 border border-paper-300 rounded normal-case tracking-normal w-24 focus:w-32 focus:outline-none focus:border-accent transition-all">
+      </h2>
+      <div id="sites-list" class="space-y-1"></div>
+    </div>
   </aside>
 
   <!-- COLONNE 2 : Preview + edition -->
