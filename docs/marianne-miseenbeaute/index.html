@@ -2,659 +2,487 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marianne Mise en Beauté | Laser &amp; soins peau Mérignac</title>
-<meta name="description" content="Spécialiste peau et laser à Mérignac, Marianne traite rougeurs, acné et irritations avec des protocoles personnalisés. Prends rendez-vous en ligne.">
-<meta property="og:title" content="Marianne Mise en Beauté | Laser &amp; soins peau Mérignac">
-<meta property="og:description" content="Spécialiste peau et laser à Mérignac, Marianne traite rougeurs, acné et irritations avec des protocoles personnalisés. Prends rendez-vous en ligne.">
-<meta property="og:type" content="business.business">
-<meta property="og:image" content="assets/post_003.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Institut Mise en Beauté, soins peau et laser à Mérignac (Bordeaux)</title>
+<meta name="description" content="Cabinet de Marianne à Mérignac : épilation laser, soins visage anti-irritations, browlift. Réservation en ligne sur Planity.">
+<meta property="og:title" content="Institut Mise en Beauté, par Marianne">
+<meta property="og:description" content="Je change la relation que tu as avec ta peau. Mérignac.">
+<meta property="og:image" content="assets/post_001.jpg">
 <link rel="icon" href="assets/profil.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #2E6E9E;
-  --secondaire: #C8E6F0;
-  --neutre-fonce: #1C2B38;
-  --neutre-clair: #F4F9FB;
-  --blanc: #ffffff;
-  --font-titre: "DM Serif Display", serif;
-  --font-texte: "Inter", sans-serif;
-  --max-content: 1200px;
-  --rayon: 8px;
+  --ink-strong: #2B1924;
+  --ink-mid:    #5C4250;
+  --ink-soft:   #9C8290;
+  --paper:      #FBF7F4;
+  --paper-warm: #F5EBE3;
+  --white:      #FFFFFF;
+  --black:      #1A0F15;
+  --accent:     #6E2840;
+  --accent-soft:#A56076;
+  --warm:       #D4A574;
+  --border:     #EFE3E0;
+  --border-mid: #CFB8BD;
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Inter Tight", "Inter", system-ui, sans-serif;
+  --container: 1280px;
+  --t-fast: 0.25s cubic-bezier(.2,.7,.2,1);
+  --t-mid:  0.55s cubic-bezier(.2,.7,.2,1);
+  --t-slow: 0.95s cubic-bezier(.2,.7,.2,1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*::selection { background: var(--accent); color: var(--white); }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: var(--font-texte);
-  color: var(--neutre-fonce);
-  background: var(--neutre-clair);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body); font-weight: 400; font-size: 17px;
+  line-height: 1.65; color: var(--ink-strong); background: var(--paper);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "ss02", "kern", "liga";
 }
+a { color: inherit; text-decoration: none; transition: opacity var(--t-fast); }
 img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-h1, h2, h3, h4 { font-family: var(--font-titre); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: var(--neutre-fonce); }
-h1 { font-size: clamp(2rem, 5vw, 3.8rem); }
-h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); margin-bottom: 0.5em; }
-h3 { font-size: 1.25rem; margin-bottom: 0.4em; }
-p { font-size: 1.05rem; }
-.container { max-width: var(--max-content); margin: 0 auto; padding: 0 24px; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+}
+.eyebrow .num {
+  font-family: var(--font-display); font-style: italic; font-weight: 300;
+  font-size: 16px; letter-spacing: 0; color: var(--ink-soft);
+}
+.eyebrow .bar { width: 32px; height: 1px; background: var(--accent); opacity: 0.6; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1; letter-spacing: -0.025em; color: var(--ink-strong); }
+h1 { font-size: clamp(48px, 7.5vw, 120px); font-weight: 300; font-style: italic; letter-spacing: -0.04em; line-height: 0.92; }
+h2 { font-size: clamp(34px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.03em; }
+h3 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; }
+p { line-height: 1.7; color: var(--ink-mid); }
+em { font-family: var(--font-display); font-style: italic; font-weight: 400; }
 
-/* Header */
 header.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-  padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+  padding: 18px 32px;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-strong) 6%, transparent);
 }
 header.nav .inner {
-  max-width: var(--max-content); margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 14px;
+  max-width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-header.nav .logo {
-  font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  min-width: 0; flex: 1 1 auto;
-}
-header.nav nav { flex: 0 0 auto; }
-header.nav nav a { margin-left: 28px; font-size: 0.95rem; opacity: 0.8; transition: opacity .2s; }
-header.nav nav a:hover { opacity: 1; }
-header.nav .btn-reserve { margin-left: 12px; flex: 0 0 auto; white-space: nowrap; padding: 10px 18px; font-size: 0.88rem; }
-@media (max-width: 860px) {
-  header.nav nav { display: none; }
-}
-.btn-reserve .cta-short { display: none; }
-@media (max-width: 480px) {
-  header.nav { padding: 12px 14px; }
-  header.nav .logo { font-size: 1.05rem; max-width: 55vw; }
-  header.nav .btn-reserve { padding: 8px 14px; font-size: 0.82rem; }
-  .btn-reserve .cta-full { display: none; }
-  .btn-reserve .cta-short { display: inline; }
-}
-
-/* Bouton */
+.logo { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--ink-strong); letter-spacing: -0.01em; white-space: nowrap; }
+.logo em { font-style: italic; font-weight: 300; color: var(--accent); }
+nav.primary { display: flex; gap: 36px; }
+nav.primary a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink-mid); position: relative; }
+nav.primary a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--t-mid); }
+nav.primary a:hover { color: var(--ink-strong); }
+nav.primary a:hover::after { transform: scaleX(1); }
 .btn {
-  display: inline-block; padding: 14px 28px;
-  background: var(--primaire); color: var(--blanc);
-  border: none; border-radius: var(--rayon);
-  font-family: var(--font-texte); font-weight: 500; font-size: 0.95rem;
-  letter-spacing: 0.02em; cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; font-family: var(--font-body); font-size: 13px;
+  font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  background: var(--ink-strong); color: var(--white);
+  border: 1px solid var(--ink-strong); border-radius: 999px;
+  cursor: pointer; transition: transform var(--t-fast), background var(--t-fast);
   white-space: nowrap;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-.btn-outline { background: transparent; color: var(--primaire); border: 1.5px solid var(--primaire); }
-.btn-outline:hover { background: var(--primaire); color: var(--blanc); }
+.btn:hover { transform: translateY(-1px); background: var(--accent); border-color: var(--accent); }
+.btn .arr { transition: transform var(--t-fast); }
+.btn:hover .arr { transform: translateX(4px); }
+.btn-light { background: transparent; color: var(--ink-strong); border-color: color-mix(in srgb, var(--ink-strong) 25%, transparent); }
+.btn-light:hover { background: var(--ink-strong); color: var(--white); }
+.btn-reserve .lbl-short { display: none; }
+@media (max-width: 860px) {
+  nav.primary { display: none; }
+  header.nav { padding: 14px 18px; }
+  .logo { font-size: 18px; }
+  .btn { padding: 10px 16px; font-size: 12px; }
+  .btn-reserve .lbl-long { display: none; }
+  .btn-reserve .lbl-short { display: inline; }
+}
 
-/* Hero */
 section.hero {
-  margin-top: 60px; padding: 80px 24px 100px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
-  max-width: var(--max-content); margin-left: auto; margin-right: auto;
+  margin-top: 64px; min-height: calc(100vh - 64px);
+  padding: 80px 32px 120px;
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 80px; align-items: center;
+  max-width: var(--container); margin-inline: auto; position: relative;
 }
-section.hero .h1-block { max-width: 560px; }
-section.hero h1 { margin-bottom: 0.4em; }
-section.hero .tagline { font-size: clamp(1.05rem, 1.7vw, 1.25rem); opacity: 0.78; margin-bottom: 2em; }
-section.hero .ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-section.hero .img-wrap {
-  position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.25);
-}
-section.hero .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-section.hero .img-wrap::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--primaire) 25%, transparent));
-}
+.hero .copy { max-width: 620px; position: relative; z-index: 2; }
+.hero .eyebrow { margin-bottom: 36px; }
+.hero h1 { margin-bottom: 32px; }
+.hero h1 .acc { color: var(--accent); }
+.hero .tagline { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.5; color: var(--ink-mid); max-width: 460px; margin-bottom: 48px; }
+.hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.hero .img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--accent); }
+.hero .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.94) contrast(1.02); transition: transform var(--t-slow); }
+.hero:hover .img-wrap img { transform: scale(1.02); }
+.hero .img-caption { position: absolute; left: -64px; bottom: 32px; writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.05em; }
+
+.marquee { overflow: hidden; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--paper); }
+.marquee-track { display: flex; gap: 80px; animation: marquee 45s linear infinite; white-space: nowrap; width: max-content; }
+.marquee-track span { font-family: var(--font-display); font-size: clamp(28px, 4vw, 56px); font-style: italic; font-weight: 300; letter-spacing: -0.02em; color: var(--ink-strong); }
+.marquee-track span::after { content: "·"; margin-left: 80px; color: var(--accent); font-style: normal; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+section.about { padding: 160px 32px; background: var(--paper); }
+.about .grid { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start; }
+.about .left { position: sticky; top: 120px; }
+.about .left .eyebrow { margin-bottom: 28px; }
+.about .left h2 { margin-bottom: 32px; }
+.about .left .signature { font-family: var(--font-display); font-style: italic; color: var(--ink-soft); font-size: 18px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+.about .right { font-size: 19px; line-height: 1.75; color: var(--ink-mid); }
+.about .right p { margin-bottom: 24px; }
+.about .right p strong { color: var(--ink-strong); font-weight: 500; }
+.about .right p:first-of-type::first-letter { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 90px; float: left; line-height: 0.85; margin: 8px 12px 0 -4px; color: var(--accent); }
+
 @media (max-width: 860px) {
-  section.hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-  section.hero .img-wrap { aspect-ratio: 1/1; }
+  section.about { padding: 100px 24px; }
+  .about .grid { grid-template-columns: 1fr; gap: 48px; }
+  .about .left { position: static; }
+  .about .right { font-size: 17px; }
+  .about .right p:first-of-type::first-letter { font-size: 64px; }
+  section.hero { grid-template-columns: 1fr; gap: 60px; min-height: auto; padding: 60px 24px 80px; }
+  .hero .img-caption { display: none; }
 }
 
-/* About */
-section.about {
-  padding: 100px 24px;
-  display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;
-  max-width: var(--max-content); margin: 0 auto; align-items: center;
+section.services { padding: 160px 32px; background: var(--ink-strong); color: var(--paper); }
+section.services .container { max-width: var(--container); margin: 0 auto; }
+section.services .header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; align-items: end; }
+section.services .header .eyebrow { color: var(--warm); margin-bottom: 28px; }
+section.services .header .eyebrow .num { color: var(--paper); opacity: 0.6; }
+section.services .header .eyebrow .bar { background: var(--warm); }
+section.services .header h2 { color: var(--paper); }
+section.services .header .right p { font-size: 16px; line-height: 1.7; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+section.services .famille { margin-top: 70px; }
+section.services .famille:first-of-type { margin-top: 0; }
+section.services .famille-titre {
+  font-family: var(--font-body); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm);
+  margin-bottom: 24px; padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 14%, transparent);
 }
-section.about .img-side { aspect-ratio: 1/1; border-radius: 16px; overflow: hidden; }
-section.about .img-side img { width: 100%; height: 100%; object-fit: cover; }
-section.about h2 { color: var(--primaire); margin-bottom: 0.7em; }
-section.about .lead { font-size: 1.1rem; opacity: 0.85; }
-section.about p + p { margin-top: 1em; }
-@media (max-width: 860px) { section.about { grid-template-columns: 1fr; padding: 60px 24px; } }
+section.services .item { border-bottom: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: grid; grid-template-columns: 60px 1fr 100px; gap: 40px; padding: 32px 0; align-items: center; transition: background var(--t-mid); }
+section.services .item:hover { background: color-mix(in srgb, var(--paper) 4%, transparent); }
+section.services .item .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 24px; color: var(--warm); opacity: 0.85; }
+section.services .item .nom { font-family: var(--font-display); font-weight: 400; font-size: clamp(20px, 2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; color: var(--paper); }
+section.services .item .prix { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--warm); text-align: right; }
 
-/* Services : editorial alterne */
-section.services {
-  padding: 100px 24px; background: var(--blanc);
-}
-section.services .container { max-width: var(--max-content); margin: 0 auto; }
-section.services .header { text-align: center; max-width: 640px; margin: 0 auto 80px; }
-section.services h2 { margin-bottom: 0.4em; }
-section.services .intro { opacity: 0.7; }
-section.services .item {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-  align-items: center; margin-bottom: 100px;
-}
-section.services .item:last-child { margin-bottom: 0; }
-section.services .item.reverse { grid-template-columns: 1fr 1fr; }
-section.services .item.reverse .photo { order: 2; }
-section.services .item.reverse .content { order: 1; }
-section.services .item .photo {
-  aspect-ratio: 4/5; border-radius: 4px; overflow: hidden;
-  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.2);
-  position: relative;
-}
-section.services .item .photo img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .8s cubic-bezier(.2,.7,.2,1);
-}
-section.services .item:hover .photo img { transform: scale(1.04); }
-section.services .item .photo .num-overlay {
-  position: absolute; top: 24px; left: 24px;
-  font-family: var(--font-titre); font-size: 1rem; font-weight: 500;
-  color: var(--blanc); background: color-mix(in srgb, var(--primaire) 80%, black);
-  padding: 8px 14px; border-radius: 100px; letter-spacing: 0.1em;
-}
-section.services .item .content { max-width: 480px; }
-section.services .item .eyebrow {
-  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
-  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 14px; display: block;
-}
-section.services .item h3 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 18px; line-height: 1.15;
-}
-section.services .item .desc { font-size: 1.05rem; opacity: 0.78; margin-bottom: 24px; }
-section.services .item .meta {
-  display: flex; gap: 16px; padding-top: 24px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-}
-section.services .item .meta .chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.88rem; color: var(--primaire); font-weight: 500;
-}
-section.services .item .meta .chip .ico {
-  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--primaire); opacity: 0.7;
-}
-section.services .item-nopic {
-  max-width: 720px; margin: 0 auto 60px;
-  padding: 36px 40px;
-  text-align: left;
-  background: var(--neutre-clair);
-  border-left: 3px solid var(--primaire);
-  border-radius: 4px;
-}
-section.services .item-nopic .eyebrow {
-  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
-  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 10px; display: block;
-}
-section.services .item-nopic h3 {
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
-}
-section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
-section.services .item-nopic .meta {
-  display: flex; gap: 14px;
-}
-section.services .item-nopic .meta .chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
-}
-section.services .item-nopic .meta .chip .ico {
-  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--primaire); opacity: 0.7;
-}
 @media (max-width: 860px) {
-  section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
-  section.services .item.reverse .photo { order: 0; }
-  section.services .item.reverse .content { order: 1; }
-  section.services .item .photo { aspect-ratio: 4/3; }
-  section.services .item-nopic { padding: 28px 24px; }
+  section.services { padding: 100px 24px; }
+  section.services .header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+  section.services .item { grid-template-columns: 40px 1fr; grid-template-rows: auto auto; gap: 8px 16px; padding: 22px 0; }
+  section.services .item .num { font-size: 18px; }
+  section.services .item .nom { grid-column: 1 / -1; font-size: 20px; }
+  section.services .item .prix { grid-column: 1 / -1; text-align: left; font-size: 16px; }
 }
 
-/* Raisons */
-section.raisons {
-  padding: 100px 24px;
-  background: linear-gradient(180deg, var(--neutre-clair) 0%, color-mix(in srgb, var(--secondaire) 15%, var(--neutre-clair)) 100%);
-}
-section.raisons .container { text-align: center; }
-section.raisons h2 { margin-bottom: 60px; }
-section.raisons .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;
-  text-align: left;
-}
-section.raisons .item .num-grand {
-  font-family: var(--font-titre); font-size: 3rem; font-weight: 600;
-  color: var(--primaire); line-height: 1; margin-bottom: 14px;
-}
-section.raisons .item h3 { margin-bottom: 0.4em; }
-section.raisons .item p { opacity: 0.8; }
+section.avis { padding: 140px 32px; background: var(--ink-strong); color: var(--paper); text-align: center; border-top: 1px solid color-mix(in srgb, var(--paper) 8%, transparent); }
+.avis .container { max-width: 760px; margin: 0 auto; }
+.avis .eyebrow { color: var(--warm); margin-bottom: 28px; }
+.avis .eyebrow .num { color: var(--paper); opacity: 0.6; }
+.avis .eyebrow .bar { background: var(--warm); }
+.avis .stars { font-family: var(--font-display); font-size: clamp(56px, 8vw, 96px); font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 16px; color: var(--paper); letter-spacing: -0.02em; }
+.avis .note-num { color: var(--warm); }
+.avis .lbl-note { font-family: var(--font-body); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 60%, transparent); margin-bottom: 36px; }
+.avis .link { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--paper); padding-bottom: 4px; border-bottom: 1px solid color-mix(in srgb, var(--paper) 40%, transparent); }
+.avis .link:hover { border-bottom-color: var(--warm); }
 
-/* Galerie */
-section.galerie {
-  padding: 100px 24px; background: var(--blanc);
-}
-section.galerie .container { text-align: center; }
-section.galerie h2 { margin-bottom: 0.4em; }
-section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
-section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-  max-width: 960px; margin: 0 auto;
-}
-section.galerie .photo {
-  aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
-  position: relative; cursor: pointer;
-}
-section.galerie .photo img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .4s ease;
-}
-section.galerie .photo:hover img { transform: scale(1.06); }
-section.galerie .photo::after {
-  content: ""; position: absolute; inset: 0;
-  background: color-mix(in srgb, var(--primaire) 0%, transparent);
-  transition: background .3s;
-}
-section.galerie .photo:hover::after { background: color-mix(in srgb, var(--primaire) 18%, transparent); }
-@media (max-width: 640px) { section.galerie .grid { grid-template-columns: repeat(2, 1fr); } }
-
-/* Avis */
-section.avis {
-  padding: 100px 24px;
-  background: linear-gradient(180deg, var(--blanc) 0%, var(--neutre-clair) 100%);
-}
-section.avis .container { max-width: var(--max-content); margin: 0 auto; text-align: center; }
-section.avis .header { margin-bottom: 60px; }
-section.avis h2 { margin-bottom: 0.5em; }
-section.avis .note-bandeau {
-  display: inline-flex; align-items: center; gap: 16px;
-  padding: 14px 28px; background: var(--blanc);
-  border: 1px solid rgba(0,0,0,0.06); border-radius: 100px;
-  box-shadow: 0 6px 20px -10px rgba(0,0,0,0.08);
-  margin-bottom: 12px;
-}
-section.avis .note-bandeau .stars { color: #FFB400; font-size: 1.05rem; letter-spacing: 2px; }
-section.avis .note-bandeau .note-num {
-  font-family: var(--font-titre); font-size: 1.4rem; font-weight: 600;
-  color: var(--neutre-fonce);
-}
-section.avis .note-bandeau .note-meta { font-size: 0.88rem; opacity: 0.7; }
-section.avis .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px; text-align: left; margin-top: 40px;
-}
-section.avis .card {
-  padding: 30px 28px; background: var(--blanc);
-  border-radius: 12px; border: 1px solid rgba(0,0,0,0.04);
-  position: relative;
-}
-section.avis .card .stars-card {
-  color: #FFB400; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 14px;
-}
-section.avis .card .texte {
-  font-size: 0.98rem; line-height: 1.65; margin-bottom: 18px;
-  color: var(--neutre-fonce); opacity: 0.88;
-}
-section.avis .card .texte::before { content: "« "; opacity: 0.4; }
-section.avis .card .texte::after { content: " »"; opacity: 0.4; }
-section.avis .card .auteur {
-  font-size: 0.88rem; font-weight: 500; color: var(--primaire);
-}
-section.avis .card .date { font-size: 0.78rem; opacity: 0.55; margin-left: 8px; }
-section.avis .voir-tout {
-  margin-top: 40px; display: inline-block;
-  font-size: 0.9rem; color: var(--primaire);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px; opacity: 0.85;
+section.faq { padding: 160px 32px; background: var(--paper); }
+.faq .container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 4fr 7fr; gap: 80px; align-items: start; }
+.faq .head { position: sticky; top: 120px; }
+.faq .head .eyebrow { margin-bottom: 28px; }
+.faq .list { border-top: 1px solid var(--ink-strong); }
+.faq details { border-bottom: 1px solid var(--border-mid); padding: 28px 0; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 400; line-height: 1.25; letter-spacing: -0.015em; color: var(--ink-strong); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ic { flex: 0 0 24px; width: 24px; height: 24px; position: relative; margin-top: 8px; transition: transform var(--t-mid); }
+.faq summary .ic::before, .faq summary .ic::after { content: ""; position: absolute; background: var(--accent); }
+.faq summary .ic::before { top: 11px; left: 0; right: 0; height: 2px; }
+.faq summary .ic::after { top: 0; bottom: 0; left: 11px; width: 2px; transition: transform var(--t-mid); }
+.faq details[open] summary .ic::after { transform: scaleY(0); }
+.faq .r { margin-top: 18px; font-size: 16px; line-height: 1.7; color: var(--ink-mid); max-width: 640px; }
+@media (max-width: 860px) {
+  section.faq { padding: 100px 24px; }
+  .faq .container { grid-template-columns: 1fr; gap: 40px; }
+  .faq .head { position: static; }
 }
 
-/* FAQ */
-section.faq {
-  padding: 100px 24px; background: var(--blanc);
-}
-section.faq .container { max-width: 760px; margin: 0 auto; }
-section.faq h2 { text-align: center; margin-bottom: 60px; }
-section.faq .item {
-  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
-}
-section.faq .q {
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
-  cursor: pointer; padding: 4px 0; user-select: none;
-}
-section.faq .q .ic {
-  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
-  margin-left: 16px;
-  position: relative;
-  transition: transform .3s;
-}
-section.faq .q .ic::before, section.faq .q .ic::after {
-  content: ""; position: absolute; background: var(--primaire);
-}
-section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
-section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
-section.faq .item[open] .q .ic::after { transform: scaleY(0); }
-section.faq .r {
-  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
+section.contact { padding: 140px 32px; background: var(--accent); color: var(--paper); }
+.contact .container { max-width: var(--container); margin: 0 auto; }
+.contact .head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
+.contact .head .left h2 { color: var(--paper); }
+.contact .head .left .eyebrow { color: var(--warm); margin-bottom: 28px; }
+.contact .head .left .eyebrow .num { color: var(--paper); opacity: 0.7; }
+.contact .head .left .eyebrow .bar { background: var(--warm); }
+.contact .head .right p { font-size: 16px; line-height: 1.7; color: color-mix(in srgb, var(--paper) 78%, transparent); }
+.contact .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.contact .card { padding: 36px 32px; background: color-mix(in srgb, var(--paper) 8%, transparent); border: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); }
+.contact .card .lbl { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 16px; }
+.contact .card .val { font-family: var(--font-display); font-size: clamp(20px, 1.6vw, 24px); font-weight: 400; line-height: 1.3; letter-spacing: -0.015em; color: var(--paper); }
+.contact .card a { color: inherit; border-bottom: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); padding-bottom: 2px; }
+.contact .card a:hover { border-bottom-color: var(--warm); }
+@media (max-width: 860px) {
+  section.contact { padding: 100px 24px; }
+  .contact .head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+  .contact .grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
-/* Contact */
-section.contact {
-  padding: 100px 24px;
-  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
-}
-section.contact .container { max-width: 900px; margin: 0 auto; }
-section.contact h2 { text-align: center; margin-bottom: 48px; }
-section.contact .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
-}
-section.contact .item {
-  text-align: center; padding: 28px 20px;
-  background: var(--blanc); border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-section.contact .item .label {
-  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
-}
-section.contact .item .val {
-  font-family: var(--font-titre); font-size: 1.1rem;
-}
-section.contact .item a {
-  color: var(--primaire); border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-}
+footer { padding: 60px 32px 40px; background: var(--black); color: color-mix(in srgb, var(--paper) 60%, transparent); font-size: 13px; }
+footer .container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+footer .brand .logo { color: var(--paper); margin-bottom: 12px; display: block; }
+footer .brand p { color: inherit; font-size: 13px; max-width: 320px; }
+footer .col h4 { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 18px; }
+footer a { display: block; padding: 4px 0; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+footer a:hover { color: var(--paper); }
+footer .legal { grid-column: 1 / -1; margin-top: 48px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 12px; color: color-mix(in srgb, var(--paper) 45%, transparent); }
+@media (max-width: 860px) { footer .container { grid-template-columns: 1fr; } }
 
-/* CTA bandeau */
-section.cta-banner {
-  padding: 80px 24px;
-  background: linear-gradient(135deg, var(--primaire) 0%, color-mix(in srgb, var(--primaire) 75%, black) 100%);
-  color: var(--blanc); text-align: center;
-}
-section.cta-banner h2 { color: var(--blanc); margin-bottom: 0.5em; }
-section.cta-banner p { opacity: 0.92; max-width: 560px; margin: 0 auto 40px; }
-section.cta-banner .btn {
-  background: var(--blanc); color: var(--primaire);
-}
-section.cta-banner .btn:hover { background: var(--neutre-clair); }
-
-/* Footer */
-footer.footer {
-  padding: 60px 24px 40px; background: var(--neutre-fonce); color: var(--neutre-clair);
-}
-footer.footer .container {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px;
-}
-footer.footer h4 { color: var(--neutre-clair); font-family: var(--font-titre); margin-bottom: 12px; font-size: 1.1rem; }
-footer.footer .brand-tagline { opacity: 0.7; max-width: 320px; margin-top: 8px; line-height: 1.6; }
-footer.footer .brand-name { font-family: var(--font-titre); font-size: 1.4rem; color: var(--blanc); }
-footer.footer a { opacity: 0.75; transition: opacity .2s; display: block; padding: 4px 0; }
-footer.footer a:hover { opacity: 1; }
-footer.footer .copy {
-  grid-column: 1 / -1; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  opacity: 0.5; font-size: 0.85rem; text-align: center;
-}
-@media (max-width: 720px) { footer.footer .container { grid-template-columns: 1fr; } }
-
-/* Animations au scroll */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
 .reveal.in { opacity: 1; transform: none; }
-
-/* Lightbox */
-.lightbox {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.92);
-  display: none; align-items: center; justify-content: center;
-  z-index: 200; padding: 24px; cursor: pointer;
-}
-.lightbox.open { display: flex; }
-.lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
-.lightbox-close {
-  position: absolute; top: 24px; right: 24px;
-  background: rgba(255,255,255,0.15); color: white; border: none;
-  width: 44px; height: 44px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
-}
+.reveal-d-1 { transition-delay: 0.08s; }
+.reveal-d-2 { transition-delay: 0.16s; }
+.reveal-d-3 { transition-delay: 0.24s; }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="inner">
-    <a href="#" class="logo">Marianne Mise en Beauté</a>
-    <nav>
-      <a href="#about">À propos</a>
-      <a href="#services">Prestations</a>
-      <a href="#galerie">Galerie</a>
+    <a href="#" class="logo">Institut <em>Mise en Beauté</em></a>
+    <nav class="primary">
+      <a href="#approche">Approche</a>
+      <a href="#protocoles">Soins</a>
+      <a href="#questions">Questions</a>
       <a href="#contact">Contact</a>
     </nav>
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn btn-reserve"><span class="cta-full">Réserver mon rendez-vous</span><span class="cta-short">Réserver</span></a>  </div>
+    <a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn btn-reserve">
+      <span class="lbl-long">Réserver sur Planity</span>
+      <span class="lbl-short">Réserver</span>
+      <span class="arr">→</span>
+    </a>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="h1-block reveal">
-    <h1>Ta peau mérite enfin de se sentir bien</h1>
-    <p class="tagline">Soins peau et laser à Mérignac pour en finir avec les rougeurs, l&#39;acné et les irritations.</p>
-    <div class="ctas">
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn">Réserver mon rendez-vous</a>      <a href="#services" class="btn btn-outline">Bilan peau offert</a>
+  <div class="copy">
+    <span class="eyebrow reveal"><span class="num">01</span><span class="bar"></span>Mérignac, Bordeaux Métropole</span>
+    <h1 class="reveal reveal-d-1">Et si <em class="acc">cette fois,</em><br>c'était la bonne ?</h1>
+    <p class="tagline reveal reveal-d-2">Soins du visage pour peaux sensibles, épilation laser et browlift. Je change la relation que tu as avec ta peau, à Mérignac.</p>
+    <div class="ctas reveal reveal-d-3">
+      <a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn">Réserver sur Planity <span class="arr">→</span></a>
+      <a href="#protocoles" class="btn btn-light">Voir les soins</a>
     </div>
   </div>
-  <div class="img-wrap reveal">
-    <img src="assets/post_003.jpg" alt="Marianne Mise en Beauté" loading="eager">
+  <div class="img-wrap reveal reveal-d-2">
+    <img src="assets/post_001.jpg" alt="Marianne dans son institut à Mérignac">
+    <span class="img-caption">À l'institut, Mérignac</span>
   </div>
 </section>
 
-<section id="about" class="about">
-  <div class="img-side reveal">
-<img src="assets/post_001.jpg" alt="Je change ta relation avec ta peau" loading="lazy">  </div>
-  <div class="reveal">
-    <h2>Je change ta relation avec ta peau</h2>
-    <p class="lead">Tu as l&#39;impression d&#39;avoir tout essayé, sans résultats durables ? Dans ma cabine à Mérignac, je prends le temps d&#39;analyser ta peau avant de définir un protocole adapté, que ce soit par laser ou par soins ciblés. Mon objectif est simple : que tu repartes chez toi avec une peau apaisée et une vraie confiance retrouvée.</p>
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Soin Éclat de Printemps</span><span>Browlift</span><span>Épilation laser</span><span>Bilan peau</span><span>Cire</span><span>Soin Éclat de Printemps</span><span>Browlift</span><span>Épilation laser</span><span>Bilan peau</span><span>Cire</span>
+  </div>
+</div>
+
+<section class="about" id="approche">
+  <div class="grid">
+    <div class="left">
+      <span class="eyebrow reveal"><span class="num">02</span><span class="bar"></span>L'approche</span>
+      <h2 class="reveal reveal-d-1">Pour les peaux<br>qui ont tout essayé.</h2>
+      <p class="signature reveal reveal-d-2">Marianne, esthéticienne diplômée, spécialiste peau et laser à Mérignac.</p>
+    </div>
+    <div class="right reveal reveal-d-1">
+      <p>Irritations, imperfections, rougeurs. Si tu lis ces lignes, tu sais probablement ce que c'est. Et tu as déjà beaucoup essayé.</p>
+      <p>À l'institut, je travaille différemment. Le premier rendez&#8209;vous, c'est un <strong>bilan peau</strong>. On regarde, on parle, on comprend. Le protocole arrive après, jamais avant.</p>
+      <p>Trois types de soins : <strong>visage</strong> (le Soin Éclat de Printemps en signature), <strong>épilation</strong> (laser et cire), <strong>regard</strong> (browlift avec soin à l'argan).</p>
+      <p>Le but n'est pas de te vendre une séance. C'est de changer durablement la relation que tu as avec ta peau.</p>
+    </div>
   </div>
 </section>
 
-<section id="services" class="services">
+<section class="services" id="protocoles">
   <div class="container">
-    <div class="header reveal">
-      <h2>Mes soins</h2>
-      <p class="intro">Marianne s&#39;attaque aux peaux difficiles (rougeurs, acné, irritations) avec des protocoles laser et soins visage adaptés à chaque peau, dans un cadre chaleureux à Mérignac.</p>
-    </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_003.jpg" alt="Traitement acné et imperfections" loading="lazy">
-        <span class="num-overlay">01</span>
+    <div class="header">
+      <div>
+        <span class="eyebrow reveal"><span class="num">03</span><span class="bar"></span>Les soins</span>
+        <h2 class="reveal reveal-d-1">Neuf soins,<br>trois familles.</h2>
       </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 1</span>
-        <h3>Traitement acné et imperfections</h3>
-        <p class="desc">Un protocole ciblé pour réduire les imperfections, lisser le grain de peau et apaiser les zones réactives durablement.</p>
-        <div class="meta">
-        </div>
+      <div class="right reveal reveal-d-2">
+        <p>Tous les soins se réservent en ligne sur Planity. Le bilan peau est conseillé avant le premier soin du visage.</p>
       </div>
     </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_005.jpg" alt="Épilation laser" loading="lazy">
-        <span class="num-overlay">02</span>
+
+    <div class="famille">
+      <div class="famille-titre">Visage</div>
+      <div class="item reveal">
+        <div class="num">01</div>
+        <div class="nom">Soin Éclat de Printemps</div>
+        <div class="prix"><em>110 €</em></div>
       </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 2</span>
-        <h3>Épilation laser</h3>
-        <p class="desc">Épilation laser au matériel professionnel pour des résultats durables, réalisée avec soin et précision.</p>
-        <div class="meta">
-        </div>
-      </div>
-    </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_009.jpg" alt="Soin laser visage" loading="lazy">
-        <span class="num-overlay">03</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 3</span>
-        <h3>Soin laser visage</h3>
-        <p class="desc">Séance laser visage pour traiter rougeurs, taches et irrégularités, dans le respect de ta peau.</p>
-        <div class="meta">
-        </div>
+      <div class="item reveal">
+        <div class="num">02</div>
+        <div class="nom">Bilan peau personnalisé</div>
+        <div class="prix"><em>35 €</em></div>
       </div>
     </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_002.jpg" alt="Soin visage personnalisé" loading="lazy">
-        <span class="num-overlay">04</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 4</span>
-        <h3>Soin visage personnalisé</h3>
-        <p class="desc">Un soin adapté à ton type de peau, appliqué avec les bons actifs pour une peau nettement plus confortable.</p>
-        <div class="meta">
-        </div>
+
+    <div class="famille">
+      <div class="famille-titre">Regard</div>
+      <div class="item reveal">
+        <div class="num">03</div>
+        <div class="nom">Browlift, épilation au fil et soin à l'argan</div>
+        <div class="prix"><em>59 €</em></div>
       </div>
     </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_001.jpg" alt="Bilan peau" loading="lazy">
-        <span class="num-overlay">05</span>
+
+    <div class="famille">
+      <div class="famille-titre">Épilation laser</div>
+      <div class="item reveal">
+        <div class="num">04</div>
+        <div class="nom">Aisselles, à la séance</div>
+        <div class="prix"><em>79 €</em></div>
       </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 5</span>
-        <h3>Bilan peau</h3>
-        <p class="desc">On commence toujours par là : une analyse complète de ta peau pour définir ensemble le protocole qui te correspond vraiment.</p>
-        <div class="meta">
-        </div>
+      <div class="item reveal">
+        <div class="num">05</div>
+        <div class="nom">Demi&#8209;jambes ou cuisses, à la séance</div>
+        <div class="prix"><em>179 €</em></div>
+      </div>
+      <div class="item reveal">
+        <div class="num">06</div>
+        <div class="nom">Jambes entières, à la séance</div>
+        <div class="prix"><em>250 €</em></div>
+      </div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Épilation cire</div>
+      <div class="item reveal">
+        <div class="num">07</div>
+        <div class="nom">Aisselles</div>
+        <div class="prix"><em>18 €</em></div>
+      </div>
+      <div class="item reveal">
+        <div class="num">08</div>
+        <div class="nom">Maillot semi ou intégral</div>
+        <div class="prix"><em>29 €</em></div>
+      </div>
+      <div class="item reveal">
+        <div class="num">09</div>
+        <div class="nom">Duo aisselles et maillot</div>
+        <div class="prix"><em>42,50 €</em></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="raisons">
+<section class="avis" id="avis">
   <div class="container">
-    <h2 class="reveal">Pourquoi choisir Marianne Mise en Beauté</h2>
+    <span class="eyebrow reveal"><span class="num">04</span><span class="bar"></span>Sur Planity</span>
+    <div class="stars reveal reveal-d-1"><span class="note-num">5,0</span><span style="color: color-mix(in srgb, var(--paper) 30%, transparent); font-size: 0.65em;">&nbsp;/ 5</span></div>
+    <div class="lbl-note reveal reveal-d-2">Note moyenne sur 171 avis Planity</div>
+    <a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="link reveal reveal-d-3">
+      Lire les avis sur Planity <span class="arr">↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="faq" id="questions">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow reveal"><span class="num">05</span><span class="bar"></span>Questions</span>
+      <h2 class="reveal reveal-d-1">Les questions<br>qui reviennent.</h2>
+    </div>
+    <div class="list">
+      <details class="reveal">
+        <summary>Par quoi commencer si je viens pour ma peau ?<span class="ic"></span></summary>
+        <p class="r">Par un bilan peau. C'est un rendez&#8209;vous d'environ trente minutes où on regarde ta peau, où tu m'expliques ce que tu as déjà essayé, et où on définit ensemble le bon protocole.</p>
+      </details>
+      <details class="reveal">
+        <summary>L'épilation laser convient&#8209;elle à toutes les peaux ?<span class="ic"></span></summary>
+        <p class="r">Pas systématiquement. Certaines peaux et certaines pilosités sont plus adaptées que d'autres. C'est validé lors d'un premier rendez&#8209;vous, avant toute séance.</p>
+      </details>
+      <details class="reveal">
+        <summary>Combien de séances de laser faut&#8209;il prévoir ?<span class="ic"></span></summary>
+        <p class="r">Cela dépend de la zone, de ta peau et de ton cycle pilaire. Le calendrier précis t'est donné lors du premier rendez&#8209;vous, sans engagement.</p>
+      </details>
+      <details class="reveal">
+        <summary>Quelle est la différence avec une épilation à la cire ?<span class="ic"></span></summary>
+        <p class="r">La cire est ponctuelle et économique. Le laser vise une réduction durable de la pilosité. Les deux options sont disponibles à l'institut, le choix se fait selon ton besoin.</p>
+      </details>
+      <details class="reveal">
+        <summary>Comment venir à l'institut ?<span class="ic"></span></summary>
+        <p class="r">L'institut se trouve au 35 avenue Gustave Eiffel à Mérignac, accessible en voiture (parking dans le quartier) et en transports en commun.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="num">06</span><span class="bar"></span>Contact</span>
+        <h2 class="reveal reveal-d-1">Prendre rendez-vous.</h2>
+      </div>
+      <div class="right reveal reveal-d-2">
+        <p>Réservation en ligne sur Planity. Tu peux aussi me joindre par Instagram ou passer directement à l'institut.</p>
+      </div>
+    </div>
     <div class="grid">
-      <div class="item reveal">
-        <div class="num-grand">01</div>
-        <h3>Matériel laser professionnel</h3>
-        <p>Les séances sont réalisées avec un équipement certifié, pour des résultats fiables en toute sécurité.</p>
+      <div class="card reveal">
+        <div class="lbl">Réserver en ligne</div>
+        <div class="val"><a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener">Sur Planity ↗</a></div>
       </div>
-      <div class="item reveal">
-        <div class="num-grand">02</div>
-        <h3>Protocoles adaptés à chaque peau</h3>
-        <p>Pas de formule générique : chaque protocole est construit selon ton type de peau, tes réactions et tes objectifs.</p>
+      <div class="card reveal reveal-d-1">
+        <div class="lbl">À l'institut</div>
+        <div class="val">35 av. Gustave Eiffel,<br>33700 Mérignac</div>
       </div>
-      <div class="item reveal">
-        <div class="num-grand">03</div>
-        <h3>Un cadre doux et rassurant</h3>
-        <p>La cabine est pensée pour que tu te sentes à l&#39;aise dès le premier instant, même si ta peau t&#39;a souvent déçue par le passé.</p>
+      <div class="card reveal reveal-d-2">
+        <div class="lbl">Instagram</div>
+        <div class="val"><a href="https://www.instagram.com/marianne_miseenbeaute/" target="_blank" rel="noopener">@marianne_miseenbeaute</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="galerie" class="galerie">
+<footer>
   <div class="container">
-    <h2 class="reveal">Résultats et ambiance</h2>
-    <p class="intro reveal">Quelques realisations recentes</p>
-    <div class="grid">
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_003.jpg')">
-        <img src="assets/post_003.jpg" alt="Avant-après très lisible de peau avec acné/irritation transformée en peau lisse et claire. Photos bien cadrées de profil, avant à gauche avec imperfections, après visiblement amélioré." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
-        <img src="assets/post_001.jpg" alt="Portrait professionnel de la praticienne souriante dans son cabinet avec décor distinctif (papier peint floral rose, étagère de produits, plante verte). Ambiance chaleureuse et accueillante." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
-        <img src="assets/post_002.jpg" alt="Praticienne au travail appliquant un soin avec instrument (spatule/brosse) sur le visage d&#39;une cliente en cabine. Geste professionnel visible, mains gantées roses, client au repos." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_005.jpg')">
-        <img src="assets/post_005.jpg" alt="Praticienne appliquant un laser épilation avec instrument actif en main (gants roses) sur la peau d&#39;une cliente. Geste technique visible, équipement professionnel en action." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_009.jpg')">
-        <img src="assets/post_009.jpg" alt="Praticienne en train d&#39;appliquer un soin laser sur le visage d&#39;une cliente portant des lunettes de protection. Instrument blanc en main, geste professionnel visible, contexte de cabine." loading="lazy">
-      </div>
+    <div class="brand">
+      <a href="#" class="logo">Institut <em>Mise en Beauté</em></a>
+      <p>Soins du visage, épilation laser et cire, browlift. Mérignac, Bordeaux Métropole.</p>
     </div>
-  </div>
-</section>
-
-
-<section id="faq" class="faq">
-  <div class="container">
-    <h2 class="reveal">Questions fréquentes</h2>
-    <details class="item reveal">
-      <summary class="q">C&#39;est quoi exactement un bilan peau ?<span class="ic"></span></summary>
-      <p class="r">C&#39;est un moment d&#39;échange où j&#39;analyse ton type de peau, ton historique et tes attentes. Ça me permet de te proposer un protocole qui a vraiment du sens pour toi, sans te faire faire des soins inutiles.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">L&#39;épilation laser, c&#39;est douloureux ?<span class="ic"></span></summary>
-      <p class="r">La plupart des clientes décrivent une sensation de chaleur légère ou un petit picotement. Je travaille avec un matériel adapté aux peaux sensibles pour que la séance soit la plus confortable possible.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Combien de séances faut-il pour voir des résultats sur l&#39;acné ?<span class="ic"></span></summary>
-      <p class="r">Ça dépend vraiment de ta peau et de la cause de tes imperfections. On en parle lors du bilan pour être honnête sur ce que tu peux attendre et en combien de temps.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Faut-il prendre rendez-vous à l&#39;avance ?<span class="ic"></span></summary>
-      <p class="r">Oui, je travaille uniquement sur rendez-vous pour pouvoir t&#39;accueillir dans les meilleures conditions. Tu peux réserver directement en ligne via le lien dans ma bio.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Tu es à Bordeaux ou à Mérignac ?<span class="ic"></span></summary>
-      <p class="r">Ma cabine est située à Mérignac, à deux pas de Bordeaux. Facilement accessible, avec du stationnement aux alentours.</p>
-    </details>
-  </div>
-</section>
-
-<section id="contactez" class="contact">
-  <div class="container">
-    <h2 class="reveal">Me contacter</h2>
-    <div class="grid">
-      <div class="item reveal">
-        <div class="label">Réservation</div>
-        <div class="val"><a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener">Réserver en ligne</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="cta-banner">
-  <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Marianne s&#39;attaque aux peaux difficiles (rougeurs, acné, irritations) avec des protocoles laser et soins visage adaptés à chaque peau, dans un cadre chaleureux à Mérignac.</p>
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn reveal">Réserver mon rendez-vous</a></section>
-
-<footer class="footer">
-  <div class="container">
-    <div>
-      <div class="brand-name">Marianne Mise en Beauté</div>
-      <p class="brand-tagline">Ta peau change vraiment, à Mérignac.</p>
-    </div>
-    <div>
+    <div class="col">
       <h4>Navigation</h4>
-      <a href="#about">À propos</a>
-      <a href="#services">Prestations</a>
-      <a href="#galerie">Galerie</a>
+      <a href="#approche">Approche</a>
+      <a href="#protocoles">Soins</a>
+      <a href="#questions">Questions</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div>
-      <h4>Suivez-nous</h4>
-      <a href="https://www.instagram.com/marianne_miseenbeaute/" target="_blank" rel="noopener">Instagram (@marianne_miseenbeaute)</a>
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener">Reserver en ligne</a>    </div>
-    <div class="copy">© 2026 Marianne Mise en Beauté — Site genere automatiquement</div>
+    <div class="col">
+      <h4>Coordonnées</h4>
+      <a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener">Réserver sur Planity ↗</a>
+      <a href="https://www.instagram.com/marianne_miseenbeaute/" target="_blank" rel="noopener">@marianne_miseenbeaute</a>
+    </div>
+    <div class="legal">
+      <span>© <span id="annee">2026</span> Institut Mise en Beauté. Tous droits réservés.</span>
+    </div>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
-  <button class="lightbox-close" onclick="event.stopPropagation(); document.getElementById('lightbox').classList.remove('open')">&times;</button>
-  <img id="lightboxImg" src="" alt="">
-</div>
-
 <script>
-function ouvreLightbox(src) {
-  document.getElementById('lightboxImg').src = src;
-  document.getElementById('lightbox').classList.add('open');
-}
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('annee').textContent = new Date().getFullYear();
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
