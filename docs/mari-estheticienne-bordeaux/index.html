@@ -2,675 +2,378 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mari, soins visage et maquillage mariage à Bordeaux</title>
-<meta name="description" content="Studio privé aux Chartrons à Bordeaux : rituels soin du visage avec massage manuel, laminage sourcils, extensions cils et maquillage mariage sur RDV.">
-<meta property="og:title" content="Mari, soins visage et maquillage mariage à Bordeaux">
-<meta property="og:description" content="Studio privé aux Chartrons à Bordeaux : rituels soin du visage avec massage manuel, laminage sourcils, extensions cils et maquillage mariage sur RDV.">
-<meta property="og:type" content="business.business">
-<meta property="og:image" content="assets/post_002.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mari, soins visage et maquillage mariée aux Chartrons (Bordeaux)</title>
+<meta name="description" content="Rituels de soin du visage avec massage manuel approfondi. Maquillage mariée et soirée. Studio privé aux Chartrons, sur rendez-vous.">
+<meta property="og:title" content="Mari, studio privé aux Chartrons">
+<meta property="og:description" content="Rituels de soin du visage et maquillage mariée. Sur rendez-vous.">
+<meta property="og:image" content="assets/post_001.jpg">
 <link rel="icon" href="assets/profil.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #7B6E8D;
-  --secondaire: #D4C5B0;
-  --neutre-fonce: #2E2A26;
-  --neutre-clair: #FAF7F2;
-  --blanc: #ffffff;
-  --font-titre: "Cormorant Garamond", serif;
-  --font-texte: "Inter", sans-serif;
-  --max-content: 1200px;
-  --rayon: 8px;
+  --ink-strong: #1F1612;
+  --ink-mid:    #524239;
+  --ink-soft:   #998878;
+  --paper:      #F8F2EB;
+  --paper-warm: #EFE3D2;
+  --white:      #FFFFFF;
+  --black:      #14100C;
+  --accent:     #3B2820;
+  --accent-soft:#7A5A48;
+  --warm:       #C7A47C;
+  --border:     #E8DDD0;
+  --border-mid: #CFBFA8;
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Inter Tight", "Inter", system-ui, sans-serif;
+  --container: 1280px;
+  --t-fast: 0.25s cubic-bezier(.2,.7,.2,1);
+  --t-mid:  0.55s cubic-bezier(.2,.7,.2,1);
+  --t-slow: 0.95s cubic-bezier(.2,.7,.2,1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-texte);
-  color: var(--neutre-fonce);
-  background: var(--neutre-clair);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+*::selection { background: var(--accent); color: var(--white); }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font-body); font-weight: 400; font-size: 17px; line-height: 1.65; color: var(--ink-strong); background: var(--paper); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: "ss01", "ss02", "kern", "liga"; }
+a { color: inherit; text-decoration: none; transition: opacity var(--t-fast); }
 img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-h1, h2, h3, h4 { font-family: var(--font-titre); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: var(--neutre-fonce); }
-h1 { font-size: clamp(2rem, 5vw, 3.8rem); }
-h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); margin-bottom: 0.5em; }
-h3 { font-size: 1.25rem; margin-bottom: 0.4em; }
-p { font-size: 1.05rem; }
-.container { max-width: var(--max-content); margin: 0 auto; padding: 0 24px; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+.eyebrow .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 16px; letter-spacing: 0; color: var(--ink-soft); }
+.eyebrow .bar { width: 32px; height: 1px; background: var(--accent); opacity: 0.6; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1; letter-spacing: -0.025em; color: var(--ink-strong); }
+h1 { font-size: clamp(48px, 7.5vw, 120px); font-weight: 300; font-style: italic; letter-spacing: -0.04em; line-height: 0.92; }
+h2 { font-size: clamp(34px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.03em; }
+h3 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; }
+p { line-height: 1.7; color: var(--ink-mid); }
+em { font-family: var(--font-display); font-style: italic; font-weight: 400; }
 
-/* Header */
-header.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-  padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-header.nav .inner {
-  max-width: var(--max-content); margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 14px;
-}
-header.nav .logo {
-  font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  min-width: 0; flex: 1 1 auto;
-}
-header.nav nav { flex: 0 0 auto; }
-header.nav nav a { margin-left: 28px; font-size: 0.95rem; opacity: 0.8; transition: opacity .2s; }
-header.nav nav a:hover { opacity: 1; }
-header.nav .btn-reserve { margin-left: 12px; flex: 0 0 auto; white-space: nowrap; padding: 10px 18px; font-size: 0.88rem; }
-@media (max-width: 860px) {
-  header.nav nav { display: none; }
-}
-.btn-reserve .cta-short { display: none; }
-@media (max-width: 480px) {
-  header.nav { padding: 12px 14px; }
-  header.nav .logo { font-size: 1.05rem; max-width: 55vw; }
-  header.nav .btn-reserve { padding: 8px 14px; font-size: 0.82rem; }
-  .btn-reserve .cta-full { display: none; }
-  .btn-reserve .cta-short { display: inline; }
-}
+header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 80; padding: 18px 32px; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--ink-strong) 6%, transparent); }
+header.nav .inner { max-width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--ink-strong); letter-spacing: -0.01em; white-space: nowrap; }
+.logo em { font-style: italic; font-weight: 300; color: var(--accent); }
+nav.primary { display: flex; gap: 36px; }
+nav.primary a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink-mid); position: relative; }
+nav.primary a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--t-mid); }
+nav.primary a:hover { color: var(--ink-strong); }
+nav.primary a:hover::after { transform: scaleX(1); }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; background: var(--ink-strong); color: var(--white); border: 1px solid var(--ink-strong); border-radius: 999px; cursor: pointer; transition: transform var(--t-fast), background var(--t-fast); white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); background: var(--accent); border-color: var(--accent); }
+.btn .arr { transition: transform var(--t-fast); }
+.btn:hover .arr { transform: translateX(4px); }
+.btn-light { background: transparent; color: var(--ink-strong); border-color: color-mix(in srgb, var(--ink-strong) 25%, transparent); }
+.btn-light:hover { background: var(--ink-strong); color: var(--white); }
+.btn-reserve .lbl-short { display: none; }
+@media (max-width: 860px) { nav.primary { display: none; } header.nav { padding: 14px 18px; } .logo { font-size: 18px; } .btn { padding: 10px 16px; font-size: 12px; } .btn-reserve .lbl-long { display: none; } .btn-reserve .lbl-short { display: inline; } }
 
-/* Bouton */
-.btn {
-  display: inline-block; padding: 14px 28px;
-  background: var(--primaire); color: var(--blanc);
-  border: none; border-radius: var(--rayon);
-  font-family: var(--font-texte); font-weight: 500; font-size: 0.95rem;
-  letter-spacing: 0.02em; cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
-  white-space: nowrap;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-.btn-outline { background: transparent; color: var(--primaire); border: 1.5px solid var(--primaire); }
-.btn-outline:hover { background: var(--primaire); color: var(--blanc); }
+section.hero { margin-top: 64px; min-height: calc(100vh - 64px); padding: 80px 32px 120px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; max-width: var(--container); margin-inline: auto; }
+.hero .copy { max-width: 620px; }
+.hero .eyebrow { margin-bottom: 36px; }
+.hero h1 { margin-bottom: 32px; }
+.hero h1 .acc { color: var(--accent); }
+.hero .tagline { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.5; color: var(--ink-mid); max-width: 460px; margin-bottom: 48px; }
+.hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.hero .img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--accent); }
+.hero .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.94); transition: transform var(--t-slow); }
+.hero:hover .img-wrap img { transform: scale(1.02); }
+.hero .img-caption { position: absolute; left: -64px; bottom: 32px; writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.05em; }
 
-/* Hero */
-section.hero {
-  margin-top: 60px; padding: 80px 24px 100px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
-  max-width: var(--max-content); margin-left: auto; margin-right: auto;
-}
-section.hero .h1-block { max-width: 560px; }
-section.hero h1 { margin-bottom: 0.4em; }
-section.hero .tagline { font-size: clamp(1.05rem, 1.7vw, 1.25rem); opacity: 0.78; margin-bottom: 2em; }
-section.hero .ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-section.hero .img-wrap {
-  position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.25);
-}
-section.hero .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-section.hero .img-wrap::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--primaire) 25%, transparent));
-}
-@media (max-width: 860px) {
-  section.hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-  section.hero .img-wrap { aspect-ratio: 1/1; }
-}
+.marquee { overflow: hidden; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--paper); }
+.marquee-track { display: flex; gap: 80px; animation: marquee 55s linear infinite; white-space: nowrap; width: max-content; }
+.marquee-track span { font-family: var(--font-display); font-size: clamp(28px, 4vw, 56px); font-style: italic; font-weight: 300; letter-spacing: -0.02em; color: var(--ink-strong); }
+.marquee-track span::after { content: "·"; margin-left: 80px; color: var(--accent); font-style: normal; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* About */
-section.about {
-  padding: 100px 24px;
-  display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;
-  max-width: var(--max-content); margin: 0 auto; align-items: center;
-}
-section.about .img-side { aspect-ratio: 1/1; border-radius: 16px; overflow: hidden; }
-section.about .img-side img { width: 100%; height: 100%; object-fit: cover; }
-section.about h2 { color: var(--primaire); margin-bottom: 0.7em; }
-section.about .lead { font-size: 1.1rem; opacity: 0.85; }
-section.about p + p { margin-top: 1em; }
-@media (max-width: 860px) { section.about { grid-template-columns: 1fr; padding: 60px 24px; } }
+section.about { padding: 160px 32px; background: var(--paper); }
+.about .grid { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start; }
+.about .left { position: sticky; top: 120px; }
+.about .left .eyebrow { margin-bottom: 28px; }
+.about .left h2 { margin-bottom: 32px; }
+.about .left .signature { font-family: var(--font-display); font-style: italic; color: var(--ink-soft); font-size: 18px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+.about .right { font-size: 19px; line-height: 1.75; color: var(--ink-mid); }
+.about .right p { margin-bottom: 24px; }
+.about .right p strong { color: var(--ink-strong); font-weight: 500; }
+.about .right p:first-of-type::first-letter { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 90px; float: left; line-height: 0.85; margin: 8px 12px 0 -4px; color: var(--accent); }
+.about .photo-side { margin-top: 40px; aspect-ratio: 4/3; overflow: hidden; }
+.about .photo-side img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95); }
+.about .cap { margin-top: 12px; font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--ink-soft); }
 
-/* Services : editorial alterne */
-section.services {
-  padding: 100px 24px; background: var(--blanc);
-}
-section.services .container { max-width: var(--max-content); margin: 0 auto; }
-section.services .header { text-align: center; max-width: 640px; margin: 0 auto 80px; }
-section.services h2 { margin-bottom: 0.4em; }
-section.services .intro { opacity: 0.7; }
-section.services .item {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-  align-items: center; margin-bottom: 100px;
-}
-section.services .item:last-child { margin-bottom: 0; }
-section.services .item.reverse { grid-template-columns: 1fr 1fr; }
-section.services .item.reverse .photo { order: 2; }
-section.services .item.reverse .content { order: 1; }
-section.services .item .photo {
-  aspect-ratio: 4/5; border-radius: 4px; overflow: hidden;
-  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.2);
-  position: relative;
-}
-section.services .item .photo img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .8s cubic-bezier(.2,.7,.2,1);
-}
-section.services .item:hover .photo img { transform: scale(1.04); }
-section.services .item .photo .num-overlay {
-  position: absolute; top: 24px; left: 24px;
-  font-family: var(--font-titre); font-size: 1rem; font-weight: 500;
-  color: var(--blanc); background: color-mix(in srgb, var(--primaire) 80%, black);
-  padding: 8px 14px; border-radius: 100px; letter-spacing: 0.1em;
-}
-section.services .item .content { max-width: 480px; }
-section.services .item .eyebrow {
-  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
-  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 14px; display: block;
-}
-section.services .item h3 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 18px; line-height: 1.15;
-}
-section.services .item .desc { font-size: 1.05rem; opacity: 0.78; margin-bottom: 24px; }
-section.services .item .meta {
-  display: flex; gap: 16px; padding-top: 24px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-}
-section.services .item .meta .chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.88rem; color: var(--primaire); font-weight: 500;
-}
-section.services .item .meta .chip .ico {
-  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--primaire); opacity: 0.7;
-}
-section.services .item-nopic {
-  max-width: 720px; margin: 0 auto 60px;
-  padding: 36px 40px;
-  text-align: left;
-  background: var(--neutre-clair);
-  border-left: 3px solid var(--primaire);
-  border-radius: 4px;
-}
-section.services .item-nopic .eyebrow {
-  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
-  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 10px; display: block;
-}
-section.services .item-nopic h3 {
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
-}
-section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
-section.services .item-nopic .meta {
-  display: flex; gap: 14px;
-}
-section.services .item-nopic .meta .chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
-}
-section.services .item-nopic .meta .chip .ico {
-  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--primaire); opacity: 0.7;
-}
-@media (max-width: 860px) {
-  section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
-  section.services .item.reverse .photo { order: 0; }
-  section.services .item.reverse .content { order: 1; }
-  section.services .item .photo { aspect-ratio: 4/3; }
-  section.services .item-nopic { padding: 28px 24px; }
-}
+@media (max-width: 860px) { section.about { padding: 100px 24px; } .about .grid { grid-template-columns: 1fr; gap: 48px; } .about .left { position: static; } .about .right { font-size: 17px; } .about .right p:first-of-type::first-letter { font-size: 64px; } section.hero { grid-template-columns: 1fr; gap: 60px; min-height: auto; padding: 60px 24px 80px; } .hero .img-caption { display: none; } }
 
-/* Raisons */
-section.raisons {
-  padding: 100px 24px;
-  background: linear-gradient(180deg, var(--neutre-clair) 0%, color-mix(in srgb, var(--secondaire) 15%, var(--neutre-clair)) 100%);
-}
-section.raisons .container { text-align: center; }
-section.raisons h2 { margin-bottom: 60px; }
-section.raisons .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;
-  text-align: left;
-}
-section.raisons .item .num-grand {
-  font-family: var(--font-titre); font-size: 3rem; font-weight: 600;
-  color: var(--primaire); line-height: 1; margin-bottom: 14px;
-}
-section.raisons .item h3 { margin-bottom: 0.4em; }
-section.raisons .item p { opacity: 0.8; }
+section.services { padding: 160px 32px; background: var(--ink-strong); color: var(--paper); }
+section.services .container { max-width: var(--container); margin: 0 auto; }
+section.services .header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; align-items: end; }
+section.services .header .eyebrow { color: var(--warm); margin-bottom: 28px; }
+section.services .header .eyebrow .num { color: var(--paper); opacity: 0.6; }
+section.services .header .eyebrow .bar { background: var(--warm); }
+section.services .header h2 { color: var(--paper); }
+section.services .header .right p { font-size: 16px; line-height: 1.7; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+section.services .famille { margin-top: 70px; }
+section.services .famille:first-of-type { margin-top: 0; }
+section.services .famille-titre { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); }
+section.services .item { border-bottom: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: grid; grid-template-columns: 60px 1fr; gap: 40px; padding: 32px 0; align-items: center; }
+section.services .item .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 24px; color: var(--warm); opacity: 0.85; }
+section.services .item .nom { font-family: var(--font-display); font-weight: 400; font-size: clamp(20px, 2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; color: var(--paper); margin-bottom: 8px; }
+section.services .item .desc { font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+section.services .item .body { padding: 0; }
 
-/* Galerie */
-section.galerie {
-  padding: 100px 24px; background: var(--blanc);
-}
-section.galerie .container { text-align: center; }
-section.galerie h2 { margin-bottom: 0.4em; }
-section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
-section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-  max-width: 960px; margin: 0 auto;
-}
-section.galerie .photo {
-  aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
-  position: relative; cursor: pointer;
-}
-section.galerie .photo img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .4s ease;
-}
-section.galerie .photo:hover img { transform: scale(1.06); }
-section.galerie .photo::after {
-  content: ""; position: absolute; inset: 0;
-  background: color-mix(in srgb, var(--primaire) 0%, transparent);
-  transition: background .3s;
-}
-section.galerie .photo:hover::after { background: color-mix(in srgb, var(--primaire) 18%, transparent); }
-@media (max-width: 640px) { section.galerie .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) { section.services { padding: 100px 24px; } section.services .header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; } section.services .item { grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; } section.services .item .num { font-size: 18px; } section.services .item .nom { font-size: 20px; } }
 
-/* Avis */
-section.avis {
-  padding: 100px 24px;
-  background: linear-gradient(180deg, var(--blanc) 0%, var(--neutre-clair) 100%);
-}
-section.avis .container { max-width: var(--max-content); margin: 0 auto; text-align: center; }
-section.avis .header { margin-bottom: 60px; }
-section.avis h2 { margin-bottom: 0.5em; }
-section.avis .note-bandeau {
-  display: inline-flex; align-items: center; gap: 16px;
-  padding: 14px 28px; background: var(--blanc);
-  border: 1px solid rgba(0,0,0,0.06); border-radius: 100px;
-  box-shadow: 0 6px 20px -10px rgba(0,0,0,0.08);
-  margin-bottom: 12px;
-}
-section.avis .note-bandeau .stars { color: #FFB400; font-size: 1.05rem; letter-spacing: 2px; }
-section.avis .note-bandeau .note-num {
-  font-family: var(--font-titre); font-size: 1.4rem; font-weight: 600;
-  color: var(--neutre-fonce);
-}
-section.avis .note-bandeau .note-meta { font-size: 0.88rem; opacity: 0.7; }
-section.avis .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px; text-align: left; margin-top: 40px;
-}
-section.avis .card {
-  padding: 30px 28px; background: var(--blanc);
-  border-radius: 12px; border: 1px solid rgba(0,0,0,0.04);
-  position: relative;
-}
-section.avis .card .stars-card {
-  color: #FFB400; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 14px;
-}
-section.avis .card .texte {
-  font-size: 0.98rem; line-height: 1.65; margin-bottom: 18px;
-  color: var(--neutre-fonce); opacity: 0.88;
-}
-section.avis .card .texte::before { content: "« "; opacity: 0.4; }
-section.avis .card .texte::after { content: " »"; opacity: 0.4; }
-section.avis .card .auteur {
-  font-size: 0.88rem; font-weight: 500; color: var(--primaire);
-}
-section.avis .card .date { font-size: 0.78rem; opacity: 0.55; margin-left: 8px; }
-section.avis .voir-tout {
-  margin-top: 40px; display: inline-block;
-  font-size: 0.9rem; color: var(--primaire);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px; opacity: 0.85;
-}
+section.faq { padding: 160px 32px; background: var(--paper); }
+.faq .container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 4fr 7fr; gap: 80px; align-items: start; }
+.faq .head { position: sticky; top: 120px; }
+.faq .head .eyebrow { margin-bottom: 28px; }
+.faq .list { border-top: 1px solid var(--ink-strong); }
+.faq details { border-bottom: 1px solid var(--border-mid); padding: 28px 0; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 400; line-height: 1.25; letter-spacing: -0.015em; color: var(--ink-strong); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ic { flex: 0 0 24px; width: 24px; height: 24px; position: relative; margin-top: 8px; transition: transform var(--t-mid); }
+.faq summary .ic::before, .faq summary .ic::after { content: ""; position: absolute; background: var(--accent); }
+.faq summary .ic::before { top: 11px; left: 0; right: 0; height: 2px; }
+.faq summary .ic::after { top: 0; bottom: 0; left: 11px; width: 2px; transition: transform var(--t-mid); }
+.faq details[open] summary .ic::after { transform: scaleY(0); }
+.faq .r { margin-top: 18px; font-size: 16px; line-height: 1.7; color: var(--ink-mid); max-width: 640px; }
+@media (max-width: 860px) { section.faq { padding: 100px 24px; } .faq .container { grid-template-columns: 1fr; gap: 40px; } .faq .head { position: static; } }
 
-/* FAQ */
-section.faq {
-  padding: 100px 24px; background: var(--blanc);
-}
-section.faq .container { max-width: 760px; margin: 0 auto; }
-section.faq h2 { text-align: center; margin-bottom: 60px; }
-section.faq .item {
-  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
-}
-section.faq .q {
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
-  cursor: pointer; padding: 4px 0; user-select: none;
-}
-section.faq .q .ic {
-  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
-  margin-left: 16px;
-  position: relative;
-  transition: transform .3s;
-}
-section.faq .q .ic::before, section.faq .q .ic::after {
-  content: ""; position: absolute; background: var(--primaire);
-}
-section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
-section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
-section.faq .item[open] .q .ic::after { transform: scaleY(0); }
-section.faq .r {
-  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
-}
+section.contact { padding: 140px 32px; background: var(--accent); color: var(--paper); }
+.contact .container { max-width: var(--container); margin: 0 auto; }
+.contact .head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
+.contact .head .left h2 { color: var(--paper); }
+.contact .head .left .eyebrow { color: var(--warm); margin-bottom: 28px; }
+.contact .head .left .eyebrow .num { color: var(--paper); opacity: 0.7; }
+.contact .head .left .eyebrow .bar { background: var(--warm); }
+.contact .head .right p { font-size: 16px; line-height: 1.7; color: color-mix(in srgb, var(--paper) 78%, transparent); }
+.contact .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.contact .card { padding: 36px 32px; background: color-mix(in srgb, var(--paper) 8%, transparent); border: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); }
+.contact .card .lbl { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 16px; }
+.contact .card .val { font-family: var(--font-display); font-size: clamp(20px, 1.6vw, 24px); font-weight: 400; line-height: 1.3; letter-spacing: -0.015em; color: var(--paper); }
+.contact .card a { color: inherit; border-bottom: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); padding-bottom: 2px; }
+.contact .card a:hover { border-bottom-color: var(--warm); }
+@media (max-width: 860px) { section.contact { padding: 100px 24px; } .contact .head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; } .contact .grid { grid-template-columns: 1fr; gap: 20px; } }
 
-/* Contact */
-section.contact {
-  padding: 100px 24px;
-  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
-}
-section.contact .container { max-width: 900px; margin: 0 auto; }
-section.contact h2 { text-align: center; margin-bottom: 48px; }
-section.contact .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
-}
-section.contact .item {
-  text-align: center; padding: 28px 20px;
-  background: var(--blanc); border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-section.contact .item .label {
-  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
-}
-section.contact .item .val {
-  font-family: var(--font-titre); font-size: 1.1rem;
-}
-section.contact .item a {
-  color: var(--primaire); border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-}
+footer { padding: 60px 32px 40px; background: var(--black); color: color-mix(in srgb, var(--paper) 60%, transparent); font-size: 13px; }
+footer .container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+footer .brand .logo { color: var(--paper); margin-bottom: 12px; display: block; }
+footer .brand p { color: inherit; font-size: 13px; max-width: 320px; }
+footer .col h4 { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 18px; }
+footer a { display: block; padding: 4px 0; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+footer a:hover { color: var(--paper); }
+footer .legal { grid-column: 1 / -1; margin-top: 48px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 12px; color: color-mix(in srgb, var(--paper) 45%, transparent); }
+@media (max-width: 860px) { footer .container { grid-template-columns: 1fr; } }
 
-/* CTA bandeau */
-section.cta-banner {
-  padding: 80px 24px;
-  background: linear-gradient(135deg, var(--primaire) 0%, color-mix(in srgb, var(--primaire) 75%, black) 100%);
-  color: var(--blanc); text-align: center;
-}
-section.cta-banner h2 { color: var(--blanc); margin-bottom: 0.5em; }
-section.cta-banner p { opacity: 0.92; max-width: 560px; margin: 0 auto 40px; }
-section.cta-banner .btn {
-  background: var(--blanc); color: var(--primaire);
-}
-section.cta-banner .btn:hover { background: var(--neutre-clair); }
-
-/* Footer */
-footer.footer {
-  padding: 60px 24px 40px; background: var(--neutre-fonce); color: var(--neutre-clair);
-}
-footer.footer .container {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px;
-}
-footer.footer h4 { color: var(--neutre-clair); font-family: var(--font-titre); margin-bottom: 12px; font-size: 1.1rem; }
-footer.footer .brand-tagline { opacity: 0.7; max-width: 320px; margin-top: 8px; line-height: 1.6; }
-footer.footer .brand-name { font-family: var(--font-titre); font-size: 1.4rem; color: var(--blanc); }
-footer.footer a { opacity: 0.75; transition: opacity .2s; display: block; padding: 4px 0; }
-footer.footer a:hover { opacity: 1; }
-footer.footer .copy {
-  grid-column: 1 / -1; margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  opacity: 0.5; font-size: 0.85rem; text-align: center;
-}
-@media (max-width: 720px) { footer.footer .container { grid-template-columns: 1fr; } }
-
-/* Animations au scroll */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
 .reveal.in { opacity: 1; transform: none; }
-
-/* Lightbox */
-.lightbox {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.92);
-  display: none; align-items: center; justify-content: center;
-  z-index: 200; padding: 24px; cursor: pointer;
-}
-.lightbox.open { display: flex; }
-.lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
-.lightbox-close {
-  position: absolute; top: 24px; right: 24px;
-  background: rgba(255,255,255,0.15); color: white; border: none;
-  width: 44px; height: 44px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
-}
+.reveal-d-1 { transition-delay: 0.08s; }
+.reveal-d-2 { transition-delay: 0.16s; }
+.reveal-d-3 { transition-delay: 0.24s; }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="inner">
-    <a href="#" class="logo">Mari</a>
-    <nav>
-      <a href="#about">À propos</a>
-      <a href="#services">Prestations</a>
-      <a href="#galerie">Galerie</a>
+    <a href="#" class="logo">Mari <em>·</em> Studio</a>
+    <nav class="primary">
+      <a href="#approche">L'approche</a>
+      <a href="#protocoles">Rituels</a>
+      <a href="#questions">Questions</a>
       <a href="#contact">Contact</a>
     </nav>
-<a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener" class="btn btn-reserve"><span class="cta-full">Prendre rendez-vous</span><span class="cta-short">Réserver</span></a>  </div>
+    <a href="https://wa.me/330767728723" target="_blank" rel="noopener" class="btn btn-reserve">
+      <span class="lbl-long">Prendre rendez-vous</span>
+      <span class="lbl-short">Réserver</span>
+      <span class="arr">→</span>
+    </a>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="h1-block reveal">
-    <h1>Prenez soin de vous, vraiment.</h1>
-    <p class="tagline">Soins visage ritualisés, maquillage mariage et sourcils redessinés dans un studio privé aux Chartrons.</p>
-    <div class="ctas">
-<a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener" class="btn">Prendre rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir les soins</a>
+  <div class="copy">
+    <span class="eyebrow reveal"><span class="num">01</span><span class="bar"></span>Chartrons, Bordeaux</span>
+    <h1 class="reveal reveal-d-1">Studio privé.<br><em class="acc">Sur rendez-vous.</em></h1>
+    <p class="tagline reveal reveal-d-2">Rituels de soin du visage avec massage manuel approfondi. Maquillage soirée et mariée. Approche naturelle et précise.</p>
+    <div class="ctas reveal reveal-d-3">
+      <a href="https://wa.me/330767728723" target="_blank" rel="noopener" class="btn">Réserver par WhatsApp <span class="arr">→</span></a>
+      <a href="#protocoles" class="btn btn-light">Voir les rituels</a>
     </div>
   </div>
-  <div class="img-wrap reveal">
-    <img src="assets/post_002.jpg" alt="Mari" loading="eager">
+  <div class="img-wrap reveal reveal-d-2">
+    <img src="assets/post_001.jpg" alt="Mari en soin dans son studio aux Chartrons">
+    <span class="img-caption">Au studio, Chartrons</span>
   </div>
 </section>
 
-<section id="about" class="about">
-  <div class="img-side reveal">
-<img src="assets/post_010.jpg" alt="Bienvenue dans mon studio" loading="lazy">  </div>
-  <div class="reveal">
-    <h2>Bienvenue dans mon studio</h2>
-    <p class="lead">Je reçois sur rendez-vous dans un espace privé et calme, au cœur des Chartrons à Bordeaux. Chaque séance commence par une lecture de votre peau et se construit autour d&#39;un massage manuel approfondi. Mon approche est naturelle et précise : pas de surplus, pas de promesses creuses, juste ce dont votre peau a besoin ce jour-là.</p>
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Soin visage</span><span>Massage signature</span><span>Maquillage soirée</span><span>Maquillage mariée</span><span>Soin sourcils</span><span>Studio privé</span><span>Soin visage</span><span>Massage signature</span><span>Maquillage soirée</span><span>Maquillage mariée</span><span>Soin sourcils</span><span>Studio privé</span>
+  </div>
+</div>
+
+<section class="about" id="approche">
+  <div class="grid">
+    <div class="left">
+      <span class="eyebrow reveal"><span class="num">02</span><span class="bar"></span>L'approche</span>
+      <h2 class="reveal reveal-d-1">Le geste,<br>avant tout.</h2>
+      <p class="signature reveal reveal-d-2">Studio privé aux Chartrons. Une cliente à la fois, jamais plus.</p>
+    </div>
+    <div class="right reveal reveal-d-1">
+      <p>Au studio, je ne reçois qu'une personne à la fois. Pas de salon partagé, pas de précipitation. Le rendez-vous prend le temps qu'il doit prendre.</p>
+      <p>Le cœur de mon travail, ce sont les <strong>soins du visage</strong> rythmés par un <strong>massage manuel approfondi</strong>. Pas de machine. Que des mains, et un protocole construit avec vous selon votre peau du moment.</p>
+      <p>Pour les occasions, je propose aussi le <strong>maquillage soirée et mariée</strong>, avec essai préalable pour les mariées. Ailleurs, sourcils et lashs lift complètent le travail du regard.</p>
+      <p>Tous les rendez-vous se prennent par WhatsApp ou Instagram. Pas de réservation en ligne automatisée, on échange avant.</p>
+      <div class="photo-side reveal reveal-d-3">
+        <img src="assets/post_004.jpg" alt="Massage facial signature au studio">
+        <p class="cap">Massage manuel signature, au studio.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="services" class="services">
+<section class="services" id="protocoles">
   <div class="container">
-    <div class="header reveal">
-      <h2>Les soins proposés</h2>
-      <p class="intro">Un studio intimiste aux Chartrons où chaque soin du visage devient un vrai moment pour soi, avec un toucher manuel précis et une approche naturelle.</p>
-    </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_001.jpg" alt="Rituel soin du visage avec massage" loading="lazy">
-        <span class="num-overlay">01</span>
+    <div class="header">
+      <div>
+        <span class="eyebrow reveal"><span class="num">03</span><span class="bar"></span>Les rituels</span>
+        <h2 class="reveal reveal-d-1">Quatre rituels,<br>une attention.</h2>
       </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 1</span>
-        <h3>Rituel soin du visage avec massage</h3>
-        <p class="desc">Un soin pensé pour votre type de peau, avec massage manuel approfondi pour relâcher les tensions et raviver l&#39;éclat.</p>
-        <div class="meta">
+      <div class="right reveal reveal-d-2">
+        <p>Les tarifs et durées varient selon votre demande. Le détail se cale lors du premier échange WhatsApp, après un mot sur ce que vous attendez.</p>
+      </div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Soins du visage</div>
+      <div class="item reveal">
+        <div class="num">01</div>
+        <div class="body">
+          <div class="nom">Rituel de soin visage avec massage manuel</div>
+          <div class="desc">Diagnostic, démaquillage, gommage doux, modelage manuel approfondi, masque adapté. Le cœur de la pratique.</div>
         </div>
       </div>
     </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_004.jpg" alt="Massage du visage signature" loading="lazy">
-        <span class="num-overlay">02</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 2</span>
-        <h3>Massage du visage signature</h3>
-        <p class="desc">Séance centrée sur le geste manuel : drainage, modelage, détente profonde du visage et du cou.</p>
-        <div class="meta">
+
+    <div class="famille">
+      <div class="famille-titre">Regard</div>
+      <div class="item reveal">
+        <div class="num">02</div>
+        <div class="body">
+          <div class="nom">Soin sourcils et lashs lift</div>
+          <div class="desc">Restructuration des sourcils, teinture et rehaussement de cils pour un regard ouvert sans extensions.</div>
         </div>
       </div>
     </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_006.jpg" alt="Soin contour des yeux et sourcils" loading="lazy">
-        <span class="num-overlay">03</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 3</span>
-        <h3>Soin contour des yeux et sourcils</h3>
-        <p class="desc">Mise en valeur du regard avec un travail précis sur les sourcils et la zone péri-oculaire.</p>
-        <div class="meta">
+
+    <div class="famille">
+      <div class="famille-titre">Maquillage</div>
+      <div class="item reveal">
+        <div class="num">03</div>
+        <div class="body">
+          <div class="nom">Maquillage soirée</div>
+          <div class="desc">Mise en beauté pour un événement, ajustée à votre tenue et à l'éclairage de la soirée.</div>
         </div>
       </div>
-    </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_002.jpg" alt="Laminage et dessin des sourcils" loading="lazy">
-        <span class="num-overlay">04</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 4</span>
-        <h3>Laminage et dessin des sourcils</h3>
-        <p class="desc">Résultat avant/après spectaculaire : des sourcils épais, définis et naturellement structurés.</p>
-        <div class="meta">
-        </div>
-      </div>
-    </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_010.jpg" alt="Extensions de cils" loading="lazy">
-        <span class="num-overlay">05</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 5</span>
-        <h3>Extensions de cils</h3>
-        <p class="desc">Un regard densifié et allongé, pour un résultat naturel ou plus affirmé selon vos envies.</p>
-        <div class="meta">
-        </div>
-      </div>
-    </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_011.jpg" alt="Maquillage mariage et soirée" loading="lazy">
-        <span class="num-overlay">06</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 6</span>
-        <h3>Maquillage mariage et soirée</h3>
-        <p class="desc">Maquillage mariée ou soirée réalisé dans mon studio, avec une approche précise et adaptée à votre morphologie.</p>
-        <div class="meta">
+      <div class="item reveal">
+        <div class="num">04</div>
+        <div class="body">
+          <div class="nom">Maquillage mariée <em>(essai préalable)</em></div>
+          <div class="desc">Préparation longue tenue, prise en compte de la robe, des photos et du déroulé de la journée. Un essai en amont pour caler le rendu.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="raisons">
+<section class="faq" id="questions">
   <div class="container">
-    <h2 class="reveal">Pourquoi choisir mon studio</h2>
+    <div class="head">
+      <span class="eyebrow reveal"><span class="num">04</span><span class="bar"></span>Questions</span>
+      <h2 class="reveal reveal-d-1">Les questions<br>qui reviennent.</h2>
+    </div>
+    <div class="list">
+      <details class="reveal">
+        <summary>Pourquoi pas de réservation en ligne directe ?<span class="ic"></span></summary>
+        <p class="r">Parce qu'on échange d'abord. Quand vous me contactez, je préfère comprendre ce que vous cherchez avant de bloquer un créneau. Cela évite les soins inadaptés et permet d'anticiper la durée juste.</p>
+      </details>
+      <details class="reveal">
+        <summary>Le studio reçoit-il plusieurs personnes en même temps ?<span class="ic"></span></summary>
+        <p class="r">Non, jamais. Le studio est privé. Vous arrivez, vous repartez, sans croiser personne. C'est ce qui permet ce rythme calme.</p>
+      </details>
+      <details class="reveal">
+        <summary>Pour un mariage, quand prendre rendez-vous ?<span class="ic"></span></summary>
+        <p class="r">Idéalement deux à trois mois avant la date. Cela laisse le temps d'organiser un essai, d'ajuster le rendu et de réserver le bon créneau le jour J.</p>
+      </details>
+      <details class="reveal">
+        <summary>Comment se passe un premier rendez-vous soin ?<span class="ic"></span></summary>
+        <p class="r">Par un diagnostic. Je regarde votre peau, je vous écoute, puis je construis le rituel avec vous : ordre des étapes, intensité du modelage, choix des produits.</p>
+      </details>
+      <details class="reveal">
+        <summary>Où se trouve le studio ?<span class="ic"></span></summary>
+        <p class="r">Aux Chartrons, à Bordeaux. L'adresse exacte est précisée à la confirmation du rendez-vous, comme c'est l'usage pour un studio privé.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="num">05</span><span class="bar"></span>Contact</span>
+        <h2 class="reveal reveal-d-1">Prendre rendez-vous.</h2>
+      </div>
+      <div class="right reveal reveal-d-2">
+        <p>La prise de rendez-vous se fait par message, sur WhatsApp ou Instagram. Je vous réponds dans la journée.</p>
+      </div>
+    </div>
     <div class="grid">
-      <div class="item reveal">
-        <div class="num-grand">01</div>
-        <h3>Studio privé, rien que vous</h3>
-        <p>Vous êtes reçue seule, dans un espace calme et dédié : pas de passage, pas de bruit, juste votre moment.</p>
+      <div class="card reveal">
+        <div class="lbl">WhatsApp</div>
+        <div class="val"><a href="https://wa.me/330767728723" target="_blank" rel="noopener">07 67 72 87 23 ↗</a></div>
       </div>
-      <div class="item reveal">
-        <div class="num-grand">02</div>
-        <h3>Toucher manuel et approche naturelle</h3>
-        <p>Chaque soin repose sur un massage manuel approfondi, sans surcharger la peau de produits inutiles.</p>
+      <div class="card reveal reveal-d-1">
+        <div class="lbl">Instagram</div>
+        <div class="val"><a href="https://www.instagram.com/mari_estheticienne_bordeaux/" target="_blank" rel="noopener">@mari_estheticienne_bordeaux</a></div>
       </div>
-      <div class="item reveal">
-        <div class="num-grand">03</div>
-        <h3>Sur rendez-vous, à votre rythme</h3>
-        <p>Pas de file d&#39;attente ni de précipitation : le rendez-vous est calé selon votre disponibilité, et la séance se déroule à votre rythme.</p>
+      <div class="card reveal reveal-d-2">
+        <div class="lbl">Studio</div>
+        <div class="val">Quartier des Chartrons,<br>Bordeaux</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="galerie" class="galerie">
+<footer>
   <div class="container">
-    <h2 class="reveal">Résultats et instants de soin</h2>
-    <p class="intro reveal">Quelques realisations recentes</p>
-    <div class="grid">
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
-        <img src="assets/post_002.jpg" alt="Avant/après épilation/laminage des sourcils. Résultat spectaculaire : sourcils épais et bien définis avant et après. Macro net, bien éclairé, très vendeur." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_010.jpg')">
-        <img src="assets/post_010.jpg" alt="Avant/après extensions de cils. Résultat net : cils fins au départ, épais et fournis après. Macro claire, deux yeux en gros plan, très impressionnant." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_006.jpg')">
-        <img src="assets/post_006.jpg" alt="Gros plan sur soin du contour des yeux/épilation des sourcils. Peau nette, sourcils bien travaillés, cadrage professionnel, bon éclairage." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
-        <img src="assets/post_001.jpg" alt="Praticienne en blouse violette effectuant un soin du visage/massage sur une cliente allongée. Geste professionnel visible, cadrage clair, ambiance de cabinet." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
-        <img src="assets/post_004.jpg" alt="Praticienne effectuant un massage du visage signature sur cliente. Geste professionnel visible, client détendu, ambiance de soin clairement professionnelle." loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_011.jpg')">
-        <img src="assets/post_011.jpg" alt="Praticienne appliquant un soin/massage du visage sur cliente. Geste visible, ambiance professionnelle, texture et détail du produit en action." loading="lazy">
-      </div>
+    <div class="brand">
+      <a href="#" class="logo">Mari <em>·</em> Studio</a>
+      <p>Studio privé aux Chartrons. Soins du visage, massage manuel, maquillage soirée et mariée.</p>
     </div>
-  </div>
-</section>
-
-
-<section id="faq" class="faq">
-  <div class="container">
-    <h2 class="reveal">Questions fréquentes</h2>
-    <details class="item reveal">
-      <summary class="q">Comment prendre rendez-vous ?<span class="ic"></span></summary>
-      <p class="r">Tout se passe via WhatsApp, directement avec moi. Cliquez sur le bouton de contact et envoyez-moi un message avec vos disponibilités, je reviens vers vous rapidement.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Où se trouve le studio ?<span class="ic"></span></summary>
-      <p class="r">Le studio est situé dans le quartier des Chartrons, à Bordeaux. L&#39;adresse précise vous est communiquée à la confirmation de votre rendez-vous.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Faut-il préparer quelque chose avant un soin visage ?<span class="ic"></span></summary>
-      <p class="r">Aucune préparation particulière n&#39;est nécessaire. Si vous portez du maquillage, il sera retiré au début de la séance dans le cadre du protocole.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Les soins sont-ils adaptés aux peaux sensibles ?<span class="ic"></span></summary>
-      <p class="r">Oui, chaque soin est adapté à votre peau lors de la séance. Mon approche naturelle et précise convient aux peaux sensibles ou réactives.</p>
-    </details>
-    <details class="item reveal">
-      <summary class="q">Proposez-vous des séances de maquillage pour un essai avant le mariage ?<span class="ic"></span></summary>
-      <p class="r">Absolument. Je recommande une séance d&#39;essai maquillage avant le jour J pour affiner votre look en toute sérénité. Contactez-moi pour en discuter.</p>
-    </details>
-  </div>
-</section>
-
-<section id="contactez" class="contact">
-  <div class="container">
-    <h2 class="reveal">Me contacter</h2>
-    <div class="grid">
-      <div class="item reveal">
-        <div class="label">Réservation</div>
-        <div class="val"><a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener">Réserver en ligne</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="cta-banner">
-  <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Un studio intimiste aux Chartrons où chaque soin du visage devient un vrai moment pour soi, avec un toucher manuel précis et une approche naturelle.</p>
-<a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener" class="btn reveal">Prendre rendez-vous</a></section>
-
-<footer class="footer">
-  <div class="container">
-    <div>
-      <div class="brand-name">Mari</div>
-      <p class="brand-tagline">Studio privé aux Chartrons, sur rendez-vous.</p>
-    </div>
-    <div>
+    <div class="col">
       <h4>Navigation</h4>
-      <a href="#about">À propos</a>
-      <a href="#services">Prestations</a>
-      <a href="#galerie">Galerie</a>
+      <a href="#approche">L'approche</a>
+      <a href="#protocoles">Rituels</a>
+      <a href="#questions">Questions</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div>
-      <h4>Suivez-nous</h4>
-      <a href="https://www.instagram.com/mari_estheticienne_bordeaux/" target="_blank" rel="noopener">Instagram (@mari_estheticienne_bordeaux)</a>
-<a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener">Reserver en ligne</a>    </div>
-    <div class="copy">© 2026 Mari — Site genere automatiquement</div>
+    <div class="col">
+      <h4>Coordonnées</h4>
+      <a href="https://wa.me/330767728723" target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a href="https://www.instagram.com/mari_estheticienne_bordeaux/" target="_blank" rel="noopener">@mari_estheticienne_bordeaux</a>
+    </div>
+    <div class="legal">
+      <span>© <span id="annee">2026</span> Mari · Studio. Tous droits réservés.</span>
+    </div>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
-  <button class="lightbox-close" onclick="event.stopPropagation(); document.getElementById('lightbox').classList.remove('open')">&times;</button>
-  <img id="lightboxImg" src="" alt="">
-</div>
-
 <script>
-function ouvreLightbox(src) {
-  document.getElementById('lightboxImg').src = src;
-  document.getElementById('lightbox').classList.add('open');
-}
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('annee').textContent = new Date().getFullYear();
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
