@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marianne — Esthéticienne laser &amp; soins peau à Bordeaux</title>
-<meta name="description" content="Spécialiste laser et soins du visage à Mérignac, près de Bordeaux. Traitement acné, rougeurs, épilation laser. Réservez votre soin en ligne avec Marianne.">
-<meta property="og:title" content="Marianne — Esthéticienne laser &amp; soins peau à Bordeaux">
-<meta property="og:description" content="Spécialiste laser et soins du visage à Mérignac, près de Bordeaux. Traitement acné, rougeurs, épilation laser. Réservez votre soin en ligne avec Marianne.">
+<title>Marianne — Spécialiste laser &amp; soins peau | Mérignac</title>
+<meta name="description" content="Épilation laser, soins anti-imperfections et rougeurs à Mérignac. Marianne t&#39;accompagne vers une peau apaisée avec des protocoles professionnels sur mesure.">
+<meta property="og:title" content="Marianne — Spécialiste laser &amp; soins peau | Mérignac">
+<meta property="og:description" content="Épilation laser, soins anti-imperfections et rougeurs à Mérignac. Marianne t&#39;accompagne vers une peau apaisée avec des protocoles professionnels sur mesure.">
 <meta property="og:type" content="business.business">
 <meta property="og:image" content="assets/post_001.jpg">
 <link rel="icon" href="assets/profil.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #8B3A52;
-  --secondaire: #C9A992;
-  --neutre-fonce: #3B2E2E;
-  --neutre-clair: #FAF6F2;
+  --primaire: #1E3A5F;
+  --secondaire: #4A8BC2;
+  --neutre-fonce: #1C2B3A;
+  --neutre-clair: #F4F9FC;
   --blanc: #ffffff;
-  --font-titre: "Cormorant Garamond", serif;
-  --font-texte: "Outfit", sans-serif;
+  --font-titre: "Manrope", serif;
+  --font-texte: "Inter", sans-serif;
   --max-content: 1200px;
   --rayon: 8px;
 }
@@ -110,32 +110,65 @@ section.about .lead { font-size: 1.1rem; opacity: 0.85; }
 section.about p + p { margin-top: 1em; }
 @media (max-width: 860px) { section.about { grid-template-columns: 1fr; padding: 60px 24px; } }
 
-/* Services */
+/* Services : editorial alterne */
 section.services {
   padding: 100px 24px; background: var(--blanc);
 }
-section.services .container { text-align: center; }
-section.services h2 { margin-bottom: 0.5em; }
-section.services .intro { opacity: 0.7; max-width: 560px; margin: 0 auto 60px; }
-section.services .grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
-  text-align: left;
+section.services .container { max-width: var(--max-content); margin: 0 auto; }
+section.services .header { text-align: center; max-width: 640px; margin: 0 auto 80px; }
+section.services h2 { margin-bottom: 0.4em; }
+section.services .intro { opacity: 0.7; }
+section.services .item {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center; margin-bottom: 100px;
 }
-section.services .card {
-  padding: 32px 28px; background: var(--neutre-clair);
-  border-radius: var(--rayon); border: 1px solid rgba(0,0,0,0.04);
-  transition: transform .2s, box-shadow .2s;
+section.services .item:last-child { margin-bottom: 0; }
+section.services .item.reverse { grid-template-columns: 1fr 1fr; }
+section.services .item.reverse .photo { order: 2; }
+section.services .item.reverse .content { order: 1; }
+section.services .item .photo {
+  aspect-ratio: 4/5; border-radius: 4px; overflow: hidden;
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.2);
+  position: relative;
 }
-section.services .card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px -10px rgba(0,0,0,0.12); }
-section.services .card .num {
-  font-family: var(--font-titre); font-size: 1.05rem; font-weight: 500;
-  color: var(--primaire); margin-bottom: 12px; letter-spacing: 0.05em;
+section.services .item .photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
 }
-section.services .card h3 { color: var(--neutre-fonce); margin-bottom: 0.5em; }
-section.services .card .price {
-  display: inline-block; margin-top: 14px; padding: 4px 12px;
-  background: color-mix(in srgb, var(--primaire) 12%, transparent);
-  color: var(--primaire); border-radius: 100px; font-size: 0.85rem; font-weight: 500;
+section.services .item:hover .photo img { transform: scale(1.04); }
+section.services .item .photo .num-overlay {
+  position: absolute; top: 24px; left: 24px;
+  font-family: var(--font-titre); font-size: 1rem; font-weight: 500;
+  color: var(--blanc); background: color-mix(in srgb, var(--primaire) 80%, black);
+  padding: 8px 14px; border-radius: 100px; letter-spacing: 0.1em;
+}
+section.services .item .content { max-width: 480px; }
+section.services .item .eyebrow {
+  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
+  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 14px; display: block;
+}
+section.services .item h3 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 18px; line-height: 1.15;
+}
+section.services .item .desc { font-size: 1.05rem; opacity: 0.78; margin-bottom: 24px; }
+section.services .item .meta {
+  display: flex; gap: 16px; padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+section.services .item .meta .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.88rem; color: var(--primaire); font-weight: 500;
+}
+section.services .item .meta .chip .ico {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primaire); opacity: 0.7;
+}
+@media (max-width: 860px) {
+  section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
+  section.services .item.reverse .photo { order: 0; }
+  section.services .item.reverse .content { order: 1; }
+  section.services .item .photo { aspect-ratio: 4/3; }
 }
 
 /* Raisons */
@@ -182,6 +215,56 @@ section.galerie .photo::after {
 }
 section.galerie .photo:hover::after { background: color-mix(in srgb, var(--primaire) 18%, transparent); }
 @media (max-width: 640px) { section.galerie .grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Avis */
+section.avis {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--blanc) 0%, var(--neutre-clair) 100%);
+}
+section.avis .container { max-width: var(--max-content); margin: 0 auto; text-align: center; }
+section.avis .header { margin-bottom: 60px; }
+section.avis h2 { margin-bottom: 0.5em; }
+section.avis .note-bandeau {
+  display: inline-flex; align-items: center; gap: 16px;
+  padding: 14px 28px; background: var(--blanc);
+  border: 1px solid rgba(0,0,0,0.06); border-radius: 100px;
+  box-shadow: 0 6px 20px -10px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+}
+section.avis .note-bandeau .stars { color: #FFB400; font-size: 1.05rem; letter-spacing: 2px; }
+section.avis .note-bandeau .note-num {
+  font-family: var(--font-titre); font-size: 1.4rem; font-weight: 600;
+  color: var(--neutre-fonce);
+}
+section.avis .note-bandeau .note-meta { font-size: 0.88rem; opacity: 0.7; }
+section.avis .grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; text-align: left; margin-top: 40px;
+}
+section.avis .card {
+  padding: 30px 28px; background: var(--blanc);
+  border-radius: 12px; border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+}
+section.avis .card .stars-card {
+  color: #FFB400; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 14px;
+}
+section.avis .card .texte {
+  font-size: 0.98rem; line-height: 1.65; margin-bottom: 18px;
+  color: var(--neutre-fonce); opacity: 0.88;
+}
+section.avis .card .texte::before { content: "« "; opacity: 0.4; }
+section.avis .card .texte::after { content: " »"; opacity: 0.4; }
+section.avis .card .auteur {
+  font-size: 0.88rem; font-weight: 500; color: var(--primaire);
+}
+section.avis .card .date { font-size: 0.78rem; opacity: 0.55; margin-left: 8px; }
+section.avis .voir-tout {
+  margin-top: 40px; display: inline-block;
+  font-size: 0.9rem; color: var(--primaire);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px; opacity: 0.85;
+}
 
 /* CTA bandeau */
 section.cta-banner {
@@ -245,15 +328,15 @@ footer.footer .copy {
       <a href="#galerie">Galerie</a>
       <a href="#contact">Contact</a>
     </nav>
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn btn-reserve">Réserver mon soin</a>  </div>
+<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn btn-reserve">Réserver ma séance</a>  </div>
 </header>
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>Ta peau mérite enfin une vraie solution</h1>
-    <p class="tagline">Spécialiste laser et soins du visage à Mérignac — pour les peaux qui en ont assez d&#39;essayer.</p>
+    <h1>Ta peau mérite enfin de te ressembler.</h1>
+    <p class="tagline">Spécialiste laser et soins visage à Mérignac — pour les peaux qui ont tout essayé.</p>
     <div class="ctas">
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn">Réserver mon soin</a>      <a href="#services" class="btn btn-outline">Découvrir les prestations</a>
+<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn">Réserver ma séance</a>      <a href="#services" class="btn btn-outline">Découvrir les soins</a>
     </div>
   </div>
   <div class="img-wrap reveal">
@@ -263,42 +346,82 @@ footer.footer .copy {
 
 <section id="about" class="about">
   <div class="img-side reveal">
-<img src="assets/post_002.jpg" alt="Bonjour, moi c&#39;est Marianne" loading="lazy">  </div>
+<img src="assets/post_002.jpg" alt="Pourquoi j&#39;ai choisi de me spécialiser dans la peau" loading="lazy">  </div>
   <div class="reveal">
-    <h2>Bonjour, moi c&#39;est Marianne</h2>
-    <p class="lead">Rougeurs, imperfections, irritations… Si tu as l&#39;impression d&#39;avoir tout essayé sans résultat durable, tu es au bon endroit. Mon travail, c&#39;est de changer la relation que tu as avec ta peau — pas juste de la couvrir. Depuis mon institut Mise en Beauté à Mérignac, près de Bordeaux, j&#39;accompagne chaque cliente avec des protocoles adaptés à sa peau, pas un soin générique.</p>
+    <h2>Pourquoi j&#39;ai choisi de me spécialiser dans la peau</h2>
+    <p class="lead">Rougeurs, imperfections, irritations chroniques… je sais ce que c&#39;est de ne plus se sentir à l&#39;aise dans sa peau. C&#39;est exactement pour ça que je me suis formée aux techniques laser et aux soins visage ciblés : pour t&#39;offrir des résultats concrets, pas des promesses. Dans ma cabine épurée près de Bordeaux, chaque protocole est pensé pour ta peau — et pour toi.</p>
   </div>
 </section>
 
 <section id="services" class="services">
   <div class="container">
-    <h2 class="reveal">Mes prestations</h2>
-    <p class="intro reveal">Marianne s&#39;adresse à celles qui ont tout essayé : elle soigne les peaux difficiles (irritations, acné, rougeurs) avec une expertise laser et une vraie approche thérapeutique de la peau.</p>
-    <div class="grid">
-      <div class="card reveal">
-        <div class="num">01</div>
+    <div class="header reveal">
+      <h2>Les soins que je propose</h2>
+      <p class="intro">Marianne accompagne les peaux sensibles et imparfaites vers une peau apaisée, avec une approche laser et soins visage rigoureuse et bienveillante à Mérignac.</p>
+    </div>
+    <div class="item  reveal">
+      <div class="photo">
+        <img src="assets/post_001.jpg" alt="Épilation laser" loading="lazy">
+        <span class="num-overlay">01</span>
+      </div>
+      <div class="content">
+        <span class="eyebrow">Prestation 1</span>
         <h3>Épilation laser</h3>
-        <p>Épilation durable au laser avec un équipement professionnel — pour dire adieu aux irritations post-rasage et aux poils incarnés.</p>
+        <p class="desc">Séances laser précises et sécurisées, adaptées à ton type de peau, pour un résultat durable sans irritation.</p>
+        <div class="meta">
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="num">02</div>
-        <h3>Soin visage personnalisé</h3>
-        <p>Un soin facial sur-mesure adapté à ton type de peau : nettoyage, hydratation, rééquilibrage — avec des gestes et des produits pro.</p>
+    </div>
+    <div class="item reverse reveal">
+      <div class="photo">
+        <img src="assets/post_002.jpg" alt="Soin anti-imperfections" loading="lazy">
+        <span class="num-overlay">02</span>
       </div>
-      <div class="card reveal">
-        <div class="num">03</div>
-        <h3>Traitement anti-acné</h3>
-        <p>Protocole ciblé pour réduire les imperfections, réguler le sébum et retrouver une peau apaisée — avec des résultats visibles.</p>
+      <div class="content">
+        <span class="eyebrow">Prestation 2</span>
+        <h3>Soin anti-imperfections</h3>
+        <p class="desc">Protocole ciblé pour traiter acné, points noirs et irrégularités — résultats visibles dès les premières séances.</p>
+        <div class="meta">
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="num">04</div>
-        <h3>Soin peaux sensibles &amp; rougeurs</h3>
-        <p>Pour les peaux réactives, irritées ou sujettes aux rougeurs : une approche douce et experte qui respecte la fragilité de ta peau.</p>
+    </div>
+    <div class="item  reveal">
+      <div class="photo">
+        <img src="assets/post_005.jpg" alt="Soin anti-rougeurs" loading="lazy">
+        <span class="num-overlay">03</span>
       </div>
-      <div class="card reveal">
-        <div class="num">05</div>
-        <h3>Laser beauté &amp; photorajeunissement</h3>
-        <p>Séances laser ciblées pour unifier le teint, estomper les taches et améliorer la texture de la peau en profondeur.</p>
+      <div class="content">
+        <span class="eyebrow">Prestation 3</span>
+        <h3>Soin anti-rougeurs</h3>
+        <p class="desc">Un soin spécifique pour les peaux réactives et sensibles, qui retrouvent enfin calme et uniformité.</p>
+        <div class="meta">
+        </div>
+      </div>
+    </div>
+    <div class="item reverse reveal">
+      <div class="photo">
+        <img src="assets/post_009.jpg" alt="Traitement anti-âge visage" loading="lazy">
+        <span class="num-overlay">04</span>
+      </div>
+      <div class="content">
+        <span class="eyebrow">Prestation 4</span>
+        <h3>Traitement anti-âge visage</h3>
+        <p class="desc">Soins et technologies combinés pour lisser, raffermir et redonner éclat à ta peau en douceur.</p>
+        <div class="meta">
+        </div>
+      </div>
+    </div>
+    <div class="item  reveal">
+      <div class="photo">
+        <img src="assets/post_003.jpg" alt="Soin visage sur-mesure" loading="lazy">
+        <span class="num-overlay">05</span>
+      </div>
+      <div class="content">
+        <span class="eyebrow">Prestation 5</span>
+        <h3>Soin visage sur-mesure</h3>
+        <p class="desc">Un diagnostic complet suivi d&#39;un soin entièrement adapté à tes problématiques du moment.</p>
+        <div class="meta">
+        </div>
       </div>
     </div>
   </div>
@@ -311,17 +434,17 @@ footer.footer .copy {
       <div class="item reveal">
         <div class="num-grand">01</div>
         <h3>Une spécialiste, pas une généraliste</h3>
-        <p>Marianne est formée et équipée spécifiquement pour les soins laser et les problématiques de peau complexes — pas un institut qui fait de tout sans maîtriser quoi que ce soit.</p>
+        <p>Je me consacre exclusivement aux problématiques de peau et au laser : tu es entre les mains d&#39;une professionnelle qui connaît vraiment ton sujet.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
-        <h3>Des résultats visibles, pas des promesses</h3>
-        <p>Les avant/après parlent d&#39;eux-mêmes : acné, rougeurs, irrégularités de teint — le travail se voit sur la peau, pas seulement dans les discours.</p>
+        <h3>Du matériel professionnel visible</h3>
+        <p>Les équipements laser utilisés en cabine sont professionnels et adaptés aux peaux sensibles — tu peux le constater dès ton premier rendez-vous.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
-        <h3>Un suivi pensé pour toi</h3>
-        <p>Chaque cliente repart avec un protocole adapté à sa peau, son mode de vie et ses objectifs — parce qu&#39;une peau, ça s&#39;accompagne dans le temps.</p>
+        <h3>Un protocole pensé pour toi</h3>
+        <p>Chaque séance commence par une écoute : tes antécédents, tes réactions, tes attentes — pour un soin qui ne ressemble qu&#39;à ta peau.</p>
       </div>
     </div>
   </div>
@@ -329,7 +452,7 @@ footer.footer .copy {
 
 <section id="galerie" class="galerie">
   <div class="container">
-    <h2 class="reveal">Les résultats avant tout</h2>
+    <h2 class="reveal">Résultats clients</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
@@ -363,16 +486,17 @@ footer.footer .copy {
   </div>
 </section>
 
+
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Marianne s&#39;adresse à celles qui ont tout essayé : elle soigne les peaux difficiles (irritations, acné, rougeurs) avec une expertise laser et une vraie approche thérapeutique de la peau.</p>
-<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn reveal">Réserver mon soin</a></section>
+  <p class="reveal">Marianne accompagne les peaux sensibles et imparfaites vers une peau apaisée, avec une approche laser et soins visage rigoureuse et bienveillante à Mérignac.</p>
+<a href="https://www.planity.com/institut-mise-en-beaute-33700-merignac" target="_blank" rel="noopener" class="btn reveal">Réserver ma séance</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
       <div class="brand-name">Marianne | Esthéticienne | Spécialiste peau et laser | Bordeaux</div>
-      <p class="brand-tagline">Mise en Beauté · Mérignac, Bordeaux · Spécialiste peau &amp; laser</p>
+      <p class="brand-tagline">Ta peau change ici. Mérignac, Bordeaux.</p>
     </div>
     <div>
       <h4>Navigation</h4>

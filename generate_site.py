@@ -29,6 +29,7 @@ import time
 from pathlib import Path
 
 from brand_and_copy import genere_brand_et_copy
+from google_reviews import scrape_pour_lead as scrape_avis_pour_lead
 from photo_curator import cure_photos
 from scrape_riche import scrape_complet, slugifie
 from site_builder import construit_site
@@ -68,7 +69,16 @@ def genere_un_site(handle: str, metier: str, ville: str, dossier_base: Path,
             print(f"  [ECHEC] generation brand+copy ratee pour @{handle}")
             return None
 
-    # 4. Build HTML
+    # 4. Avis Google (optionnel : ne bloque pas si echec)
+    if (dossier / "google_reviews.json").exists():
+        print("  [skip] google_reviews.json deja present, on reutilise")
+    else:
+        try:
+            scrape_avis_pour_lead(dossier, ville, max_avis=6)
+        except Exception as e:
+            print(f"  [warn] scrape avis Google echoue : {e}")
+
+    # 5. Build HTML
     chemin = construit_site(dossier)
     if not chemin:
         print(f"  [ECHEC] build HTML rate pour @{handle}")

@@ -42,6 +42,14 @@ def construit_site(dossier_site: Path) -> Path | None:
     selection = json.loads(sel_path.read_text(encoding="utf-8"))
     brief = json.loads(brief_path.read_text(encoding="utf-8"))
 
+    # google_reviews est optionnel
+    avis = None
+    avis_path = dossier_site / "google_reviews.json"
+    if avis_path.exists():
+        a = json.loads(avis_path.read_text(encoding="utf-8"))
+        if a.get("trouve"):
+            avis = a
+
     # Construit la galerie ordonnee avec descriptions
     photos_dict = {p["fichier"]: p for p in selection.get("photos", [])}
     posts_dict = {p["fichier"].replace("assets/", ""): p for p in metadata.get("posts", [])}
@@ -62,14 +70,19 @@ def construit_site(dossier_site: Path) -> Path | None:
     # Choix du lien de booking (externalUrl si c'est un Planity/Treatwell/etc., sinon Insta)
     booking_url = metadata.get("externalUrl") or f"https://www.instagram.com/{metadata.get('handle','')}/"
 
+    # nom commercial : on prefere celui valide par Claude (qui peut nettoyer
+    # les emojis bizarres), sinon fallback sur metadata.fullName, sinon handle
+    nom_commercial = brief.get("nom_commercial") or metadata.get("fullName") or f"@{metadata.get('handle','')}"
     contexte = {
         "brand": {
-            "fullName": metadata.get("fullName") or f"@{metadata.get('handle','')}",
+            "fullName": nom_commercial,
             "handle": metadata.get("handle", ""),
             "categorie": metadata.get("businessCategoryName", ""),
             "url_instagram": metadata.get("url_profil") or f"https://www.instagram.com/{metadata.get('handle','')}/",
             "argument_unique": brief.get("brand_voice", {}).get("argument_unique", ""),
             "voix": brief.get("brand_voice", {}),
+            "sous_metier": brief.get("sous_metier_detecte", ""),
+            "soncas": brief.get("soncas_dominants", []),
         },
         "palette": brief.get("palette", {}),
         "typo": brief.get("typographie", {}),
@@ -77,6 +90,7 @@ def construit_site(dossier_site: Path) -> Path | None:
         "meta": brief.get("meta", {}),
         "galerie": galerie,
         "booking_url": booking_url,
+        "avis": avis,
         "annee": datetime.datetime.now().year,
     }
 

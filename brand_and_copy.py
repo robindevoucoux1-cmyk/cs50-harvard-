@@ -30,54 +30,118 @@ except ImportError:  # pragma: no cover
 MODELE_COPY = "claude-sonnet-4-6"
 
 
-CODES_SECTEUR = {
-    "esthéticienne": {
-        "famille_template": "beaute",
-        "palette_inspirations": "Tons feminins, neutres chauds (rose poudre, beige, taupe, bordeaux, or rose, blanc casse, marron chocolat). Eviter neon et couleurs froides. La couleur d'accent doit etre inspiree des photos (ex : rouge si manucure rouge dominante, vert sauge si soins naturels).",
-        "typographie": "Serif elegante pour les titres (Playfair Display, Cormorant), Sans serif moderne pour le texte (Inter, Outfit).",
-        "mood": "Luxe accessible, feminin, soin de soi, douceur, prise en main pro.",
-        "sections": ["Hero", "A propos / Mon approche", "Services & prestations", "Galerie resultats", "Pourquoi me choisir", "Reserver"],
-        "exemples_cta": ["Reserver mon soin", "Prendre rendez-vous", "Decouvrir mes prestations", "Mes prestations"],
-        "exemples_h1": ["Sublimez votre peau a Bordeaux", "L'art de la beaute, au naturel", "Votre rituel beaute sur mesure"],
-    },
-    "coach sportif": {
-        "famille_template": "sport",
-        "palette_inspirations": "Couleurs energiques : noir profond + orange vif, noir + jaune lime, bleu electrique + blanc, vert neon. Contraste fort, look athletique.",
-        "typographie": "Sans serif puissant (Inter Black, Anton, Bebas Neue) pour les titres, Inter Regular pour le texte.",
-        "mood": "Energie, transformation, depassement, mental d'acier, communaute.",
-        "sections": ["Hero", "Mon approche", "Programmes (Fit / Muscu / Cardio)", "Resultats clients", "Pourquoi moi", "Reserver une seance d'essai"],
-        "exemples_cta": ["Demarrer ma transformation", "Reserver ma seance d'essai", "Booker mon coach"],
-        "exemples_h1": ["Transformez-vous, durablement", "Le coach qui change la donne a Bordeaux"],
-    },
-    "sophrologue": {
-        "famille_template": "wellness",
-        "palette_inspirations": "Tons apaisants : vert sauge, bleu lavande, beige sable, lin, ocre doux. Naturalite, calme. Aucune couleur vive.",
-        "typographie": "Serif douce (Cormorant, Lora) pour les titres, Sans serif minimaliste pour le texte.",
-        "mood": "Calme, ressourcement, lacher prise, ecoute, pratique de l'instant.",
-        "sections": ["Hero", "La sophrologie & moi", "Seances proposees", "Pour qui", "Temoignages", "Reserver"],
-        "exemples_cta": ["Reserver ma seance", "Prendre rendez-vous", "Faire le premier pas"],
-        "exemples_h1": ["Retrouver son equilibre, ici et maintenant", "La sophrologie, douce et accessible"],
-    },
-    "naturopathe": {
-        "famille_template": "wellness",
-        "palette_inspirations": "Vert sauge, vert olive, terracotta, beige naturel, blanc creme. Nature, simplicite.",
-        "typographie": "Serif (Cormorant, Lora) + Sans serif minimaliste.",
-        "mood": "Hygiene de vie, plantes, accompagnement holistique, scientifique mais doux.",
-        "sections": ["Hero", "Approche & formation", "Consultations", "Domaines d'expertise", "Temoignages", "Reserver"],
-        "exemples_cta": ["Prendre rendez-vous", "Reserver ma consultation"],
-        "exemples_h1": ["Votre sante au naturel, a Bordeaux"],
-    },
+FAMILLE_PAR_METIER = {
+    "esthéticienne": "beaute",
+    "estheticienne": "beaute",
+    "esthetique": "beaute",
+    "onglerie": "beaute",
+    "prothesiste": "beaute",
+    "nail": "beaute",
+    "coiffeur": "beaute",
+    "barbier": "beaute",
+    "coach sportif": "sport",
+    "coach": "sport",
+    "fitness": "sport",
+    "personal trainer": "sport",
+    "sophrologue": "wellness",
+    "naturopathe": "wellness",
+    "hypnotherapeute": "wellness",
+    "yoga": "wellness",
+    "osteopathe": "wellness",
 }
 
-CODES_PAR_DEFAUT = {
-    "famille_template": "wellness",
-    "palette_inspirations": "Tons sobres, beige et terracotta, ou navy et or, selon le metier.",
-    "typographie": "Serif elegante pour les titres, Sans serif moderne pour le texte.",
-    "mood": "Professionnalisme accessible, expertise visible.",
-    "sections": ["Hero", "A propos", "Services", "Galerie", "Avis", "Contact"],
-    "exemples_cta": ["Prendre rendez-vous", "Reserver", "Me contacter"],
-    "exemples_h1": ["Au service de votre {metier} a {ville}"],
-}
+
+SOUS_METIERS_REFERENCE = """SOUS-METIERS A IDENTIFIER (tu dois choisir le plus proche pour la marque
+analysee). Pour chacun : palette ATTENDUE, codes visuels, leviers SONCAS dominants.
+
+[ONGLERIE / NAIL ART / PROTHESISTE ONGULAIRE]
+- Palette : bordeaux profond, rose poudre, nude, or rose, blanc casse, taupe.
+  Couleur d'accent inspiree des manucures dominantes des photos.
+- Typo titres : serif chic (Playfair Display, Cormorant Garamond)
+- SONCAS dominants : Sympathie (proximite, "ma proth ongulaire"), Confort (cocon).
+- Mood : feminin chic, salon de quartier, doux.
+- CTAs : "Reserver mon RDV", "Prendre RDV", "Voir mes nail arts"
+
+[LASH / EXTENSIONS CILS / SOURCILS]
+- Palette : noir profond, or pale, nude, beige champagne, blanc.
+- Typo titres : serif moderne ou sans serif elegant (Outfit Bold, DM Serif)
+- SONCAS : Orgueil (regard de star), Sympathie.
+- Mood : luxe accessible, glamour, feminin.
+
+[EPILATION LASER / MEDICO-ESTHETIQUE]
+- Palette : **BLEU clinique** (#1E3A5F, #4A8BC2), blanc pur (#FFFFFF), gris perle,
+  vert eau clair (#E0F4F1), accent or rose tres discret OK. JAMAIS bordeaux/rouge.
+- Typo titres : sans serif professionnel (Inter, Manrope, DM Sans)
+- SONCAS dominants : **Securite** (rassurer sur le materiel/pratique),
+  Argent (efficacite/duree), Confort (douceur du protocole).
+- Mood : clinique professionnel, rassurance, expertise medicale, modernite.
+- CTAs : "Prendre rendez-vous", "Bilan personnalise", "Premier diagnostic"
+
+[SOINS PEAU / ANTI-AGE / SOINS VISAGE]
+- Palette : beige sable, vert sauge tres doux, terracotta clair, blanc creme.
+- Typo titres : serif elegante (Cormorant, Lora)
+- SONCAS : Confort (rituel, plaisir), Nouveauté (actifs, technologie).
+- Mood : cocooning, soin de soi, naturel pro.
+
+[MASSAGE / SPA / RELAXATION]
+- Palette : lin (#E8DFD3), ocre doux, vert sauge, terre cuite, blanc casse.
+- Typo titres : serif douce, lettrage organique.
+- SONCAS : Confort, Sympathie, Securite (relachement).
+- Mood : zen, voyage interieur, rituel.
+
+[MAQUILLAGE / MAKEUP ARTIST]
+- Palette : nude, rose poudre, or, prune, marron chocolat, accents audacieux ok.
+- Typo : serif glamour (Playfair) + sans serif graphique.
+- SONCAS : Orgueil (se sentir belle), Sympathie.
+- Mood : confiance en soi, art, evenementiel.
+
+[SOPHROLOGUE / HYPNOSE / RELAXATION]
+- Palette : vert sauge, bleu lavande pale, beige sable, ocre doux, lin.
+  Aucune couleur vive.
+- Typo titres : serif douce (Cormorant, Lora).
+- SONCAS : Securite (confiance dans la pratique), Confort (lacher prise).
+- Mood : calme, ecoute, instant present.
+
+[NATUROPATHE / MEDECINE DOUCE]
+- Palette : vert sauge, vert olive, terracotta, blanc creme, beige naturel.
+- Typo : serif (Lora, Cormorant) + sans serif minimaliste.
+- SONCAS : Securite (formation serieuse), Nouveauté (approche globale).
+- Mood : nature, expertise douce, holistique.
+
+[COACH SPORTIF]
+- Palette : noir profond + accent orange vif OU jaune lime OU bleu electrique.
+  Contraste fort.
+- Typo titres : sans serif puissant (Anton, Bebas Neue, Inter Black).
+- SONCAS : Orgueil (transformation), Argent (resultats rapides).
+- Mood : energie, depassement, mental.
+
+Si aucun ne colle, choisis 'autre' et propose palette/typo/SONCAS coherents
+avec ce que tu vois sur les photos et la bio.
+"""
+
+SONCAS_REFERENCE = """SONCAS : grille de motivations d'achat des clients en BtoC France.
+Tu dois detecter le levier dominant de la cible de la marque et adapter
+H1, tagline, services et raisons en consequence.
+
+- Securite : besoin d'etre rassure, eviter le risque. Mots-cles : protege,
+  garanti, certifie, hygiene, materiel pro, controle, sans risque.
+  Adapte pour : medico-esthetique, sophrologie, sante.
+- Orgueil : prestige, image, se sentir unique. Mots-cles : exclusif, prestige,
+  signature, sur-mesure, savoir-faire d'excellence, regard de star.
+  Adapte pour : lash, makeup, coach premium, onglerie luxe.
+- Nouveaute : decouverte, innovation, originalite. Mots-cles : nouveau,
+  unique, signature, technologie, expert formee, methode exclusive.
+  Adapte pour : tech esthetique, technique etrangere.
+- Confort : facilite, gain de temps, plaisir. Mots-cles : cocon, douceur,
+  bien-etre, rituel, simplicite, sans effort, moment pour soi.
+  Adapte pour : spa, soins peau, sophrologue.
+- Argent : economique, efficacite, ROI. Mots-cles : tarifs justes,
+  forfait, gain de temps, resultat duraule, sans gachis.
+  Adapte pour : prestations recurrentes, packages, abonnements.
+- Sympathie : proximite, relation humaine, confiance. Mots-cles : "votre proth",
+  "chez moi", convivial, ecoute, "ma" methode, accueil chaleureux.
+  Adapte pour : commerce de proximite, salon de quartier, prothesiste de quartier.
+"""
 
 
 def _client_anthropic():
@@ -88,12 +152,12 @@ def _client_anthropic():
     return anthropic.Anthropic()
 
 
-def _codes_pour(metier: str) -> dict:
+def _famille_pour(metier: str) -> str:
     metier_low = metier.lower()
-    for cle, codes in CODES_SECTEUR.items():
-        if cle in metier_low or metier_low in cle:
-            return codes
-    return CODES_PAR_DEFAUT
+    for cle, famille in FAMILLE_PAR_METIER.items():
+        if cle in metier_low:
+            return famille
+    return "wellness"
 
 
 def _format_photos(photo_selection: dict) -> str:
@@ -107,86 +171,113 @@ def _format_photos(photo_selection: dict) -> str:
 
 
 def _prompt_systeme(metier: str, ville: str) -> str:
-    codes = _codes_pour(metier)
+    famille = _famille_pour(metier)
     return f"""Tu es un directeur de creation specialise dans les sites web de
-commercants locaux (petites entreprises, indépendants). Tu connais les codes de
-chaque secteur et tu produis des sites qui ressemblent a leur marche, mais
-avec une vraie personnalite issue de la marque elle-meme.
+commercants locaux (petites entreprises, indépendants) en France. Tu connais les
+codes de chaque sous-metier et tu produis des sites qui suivent les codes du
+SOUS-METIER PRECIS de la marque, avec une personnalite issue de la marque elle-meme.
 
-CONTEXTE METIER : {metier} a {ville}
-- Famille de template a utiliser : {codes['famille_template']}
-- Palette suggeree pour ce metier : {codes['palette_inspirations']}
-- Typographie suggeree : {codes['typographie']}
-- Mood/identite secteur : {codes['mood']}
-- Sections types : {", ".join(codes['sections'])}
-- Exemples de CTAs : {", ".join(codes['exemples_cta'])}
+CONTEXTE GLOBAL : metier annonce = "{metier}" a {ville} (famille : {famille})
 
-Ton travail : analyser la marque (bio + photos Instagram fournies via leurs
-descriptions) et produire un brief de design complet + tous les textes du
-site futur, dans le ton et l'identite specifique de cette marque.
+ETAPE 1 - IDENTIFIE LE SOUS-METIER PRECIS
+Le metier annonce est trop large. En lisant la bio + les categories de photos,
+tu dois identifier le sous-metier reel parmi cette liste de reference :
 
-REGLES POUR LA PALETTE :
-- 3 couleurs hex : primaire (accent fort), secondaire (accent doux), neutre (texte/fond)
-- Inspiree du metier MAIS personnalisee a partir des couleurs vues dans les
-  photos (ex : si la marque fait des manucures rouges dominantes, le rouge devient
-  l'accent primaire)
-- Toujours coherente avec le mood du secteur (pas de neon chez une sophrologue)
+{SOUS_METIERS_REFERENCE}
+
+ETAPE 2 - DETECTE LE PROFIL SONCAS
+Identifie les 1 ou 2 leviers SONCAS dominants de la clientele cible (basee
+sur le sous-metier identifie + ce que dit la marque dans sa bio) :
+
+{SONCAS_REFERENCE}
+
+ETAPE 3 - PRODUIS LE BRIEF + LA COPY
+
+REGLES PALETTE (CRITIQUE) :
+- La palette DOIT correspondre au sous-metier identifie a l'etape 1.
+  Ex : si tu identifies "epilation laser", palette OBLIGATOIREMENT bleu clinique +
+  blanc + vert eau. JAMAIS bordeaux/rouge meme si la bio mentionne onglerie en
+  side activity.
+- A l'interieur des codes du sous-metier, personnalise avec les couleurs
+  observees sur les photos (ex : si onglerie + bcp de rouge sur les photos,
+  accent rouge ; si epilation laser + photos avec touches turquoise, accent
+  turquoise).
+- 4 couleurs hex : primaire (accent fort), secondaire (accent doux),
+  neutre_fonce (texte), neutre_clair (fond).
 
 REGLES POUR LE TON DE LA COPY :
-- Detecte si la bio est formelle (vous) ou casual (tu, tutoiement) et garde ce ton
-- Utilise les emojis presents dans la bio comme signal de style
-- Mentionne la ville {ville} naturellement (pas force a chaque phrase)
-- Reste FACTUEL : ne pas inventer des services qui ne sont pas dans la bio/photos
-- Si la marque a un positionnement special detecte (luxe, accessible, jeune,
-  experte, decontractee), adapte tout (h1, services, ctas) a ce positionnement
+- Detecte si la bio est formelle (vous) ou casual (tu, tutoiement) et garde ce ton.
+- Adapte le vocabulaire au levier SONCAS dominant (ex : Securite => "materiel
+  certifie", "protocole maitrise" ; Sympathie => "ma cabine", "vous accueillir
+  chez moi").
+- Mentionne la ville {ville} naturellement (1 a 2 fois max sur l'ensemble).
+- Reste FACTUEL : ne pas inventer des services, chiffres, certifications qui
+  ne sont pas dans la bio/photos.
+- ATTENTION ORTHOGRAPHE : francais impeccable. Verifie les accents (e/e/e),
+  les accords sujet-verbe, les apostrophes typographiques ('). Pas de fautes.
 
-FORMAT DE REPONSE : JSON STRICT, RIEN D'AUTRE. Structure :
+REGLES POUR LE NOM COMMERCIAL :
+- Le "nom_commercial" a afficher dans le header et footer est EXACTEMENT
+  le fullName Insta de la marque (donne dans le contexte). Ne le reformule
+  PAS, ne le remplace PAS par un titre metier generique (ex : NE JAMAIS mettre
+  "Prothesiste Ongulaire Bordeaux" si le fullName est "Beauty Bar Caudéran").
+- Si le fullName Insta contient des emojis ou symboles bizarres, retire-les
+  mais garde les mots.
+
+FORMAT DE REPONSE : JSON STRICT, rien autour, rien dans des balises ``` :
 {{
+  "sous_metier_detecte": "onglerie | lash | epilation_laser | soins_peau | massage | maquillage | sophrologue | naturopathe | coach_sportif | autre",
+  "soncas_dominants": ["levier1", "levier2"],
   "brand_voice": {{
     "ton": "formel | casual | mixte",
     "style": "luxe | accessible | jeune | expert | decontracte",
     "mots_cles_identite": ["mot1", "mot2", "mot3"],
-    "argument_unique": "Ce qui rend cette marque speciale en 1 phrase"
+    "argument_unique": "Ce qui rend cette marque speciale en 1 phrase, deja teinte SONCAS"
   }},
   "palette": {{
     "primaire": "#RRGGBB",
     "secondaire": "#RRGGBB",
     "neutre_fonce": "#RRGGBB",
     "neutre_clair": "#RRGGBB",
-    "raison": "Pourquoi ces couleurs collent a cette marque specifique"
+    "raison": "Pourquoi ces couleurs collent au sous-metier identifie ET a cette marque"
   }},
   "typographie": {{
     "titre_font": "Nom de la Google Font (ex: Playfair Display)",
     "texte_font": "Nom de la Google Font (ex: Inter)"
   }},
-  "theme_template": "{codes['famille_template']}_<sous_variante>",
+  "nom_commercial": "Reprend exactement le fullName Insta, sans emoji ni reformulation",
   "copy": {{
-    "h1": "Titre principal hero (max 60 char)",
-    "tagline": "Sous-titre hero (1 phrase, max 100 char)",
-    "about_titre": "Titre de la section a propos",
-    "about_texte": "3-4 phrases sur le commerce (200-400 char), dans le ton",
+    "h1": "Titre principal hero, integre SONCAS dominant (max 60 char). Ne dis JAMAIS 'Prothesiste Ongulaire' ou 'Estheticienne' comme titre, c'est ringard.",
+    "tagline": "Sous-titre hero (1 phrase, max 100 char) qui prolonge SONCAS",
+    "about_titre": "Titre de la section a propos (ex: 'Bienvenue chez X', 'Mon approche', etc.)",
+    "about_texte": "3-4 phrases (200-400 char) qui presentent la marque, dans le ton + SONCAS",
     "services_titre": "Titre de la section services",
     "services": [
-      {{"nom": "Nom du service", "description": "1 phrase descriptive", "prix": "ex: A partir de 35 EUR ou ''"}}
+      {{"nom": "Nom court du service", "description": "1 phrase descriptive teintee SONCAS", "prix": "ex: A partir de 35 EUR ou ''", "duree": "ex: 1h ou ''"}}
     ],
-    "raisons_titre": "Titre de la section pourquoi me choisir",
+    "raisons_titre": "Titre de la section pourquoi me choisir (ex: 'Pourquoi choisir le Beauty Bar ?')",
     "raisons": [
-      {{"titre": "Raison courte", "texte": "1 phrase qui developpe"}}
+      {{"titre": "Raison courte (3-5 mots)", "texte": "1 phrase qui developpe, ancre dans SONCAS"}}
     ],
-    "galerie_titre": "Titre de la section galerie",
-    "cta_principal": "Texte du bouton principal (ex: 'Reserver mon soin')",
+    "galerie_titre": "Titre de la section galerie (ex: 'Resultats clients', 'Mes realisations')",
+    "cta_principal": "Texte du bouton principal (ex: 'Reserver mon soin', 'Prendre rendez-vous')",
     "cta_secondaire": "Texte du bouton secondaire (ex: 'Voir les prestations')",
     "footer_tagline": "Phrase courte de pied de page"
   }},
   "meta": {{
-    "title": "Title SEO (50-60 char, contient ville et metier)",
-    "description": "Meta description SEO (150-160 char)"
+    "title": "Title SEO (50-60 char, contient nom commercial + ville + sous-metier)",
+    "description": "Meta description SEO (150-160 char), teintee SONCAS"
   }}
 }}
 
-Tu fournis 4 a 6 services (deductibles de la bio + descriptions photos).
-Tu fournis 3 raisons distinctes et concretes (pas vagues).
-Tu N'INVENTES PAS de chiffres (annees d'experience, nb clients) sauf si ils sont dans la bio.
+NOMBRE DE SERVICES : 4 a 6 (deductibles de la bio + descriptions photos).
+NOMBRE DE RAISONS : 3, distinctes et concretes (pas vagues, pas redondantes).
+INTERDICTIONS :
+- NE JAMAIS inventer de chiffres (annees d'experience, nb clients, %).
+- NE JAMAIS mettre des noms genericos comme titre principal ou h1.
+- NE JAMAIS donner une palette bordeaux/rouge a une marque medico-esthetique
+  (epilation laser, anti-age technique).
+- NE JAMAIS mettre des fautes d'orthographe. Relis avant de repondre.
 """
 
 
@@ -272,10 +363,13 @@ def main() -> int:
     if not brief:
         return 1
 
-    print(f"\nBrand voice : {brief['brand_voice']['ton']} / {brief['brand_voice']['style']}")
+    print(f"\nSous-metier : {brief.get('sous_metier_detecte','?')}")
+    print(f"SONCAS      : {' + '.join(brief.get('soncas_dominants', []))}")
+    print(f"Brand voice : {brief['brand_voice']['ton']} / {brief['brand_voice']['style']}")
     print(f"  Argument unique : {brief['brand_voice']['argument_unique']}")
     print(f"Palette     : {brief['palette']['primaire']} / {brief['palette']['secondaire']} / {brief['palette']['neutre_fonce']}")
-    print(f"Theme       : {brief['theme_template']}")
+    print(f"  Raison    : {brief['palette'].get('raison','')}")
+    print(f"Nom comm    : {brief.get('nom_commercial','?')}")
     print(f"Typo        : {brief['typographie']['titre_font']} + {brief['typographie']['texte_font']}")
     print()
     print(f"H1          : {brief['copy']['h1']}")
