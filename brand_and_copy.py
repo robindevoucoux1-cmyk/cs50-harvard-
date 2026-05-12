@@ -246,18 +246,49 @@ REGLES POUR LE NOM COMMERCIAL (CRITIQUE) :
   Sportif", "Sophrologue Diplomee". Le H1 doit etre une promesse client
   emotionnelle teintee SONCAS.
 
-REGLES POUR LES PHOTOS DE SERVICES (NOUVEAU) :
-- Chaque service DOIT etre associe a la photo de la galerie la plus
-  pertinente visuellement. Tu vois les descriptions de chaque photo dans
-  l'ordre_galerie.
-- Pour CHAQUE service tu fournis dans le champ "photo_index" : l'index 0-based
-  de la photo dans ordre_galerie (0 = 1ere photo, 1 = 2eme, etc.).
-- Une photo peut servir plusieurs services (si elle correspond), mais
-  privilegie la diversite si possible.
-- Si aucune photo ne colle, mets photo_index: 0 (par defaut).
-- Exemples : service "Manucure" -> photo decrite comme "manucure rouge gros plan",
-  service "Extensions cils" -> photo "extensions cils close-up", service
-  "Epilation laser" -> photo "seance laser cabine", etc.
+REGLES POUR LES PHOTOS DE SERVICES (CRITIQUE) :
+- Chaque service est associe a la photo de la galerie la PLUS pertinente.
+  Tu vois les descriptions des photos dans l'ordre_galerie.
+- Pour CHAQUE service, photo_index = index 0-based dans ordre_galerie.
+- PAS DE DOUBLON : chaque photo ne doit etre utilisee QU'UNE SEULE FOIS
+  parmi les services. Si tu as 4 photos et 6 services, 2 services auront
+  photo_index = null (le service s'affichera SANS photo, c'est OK).
+- Si la photo n'a aucun lien visuel avec le service, photo_index = null.
+  MIEUX VAUT PAS DE PHOTO QU'UNE PHOTO HORS-SUJET.
+  Ex : "Hydrafacial" mais on n'a aucune photo de soin visage -> null.
+- Exemples corrects :
+  - "Manucure" -> photo decrite "ongles manucure gros plan"
+  - "Extensions cils" -> photo "cils macro" (PAS une photo de mains)
+  - "Epilation laser" -> photo "seance laser cabine" (PAS une photo de creme)
+
+REGLES POUR LES TARIFS :
+- Si tu vois des tarifs explicites dans la bio ou les descriptions photos
+  (ex : "Pose semi-perm 25EUR", "Forfait 60EUR/mois"), tu les recopies
+  fidelement dans services[].prix.
+- Si pas de tarif explicite, prix = "" (vide). NE JAMAIS inventer.
+
+REGLES TEXTE (CRITIQUE) :
+- AUCUN tiret cadratin (—) ou demi-cadratin (–) dans toute la copy.
+  Remplace systematiquement par virgule, deux-points ou point.
+- Phrases NATURELLES. Pas de tournures IA pompeuses ("forte de X annees",
+  "une maitresse prothesiste", "veritable expertise"). Ecris comme un
+  humain parlerait a un client.
+- Orthographe FRANCAISE rigoureuse : accents (e/e/e/a/u), accords sujet-verbe,
+  pluriels. Relis attentivement.
+- Texte CONCRET, pas marketing creux. Mieux vaut "Pose en gel longue tenue,
+  35 EUR" que "Une experience d'excellence pour des ongles sublimes".
+- Pour le ton : si la bio Insta est tutoyeuse, tutoie partout. Si vouvoyee,
+  vouvoie partout. JAMAIS de melange.
+
+FAQ (NOUVELLE SECTION) :
+- Tu generes 4 ou 5 questions/reponses correspondant aux vraies questions
+  que poseraient des clients de ce sous-metier.
+- Questions concretes : "Combien de temps dure une seance ?", "Faut-il
+  prendre RDV ?", "C'est douloureux ?", "Comment se preparer ?", "Quels
+  resultats attendre ?".
+- Reponses courtes (2-3 phrases max) dans le ton et les SONCAS de la marque.
+- NE JAMAIS inventer d'infos non-verifiables (prix exact, duree exacte,
+  protocole specifique) sauf si elles sont dans la bio.
 
 FORMAT DE REPONSE : JSON STRICT, rien autour, rien dans des balises ``` :
 {{
@@ -288,15 +319,18 @@ FORMAT DE REPONSE : JSON STRICT, rien autour, rien dans des balises ``` :
     "about_texte": "3-4 phrases (200-400 char) qui presentent la marque, dans le ton + SONCAS",
     "services_titre": "Titre de la section services",
     "services": [
-      {{"nom": "Nom court du service", "description": "1 phrase descriptive teintee SONCAS", "prix": "ex: A partir de 35 EUR ou ''", "duree": "ex: 1h ou ''", "photo_index": 0}}
+      {{"nom": "Nom court du service (sans tiret cadratin)", "description": "1 phrase NATURELLE teintee SONCAS, sans tiret cadratin", "prix": "ex: 35 EUR, ou A partir de 35 EUR, ou '' si pas dans bio", "duree": "ex: 1h ou ''", "photo_index": 0 }}
     ],
-    "raisons_titre": "Titre de la section pourquoi me choisir (ex: 'Pourquoi choisir le Beauty Bar ?')",
+    "raisons_titre": "Titre de la section pourquoi me choisir",
     "raisons": [
-      {{"titre": "Raison courte (3-5 mots)", "texte": "1 phrase qui developpe, ancre dans SONCAS"}}
+      {{"titre": "Raison courte (3-5 mots)", "texte": "1 phrase concrete, SONCAS"}}
     ],
-    "galerie_titre": "Titre de la section galerie (ex: 'Resultats clients', 'Mes realisations')",
-    "cta_principal": "Texte du bouton principal (ex: 'Reserver mon soin', 'Prendre rendez-vous')",
-    "cta_secondaire": "Texte du bouton secondaire (ex: 'Voir les prestations')",
+    "galerie_titre": "Titre de la section galerie",
+    "faq": [
+      {{"question": "Question naturelle d'un client", "reponse": "Reponse 2-3 phrases, dans le ton de la marque"}}
+    ],
+    "cta_principal": "Texte du bouton principal",
+    "cta_secondaire": "Texte du bouton secondaire",
     "footer_tagline": "Phrase courte de pied de page"
   }},
   "meta": {{
@@ -314,6 +348,50 @@ INTERDICTIONS :
   (epilation laser, anti-age technique).
 - NE JAMAIS mettre des fautes d'orthographe. Relis avant de repondre.
 """
+
+
+def _enleve_tirets(s):
+    """Remplace les em-dash et en-dash par des virgules + nettoie."""
+    if not isinstance(s, str):
+        return s
+    # Remplace " — " et " – " par ", " (preserve le contexte de pause)
+    s = s.replace(" — ", ", ").replace(" – ", ", ")
+    # Remplace les em/en-dash residuels par virgule
+    s = s.replace("—", ",").replace("–", ",")
+    # Double virgule -> simple
+    while ", ," in s or ",," in s:
+        s = s.replace(",,", ",").replace(", ,", ",")
+    return s.strip()
+
+
+def _nettoie_brief(brief: dict) -> None:
+    """Post-process pour garantir : zero tiret cadratin + photo_index unique."""
+    # Recursivement enleve les tirets dans toutes les strings
+    def walk(node):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if isinstance(v, str):
+                    node[k] = _enleve_tirets(v)
+                else:
+                    walk(v)
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                if isinstance(v, str):
+                    node[i] = _enleve_tirets(v)
+                else:
+                    walk(v)
+    walk(brief)
+
+    # Garantit l'unicite des photo_index dans services (le 2eme service qui
+    # reutilise une photo deja prise se voit assigner None).
+    services = brief.get("copy", {}).get("services", [])
+    pris = set()
+    for s in services:
+        idx = s.get("photo_index")
+        if idx is None or idx in pris:
+            s["photo_index"] = None
+        else:
+            pris.add(idx)
 
 
 def genere_brand_et_copy(dossier_site: Path, metier: str, ville: str) -> dict | None:
@@ -367,6 +445,9 @@ SYNTHESE DU CURATEUR PHOTO :
         print(f"  [brand-error] JSON parse fail : {e}")
         print(f"  Reponse brute : {texte[:800]}")
         return None
+
+    # POST-PROCESS : nettoie les tirets cadratins/demi-cadratins et normalise
+    _nettoie_brief(brief)
 
     cout = (resp.usage.input_tokens / 1_000_000 * 3.0) + (resp.usage.output_tokens / 1_000_000 * 15.0)
     brief["_meta"] = {

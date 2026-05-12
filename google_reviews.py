@@ -253,12 +253,53 @@ def scrape_avis(nom_commercial: str, ville: str, max_avis: int = 6, debug: bool 
                 except Exception:
                     continue
 
+            # Adresse / telephone / horaires depuis le panneau info de la fiche
+            adresse = ""
+            telephone = ""
+            site_web = ""
+            for sel in [
+                'button[data-item-id="address"]',
+                'button[aria-label*="Adresse"]',
+                'div[data-item-id="address"]',
+            ]:
+                el = page.query_selector(sel)
+                if el:
+                    txt = (el.get_attribute("aria-label") or el.inner_text() or "").replace("Adresse:", "").strip()
+                    if txt:
+                        adresse = txt
+                        break
+            for sel in [
+                'button[data-item-id^="phone"]',
+                'button[aria-label*="Numéro"]',
+                'button[aria-label*="Téléphone"]',
+            ]:
+                el = page.query_selector(sel)
+                if el:
+                    txt = (el.get_attribute("aria-label") or el.inner_text() or "").replace("Numéro de téléphone:", "").strip()
+                    if txt:
+                        telephone = txt
+                        break
+            for sel in [
+                'a[data-item-id="authority"]',
+                'a[aria-label*="Site Web"]',
+                'a[data-tooltip*="site Web"]',
+            ]:
+                el = page.query_selector(sel)
+                if el:
+                    txt = el.get_attribute("href") or el.inner_text()
+                    if txt and "http" in txt:
+                        site_web = txt
+                        break
+
             return {
                 "trouve": True,
                 "nom_fiche": nom_fiche,
                 "note_moyenne": note_moyenne,
                 "nb_avis_total": nb_avis_total,
                 "url_maps": url_maps,
+                "adresse": adresse,
+                "telephone": telephone,
+                "site_web": site_web,
                 "avis": avis,
             }
 

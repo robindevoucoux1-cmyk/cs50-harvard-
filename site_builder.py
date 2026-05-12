@@ -70,9 +70,15 @@ def construit_site(dossier_site: Path) -> Path | None:
     # Choix du lien de booking (externalUrl si c'est un Planity/Treatwell/etc., sinon Insta)
     booking_url = metadata.get("externalUrl") or f"https://www.instagram.com/{metadata.get('handle','')}/"
 
-    # nom commercial : on prefere celui valide par Claude (qui peut nettoyer
-    # les emojis bizarres), sinon fallback sur metadata.fullName, sinon handle
-    nom_commercial = brief.get("nom_commercial") or metadata.get("fullName") or f"@{metadata.get('handle','')}"
+    # nom commercial : priorite absolue au nom Google Maps officiel s'il existe
+    # (= vraie raison sociale du business), sinon brief.nom_commercial (Claude),
+    # sinon fullName Insta, sinon handle.
+    nom_commercial = (
+        (avis.get("nom_fiche") if avis else None)
+        or brief.get("nom_commercial")
+        or metadata.get("fullName")
+        or f"@{metadata.get('handle','')}"
+    )
     contexte = {
         "brand": {
             "fullName": nom_commercial,

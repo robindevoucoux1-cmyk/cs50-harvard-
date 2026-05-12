@@ -180,11 +180,40 @@ section.services .item .meta .chip .ico {
   display: inline-block; width: 6px; height: 6px; border-radius: 50%;
   background: var(--primaire); opacity: 0.7;
 }
+section.services .item-nopic {
+  max-width: 720px; margin: 0 auto 60px;
+  padding: 36px 40px;
+  text-align: left;
+  background: var(--neutre-clair);
+  border-left: 3px solid var(--primaire);
+  border-radius: 4px;
+}
+section.services .item-nopic .eyebrow {
+  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
+  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+section.services .item-nopic h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
+}
+section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
+section.services .item-nopic .meta {
+  display: flex; gap: 14px;
+}
+section.services .item-nopic .meta .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
+}
+section.services .item-nopic .meta .chip .ico {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primaire); opacity: 0.7;
+}
 @media (max-width: 860px) {
   section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
   section.services .item.reverse .photo { order: 0; }
   section.services .item.reverse .content { order: 1; }
   section.services .item .photo { aspect-ratio: 4/3; }
+  section.services .item-nopic { padding: 28px 24px; }
 }
 
 /* Raisons */
@@ -213,7 +242,8 @@ section.galerie .container { text-align: center; }
 section.galerie h2 { margin-bottom: 0.4em; }
 section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
 section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  max-width: 960px; margin: 0 auto;
 }
 section.galerie .photo {
   aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
@@ -280,6 +310,63 @@ section.avis .voir-tout {
   font-size: 0.9rem; color: var(--primaire);
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px; opacity: 0.85;
+}
+
+/* FAQ */
+section.faq {
+  padding: 100px 24px; background: var(--blanc);
+}
+section.faq .container { max-width: 760px; margin: 0 auto; }
+section.faq h2 { text-align: center; margin-bottom: 60px; }
+section.faq .item {
+  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
+}
+section.faq .q {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
+  cursor: pointer; padding: 4px 0; user-select: none;
+}
+section.faq .q .ic {
+  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
+  margin-left: 16px;
+  position: relative;
+  transition: transform .3s;
+}
+section.faq .q .ic::before, section.faq .q .ic::after {
+  content: ""; position: absolute; background: var(--primaire);
+}
+section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
+section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
+section.faq .item[open] .q .ic::after { transform: scaleY(0); }
+section.faq .r {
+  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
+}
+
+/* Contact */
+section.contact {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
+}
+section.contact .container { max-width: 900px; margin: 0 auto; }
+section.contact h2 { text-align: center; margin-bottom: 48px; }
+section.contact .grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
+}
+section.contact .item {
+  text-align: center; padding: 28px 20px;
+  background: var(--blanc); border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+section.contact .item .label {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
+}
+section.contact .item .val {
+  font-family: var(--font-titre); font-size: 1.1rem;
+}
+section.contact .item a {
+  color: var(--primaire); border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
 }
 
 /* CTA bandeau */
@@ -379,10 +466,11 @@ footer.footer .copy {
       <p class="intro">{{ brand.argument_unique }}</p>
     </div>
     {% for s in copy.services %}
-    {% set photo_idx = s.photo_index if s.photo_index is defined and s.photo_index < galerie|length else (loop.index0 % galerie|length) %}
+    {% set has_photo = s.photo_index is not none and s.photo_index is defined and s.photo_index < galerie|length %}
+    {% if has_photo %}
     <div class="item {% if loop.index is even %}reverse{% endif %} reveal">
       <div class="photo">
-        <img src="assets/{{ galerie[photo_idx].fichier_local }}" alt="{{ s.nom }}" loading="lazy">
+        <img src="assets/{{ galerie[s.photo_index].fichier_local }}" alt="{{ s.nom }}" loading="lazy">
         <span class="num-overlay">0{{ loop.index }}</span>
       </div>
       <div class="content">
@@ -395,6 +483,17 @@ footer.footer .copy {
         </div>
       </div>
     </div>
+    {% else %}
+    <div class="item-nopic reveal">
+      <span class="eyebrow">Prestation {{ loop.index }}</span>
+      <h3>{{ s.nom }}</h3>
+      <p class="desc">{{ s.description }}</p>
+      <div class="meta">
+        {% if s.prix %}<span class="chip"><span class="ico"></span>{{ s.prix }}</span>{% endif %}
+        {% if s.duree %}<span class="chip"><span class="ico"></span>{{ s.duree }}</span>{% endif %}
+      </div>
+    </div>
+    {% endif %}
     {% endfor %}
   </div>
 </section>
@@ -419,7 +518,7 @@ footer.footer .copy {
     <h2 class="reveal">{{ copy.galerie_titre }}</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
-      {% for p in galerie %}
+      {% for p in galerie[:6] %}
       <div class="photo reveal" onclick="ouvreLightbox('assets/{{ p.fichier_local }}')">
         <img src="assets/{{ p.fichier_local }}" alt="{{ p.description }}" loading="lazy">
       </div>
@@ -428,7 +527,7 @@ footer.footer .copy {
   </div>
 </section>
 
-{% if avis and (avis.note_moyenne or avis.avis) %}
+{% if avis and avis.trouve %}
 <section id="avis" class="avis">
   <div class="container">
     <div class="header reveal">
@@ -456,8 +555,51 @@ footer.footer .copy {
     </div>
     {% endif %}
     {% if avis.url_maps %}
-    <a href="{{ avis.url_maps }}" target="_blank" rel="noopener" class="voir-tout">Voir tous les avis sur Google →</a>
+    <a href="{{ avis.url_maps }}" target="_blank" rel="noopener" class="voir-tout">Lire tous les avis sur Google →</a>
     {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if copy.faq %}
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="reveal">Questions fréquentes</h2>
+    {% for f in copy.faq %}
+    <details class="item reveal">
+      <summary class="q">{{ f.question }}<span class="ic"></span></summary>
+      <p class="r">{{ f.reponse }}</p>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if (avis and avis.trouve and (avis.adresse or avis.telephone)) or booking_url %}
+<section id="contactez" class="contact">
+  <div class="container">
+    <h2 class="reveal">Me contacter</h2>
+    <div class="grid">
+      {% if avis and avis.adresse %}
+      <div class="item reveal">
+        <div class="label">Adresse</div>
+        <div class="val">{{ avis.adresse }}</div>
+        {% if avis.url_maps %}<p style="margin-top:10px"><a href="{{ avis.url_maps }}" target="_blank" rel="noopener">Itinéraire Google Maps</a></p>{% endif %}
+      </div>
+      {% endif %}
+      {% if avis and avis.telephone %}
+      <div class="item reveal">
+        <div class="label">Téléphone</div>
+        <div class="val"><a href="tel:{{ avis.telephone|replace(' ', '') }}">{{ avis.telephone }}</a></div>
+      </div>
+      {% endif %}
+      {% if booking_url %}
+      <div class="item reveal">
+        <div class="label">Réservation</div>
+        <div class="val"><a href="{{ booking_url }}" target="_blank" rel="noopener">Réserver en ligne</a></div>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </section>
 {% endif %}

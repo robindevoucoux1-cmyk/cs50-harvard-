@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mari – Soins visage &amp; maquillage à Bordeaux</title>
-<meta name="description" content="Studio privé aux Chartrons à Bordeaux. Soins visage avec massage manuel, maquillage mariée et extension de cils. Sur rendez-vous uniquement.">
-<meta property="og:title" content="Mari – Soins visage &amp; maquillage à Bordeaux">
-<meta property="og:description" content="Studio privé aux Chartrons à Bordeaux. Soins visage avec massage manuel, maquillage mariée et extension de cils. Sur rendez-vous uniquement.">
+<title>Mari, soins visage et maquillage mariage à Bordeaux</title>
+<meta name="description" content="Studio privé aux Chartrons à Bordeaux : rituels soin du visage avec massage manuel, laminage sourcils, extensions cils et maquillage mariage sur RDV.">
+<meta property="og:title" content="Mari, soins visage et maquillage mariage à Bordeaux">
+<meta property="og:description" content="Studio privé aux Chartrons à Bordeaux : rituels soin du visage avec massage manuel, laminage sourcils, extensions cils et maquillage mariage sur RDV.">
 <meta property="og:type" content="business.business">
-<meta property="og:image" content="assets/post_001.jpg">
+<meta property="og:image" content="assets/post_002.jpg">
 <link rel="icon" href="assets/profil.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #8B7355;
-  --secondaire: #D4C4A8;
-  --neutre-fonce: #2C2C2C;
+  --primaire: #7B6E8D;
+  --secondaire: #D4C5B0;
+  --neutre-fonce: #2E2A26;
   --neutre-clair: #FAF7F2;
   --blanc: #ffffff;
   --font-titre: "Cormorant Garamond", serif;
@@ -180,11 +180,40 @@ section.services .item .meta .chip .ico {
   display: inline-block; width: 6px; height: 6px; border-radius: 50%;
   background: var(--primaire); opacity: 0.7;
 }
+section.services .item-nopic {
+  max-width: 720px; margin: 0 auto 60px;
+  padding: 36px 40px;
+  text-align: left;
+  background: var(--neutre-clair);
+  border-left: 3px solid var(--primaire);
+  border-radius: 4px;
+}
+section.services .item-nopic .eyebrow {
+  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
+  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+section.services .item-nopic h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
+}
+section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
+section.services .item-nopic .meta {
+  display: flex; gap: 14px;
+}
+section.services .item-nopic .meta .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
+}
+section.services .item-nopic .meta .chip .ico {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primaire); opacity: 0.7;
+}
 @media (max-width: 860px) {
   section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
   section.services .item.reverse .photo { order: 0; }
   section.services .item.reverse .content { order: 1; }
   section.services .item .photo { aspect-ratio: 4/3; }
+  section.services .item-nopic { padding: 28px 24px; }
 }
 
 /* Raisons */
@@ -213,7 +242,8 @@ section.galerie .container { text-align: center; }
 section.galerie h2 { margin-bottom: 0.4em; }
 section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
 section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  max-width: 960px; margin: 0 auto;
 }
 section.galerie .photo {
   aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
@@ -280,6 +310,63 @@ section.avis .voir-tout {
   font-size: 0.9rem; color: var(--primaire);
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px; opacity: 0.85;
+}
+
+/* FAQ */
+section.faq {
+  padding: 100px 24px; background: var(--blanc);
+}
+section.faq .container { max-width: 760px; margin: 0 auto; }
+section.faq h2 { text-align: center; margin-bottom: 60px; }
+section.faq .item {
+  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
+}
+section.faq .q {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
+  cursor: pointer; padding: 4px 0; user-select: none;
+}
+section.faq .q .ic {
+  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
+  margin-left: 16px;
+  position: relative;
+  transition: transform .3s;
+}
+section.faq .q .ic::before, section.faq .q .ic::after {
+  content: ""; position: absolute; background: var(--primaire);
+}
+section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
+section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
+section.faq .item[open] .q .ic::after { transform: scaleY(0); }
+section.faq .r {
+  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
+}
+
+/* Contact */
+section.contact {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
+}
+section.contact .container { max-width: 900px; margin: 0 auto; }
+section.contact h2 { text-align: center; margin-bottom: 48px; }
+section.contact .grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
+}
+section.contact .item {
+  text-align: center; padding: 28px 20px;
+  background: var(--blanc); border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+section.contact .item .label {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
+}
+section.contact .item .val {
+  font-family: var(--font-titre); font-size: 1.1rem;
+}
+section.contact .item a {
+  color: var(--primaire); border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
 }
 
 /* CTA bandeau */
@@ -349,93 +436,106 @@ footer.footer .copy {
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>Votre peau mérite un rituel, pas une routine.</h1>
-    <p class="tagline">Soins visage avec massage manuel approfondi · Studio privé aux Chartrons, Bordeaux.</p>
+    <h1>Prenez soin de vous, vraiment.</h1>
+    <p class="tagline">Soins visage ritualisés, maquillage mariage et sourcils redessinés dans un studio privé aux Chartrons.</p>
     <div class="ctas">
-<a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener" class="btn">Prendre rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir les prestations</a>
+<a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener" class="btn">Prendre rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir les soins</a>
     </div>
   </div>
   <div class="img-wrap reveal">
-    <img src="assets/post_001.jpg" alt="Mari" loading="eager">
+    <img src="assets/post_002.jpg" alt="Mari" loading="eager">
   </div>
 </section>
 
 <section id="about" class="about">
   <div class="img-side reveal">
-<img src="assets/post_002.jpg" alt="Bienvenue dans mon studio" loading="lazy">  </div>
+<img src="assets/post_010.jpg" alt="Bienvenue dans mon studio" loading="lazy">  </div>
   <div class="reveal">
     <h2>Bienvenue dans mon studio</h2>
-    <p class="lead">Dans mon studio privé des Chartrons, je prends le temps que votre peau mérite. Chaque soin est pensé comme un rituel : un massage manuel approfondi, une approche naturelle et précise, un moment entièrement pour vous. Sur rendez-vous uniquement, pour une attention sans partage.</p>
+    <p class="lead">Je reçois sur rendez-vous dans un espace privé et calme, au cœur des Chartrons à Bordeaux. Chaque séance commence par une lecture de votre peau et se construit autour d&#39;un massage manuel approfondi. Mon approche est naturelle et précise : pas de surplus, pas de promesses creuses, juste ce dont votre peau a besoin ce jour-là.</p>
   </div>
 </section>
 
 <section id="services" class="services">
   <div class="container">
     <div class="header reveal">
-      <h2>Mes prestations</h2>
-      <p class="intro">Un studio privé aux Chartrons où chaque soin du visage devient un rituel de bien-être sur mesure, entre douceur et précision.</p>
+      <h2>Les soins proposés</h2>
+      <p class="intro">Un studio intimiste aux Chartrons où chaque soin du visage devient un vrai moment pour soi, avec un toucher manuel précis et une approche naturelle.</p>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_006.jpg" alt="Soin visage signature" loading="lazy">
+        <img src="assets/post_001.jpg" alt="Rituel soin du visage avec massage" loading="lazy">
         <span class="num-overlay">01</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 1</span>
-        <h3>Soin visage signature</h3>
-        <p class="desc">Un soin personnalisé associant massage manuel approfondi et soins ciblés pour une peau lumineuse et ressourcée.</p>
+        <h3>Rituel soin du visage avec massage</h3>
+        <p class="desc">Un soin pensé pour votre type de peau, avec massage manuel approfondi pour relâcher les tensions et raviver l&#39;éclat.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_011.jpg" alt="Programme renouvellement peau" loading="lazy">
+        <img src="assets/post_004.jpg" alt="Massage du visage signature" loading="lazy">
         <span class="num-overlay">02</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 2</span>
-        <h3>Programme renouvellement peau</h3>
-        <p class="desc">Un protocole progressif pour retrouver un teint unifié et une texture affinée, étape après étape.</p>
+        <h3>Massage du visage signature</h3>
+        <p class="desc">Séance centrée sur le geste manuel : drainage, modelage, détente profonde du visage et du cou.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_001.jpg" alt="Maquillage mariée &amp; soirée" loading="lazy">
+        <img src="assets/post_006.jpg" alt="Soin contour des yeux et sourcils" loading="lazy">
         <span class="num-overlay">03</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 3</span>
-        <h3>Maquillage mariée &amp; soirée</h3>
-        <p class="desc">Un maquillage précis et durable pensé pour les grands moments, adapté à votre morphologie et à votre style.</p>
+        <h3>Soin contour des yeux et sourcils</h3>
+        <p class="desc">Mise en valeur du regard avec un travail précis sur les sourcils et la zone péri-oculaire.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_010.jpg" alt="Épilation sourcils" loading="lazy">
+        <img src="assets/post_002.jpg" alt="Laminage et dessin des sourcils" loading="lazy">
         <span class="num-overlay">04</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 4</span>
-        <h3>Épilation sourcils</h3>
-        <p class="desc">Une mise en forme précise et soignée pour des sourcils qui structurent naturellement le regard.</p>
+        <h3>Laminage et dessin des sourcils</h3>
+        <p class="desc">Résultat avant/après spectaculaire : des sourcils épais, définis et naturellement structurés.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_002.jpg" alt="Extension de cils" loading="lazy">
+        <img src="assets/post_010.jpg" alt="Extensions de cils" loading="lazy">
         <span class="num-overlay">05</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 5</span>
-        <h3>Extension de cils</h3>
-        <p class="desc">Des extensions posées avec soin pour un regard intensifié, naturel ou dramatique selon vos envies.</p>
+        <h3>Extensions de cils</h3>
+        <p class="desc">Un regard densifié et allongé, pour un résultat naturel ou plus affirmé selon vos envies.</p>
+        <div class="meta">
+        </div>
+      </div>
+    </div>
+    <div class="item reverse reveal">
+      <div class="photo">
+        <img src="assets/post_011.jpg" alt="Maquillage mariage et soirée" loading="lazy">
+        <span class="num-overlay">06</span>
+      </div>
+      <div class="content">
+        <span class="eyebrow">Prestation 6</span>
+        <h3>Maquillage mariage et soirée</h3>
+        <p class="desc">Maquillage mariée ou soirée réalisé dans mon studio, avec une approche précise et adaptée à votre morphologie.</p>
         <div class="meta">
         </div>
       </div>
@@ -445,22 +545,22 @@ footer.footer .copy {
 
 <section class="raisons">
   <div class="container">
-    <h2 class="reveal">Pourquoi choisir Mari ?</h2>
+    <h2 class="reveal">Pourquoi choisir mon studio</h2>
     <div class="grid">
       <div class="item reveal">
         <div class="num-grand">01</div>
-        <h3>Un studio privé rien que pour vous</h3>
-        <p>Pas de salle d&#39;attente, pas de bruit : mon studio des Chartrons est un espace intime pensé pour que vous puissiez vraiment déconnecter.</p>
+        <h3>Studio privé, rien que vous</h3>
+        <p>Vous êtes reçue seule, dans un espace calme et dédié : pas de passage, pas de bruit, juste votre moment.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
-        <h3>Le massage au cœur de chaque soin</h3>
-        <p>Le massage manuel approfondi n&#39;est pas une option ici, c&#39;est le cœur du protocole — pour une détente réelle et des résultats visibles.</p>
+        <h3>Toucher manuel et approche naturelle</h3>
+        <p>Chaque soin repose sur un massage manuel approfondi, sans surcharger la peau de produits inutiles.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
-        <h3>Une approche naturelle et précise</h3>
-        <p>Je travaille sans précipitation, avec des gestes maîtrisés et des produits sélectionnés pour respecter votre peau.</p>
+        <h3>Sur rendez-vous, à votre rythme</h3>
+        <p>Pas de file d&#39;attente ni de précipitation : le rendez-vous est calé selon votre disponibilité, et la séance se déroule à votre rythme.</p>
       </div>
     </div>
   </div>
@@ -468,48 +568,80 @@ footer.footer .copy {
 
 <section id="galerie" class="galerie">
   <div class="container">
-    <h2 class="reveal">Mes réalisations</h2>
+    <h2 class="reveal">Résultats et instants de soin</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
-        <img src="assets/post_001.jpg" alt="Soin des mains professionnel, lumière naturelle, posture experte" loading="lazy">
-      </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
-        <img src="assets/post_002.jpg" alt="Résultat sourcils et lashes avant/après, détail impeccable" loading="lazy">
+        <img src="assets/post_002.jpg" alt="Avant/après épilation/laminage des sourcils. Résultat spectaculaire : sourcils épais et bien définis avant et après. Macro net, bien éclairé, très vendeur." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_010.jpg')">
-        <img src="assets/post_010.jpg" alt="Extension cils avant/après, résultat net et professionnel" loading="lazy">
+        <img src="assets/post_010.jpg" alt="Avant/après extensions de cils. Résultat net : cils fins au départ, épais et fournis après. Macro claire, deux yeux en gros plan, très impressionnant." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_006.jpg')">
-        <img src="assets/post_006.jpg" alt="Épilation sourcils précise, client satisfait, technique visible" loading="lazy">
+        <img src="assets/post_006.jpg" alt="Gros plan sur soin du contour des yeux/épilation des sourcils. Peau nette, sourcils bien travaillés, cadrage professionnel, bon éclairage." loading="lazy">
+      </div>
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
+        <img src="assets/post_001.jpg" alt="Praticienne en blouse violette effectuant un soin du visage/massage sur une cliente allongée. Geste professionnel visible, cadrage clair, ambiance de cabinet." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
-        <img src="assets/post_004.jpg" alt="Massage visage signature, client en détente, professionnel" loading="lazy">
+        <img src="assets/post_004.jpg" alt="Praticienne effectuant un massage du visage signature sur cliente. Geste professionnel visible, client détendu, ambiance de soin clairement professionnelle." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_011.jpg')">
-        <img src="assets/post_011.jpg" alt="Programme renouvellement peau, soin du visage démonstration" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_003.jpg')">
-        <img src="assets/post_003.jpg" alt="Professionnelle avec certificat, crédibilité et expertise" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_009.jpg')">
-        <img src="assets/post_009.jpg" alt="Décoration salon élégante, cartes de visite, ambiance zen" loading="lazy">
+        <img src="assets/post_011.jpg" alt="Praticienne appliquant un soin/massage du visage sur cliente. Geste visible, ambiance professionnelle, texture et détail du produit en action." loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="reveal">Questions fréquentes</h2>
+    <details class="item reveal">
+      <summary class="q">Comment prendre rendez-vous ?<span class="ic"></span></summary>
+      <p class="r">Tout se passe via WhatsApp, directement avec moi. Cliquez sur le bouton de contact et envoyez-moi un message avec vos disponibilités, je reviens vers vous rapidement.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Où se trouve le studio ?<span class="ic"></span></summary>
+      <p class="r">Le studio est situé dans le quartier des Chartrons, à Bordeaux. L&#39;adresse précise vous est communiquée à la confirmation de votre rendez-vous.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Faut-il préparer quelque chose avant un soin visage ?<span class="ic"></span></summary>
+      <p class="r">Aucune préparation particulière n&#39;est nécessaire. Si vous portez du maquillage, il sera retiré au début de la séance dans le cadre du protocole.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Les soins sont-ils adaptés aux peaux sensibles ?<span class="ic"></span></summary>
+      <p class="r">Oui, chaque soin est adapté à votre peau lors de la séance. Mon approche naturelle et précise convient aux peaux sensibles ou réactives.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Proposez-vous des séances de maquillage pour un essai avant le mariage ?<span class="ic"></span></summary>
+      <p class="r">Absolument. Je recommande une séance d&#39;essai maquillage avant le jour J pour affiner votre look en toute sérénité. Contactez-moi pour en discuter.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contactez" class="contact">
+  <div class="container">
+    <h2 class="reveal">Me contacter</h2>
+    <div class="grid">
+      <div class="item reveal">
+        <div class="label">Réservation</div>
+        <div class="val"><a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener">Réserver en ligne</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Un studio privé aux Chartrons où chaque soin du visage devient un rituel de bien-être sur mesure, entre douceur et précision.</p>
+  <p class="reveal">Un studio intimiste aux Chartrons où chaque soin du visage devient un vrai moment pour soi, avec un toucher manuel précis et une approche naturelle.</p>
 <a href="https://wa.me/330767728723?countryName=FR&amp;countryCode=33&amp;phoneNumber=0767728723" target="_blank" rel="noopener" class="btn reveal">Prendre rendez-vous</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
       <div class="brand-name">Mari</div>
-      <p class="brand-tagline">Rituels de soin · Studio privé · Chartrons, Bordeaux</p>
+      <p class="brand-tagline">Studio privé aux Chartrons, sur rendez-vous.</p>
     </div>
     <div>
       <h4>Navigation</h4>

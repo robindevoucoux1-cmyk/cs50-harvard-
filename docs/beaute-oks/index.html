@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Beauté OKS — Épilation Laser &amp; Soins Avancés Bordeaux</title>
-<meta name="description" content="Cabinet esthétique certifié à Bordeaux : épilation laser Diode, IPL, Hydrafacial, protocoles DMK et peelings professionnels. Résultats visibles, protocoles sécurisés.">
-<meta property="og:title" content="Beauté OKS — Épilation Laser &amp; Soins Avancés Bordeaux">
-<meta property="og:description" content="Cabinet esthétique certifié à Bordeaux : épilation laser Diode, IPL, Hydrafacial, protocoles DMK et peelings professionnels. Résultats visibles, protocoles sécurisés.">
+<title>Beauté OKS | Laser &amp; Soins esthétiques Bordeaux</title>
+<meta name="description" content="Cabinet esthétique à Bordeaux : épilation laser diode, Hydrafacial, protocoles DMK pour acné et hyperpigmentation. Praticienne diplômée et certifiée.">
+<meta property="og:title" content="Beauté OKS | Laser &amp; Soins esthétiques Bordeaux">
+<meta property="og:description" content="Cabinet esthétique à Bordeaux : épilation laser diode, Hydrafacial, protocoles DMK pour acné et hyperpigmentation. Praticienne diplômée et certifiée.">
 <meta property="og:type" content="business.business">
-<meta property="og:image" content="assets/post_002.jpg">
+<meta property="og:image" content="assets/post_008.jpg">
 <link rel="icon" href="assets/profil.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
 :root {
   --primaire: #1E3A5F;
   --secondaire: #4A8BC2;
-  --neutre-fonce: #1A1A2E;
+  --neutre-fonce: #1C2533;
   --neutre-clair: #F0F6FB;
   --blanc: #ffffff;
   --font-titre: "Manrope", serif;
@@ -180,11 +180,40 @@ section.services .item .meta .chip .ico {
   display: inline-block; width: 6px; height: 6px; border-radius: 50%;
   background: var(--primaire); opacity: 0.7;
 }
+section.services .item-nopic {
+  max-width: 720px; margin: 0 auto 60px;
+  padding: 36px 40px;
+  text-align: left;
+  background: var(--neutre-clair);
+  border-left: 3px solid var(--primaire);
+  border-radius: 4px;
+}
+section.services .item-nopic .eyebrow {
+  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
+  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+section.services .item-nopic h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
+}
+section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
+section.services .item-nopic .meta {
+  display: flex; gap: 14px;
+}
+section.services .item-nopic .meta .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
+}
+section.services .item-nopic .meta .chip .ico {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primaire); opacity: 0.7;
+}
 @media (max-width: 860px) {
   section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
   section.services .item.reverse .photo { order: 0; }
   section.services .item.reverse .content { order: 1; }
   section.services .item .photo { aspect-ratio: 4/3; }
+  section.services .item-nopic { padding: 28px 24px; }
 }
 
 /* Raisons */
@@ -213,7 +242,8 @@ section.galerie .container { text-align: center; }
 section.galerie h2 { margin-bottom: 0.4em; }
 section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
 section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  max-width: 960px; margin: 0 auto;
 }
 section.galerie .photo {
   aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
@@ -282,6 +312,63 @@ section.avis .voir-tout {
   padding-bottom: 2px; opacity: 0.85;
 }
 
+/* FAQ */
+section.faq {
+  padding: 100px 24px; background: var(--blanc);
+}
+section.faq .container { max-width: 760px; margin: 0 auto; }
+section.faq h2 { text-align: center; margin-bottom: 60px; }
+section.faq .item {
+  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
+}
+section.faq .q {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
+  cursor: pointer; padding: 4px 0; user-select: none;
+}
+section.faq .q .ic {
+  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
+  margin-left: 16px;
+  position: relative;
+  transition: transform .3s;
+}
+section.faq .q .ic::before, section.faq .q .ic::after {
+  content: ""; position: absolute; background: var(--primaire);
+}
+section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
+section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
+section.faq .item[open] .q .ic::after { transform: scaleY(0); }
+section.faq .r {
+  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
+}
+
+/* Contact */
+section.contact {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
+}
+section.contact .container { max-width: 900px; margin: 0 auto; }
+section.contact h2 { text-align: center; margin-bottom: 48px; }
+section.contact .grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
+}
+section.contact .item {
+  text-align: center; padding: 28px 20px;
+  background: var(--blanc); border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+section.contact .item .label {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
+}
+section.contact .item .val {
+  font-family: var(--font-titre); font-size: 1.1rem;
+}
+section.contact .item a {
+  color: var(--primaire); border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
 /* CTA bandeau */
 section.cta-banner {
   padding: 80px 24px;
@@ -337,7 +424,7 @@ footer.footer .copy {
 
 <header class="nav">
   <div class="inner">
-    <a href="#" class="logo">Beauté OKS</a>
+    <a href="#" class="logo">Beauté Oks</a>
     <nav>
       <a href="#about">À propos</a>
       <a href="#services">Prestations</a>
@@ -349,108 +436,83 @@ footer.footer .copy {
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>Des résultats visibles. Un protocole maîtrisé.</h1>
-    <p class="tagline">Épilation laser, soins avancés et traitements certifiés — à Bordeaux.</p>
+    <h1>Une peau saine, traitée avec les bonnes technologies.</h1>
+    <p class="tagline">Laser diode, Hydrafacial, DMK : des protocoles certifiés pour des résultats que vous verrez vraiment.</p>
     <div class="ctas">
-<a href="https://www.instagram.com/beaute_oks/" target="_blank" rel="noopener" class="btn">Prendre rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir les prestations</a>
+<a href="https://www.instagram.com/beaute_oks/" target="_blank" rel="noopener" class="btn">Prendre rendez-vous</a>      <a href="#services" class="btn btn-outline">Découvrir les traitements</a>
     </div>
   </div>
   <div class="img-wrap reveal">
-    <img src="assets/post_002.jpg" alt="Beauté OKS" loading="eager">
+    <img src="assets/post_008.jpg" alt="Beauté Oks" loading="eager">
   </div>
 </section>
 
 <section id="about" class="about">
   <div class="img-side reveal">
-<img src="assets/post_008.jpg" alt="Une expertise clinique à votre service" loading="lazy">  </div>
+<img src="assets/post_005.jpg" alt="Mon cabinet, votre sécurité" loading="lazy">  </div>
   <div class="reveal">
-    <h2>Une expertise clinique à votre service</h2>
-    <p class="lead">Bienvenue chez Beauté OKS, cabinet spécialisé en esthétique avancée à Bordeaux. Praticienne certifiée et formée aux protocoles DMK, Hydrafacial et épilation laser Diode, j&#39;accompagne chaque cliente avec des soins adaptés à sa peau et des technologies éprouvées. Ici, rien n&#39;est laissé au hasard : chaque protocole est choisi pour sa sécurité et son efficacité.</p>
+    <h2>Mon cabinet, votre sécurité</h2>
+    <p class="lead">Praticienne certifiée et diplômée, j&#39;exerce à Bordeaux avec des équipements professionnels de référence : laser diode, IPL/DPL, appareil Hydrafacial et protocoles DMK pour les peaux sensibles. Chaque traitement est adapté à votre peau, jamais appliqué à la chaîne. Vous venez avec une problématique, vous repartez avec un protocole clair.</p>
   </div>
 </section>
 
 <section id="services" class="services">
   <div class="container">
     <div class="header reveal">
-      <h2>Mes prestations</h2>
-      <p class="intro">Une praticienne certifiée qui combine les technologies laser de pointe (Diode, IPL, DMK) et des protocoles cliniques éprouvés pour des résultats mesurables et durables.</p>
+      <h2>Les traitements proposés</h2>
+      <p class="intro">Une praticienne certifiée qui combine les technologies laser les plus efficaces du marché avec des protocoles de soin reconnus pour traiter acné, rosacée et hyperpigmentation en toute sécurité.</p>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_005.jpg" alt="Épilation Laser Diode" loading="lazy">
+        <img src="assets/post_005.jpg" alt="Épilation laser diode" loading="lazy">
         <span class="num-overlay">01</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 1</span>
-        <h3>Épilation Laser Diode</h3>
-        <p class="desc">Élimination durable du poil avec le laser Diode, adapté à tous les types de peau, dans un protocole sécurisé et précis.</p>
+        <h3>Épilation laser diode</h3>
+        <p class="desc">Technologie diode de dernière génération pour une épilation durable, sur tous types de peau.</p>
         <div class="meta">
         </div>
       </div>
     </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_005.jpg" alt="IPL / DPL Therapy" loading="lazy">
-        <span class="num-overlay">02</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 2</span>
-        <h3>IPL / DPL Therapy</h3>
-        <p class="desc">Traitement lumière pulsée pour l&#39;épilation, le resserrage des pores et l&#39;unification du teint — technologie clinique de référence.</p>
-        <div class="meta">
-        </div>
+    <div class="item-nopic reveal">
+      <span class="eyebrow">Prestation 2</span>
+      <h3>IPL et DPL Therapy</h3>
+      <p class="desc">Traitement lumière pulsée pour unifier le teint, réduire les rougeurs et traiter les taches vasculaires.</p>
+      <div class="meta">
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_011.jpg" alt="Protocoles DMK — Acné, Rosacée, Hyperpigmentation" loading="lazy">
+        <img src="assets/post_008.jpg" alt="Protocoles DMK" loading="lazy">
         <span class="num-overlay">03</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 3</span>
-        <h3>Protocoles DMK — Acné, Rosacée, Hyperpigmentation</h3>
-        <p class="desc">Soins paramédicaux DMK ciblant les déséquilibres cutanés profonds, avec des actifs professionnels validés par la science.</p>
+        <h3>Protocoles DMK</h3>
+        <p class="desc">Soins certifiés DMK pour traiter en profondeur l&#39;acné, la rosacée et l&#39;hyperpigmentation.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_008.jpg" alt="Hydrafacial" loading="lazy">
+        <img src="assets/post_009.jpg" alt="Hydrafacial" loading="lazy">
         <span class="num-overlay">04</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 4</span>
         <h3>Hydrafacial</h3>
-        <p class="desc">Soin visage multi-étapes — nettoyage, exfoliation, extraction et hydratation intense — pour une peau immédiatement lumineuse.</p>
+        <p class="desc">Nettoyage, exfoliation et hydratation en une séance pour une peau visiblement régénérée.</p>
         <div class="meta">
         </div>
       </div>
     </div>
-    <div class="item  reveal">
-      <div class="photo">
-        <img src="assets/post_006.jpg" alt="Peeling PRX-T33 &amp; BioRePeel" loading="lazy">
-        <span class="num-overlay">05</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 5</span>
-        <h3>Peeling PRX-T33 &amp; BioRePeel</h3>
-        <p class="desc">Peelings professionnels sans éviction sociale pour lisser, éclaircir et régénérer la peau en profondeur.</p>
-        <div class="meta">
-        </div>
-      </div>
-    </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_004.jpg" alt="MediPedi — Soin des pieds médical" loading="lazy">
-        <span class="num-overlay">06</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 6</span>
-        <h3>MediPedi — Soin des pieds médical</h3>
-        <p class="desc">Soin podologique esthétique pour des talons parfaitement lisses et une hygiène des pieds irréprochable.</p>
-        <div class="meta">
-        </div>
+    <div class="item-nopic reveal">
+      <span class="eyebrow">Prestation 5</span>
+      <h3>Peeling PRX-T33 et BioRePeel</h3>
+      <p class="desc">Peelings biorevitalisants pour stimuler le renouvellement cellulaire sans éviction sociale.</p>
+      <div class="meta">
       </div>
     </div>
   </div>
@@ -458,22 +520,22 @@ footer.footer .copy {
 
 <section class="raisons">
   <div class="container">
-    <h2 class="reveal">Pourquoi choisir Beauté OKS ?</h2>
+    <h2 class="reveal">Pourquoi choisir Beauté OKS</h2>
     <div class="grid">
       <div class="item reveal">
         <div class="num-grand">01</div>
-        <h3>Technologies certifiées et éprouvées</h3>
-        <p>Chaque appareil utilisé — laser Diode, IPL, Hydrafacial — est un équipement professionnel homologué, garant de votre sécurité à chaque séance.</p>
+        <h3>Matériel certifié et reconnu</h3>
+        <p>Laser Zemits, protocoles DMK, Hydrafacial : des technologies dont l&#39;efficacité est documentée et les résultats vérifiables.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
-        <h3>Protocoles personnalisés par peau</h3>
-        <p>Acné, rosacée, hyperpigmentation ou épilation : le soin est systématiquement adapté à votre type de peau, sans protocole standard ni improvisation.</p>
+        <h3>Chaque peau traitée différemment</h3>
+        <p>Acné, rosacée, hyperpigmentation : chaque problématique reçoit un protocole adapté, jamais un soin standard appliqué à toutes.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
-        <h3>Formation continue et expertise reconnue</h3>
-        <p>Praticienne certifiée et en formation permanente, je maîtrise les dernières avancées en esthétique médicale pour vous offrir des résultats durables et mesurables.</p>
+        <h3>Formation continue et certifications</h3>
+        <p>Praticienne diplômée avec formations professionnelles régulières pour rester à jour sur les meilleures pratiques du secteur.</p>
       </div>
     </div>
   </div>
@@ -481,51 +543,94 @@ footer.footer .copy {
 
 <section id="galerie" class="galerie">
   <div class="container">
-    <h2 class="reveal">Résultats &amp; cabinet</h2>
+    <h2 class="reveal">Le cabinet et les résultats</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
-        <img src="assets/post_002.jpg" alt="Épilation sourcils et cils nets, peau lisse, avant/après implicite" loading="lazy">
-      </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_008.jpg')">
-        <img src="assets/post_008.jpg" alt="Esthéticienne professionnelle dans son cabinet lumineux et équipé" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_009.jpg')">
-        <img src="assets/post_009.jpg" alt="Cabinet moderne et organisé, équipements professionnels visibles" loading="lazy">
+        <img src="assets/post_008.jpg" alt="Praticienne souriante dans son cabinet professionnel, vêtue de blanc, devant des étagères organisées avec produits de marque (DMK visible) et diplômes. Ambiance soignée et accueillante." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_005.jpg')">
-        <img src="assets/post_005.jpg" alt="Démonstration traitement laser professionnel Zemits sur client" loading="lazy">
+        <img src="assets/post_005.jpg" alt="Geste professionnel en action : praticienne appliquant un traitement laser (Zemits Light Expert Pro) sur le visage d&#39;une cliente. Instrument actif visible, technique claire." loading="lazy">
       </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
-        <img src="assets/post_004.jpg" alt="Résultat pédicure MediPedi, talons lisses avant/après comparatif" loading="lazy">
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
+        <img src="assets/post_002.jpg" alt="Gros plan macro des cils impeccables avec sourcils bien définis. Résultat technique net et professionnel, bien éclairé." loading="lazy">
       </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_011.jpg')">
-        <img src="assets/post_011.jpg" alt="Produits DMK exfoliants professionnels en main, qualité premium" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_006.jpg')">
-        <img src="assets/post_006.jpg" alt="Gamme sérums et crèmes DMK, stockage professionnel soigné" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
-        <img src="assets/post_001.jpg" alt="Poudre alcaline DMK Alkaline Wash, usage professionnel" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_003.jpg')">
-        <img src="assets/post_003.jpg" alt="Système Omega-GPS Medicare professionnel, packaging qualité" loading="lazy">
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_009.jpg')">
+        <img src="assets/post_009.jpg" alt="Cabinet professionnel avec étagères organisées, matériel médical (Medicalacer), produits de marque (DMK), lit de traitement. Lieu fonctionnel et moderne." loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
+<section id="avis" class="avis">
+  <div class="container">
+    <div class="header reveal">
+      <h2>Ils en parlent</h2>
+      <div class="note-bandeau">
+        <span class="stars">★★★☆☆</span>
+        <span class="note-num">3.8/5</span>
+      </div>
+    </div>
+    <a href="https://www.google.com/maps/search/Beaut%C3%A9+OKS+Bordeaux/?hl=fr" target="_blank" rel="noopener" class="voir-tout">Lire tous les avis sur Google →</a>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="reveal">Questions fréquentes</h2>
+    <details class="item reveal">
+      <summary class="q">Est-ce que l&#39;épilation laser est douloureuse ?<span class="ic"></span></summary>
+      <p class="r">La sensation varie selon la zone et la sensibilité de chaque personne. Les appareils utilisés intègrent un système de refroidissement pour rendre la séance aussi confortable que possible.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Combien de séances faut-il prévoir pour l&#39;épilation laser ?<span class="ic"></span></summary>
+      <p class="r">Le nombre de séances dépend de votre type de peau, de la zone traitée et de la densité du poil. Un bilan personnalisé est réalisé avant de commencer pour établir un protocole adapté.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Les protocoles DMK conviennent-ils aux peaux sensibles ?<span class="ic"></span></summary>
+      <p class="r">Oui, les soins DMK sont précisément conçus pour les peaux problématiques comme l&#39;acné, la rosacée ou l&#39;hyperpigmentation. Un diagnostic préalable permet de sélectionner le protocole approprié.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Faut-il prendre rendez-vous à l&#39;avance ?<span class="ic"></span></summary>
+      <p class="r">Oui, les séances se font uniquement sur rendez-vous. Cela permet de préparer votre venue et de vous accorder le temps nécessaire.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Comment se préparer avant une séance laser ?<span class="ic"></span></summary>
+      <p class="r">Les recommandations vous sont communiquées lors du bilan initial selon la zone et le traitement choisi. En général, il est conseillé d&#39;éviter toute exposition solaire dans les jours précédant la séance.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contactez" class="contact">
+  <div class="container">
+    <h2 class="reveal">Me contacter</h2>
+    <div class="grid">
+      <div class="item reveal">
+        <div class="label">Adresse</div>
+        <div class="val">25/27 Rue Gérard Blot, 33140 Talence, France</div>
+<p style="margin-top:10px"><a href="https://www.google.com/maps/search/Beaut%C3%A9+OKS+Bordeaux/?hl=fr" target="_blank" rel="noopener">Itinéraire Google Maps</a></p>      </div>
+      <div class="item reveal">
+        <div class="label">Téléphone</div>
+        <div class="val"><a href="tel:+33615286521">+33 6 15 28 65 21</a></div>
+      </div>
+      <div class="item reveal">
+        <div class="label">Réservation</div>
+        <div class="val"><a href="https://www.instagram.com/beaute_oks/" target="_blank" rel="noopener">Réserver en ligne</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Une praticienne certifiée qui combine les technologies laser de pointe (Diode, IPL, DMK) et des protocoles cliniques éprouvés pour des résultats mesurables et durables.</p>
+  <p class="reveal">Une praticienne certifiée qui combine les technologies laser les plus efficaces du marché avec des protocoles de soin reconnus pour traiter acné, rosacée et hyperpigmentation en toute sécurité.</p>
 <a href="https://www.instagram.com/beaute_oks/" target="_blank" rel="noopener" class="btn reveal">Prendre rendez-vous</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
-      <div class="brand-name">Beauté OKS</div>
-      <p class="brand-tagline">Beauté OKS — Esthétique avancée &amp; protocoles certifiés à Bordeaux.</p>
+      <div class="brand-name">Beauté Oks</div>
+      <p class="brand-tagline">Beauté OKS, Bordeaux. Soins esthétiques professionnels avec des protocoles certifiés.</p>
     </div>
     <div>
       <h4>Navigation</h4>
@@ -537,7 +642,7 @@ footer.footer .copy {
       <h4>Suivez-nous</h4>
       <a href="https://www.instagram.com/beaute_oks/" target="_blank" rel="noopener">Instagram (@beaute_oks)</a>
 <a href="https://www.instagram.com/beaute_oks/" target="_blank" rel="noopener">Reserver en ligne</a>    </div>
-    <div class="copy">© 2026 Beauté OKS — Site genere automatiquement</div>
+    <div class="copy">© 2026 Beauté Oks — Site genere automatiquement</div>
   </div>
 </footer>
 

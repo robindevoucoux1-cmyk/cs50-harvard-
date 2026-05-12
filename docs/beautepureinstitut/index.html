@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nelly – Soins naturels &amp; Kobido à Bordeaux</title>
-<meta name="description" content="Soins visage Kobido 100 % naturels, maquillage et manucure dans un cocon chaleureux près de Bordeaux. Prenez soin de vous avec Nelly, esthéticienne à l&#39;écoute.">
-<meta property="og:title" content="Nelly – Soins naturels &amp; Kobido à Bordeaux">
-<meta property="og:description" content="Soins visage Kobido 100 % naturels, maquillage et manucure dans un cocon chaleureux près de Bordeaux. Prenez soin de vous avec Nelly, esthéticienne à l&#39;écoute.">
+<title>Beauté Pure Institut - Soins visage et manucure | Saint-Quentin-de-Baron</title>
+<meta name="description" content="Soins visage Kobido, manucure et makeup artist à Saint-Quentin-de-Baron près de Bordeaux. Un salon chaleureux avec des soins 100 % naturels.">
+<meta property="og:title" content="Beauté Pure Institut - Soins visage et manucure | Saint-Quentin-de-Baron">
+<meta property="og:description" content="Soins visage Kobido, manucure et makeup artist à Saint-Quentin-de-Baron près de Bordeaux. Un salon chaleureux avec des soins 100 % naturels.">
 <meta property="og:type" content="business.business">
 <meta property="og:image" content="assets/post_002.jpg">
 <link rel="icon" href="assets/profil.jpg">
@@ -15,10 +15,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #7A9E7E;
-  --secondaire: #E8C9A0;
-  --neutre-fonce: #3A3530;
-  --neutre-clair: #FAF6F1;
+  --primaire: #6B8F71;
+  --secondaire: #E8DFD3;
+  --neutre-fonce: #2E2E2E;
+  --neutre-clair: #FAF7F4;
   --blanc: #ffffff;
   --font-titre: "Cormorant Garamond", serif;
   --font-texte: "Inter", sans-serif;
@@ -180,11 +180,40 @@ section.services .item .meta .chip .ico {
   display: inline-block; width: 6px; height: 6px; border-radius: 50%;
   background: var(--primaire); opacity: 0.7;
 }
+section.services .item-nopic {
+  max-width: 720px; margin: 0 auto 60px;
+  padding: 36px 40px;
+  text-align: left;
+  background: var(--neutre-clair);
+  border-left: 3px solid var(--primaire);
+  border-radius: 4px;
+}
+section.services .item-nopic .eyebrow {
+  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
+  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+section.services .item-nopic h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
+}
+section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
+section.services .item-nopic .meta {
+  display: flex; gap: 14px;
+}
+section.services .item-nopic .meta .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
+}
+section.services .item-nopic .meta .chip .ico {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primaire); opacity: 0.7;
+}
 @media (max-width: 860px) {
   section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
   section.services .item.reverse .photo { order: 0; }
   section.services .item.reverse .content { order: 1; }
   section.services .item .photo { aspect-ratio: 4/3; }
+  section.services .item-nopic { padding: 28px 24px; }
 }
 
 /* Raisons */
@@ -213,7 +242,8 @@ section.galerie .container { text-align: center; }
 section.galerie h2 { margin-bottom: 0.4em; }
 section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
 section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  max-width: 960px; margin: 0 auto;
 }
 section.galerie .photo {
   aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
@@ -282,6 +312,63 @@ section.avis .voir-tout {
   padding-bottom: 2px; opacity: 0.85;
 }
 
+/* FAQ */
+section.faq {
+  padding: 100px 24px; background: var(--blanc);
+}
+section.faq .container { max-width: 760px; margin: 0 auto; }
+section.faq h2 { text-align: center; margin-bottom: 60px; }
+section.faq .item {
+  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
+}
+section.faq .q {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
+  cursor: pointer; padding: 4px 0; user-select: none;
+}
+section.faq .q .ic {
+  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
+  margin-left: 16px;
+  position: relative;
+  transition: transform .3s;
+}
+section.faq .q .ic::before, section.faq .q .ic::after {
+  content: ""; position: absolute; background: var(--primaire);
+}
+section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
+section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
+section.faq .item[open] .q .ic::after { transform: scaleY(0); }
+section.faq .r {
+  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
+}
+
+/* Contact */
+section.contact {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
+}
+section.contact .container { max-width: 900px; margin: 0 auto; }
+section.contact h2 { text-align: center; margin-bottom: 48px; }
+section.contact .grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
+}
+section.contact .item {
+  text-align: center; padding: 28px 20px;
+  background: var(--blanc); border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+section.contact .item .label {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
+}
+section.contact .item .val {
+  font-family: var(--font-titre); font-size: 1.1rem;
+}
+section.contact .item a {
+  color: var(--primaire); border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
 /* CTA bandeau */
 section.cta-banner {
   padding: 80px 24px;
@@ -337,7 +424,7 @@ footer.footer .copy {
 
 <header class="nav">
   <div class="inner">
-    <a href="#" class="logo">Nelly</a>
+    <a href="#" class="logo">Beauté Pure Institut</a>
     <nav>
       <a href="#about">À propos</a>
       <a href="#services">Prestations</a>
@@ -349,14 +436,14 @@ footer.footer .copy {
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>Prenez soin de vous, naturellement.</h1>
-    <p class="tagline">Soins visage Kobido, maquillage &amp; beauté douce — dans un cocon rien que pour vous.</p>
+    <h1>Prends soin de toi, naturellement.</h1>
+    <p class="tagline">Soins visage, manucure et makeup dans un cocon chaleureux à Saint-Quentin-de-Baron.</p>
     <div class="ctas">
-<a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn">Réserver mon soin</a>      <a href="#services" class="btn btn-outline">Découvrir les prestations</a>
+<a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn">Réserver mon soin</a>      <a href="#services" class="btn btn-outline">Voir la galerie</a>
     </div>
   </div>
   <div class="img-wrap reveal">
-    <img src="assets/post_002.jpg" alt="Nelly" loading="eager">
+    <img src="assets/post_002.jpg" alt="Beauté Pure Institut" loading="eager">
   </div>
 </section>
 
@@ -365,77 +452,71 @@ footer.footer .copy {
 <img src="assets/post_011.jpg" alt="Bienvenue chez Nelly" loading="lazy">  </div>
   <div class="reveal">
     <h2>Bienvenue chez Nelly</h2>
-    <p class="lead">Ici, tout est pensé pour que vous vous sentiez bien dès le premier instant. Dans un espace simple et chaleureux, je vous propose des soins 100 % naturels et la méthode Kobido pour prendre soin de votre peau en profondeur. Chaque séance est un moment à vous, loin de l&#39;agitation du quotidien.</p>
+    <p class="lead">Ici, pas de chichis : juste un lieu simple, lumineux et vraiment accueillant pour que tu te sentes bien dès que tu pousses la porte. Je travaille uniquement avec des soins 100 % naturels, notamment la méthode Kobido pour le visage, et je mets un point d&#39;honneur à m&#39;adapter à toi. Que ce soit pour un soin, une manucure ou un makeup, je t&#39;accompagne avec douceur et attention.</p>
   </div>
 </section>
 
 <section id="services" class="services">
   <div class="container">
     <div class="header reveal">
-      <h2>Mes prestations</h2>
-      <p class="intro">Un cocon chaleureux où chaque soin naturel Kobido devient un véritable rituel de bien-être pensé pour vous.</p>
+      <h2>Ce que je propose</h2>
+      <p class="intro">Un salon de quartier où Nelly prend soin de toi avec des soins 100 % naturels et une vraie présence humaine, loin des instituts impersonnels.</p>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_001.jpg" alt="Soin visage Kobido" loading="lazy">
+        <img src="assets/post_006.jpg" alt="Soin visage Kobido" loading="lazy">
         <span class="num-overlay">01</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 1</span>
         <h3>Soin visage Kobido</h3>
-        <p class="desc">Un massage japonais ancestral qui redonne éclat et tonus au visage, avec des produits 100 % naturels.</p>
+        <p class="desc">Massage japonais ancestral 100 % naturel qui redonne éclat et tonicité à ton visage en toute douceur.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_010.jpg" alt="Soin du visage personnalisé" loading="lazy">
+        <img src="assets/post_011.jpg" alt="Manucure" loading="lazy">
         <span class="num-overlay">02</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 2</span>
-        <h3>Soin du visage personnalisé</h3>
-        <p class="desc">Un rituel sur mesure adapté à votre peau pour un résultat doux, durable et naturellement beau.</p>
+        <h3>Manucure</h3>
+        <p class="desc">Pose soignée et finition impeccable pour des ongles nets et bien entretenus au quotidien.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_007.jpg" alt="Maquillage &amp; Makeup Artist" loading="lazy">
+        <img src="assets/post_012.jpg" alt="Nail art" loading="lazy">
         <span class="num-overlay">03</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 3</span>
-        <h3>Maquillage &amp; Makeup Artist</h3>
-        <p class="desc">Un maquillage professionnel qui sublime vos traits pour toutes vos occasions spéciales ou quotidiennes.</p>
+        <h3>Nail art</h3>
+        <p class="desc">Designs géométriques, couleurs tendance ou classiques, pour des ongles qui te ressemblent.</p>
         <div class="meta">
         </div>
       </div>
     </div>
-    <div class="item reverse reveal">
-      <div class="photo">
-        <img src="assets/post_011.jpg" alt="Manucure &amp; Nail Art" loading="lazy">
-        <span class="num-overlay">04</span>
-      </div>
-      <div class="content">
-        <span class="eyebrow">Prestation 4</span>
-        <h3>Manucure &amp; Nail Art</h3>
-        <p class="desc">Des mains soignées et des créations onglées délicates, du nude élégant aux détails artistiques.</p>
-        <div class="meta">
-        </div>
+    <div class="item-nopic reveal">
+      <span class="eyebrow">Prestation 4</span>
+      <h3>Makeup</h3>
+      <p class="desc">Mise en beauté sur mesure pour tes événements ou ton quotidien, par Nelly, aussi makeup artist.</p>
+      <div class="meta">
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_006.jpg" alt="Moment détente &amp; bien-être" loading="lazy">
+        <img src="assets/post_010.jpg" alt="Soins corps et bien-être" loading="lazy">
         <span class="num-overlay">05</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 5</span>
-        <h3>Moment détente &amp; bien-être</h3>
-        <p class="desc">Un espace calme et lumineux pour souffler, se ressourcer et repartir légère après chaque visite.</p>
+        <h3>Soins corps et bien-être</h3>
+        <p class="desc">Moment de détente dans un cadre cosy, avec des produits naturels sélectionnés pour leur douceur.</p>
         <div class="meta">
         </div>
       </div>
@@ -445,22 +526,22 @@ footer.footer .copy {
 
 <section class="raisons">
   <div class="container">
-    <h2 class="reveal">Pourquoi choisir Beauté Pure ?</h2>
+    <h2 class="reveal">Pourquoi choisir Beauté Pure Institut ?</h2>
     <div class="grid">
       <div class="item reveal">
         <div class="num-grand">01</div>
-        <h3>100 % naturel, sans compromis</h3>
-        <p>Tous les soins sont réalisés avec des produits naturels soigneusement sélectionnés, respectueux de votre peau et de votre santé.</p>
+        <h3>100 % naturel, vraiment</h3>
+        <p>Tous les soins sont réalisés avec des produits naturels : pas de compromis sur ce que tu mets sur ta peau.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
-        <h3>Un accueil sincèrement chaleureux</h3>
-        <p>À Bordeaux, vous trouverez ici un lieu à taille humaine où l&#39;écoute et la bienveillance guident chaque séance.</p>
+        <h3>Une adresse qui te ressemble</h3>
+        <p>Un salon chaleureux à taille humaine, à Saint-Quentin-de-Baron, loin de l&#39;anonymat des grandes enseignes.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
-        <h3>La méthode Kobido, une expertise rare</h3>
-        <p>Technique de massage japonais du visage, le Kobido est pratiqué avec soin pour un résultat visible et un vrai moment de lâcher-prise.</p>
+        <h3>Nelly s&#39;adapte à toi</h3>
+        <p>Soin visage, manucure ou makeup : chaque prestation est pensée selon tes envies et tes besoins du moment.</p>
       </div>
     </div>
   </div>
@@ -468,51 +549,77 @@ footer.footer .copy {
 
 <section id="galerie" class="galerie">
   <div class="container">
-    <h2 class="reveal">L&#39;univers Beauté Pure</h2>
+    <h2 class="reveal">Le salon en images</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
-        <img src="assets/post_002.jpg" alt="Facade exterieure pro, devanture Beaute Pure nette et accueillante" loading="lazy">
+        <img src="assets/post_002.jpg" alt="Façade extérieure du salon Beauté Pure avec signalétique claire, fauteuil signature bleu, terrasse accueillante et atmosphère professionnelle distinctive." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_011.jpg')">
-        <img src="assets/post_011.jpg" alt="Manucure rose poudre parfaite, gros plan net et lumineux" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_012.jpg')">
-        <img src="assets/post_012.jpg" alt="Nail art rouge fonce avec detail, presentation artistique" loading="lazy">
+        <img src="assets/post_011.jpg" alt="Gros plan technique parfait des ongles manucurés, couleur rose nude naturelle et brillante, application propre et précise." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_006.jpg')">
-        <img src="assets/post_006.jpg" alt="Portrait pro souriant de l&#39;estheticienne en lieu de travail" loading="lazy">
+        <img src="assets/post_006.jpg" alt="Portrait professionnel de l&#39;esthéticienne en blouse blanche dans son cabinet, sourire accueillant, contexte de travail visible en arrière-plan." loading="lazy">
       </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
-        <img src="assets/post_001.jpg" alt="Cabine de soin chic, mur tropical, lit de massage elegant" loading="lazy">
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_012.jpg')">
+        <img src="assets/post_012.jpg" alt="Manucure décorée en rouge bordeaux et rose avec design géométrique, gros plan net et professionnel sur ongles parfaitement lissés." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_010.jpg')">
-        <img src="assets/post_010.jpg" alt="Espace detente calme et lumineux, deco bio moderne" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_007.jpg')">
-        <img src="assets/post_007.jpg" alt="Portrait pro au studio, maquillage visible, attitude professionnelle" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
-        <img src="assets/post_004.jpg" alt="Coin repos elegant avec canape et coussin design nature" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_008.jpg')">
-        <img src="assets/post_008.jpg" alt="Cliente regardant miroir, resultat visible mais cadrage moyen" loading="lazy">
+        <img src="assets/post_010.jpg" alt="Coin détente du salon avec fauteuil accueillant, coussins colorés, luminaire design jaune, décor chaleureux et bienveillant." loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="reveal">Questions fréquentes</h2>
+    <details class="item reveal">
+      <summary class="q">Comment prendre rendez-vous ?<span class="ic"></span></summary>
+      <p class="r">Tu peux réserver directement sur Planity via le lien dans ma bio, ou m&#39;envoyer un message privé sur Instagram. Je réponds vite !</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Les soins sont vraiment 100 % naturels ?<span class="ic"></span></summary>
+      <p class="r">Oui, j&#39;utilise exclusivement des produits naturels pour tous mes soins visage et corps. C&#39;est un engagement que je prends au sérieux.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">C&#39;est quoi la méthode Kobido ?<span class="ic"></span></summary>
+      <p class="r">Le Kobido est un massage japonais ancestral du visage qui travaille les muscles, stimule la circulation et redonner de l&#39;éclat à la peau, sans aucun produit chimique.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Est-ce que tu fais aussi le makeup pour les mariages ou événements ?<span class="ic"></span></summary>
+      <p class="r">Oui, je suis également makeup artist et je propose des mises en beauté pour tous tes événements. N&#39;hésite pas à me contacter pour en parler.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Où est situé le salon ?<span class="ic"></span></summary>
+      <p class="r">Le salon Beauté Pure se trouve à Saint-Quentin-de-Baron, à quelques minutes de Bordeaux. Tu trouveras l&#39;adresse exacte sur Planity.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contactez" class="contact">
+  <div class="container">
+    <h2 class="reveal">Me contacter</h2>
+    <div class="grid">
+      <div class="item reveal">
+        <div class="label">Réservation</div>
+        <div class="val"><a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener">Réserver en ligne</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Un cocon chaleureux où chaque soin naturel Kobido devient un véritable rituel de bien-être pensé pour vous.</p>
+  <p class="reveal">Un salon de quartier où Nelly prend soin de toi avec des soins 100 % naturels et une vraie présence humaine, loin des instituts impersonnels.</p>
 <a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn reveal">Réserver mon soin</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
-      <div class="brand-name">Nelly</div>
-      <p class="brand-tagline">Beauté douce &amp; soins naturels — parce que vous le méritez vraiment.</p>
+      <div class="brand-name">Beauté Pure Institut</div>
+      <p class="brand-tagline">Beauté naturelle et bonne humeur, à deux pas de Bordeaux.</p>
     </div>
     <div>
       <h4>Navigation</h4>
@@ -524,7 +631,7 @@ footer.footer .copy {
       <h4>Suivez-nous</h4>
       <a href="https://www.instagram.com/beautepureinstitut/" target="_blank" rel="noopener">Instagram (@beautepureinstitut)</a>
 <a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener">Reserver en ligne</a>    </div>
-    <div class="copy">© 2026 Nelly — Site genere automatiquement</div>
+    <div class="copy">© 2026 Beauté Pure Institut — Site genere automatiquement</div>
   </div>
 </footer>
 

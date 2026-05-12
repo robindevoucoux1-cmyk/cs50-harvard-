@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ART-INNEL — Prothésiste ongulaire à Bordeaux</title>
-<meta name="description" content="Institut ART-INNEL à Villenave-d&#39;Ornon : technique ukrainienne haut de gamme, 15 ans d&#39;expérience, résultats impeccables. Prenez rendez-vous dès maintenant.">
-<meta property="og:title" content="ART-INNEL — Prothésiste ongulaire à Bordeaux">
-<meta property="og:description" content="Institut ART-INNEL à Villenave-d&#39;Ornon : technique ukrainienne haut de gamme, 15 ans d&#39;expérience, résultats impeccables. Prenez rendez-vous dès maintenant.">
+<title>ART-INNEL, onglerie haut de gamme à Bordeaux</title>
+<meta name="description" content="Prothésiste ongulaire à Villenave-d&#39;Ornon, technique ukrainienne premium, 15 ans d&#39;expérience. Résultat impeccable, pose rapide. Réservez en ligne.">
+<meta property="og:title" content="ART-INNEL, onglerie haut de gamme à Bordeaux">
+<meta property="og:description" content="Prothésiste ongulaire à Villenave-d&#39;Ornon, technique ukrainienne premium, 15 ans d&#39;expérience. Résultat impeccable, pose rapide. Réservez en ligne.">
 <meta property="og:type" content="business.business">
 <meta property="og:image" content="assets/post_001.jpg">
 <link rel="icon" href="assets/profil.jpg">
@@ -15,10 +15,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #C2185B;
-  --secondaire: #F8BBD0;
-  --neutre-fonce: #2C2C2C;
-  --neutre-clair: #FDF6F9;
+  --primaire: #B76E79;
+  --secondaire: #F2E4E8;
+  --neutre-fonce: #2C1F24;
+  --neutre-clair: #FAF7F8;
   --blanc: #ffffff;
   --font-titre: "Cormorant Garamond", serif;
   --font-texte: "Inter", sans-serif;
@@ -180,11 +180,40 @@ section.services .item .meta .chip .ico {
   display: inline-block; width: 6px; height: 6px; border-radius: 50%;
   background: var(--primaire); opacity: 0.7;
 }
+section.services .item-nopic {
+  max-width: 720px; margin: 0 auto 60px;
+  padding: 36px 40px;
+  text-align: left;
+  background: var(--neutre-clair);
+  border-left: 3px solid var(--primaire);
+  border-radius: 4px;
+}
+section.services .item-nopic .eyebrow {
+  font-family: var(--font-texte); font-size: 0.78rem; font-weight: 500;
+  color: var(--primaire); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+section.services .item-nopic h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem); margin-bottom: 12px;
+}
+section.services .item-nopic .desc { font-size: 1rem; opacity: 0.78; margin-bottom: 16px; }
+section.services .item-nopic .meta {
+  display: flex; gap: 14px;
+}
+section.services .item-nopic .meta .chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; color: var(--primaire); font-weight: 500;
+}
+section.services .item-nopic .meta .chip .ico {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primaire); opacity: 0.7;
+}
 @media (max-width: 860px) {
   section.services .item { grid-template-columns: 1fr; gap: 32px; margin-bottom: 60px; }
   section.services .item.reverse .photo { order: 0; }
   section.services .item.reverse .content { order: 1; }
   section.services .item .photo { aspect-ratio: 4/3; }
+  section.services .item-nopic { padding: 28px 24px; }
 }
 
 /* Raisons */
@@ -213,7 +242,8 @@ section.galerie .container { text-align: center; }
 section.galerie h2 { margin-bottom: 0.4em; }
 section.galerie .intro { opacity: 0.7; margin-bottom: 48px; }
 section.galerie .grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  max-width: 960px; margin: 0 auto;
 }
 section.galerie .photo {
   aspect-ratio: 1/1; border-radius: var(--rayon); overflow: hidden;
@@ -280,6 +310,63 @@ section.avis .voir-tout {
   font-size: 0.9rem; color: var(--primaire);
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px; opacity: 0.85;
+}
+
+/* FAQ */
+section.faq {
+  padding: 100px 24px; background: var(--blanc);
+}
+section.faq .container { max-width: 760px; margin: 0 auto; }
+section.faq h2 { text-align: center; margin-bottom: 60px; }
+section.faq .item {
+  border-bottom: 1px solid rgba(0,0,0,0.08); padding: 22px 0;
+}
+section.faq .q {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 500;
+  cursor: pointer; padding: 4px 0; user-select: none;
+}
+section.faq .q .ic {
+  display: inline-block; width: 18px; height: 18px; flex: 0 0 18px;
+  margin-left: 16px;
+  position: relative;
+  transition: transform .3s;
+}
+section.faq .q .ic::before, section.faq .q .ic::after {
+  content: ""; position: absolute; background: var(--primaire);
+}
+section.faq .q .ic::before { top: 8px; left: 0; right: 0; height: 2px; }
+section.faq .q .ic::after { top: 0; bottom: 0; left: 8px; width: 2px; transition: transform .3s; }
+section.faq .item[open] .q .ic::after { transform: scaleY(0); }
+section.faq .r {
+  padding: 14px 0 4px; font-size: 0.98rem; opacity: 0.78; line-height: 1.7;
+}
+
+/* Contact */
+section.contact {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--neutre-clair) 0%, var(--blanc) 100%);
+}
+section.contact .container { max-width: 900px; margin: 0 auto; }
+section.contact h2 { text-align: center; margin-bottom: 48px; }
+section.contact .grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
+}
+section.contact .item {
+  text-align: center; padding: 28px 20px;
+  background: var(--blanc); border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+section.contact .item .label {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--primaire); margin-bottom: 12px; font-weight: 500;
+}
+section.contact .item .val {
+  font-family: var(--font-titre); font-size: 1.1rem;
+}
+section.contact .item a {
+  color: var(--primaire); border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
 }
 
 /* CTA bandeau */
@@ -349,10 +436,10 @@ footer.footer .copy {
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>Des ongles qui en disent long sur vous.</h1>
-    <p class="tagline">Technique ukrainienne haut de gamme — résultat impeccable à chaque pose.</p>
+    <h1>Des ongles impeccables, à chaque pose.</h1>
+    <p class="tagline">Technique ukrainienne haut de gamme, résultat premium à Bordeaux.</p>
     <div class="ctas">
-<a href="https://www.planity.com/art_innel-33140-villenave-dornon" target="_blank" rel="noopener" class="btn">Réserver mon rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir les prestations</a>
+<a href="https://www.planity.com/art_innel-33140-villenave-dornon" target="_blank" rel="noopener" class="btn">Réserver mon rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir mes réalisations</a>
     </div>
   </div>
   <div class="img-wrap reveal">
@@ -362,69 +449,76 @@ footer.footer .copy {
 
 <section id="about" class="about">
   <div class="img-side reveal">
-<img src="assets/post_004.jpg" alt="L&#39;excellence ukrainienne, à Bordeaux" loading="lazy">  </div>
+<img src="assets/post_009.jpg" alt="Bienvenue chez ART-INNEL" loading="lazy">  </div>
   <div class="reveal">
-    <h2>L&#39;excellence ukrainienne, à Bordeaux</h2>
-    <p class="lead">Depuis plus de 15 ans, ART-INNEL sublime les mains des femmes exigeantes grâce à une technique ukrainienne reconnue pour sa précision et sa durabilité. Chez moi, chaque soin est pensé pour un résultat digne des plus grands instituts — rapide, soigné, premium. Un moment pour vous, une œuvre pour vos mains.</p>
+    <h2>Bienvenue chez ART-INNEL</h2>
+    <p class="lead">Forte de 15 ans de pratique, je vous propose une technique ukrainienne rigoureuse, reconnue pour sa rapidité et sa tenue exceptionnelle. Dans mon salon de Villenave-d&#39;Ornon, chaque pose est soignée dans les moindres détails, du modelage à la finition. Ici, la qualité premium n&#39;est pas une promesse : c&#39;est le résultat visible à chaque rendez-vous.</p>
   </div>
 </section>
 
 <section id="services" class="services">
   <div class="container">
     <div class="header reveal">
-      <h2>Mes prestations signature</h2>
-      <p class="intro">Une maîtresse-prothésiste forte de 15 ans d&#39;expérience qui apporte la technique ukrainienne haut de gamme au cœur de Bordeaux, pour des ongles d&#39;une précision irréprochable.</p>
+      <h2>Mes prestations</h2>
+      <p class="intro">Un savoir-faire ukrainien haut de gamme pour des ongles impeccables, en moins de temps qu&#39;ailleurs.</p>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_001.jpg" alt="Pose en gel — Dégradé" loading="lazy">
+        <img src="assets/post_001.jpg" alt="Manucure ombré" loading="lazy">
         <span class="num-overlay">01</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 1</span>
-        <h3>Pose en gel — Dégradé</h3>
-        <p class="desc">Un dégradé délicat, du naturel au pétillant, exécuté avec la précision de la technique ukrainienne pour un résultat digne d&#39;une vitrine.</p>
+        <h3>Manucure ombré</h3>
+        <p class="desc">Un dégradé précis et lumineux, posé avec la technique ukrainienne pour une finition digne des plus grandes manicures.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_003.jpg" alt="Manucure gel brillant" loading="lazy">
+        <img src="assets/post_009.jpg" alt="Faux ongles style français" loading="lazy">
         <span class="num-overlay">02</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 2</span>
-        <h3>Manucure gel brillant</h3>
-        <p class="desc">Une manucure impeccable en vernis gel longue tenue, avec une finition brillante qui révèle l&#39;élégance naturelle de vos mains.</p>
+        <h3>Faux ongles style français</h3>
+        <p class="desc">La French revisitée avec une matière premium et une découpe au millimètre, pour un résultat raffiné et durable.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_006.jpg" alt="Vernis naturel &amp; soin" loading="lazy">
+        <img src="assets/post_003.jpg" alt="Manucure rose poudré" loading="lazy">
         <span class="num-overlay">03</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 3</span>
-        <h3>Vernis naturel &amp; soin</h3>
-        <p class="desc">Le choix de la douceur : un vernis rose poudre ou nude appliqué avec soin pour une manucure soignée au rendu discret et raffiné.</p>
+        <h3>Manucure rose poudré</h3>
+        <p class="desc">Une couleur douce et élégante, appliquée avec soin pour une finition lisse et brillante qui dure.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_009.jpg" alt="French stylisée" loading="lazy">
+        <img src="assets/post_006.jpg" alt="Nail art sur mesure" loading="lazy">
         <span class="num-overlay">04</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 4</span>
-        <h3>French stylisée</h3>
-        <p class="desc">La french réinventée — ongles effilés, contour net, finition immaculée pour une élégance signature qui ne passe pas inaperçue.</p>
+        <h3>Nail art sur mesure</h3>
+        <p class="desc">Des motifs précis et personnalisés, réalisés à la main pour un résultat unique qui vous ressemble.</p>
         <div class="meta">
         </div>
+      </div>
+    </div>
+    <div class="item-nopic reveal">
+      <span class="eyebrow">Prestation 5</span>
+      <h3>Pose complète en gel</h3>
+      <p class="desc">Une pose longue tenue réalisée selon les standards de la technique ukrainienne : rapidité, confort et solidité.</p>
+      <div class="meta">
       </div>
     </div>
   </div>
@@ -436,18 +530,18 @@ footer.footer .copy {
     <div class="grid">
       <div class="item reveal">
         <div class="num-grand">01</div>
-        <h3>15 ans de savoir-faire</h3>
-        <p>Une expérience solide qui se lit dans chaque détail : galbe, tenue, finition — rien n&#39;est laissé au hasard.</p>
+        <h3>15 ans de maîtrise</h3>
+        <p>Une expérience solide au service de chaque cliente, pour des poses réussies dès la première fois.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
         <h3>Technique ukrainienne exclusive</h3>
-        <p>Réputée pour sa rapidité et sa précision extrême, cette méthode haut de gamme garantit un résultat impeccable, séance après séance.</p>
+        <p>Une méthode haut de gamme connue pour sa précision, sa rapidité d&#39;exécution et sa durabilité exceptionnelle.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
-        <h3>Un salon élégant à Villenave-d&#39;Ornon</h3>
-        <p>Accueillie dans un espace soigné aux portes de Bordeaux, vous bénéficiez d&#39;un cadre professionnel et chaleureux, à votre image.</p>
+        <h3>Finition premium garantie</h3>
+        <p>Chaque prestation est contrôlée de la base à la finition : ici, un résultat impeccable n&#39;est pas une option.</p>
       </div>
     </div>
   </div>
@@ -459,35 +553,73 @@ footer.footer .copy {
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_001.jpg')">
-        <img src="assets/post_001.jpg" alt="Manucure dégradé rose, finition brillante, ongles sains" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
-        <img src="assets/post_004.jpg" alt="Devanture salon ART-INNEL, professionnel, élégant, fleurs" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_003.jpg')">
-        <img src="assets/post_003.jpg" alt="Vernis rose clair peau foncée, finition gel brillant" loading="lazy">
-      </div>
-      <div class="photo reveal" onclick="ouvreLightbox('assets/post_006.jpg')">
-        <img src="assets/post_006.jpg" alt="Vernis rose poudre naturel, manucure soignée, brillance" loading="lazy">
+        <img src="assets/post_001.jpg" alt="Manucure ombré rose parfaite en gros plan, ongles brillants et symétriques, finition nette et professionnelle." loading="lazy">
       </div>
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_009.jpg')">
-        <img src="assets/post_009.jpg" alt="Ongles effilés rose blanc, french stylisée, détail parfait" loading="lazy">
+        <img src="assets/post_009.jpg" alt="Faux ongles rose et blanc style français technique, gros plan net avec détail du grain de la matière." loading="lazy">
+      </div>
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_003.jpg')">
+        <img src="assets/post_003.jpg" alt="Manucure rose poudré gros plan sur peau diverse, nail art net et soigné, résultat vendeur." loading="lazy">
+      </div>
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
+        <img src="assets/post_004.jpg" alt="Devanture du salon ART-INNEL avec signalétique doré distinctif, ambiance chic, détail floral, vitrine professionnelle." loading="lazy">
+      </div>
+      <div class="photo reveal" onclick="ouvreLightbox('assets/post_006.jpg')">
+        <img src="assets/post_006.jpg" alt="Macro nail art rose clair une main, finition lisse et brillante, format portrait net." loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="reveal">Questions fréquentes</h2>
+    <details class="item reveal">
+      <summary class="q">Comment prendre rendez-vous ?<span class="ic"></span></summary>
+      <p class="r">Vous pouvez réserver directement en ligne via Planity, disponible 24h/24. Choisissez votre prestation, votre créneau et vous recevez une confirmation immédiate.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Combien de temps dure une pose ?<span class="ic"></span></summary>
+      <p class="r">La technique ukrainienne est reconnue pour sa rapidité sans compromis sur la qualité. La durée varie selon la prestation choisie, mais elle est sensiblement plus courte qu&#39;une pose classique.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Quelle est la différence avec une manucure classique ?<span class="ic"></span></summary>
+      <p class="r">La technique ukrainienne utilise des instruments spécifiques pour un travail plus précis de la cuticule et une adhérence optimale du gel. Le résultat est plus net, plus durable et d&#39;aspect plus soigné.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Combien de temps tient la pose ?<span class="ic"></span></summary>
+      <p class="r">Avec des produits premium et une application rigoureuse, la tenue est nettement supérieure à une pose standard. Un comblement est recommandé toutes les trois à quatre semaines selon la pousse.</p>
+    </details>
+    <details class="item reveal">
+      <summary class="q">Le salon est-il facilement accessible ?<span class="ic"></span></summary>
+      <p class="r">ART-INNEL est situé à Villenave-d&#39;Ornon, à proximité de Bordeaux. L&#39;adresse exacte et les horaires sont disponibles sur la page de réservation Planity.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contactez" class="contact">
+  <div class="container">
+    <h2 class="reveal">Me contacter</h2>
+    <div class="grid">
+      <div class="item reveal">
+        <div class="label">Réservation</div>
+        <div class="val"><a href="https://www.planity.com/art_innel-33140-villenave-dornon" target="_blank" rel="noopener">Réserver en ligne</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Une maîtresse-prothésiste forte de 15 ans d&#39;expérience qui apporte la technique ukrainienne haut de gamme au cœur de Bordeaux, pour des ongles d&#39;une précision irréprochable.</p>
+  <p class="reveal">Un savoir-faire ukrainien haut de gamme pour des ongles impeccables, en moins de temps qu&#39;ailleurs.</p>
 <a href="https://www.planity.com/art_innel-33140-villenave-dornon" target="_blank" rel="noopener" class="btn reveal">Réserver mon rendez-vous</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
       <div class="brand-name">ART-INNEL</div>
-      <p class="brand-tagline">ART-INNEL — L&#39;excellence ukrainienne au service de vos mains.</p>
+      <p class="brand-tagline">ART-INNEL, technique ukrainienne premium à Bordeaux.</p>
     </div>
     <div>
       <h4>Navigation</h4>

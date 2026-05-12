@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>6 sites generes - Pipeline lead-finder v3</title>
+<title>6 sites generes - V4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -30,8 +30,8 @@ body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #fa
 .palette-strip { position: absolute; bottom: 0; left: 0; right: 0; display: flex; height: 4px; }
 .palette-strip span { flex: 1; }
 .card-body { padding: 24px 24px 28px; }
-.meta { font-size: 0.78rem; color: var(--accent); opacity: 1; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
-.meta2 { font-size: 0.78rem; opacity: 0.55; margin: 14px 0 12px; display: flex; gap: 8px; }
+.brand-name { font-size: 0.78rem; color: var(--accent); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+.meta2 { font-size: 0.78rem; opacity: 0.55; margin: 14px 0 12px; display: flex; gap: 12px; }
 .meta2 .handle { font-weight: 500; }
 .card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
 .tagline { font-size: 0.92rem; opacity: 0.7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -39,6 +39,7 @@ body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #fa
 .tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.03em; text-transform: lowercase; }
 .tag-sous { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 500; }
 .tag-soncas { background: rgba(0,0,0,0.04); color: rgba(0,0,0,0.55); }
+.tag-contact { background: rgba(52, 168, 83, 0.1); color: #1f8a3e; }
 .cta { display: inline-block; font-size: 0.92rem; color: var(--accent); font-weight: 500; }
 footer { text-align: center; padding: 40px 24px; font-size: 0.85rem; opacity: 0.55; border-top: 1px solid rgba(0,0,0,0.05); background: white; }
 footer a { color: #1E3A5F; text-decoration: none; }
@@ -47,48 +48,50 @@ footer a { color: #1E3A5F; text-decoration: none; }
 <body>
 
 <header class="hero">
-  <span class="tag-top">Pipeline lead-finder • v3</span>
-  <h1>6 sites web — noms commerciaux, palettes et photos personnalises</h1>
-  <p class="lead">Chaque site a un sous-metier auto-detecte, une palette propre au sous-metier, une copy SONCAS-teintee, des services en editorial alterne avec une photo specifique par service, et un nom commercial propre (jamais un titre descriptif metier).</p>
+  <span class="tag-top">Pipeline lead-finder • v4</span>
+  <h1>6 sites web — version V4</h1>
+  <p class="lead">Cycle complet integre : nom commercial Google, photo curee strictement (rejet flacons, peau abimee, deco hors-sujet), services en editorial avec photos uniques et layout texte si pas de match, FAQ, section Contact (adresse, telephone, lien Maps).</p>
   <div class="stats">
-    <div class="stat"><span class="num">6</span><span class="label">sites generes</span></div>
-    <div class="stat"><span class="num">4</span><span class="label">sous-metiers</span></div>
-    <div class="stat"><span class="num">$0.11</span><span class="label">cout par site</span></div>
-    <div class="stat"><span class="num">100%</span><span class="label">mobile friendly</span></div>
+    <div class="stat"><span class="num">6</span><span class="label">sites</span></div>
+    <div class="stat"><span class="num">5</span><span class="label">FAQ par site</span></div>
+    <div class="stat"><span class="num">2/6</span><span class="label">contact Google</span></div>
+    <div class="stat"><span class="num">0</span><span class="label">tirets cadratins</span></div>
   </div>
 </header>
 
 <div class="changelog">
-  <h3>Corrections v3</h3>
+  <h3>V4 - corrections appliquees</h3>
   <ul>
-    <li>Nom commercial : extrait proprement (Beauté OKS, Marianne, Nelly) au lieu de copier "Esthéticienne Bordeaux diplômée, certifié"</li>
-    <li>Photo par service : Claude mappe chaque service a la photo la plus pertinente de la galerie</li>
-    <li>Mobile fix : header logo ellipsis + bouton court "Reserver" + photos services pleine largeur</li>
-    <li>H1 generique INTERDIT : exit "Estheticienne Bordeaux", place a des promesses emotionnelles SONCAS</li>
+    <li>Nom commercial = nom Google Maps si trouve (Beaute Oks, Institut Beauty Bar) sinon nom du salon parse depuis le handle ou la bio</li>
+    <li>Section FAQ (5 questions concretes) + section Contact (adresse + tel + booking)</li>
+    <li>Photos services uniques : si pas de match pertinent, le service s'affiche en encart texte (pas de photo arbitraire)</li>
+    <li>Photo curator strict : rejet des flacons DMK isoles, peau brute, decor banal</li>
+    <li>Galerie reduite a max 6 photos</li>
+    <li>Zero tiret cadratin "—" partout (post-process Python)</li>
+    <li>H1 emotionnels SONCAS (jamais "Estheticienne X")</li>
   </ul>
 </div>
 
 <main class="grid">
 
-    <a class="card" href="art-innel/" style="--accent: #C2185B; --accent2: #F8BBD0;">
+    <a class="card" href="art-innel/" style="--accent: #B76E79; --accent2: #F2E4E8;">
       <div class="thumb">
         <img src="art-innel/assets/profil.jpg" alt="ART-INNEL">
-        <div class="palette-strip"><span style="background:#C2185B"></span><span style="background:#F8BBD0"></span></div>
+        <div class="palette-strip"><span style="background:#B76E79"></span><span style="background:#F2E4E8"></span></div>
         
       </div>
       <div class="card-body">
-        <div class="meta">
-          <span class="brand-name">ART-INNEL</span>
-        </div>
-        <h3>Des ongles qui en disent long sur vous.</h3>
-        <p class="tagline">Technique ukrainienne haut de gamme — résultat impeccable à chaque pose.</p>
+        <div class="brand-name">ART-INNEL</div>
+        <h3>Des ongles impeccables, à chaque pose.</h3>
+        <p class="tagline">Technique ukrainienne haut de gamme, résultat premium à Bordeaux.</p>
         <div class="meta2">
           <span class="handle">@art_innel</span>
-          <span class="followers">1649 followers</span>
+          <span class="followers">1649 fwrs</span>
         </div>
         <div class="tags">
           <span class="tag tag-sous">onglerie</span>
-          <span class="tag tag-soncas">Orgueil · Sympathie</span>
+          <span class="tag tag-soncas">Orgueil · Nouveauté</span>
+          
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
@@ -96,119 +99,114 @@ footer a { color: #1E3A5F; text-decoration: none; }
 
     <a class="card" href="beaute-oks/" style="--accent: #1E3A5F; --accent2: #4A8BC2;">
       <div class="thumb">
-        <img src="beaute-oks/assets/profil.jpg" alt="Beauté OKS">
+        <img src="beaute-oks/assets/profil.jpg" alt="Beauté Oks">
         <div class="palette-strip"><span style="background:#1E3A5F"></span><span style="background:#4A8BC2"></span></div>
-        
+        <span class="note-badge">★ 3.8/5 Google</span>
       </div>
       <div class="card-body">
-        <div class="meta">
-          <span class="brand-name">Beauté OKS</span>
-        </div>
-        <h3>Des résultats visibles. Un protocole maîtrisé.</h3>
-        <p class="tagline">Épilation laser, soins avancés et traitements certifiés — à Bordeaux.</p>
+        <div class="brand-name">Beauté Oks</div>
+        <h3>Une peau saine, traitée avec les bonnes technologies.</h3>
+        <p class="tagline">Laser diode, Hydrafacial, DMK : des protocoles certifiés pour des résultats que vous verrez vraiment.</p>
         <div class="meta2">
           <span class="handle">@beaute_oks</span>
-          <span class="followers">891 followers</span>
+          <span class="followers">891 fwrs</span>
         </div>
         <div class="tags">
           <span class="tag tag-sous">epilation laser</span>
           <span class="tag tag-soncas">Securite · Nouveaute</span>
+          <span class="tag tag-contact">contact Google</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="beautepureinstitut/" style="--accent: #7A9E7E; --accent2: #E8C9A0;">
+    <a class="card" href="beautepureinstitut/" style="--accent: #6B8F71; --accent2: #E8DFD3;">
       <div class="thumb">
-        <img src="beautepureinstitut/assets/profil.jpg" alt="Nelly">
-        <div class="palette-strip"><span style="background:#7A9E7E"></span><span style="background:#E8C9A0"></span></div>
+        <img src="beautepureinstitut/assets/profil.jpg" alt="Beauté Pure Institut">
+        <div class="palette-strip"><span style="background:#6B8F71"></span><span style="background:#E8DFD3"></span></div>
         
       </div>
       <div class="card-body">
-        <div class="meta">
-          <span class="brand-name">Nelly</span>
-        </div>
-        <h3>Prenez soin de vous, naturellement.</h3>
-        <p class="tagline">Soins visage Kobido, maquillage & beauté douce — dans un cocon rien que pour vous.</p>
+        <div class="brand-name">Beauté Pure Institut</div>
+        <h3>Prends soin de toi, naturellement.</h3>
+        <p class="tagline">Soins visage, manucure et makeup dans un cocon chaleureux à Saint-Quentin-de-Baron.</p>
         <div class="meta2">
           <span class="handle">@beautepureinstitut</span>
-          <span class="followers">593 followers</span>
+          <span class="followers">593 fwrs</span>
         </div>
         <div class="tags">
-          <span class="tag tag-sous">soins peau</span>
-          <span class="tag tag-soncas">Confort · Sympathie</span>
+          <span class="tag tag-sous">autre</span>
+          <span class="tag tag-soncas">Sympathie · Confort</span>
+          
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="institut-beauty-bar/" style="--accent: #8B1A2F; --accent2: #E8C4C0;">
+    <a class="card" href="institut-beauty-bar/" style="--accent: #8B1A2F; --accent2: #E8C4CC;">
       <div class="thumb">
         <img src="institut-beauty-bar/assets/profil.jpg" alt="Institut Beauty Bar">
-        <div class="palette-strip"><span style="background:#8B1A2F"></span><span style="background:#E8C4C0"></span></div>
+        <div class="palette-strip"><span style="background:#8B1A2F"></span><span style="background:#E8C4CC"></span></div>
         <span class="note-badge">★ 4.9/5 Google</span>
       </div>
       <div class="card-body">
-        <div class="meta">
-          <span class="brand-name">Institut Beauty Bar</span>
-        </div>
-        <h3>Des mains et des cils qui vous ressemblent.</h3>
-        <p class="tagline">Onglerie, extensions de cils et soins — votre cocon beauté à Caudéran.</p>
+        <div class="brand-name">Institut Beauty Bar</div>
+        <h3>Des ongles et des cils qui vous ressemblent</h3>
+        <p class="tagline">Onglerie et extensions de cils à Caudéran, dans un écrin pensé pour vous.</p>
         <div class="meta2">
           <span class="handle">@institut_beauty_bar</span>
-          <span class="followers">2077 followers</span>
+          <span class="followers">2077 fwrs</span>
         </div>
         <div class="tags">
           <span class="tag tag-sous">onglerie</span>
           <span class="tag tag-soncas">Sympathie · Orgueil</span>
+          <span class="tag tag-contact">contact Google</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="mari-estheticienne-bordeaux/" style="--accent: #8B7355; --accent2: #D4C4A8;">
+    <a class="card" href="mari-estheticienne-bordeaux/" style="--accent: #7B6E8D; --accent2: #D4C5B0;">
       <div class="thumb">
         <img src="mari-estheticienne-bordeaux/assets/profil.jpg" alt="Mari">
-        <div class="palette-strip"><span style="background:#8B7355"></span><span style="background:#D4C4A8"></span></div>
+        <div class="palette-strip"><span style="background:#7B6E8D"></span><span style="background:#D4C5B0"></span></div>
         
       </div>
       <div class="card-body">
-        <div class="meta">
-          <span class="brand-name">Mari</span>
-        </div>
-        <h3>Votre peau mérite un rituel, pas une routine.</h3>
-        <p class="tagline">Soins visage avec massage manuel approfondi · Studio privé aux Chartrons, Bordeaux.</p>
+        <div class="brand-name">Mari</div>
+        <h3>Prenez soin de vous, vraiment.</h3>
+        <p class="tagline">Soins visage ritualisés, maquillage mariage et sourcils redessinés dans un studio privé aux Chartrons.</p>
         <div class="meta2">
           <span class="handle">@mari_estheticienne_bordeaux</span>
-          <span class="followers">528 followers</span>
+          <span class="followers">528 fwrs</span>
         </div>
         <div class="tags">
           <span class="tag tag-sous">soins peau</span>
           <span class="tag tag-soncas">Confort · Sympathie</span>
+          
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="marianne-miseenbeaute/" style="--accent: #1E3A5F; --accent2: #4A8BC2;">
+    <a class="card" href="marianne-miseenbeaute/" style="--accent: #2E6E9E; --accent2: #C8E6F0;">
       <div class="thumb">
-        <img src="marianne-miseenbeaute/assets/profil.jpg" alt="Marianne">
-        <div class="palette-strip"><span style="background:#1E3A5F"></span><span style="background:#4A8BC2"></span></div>
+        <img src="marianne-miseenbeaute/assets/profil.jpg" alt="Marianne Mise en Beauté">
+        <div class="palette-strip"><span style="background:#2E6E9E"></span><span style="background:#C8E6F0"></span></div>
         
       </div>
       <div class="card-body">
-        <div class="meta">
-          <span class="brand-name">Marianne</span>
-        </div>
-        <h3>Et si ta peau devenait enfin ta force ?</h3>
-        <p class="tagline">Spécialiste laser et soins peau à Bordeaux — fini les compromis, place aux résultats.</p>
+        <div class="brand-name">Marianne Mise en Beauté</div>
+        <h3>Ta peau mérite enfin de se sentir bien</h3>
+        <p class="tagline">Soins peau et laser à Mérignac pour en finir avec les rougeurs, l'acné et les irritations.</p>
         <div class="meta2">
           <span class="handle">@marianne_miseenbeaute</span>
-          <span class="followers">893 followers</span>
+          <span class="followers">893 fwrs</span>
         </div>
         <div class="tags">
           <span class="tag tag-sous">epilation laser</span>
-          <span class="tag tag-soncas">Securite · Nouveaute</span>
+          <span class="tag tag-soncas">Securite · Confort</span>
+          
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
@@ -216,7 +214,7 @@ footer a { color: #1E3A5F; text-decoration: none; }
 
 </main>
 
-<footer>Code source : <a href="https://github.com/robindevoucoux1-cmyk/cs50-harvard-/tree/claude/lead-finder-tool-YijRs">github.com/robindevoucoux1-cmyk/cs50-harvard-</a></footer>
+<footer>Code : <a href="https://github.com/robindevoucoux1-cmyk/cs50-harvard-/tree/claude/lead-finder-tool-YijRs">github.com/robindevoucoux1-cmyk/cs50-harvard-</a></footer>
 
 </body>
 </html>
