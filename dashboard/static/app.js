@@ -40,14 +40,32 @@ async function loadSites() {
 }
 
 function renderSitesList() {
+  // Sidebar list (legacy, may not exist after refonte)
   const list = $('#sites-list');
-  list.innerHTML = '';
-  for (const s of state.sites) {
-    const el = document.createElement('div');
-    el.className = 'site-item' + (s.slug === state.currentSlug ? ' active' : '');
-    el.innerHTML = `<span class="site-name">${s.name}</span><span class="site-meta">${s.city || s.theme}</span>`;
-    el.onclick = () => selectSite(s.slug);
-    list.appendChild(el);
+  if (list) {
+    list.innerHTML = '';
+    for (const s of state.sites) {
+      const el = document.createElement('div');
+      el.className = 'site-item' + (s.slug === state.currentSlug ? ' active' : '');
+      el.innerHTML = `<span class="site-name">${s.name}</span><span class="site-meta">${s.city || s.theme}</span>`;
+      el.onclick = () => selectSite(s.slug);
+      list.appendChild(el);
+    }
+  }
+  // Header picker
+  const picker = $('#site-picker');
+  if (picker) {
+    const cur = picker.value;
+    picker.innerHTML = '';
+    for (const s of state.sites) {
+      const opt = document.createElement('option');
+      opt.value = s.slug;
+      opt.textContent = `${s.name} — ${s.city || s.theme}`;
+      if (s.slug === state.currentSlug) opt.selected = true;
+      picker.appendChild(opt);
+    }
+    picker.value = state.currentSlug || (state.sites[0] && state.sites[0].slug) || '';
+    picker.onchange = () => selectSite(picker.value);
   }
 }
 
@@ -351,23 +369,24 @@ async function loadLeadOptions() {
       api('/api/leads/metiers'),
       api('/api/leads/villes'),
     ]);
-    const sel = $('#search-metier');
-    if (sel) {
-      sel.innerHTML = '<option value="">— Choisir —</option>';
+    // Datalist metiers (autocomplete sur input libre)
+    const dlMetier = $('#metiers-list');
+    if (dlMetier) {
+      dlMetier.innerHTML = '';
       for (const m of metiers.metiers) {
         const opt = document.createElement('option');
         opt.value = m;
-        opt.textContent = m;
-        sel.appendChild(opt);
+        dlMetier.appendChild(opt);
       }
     }
-    const dl = $('#villes-list');
-    if (dl) {
-      dl.innerHTML = '';
+    // Datalist villes
+    const dlV = $('#villes-list');
+    if (dlV) {
+      dlV.innerHTML = '';
       for (const v of villes.villes) {
         const opt = document.createElement('option');
         opt.value = v;
-        dl.appendChild(opt);
+        dlV.appendChild(opt);
       }
     }
   } catch (e) {

@@ -25,10 +25,13 @@
 <body class="bg-paper-100 text-ink-900 font-sans antialiased min-h-screen">
 
 <header class="border-b border-paper-300 bg-white/80 backdrop-blur sticky top-0 z-50">
-  <div class="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
     <div class="flex items-center gap-3">
       <span class="font-display text-2xl tracking-tight">Vitriz <em class="text-accent not-italic font-light">Dashboard</em></span>
-      <span class="ml-2 text-xs uppercase tracking-widest text-ink-600">MVP</span>
+    </div>
+    <div class="flex items-center gap-3 flex-1 max-w-md mx-auto">
+      <label class="text-xs uppercase tracking-widest text-ink-600 whitespace-nowrap">Site actif</label>
+      <select id="site-picker" class="flex-1 px-3 py-2 text-sm border border-paper-300 rounded bg-white focus:outline-none focus:border-accent"></select>
     </div>
     <div class="flex items-center gap-4 text-sm">
       <span id="status" class="text-ink-600">Pret</span>
@@ -37,20 +40,9 @@
   </div>
 </header>
 
-<main class="max-w-[1600px] mx-auto px-6 py-6 grid gap-6" style="grid-template-columns: 260px 1fr 360px;">
+<main class="max-w-[1600px] mx-auto px-6 py-6 grid gap-6" style="grid-template-columns: 1fr 360px;">
 
-  <!-- COLONNE 1 : Liste des sites -->
-  <aside class="space-y-4">
-    <div>
-      <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-3 px-2 flex items-center justify-between">
-        <span>Sites</span>
-        <input type="search" id="sites-search" placeholder="Filtrer..." class="text-xs px-2 py-1 border border-paper-300 rounded normal-case tracking-normal w-24 focus:w-32 focus:outline-none focus:border-accent transition-all">
-      </h2>
-      <div id="sites-list" class="space-y-1"></div>
-    </div>
-  </aside>
-
-  <!-- COLONNE 2 : Preview + edition -->
+  <!-- COLONNE 1 : Preview + edition -->
   <section class="space-y-4 min-w-0">
     <!-- Tabs -->
     <div class="flex items-center gap-1 border-b border-paper-300">
@@ -73,14 +65,13 @@
         <form id="search-form" class="grid grid-cols-4 gap-3 items-end">
           <div class="field !mb-0">
             <label>Ville</label>
-            <input type="text" id="search-city" placeholder="Bordeaux" list="villes-list" required>
+            <input type="text" id="search-city" placeholder="Bordeaux, Paris, Lyon..." list="villes-list" required autocomplete="off">
             <datalist id="villes-list"></datalist>
           </div>
           <div class="field !mb-0">
             <label>Métier</label>
-            <select id="search-metier" required>
-              <option value="">— Choisir —</option>
-            </select>
+            <input type="text" id="search-metier" placeholder="esthéticienne, coiffeur, tatoueur..." list="metiers-list" required autocomplete="off">
+            <datalist id="metiers-list"></datalist>
           </div>
           <div class="field !mb-0">
             <label>Nb max</label>
