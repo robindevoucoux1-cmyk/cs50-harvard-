@@ -344,6 +344,171 @@ if (searchInput) {
   };
 }
 
+// --- PROSPECTION (Lead Finder) ---
+async function loadLeadOptions() {
+  try {
+    const [metiers, villes] = await Promise.all([
+      api('/api/leads/metiers'),
+      api('/api/leads/villes'),
+    ]);
+    const sel = $('#search-metier');
+    if (sel) {
+      sel.innerHTML = '<option value="">— Choisir —</option>';
+      for (const m of metiers.metiers) {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        sel.appendChild(opt);
+      }
+    }
+    const dl = $('#villes-list');
+    if (dl) {
+      dl.innerHTML = '';
+      for (const v of villes.villes) {
+        const opt = document.createElement('option');
+        opt.value = v;
+        dl.appendChild(opt);
+      }
+    }
+  } catch (e) {
+    console.warn('loadLeadOptions failed:', e);
+  }
+}
+
+const searchForm = $('#search-form');
+if (searchForm) {
+  searchForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const city = $('#search-city').value.trim();
+    const metier = $('#search-metier').value;
+    const limit = parseInt($('#search-limit').value, 10) || 20;
+    const onlyNoSite = $('#search-only-no-site').checked;
+    const status = $('#search-status');
+    const results = $('#leads-results');
+    if (!city || !metier) {
+      status.textContent = 'Renseigne ville et métier';
+      return;
+    }
+    status.textContent = '🔍 Recherche en cours...';
+    results.innerHTML = '<div class="text-center py-8 text-ink-600 text-sm">Interrogation OpenStreetMap, patience 5-15 sec...</div>';
+    try {
+      const params = new URLSearchParams({
+        city, metier, limit: String(limit),
+        only_opportunities: onlyNoSite ? 'true' : 'false',
+      });
+      const resp = await api('/api/leads/search?' + params);
+      if (resp.error) {
+        status.textContent = '';
+        results.innerHTML = `<div class="section-card text-sm text-red-600">${resp.error}<br><br>Métiers dispo : ${(resp.available || []).join(', ')}</div>`;
+        return;
+      }
+      status.textContent = `✓ ${resp.leads.length} prospect(s) trouvé(s) (sur ${resp.total} au total)`;
+      renderLeads(resp.leads);
+    } catch (err) {
+      status.textContent = '✗ ' + err.message;
+      results.innerHTML = '';
+    }
+  };
+}
+
+function renderLeads(leads) {
+  const root = $('#leads-results');
+  if (!leads.length) {
+    root.innerHTML = '<div class="section-card text-sm text-ink-600">Aucun prospect trouvé. Essaie une autre ville/métier ou décoche le filtre.</div>';
+    return;
+  }
+  root.innerHTML = '';
+  for (const lead of leads) {
+    const card = document.createElement('div');
+    card.className = 'section-card';
+    const platforms = (lead.platforms || []).map(p => {
+      const cls = p.is_real_site ? 'bg-red-100 text-red-700' : (p.type === 'booking' ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700');
+      return `<a href="${p.url}" target="_blank" class="inline-block px-2 py-0.5 text-xs rounded-full ${cls}">${p.icon} ${p.name}</a>`;
+    }).join(' ');
+    const hasSiteBadge = lead.has_real_site
+      ? '<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-red-100 text-red-700">⚠ Vrai site existant</span>'
+      : '<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-green-100 text-green-700">✓ Pas de vrai site</span>';
+    const scoreColor = lead.score >= 70 ? 'text-green-700' : lead.score >= 40 ? 'text-orange-600' : 'text-ink-600';
+    card.innerHTML = `
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="text-xl" style="margin: 0;">${escapeHtml(lead.nom)}</h3>
+            <span class="${scoreColor} text-sm font-medium">${lead.score}/100</span>
+          </div>
+          <div class="text-sm text-ink-600 mb-2">
+            ${escapeHtml(lead.adresse || lead.ville)}
+            ${lead.telephone ? ' · ' + escapeHtml(lead.telephone) : ''}
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            ${hasSiteBadge}
+            ${platforms}
+            ${lead.lien_maps ? `<a href="${lead.lien_maps}" target="_blank" class="text-xs text-ink-600 underline">📍 Maps</a>` : ''}
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <select class="lead-theme-select text-xs px-2 py-1 border border-paper-300 rounded">
+            ${state.themes.map(t => `<option value="${t.name}">${t.name}</option>`).join('')}
+          </select>
+          <button class="lead-generate-btn px-3 py-1.5 bg-accent text-white text-xs rounded-full hover:bg-accent-600 transition" data-lead='${escapeAttr(JSON.stringify(lead))}'>
+            ${lead.planity_url ? '⚡ Générer (Planity)' : 'Générer (squelette)'}
+          </button>
+        </div>
+      </div>
+    `;
+    root.appendChild(card);
+    const btn = card.querySelector('.lead-generate-btn');
+    const sel = card.querySelector('.lead-theme-select');
+    btn.onclick = () => generateFromLead(lead, sel.value, btn);
+  }
+}
+
+function escapeHtml(s) {
+  return (s || '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+}
+function escapeAttr(s) {
+  return s.replace(/'/g, '&#39;');
+}
+
+async function generateFromLead(lead, theme, btn) {
+  btn.disabled = true;
+  const originalText = btn.textContent;
+  btn.textContent = '⏳ Génération...';
+  try {
+    const payload = {
+      nom: lead.nom,
+      metier: lead.metier,
+      ville: lead.ville,
+      adresse: lead.adresse || '',
+      telephone: lead.telephone || '',
+      website: lead.website || '',
+      planity_url: lead.planity_url || '',
+      instagram: (lead.platforms.find(p => p.name === 'Instagram') || {}).url || '',
+      theme: theme || 'esthetique-rose',
+    };
+    const resp = await api('/api/leads/generate', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+    btn.textContent = '✓ Généré';
+    btn.classList.add('bg-green-700');
+    // Refresh sites list and switch
+    state.sites = await api('/api/sites');
+    renderSitesList();
+    selectSite(resp.slug);
+    // Switch to preview tab
+    document.querySelector('.tab-btn[data-tab="preview"]')?.click();
+  } catch (err) {
+    btn.textContent = '✗ Erreur';
+    btn.title = err.message;
+    btn.disabled = false;
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
+}
+
+// Init lead options on page load
+loadLeadOptions();
+
 // --- CHAT IA ---
 const chatLog = $('#chat-log');
 

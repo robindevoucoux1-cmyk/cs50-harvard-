@@ -468,6 +468,215 @@ def deploy_site(slug: str):
     }
 
 
+# --- Lead Finder (Prospection) ---
+
+
+@app.get("/api/leads/metiers")
+def leads_metiers():
+    sys.path.insert(0, str(TE))
+    try:
+        from lead_finder_api import list_metiers
+        return {"metiers": list_metiers()}
+    finally:
+        if str(TE) in sys.path:
+            sys.path.remove(str(TE))
+
+
+@app.get("/api/leads/villes")
+def leads_villes():
+    sys.path.insert(0, str(TE))
+    try:
+        from lead_finder_api import list_villes
+        return {"villes": list_villes()}
+    finally:
+        if str(TE) in sys.path:
+            sys.path.remove(str(TE))
+
+
+@app.get("/api/leads/search")
+def leads_search(city: str, metier: str, limit: int = 20, only_opportunities: bool = True):
+    sys.path.insert(0, str(TE))
+    try:
+        from lead_finder_api import search_leads
+        result = search_leads(city, metier, limit=limit, only_opportunities=only_opportunities)
+        return result
+    finally:
+        if str(TE) in sys.path:
+            sys.path.remove(str(TE))
+
+
+class GenerateFromLeadRequest(BaseModel):
+    nom: str
+    metier: str
+    ville: str
+    adresse: str = ""
+    telephone: str = ""
+    website: str = ""
+    planity_url: str = ""
+    instagram: str = ""
+    theme: str = "esthetique-rose"
+
+
+@app.post("/api/leads/generate")
+def generate_from_lead(req: GenerateFromLeadRequest):
+    """Generate a site.json from a lead found via search.
+
+    - If planity_url is set, scrape Planity + map to site.json (full data)
+    - Otherwise, create a skeleton site.json with the basic info from OSM
+    """
+    sys.path.insert(0, str(TE))
+    try:
+        from planity_to_site import planity_to_site, slugify
+    finally:
+        if str(TE) in sys.path:
+            sys.path.remove(str(TE))
+
+    slug = slugify(req.nom)
+    slug = _safe_slug(slug)
+
+    # If we have a Planity URL : scrape it for full data
+    if req.planity_url and "planity.com" in req.planity_url:
+        sys.path.insert(0, str(ROOT))
+        try:
+            from planity_scraper import scrape_planity
+            data = scrape_planity(req.planity_url, debug=False)
+        except Exception as e:
+            data = None
+        finally:
+            if str(ROOT) in sys.path:
+                sys.path.remove(str(ROOT))
+        if data:
+            site = planity_to_site(data, slug, theme=req.theme)
+        else:
+            site = _skeleton_site(req, slug)
+    else:
+        site = _skeleton_site(req, slug)
+
+    site_path = SITES_DIR / f"{slug}.json"
+    site_path.write_text(json.dumps(site, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    subprocess.run(
+        [sys.executable, str(TE / "generate.py"), str(site_path)],
+        check=True,
+        capture_output=True,
+    )
+    return {
+        "ok": True,
+        "slug": slug,
+        "name": site["brand"]["name"],
+        "has_planity_data": bool(req.planity_url and "planity.com" in req.planity_url),
+    }
+
+
+def _skeleton_site(req: GenerateFromLeadRequest, slug: str) -> dict:
+    """Build a skeleton site.json from a lead's basic info."""
+    nom = req.nom
+    ville = req.ville
+    insta_handle = (req.instagram or f"@{slug.replace('-', '_')}").lstrip("@").rstrip("/")
+    if "instagram.com/" in insta_handle:
+        insta_handle = insta_handle.split("instagram.com/")[-1].rstrip("/")
+    return {
+        "slug": slug,
+        "theme": req.theme,
+        "brand": {
+            "name": nom,
+            "name_html": _name_html(nom),
+            "title": f"{nom}, {ville}",
+            "meta_description": f"{nom} à {ville}.",
+            "og_title": f"{nom}, {ville}",
+            "og_description": f"{nom}. {ville}.",
+            "og_image": "assets/post_004.jpg",
+            "favicon": "assets/profil.jpg",
+            "footer_description": f"{nom}. {ville}.",
+            "copyright_name": nom,
+        },
+        "nav": [
+            {"label": "L'approche", "href": "#approche"},
+            {"label": "Soins", "href": "#protocoles"},
+            {"label": "Questions", "href": "#questions"},
+            {"label": "Contact", "href": "#contact"},
+        ],
+        "cta_primary": {
+            "label_long": "Prendre rendez-vous",
+            "label_short": "RDV",
+            "url": req.planity_url or req.website or f"https://www.instagram.com/{insta_handle}/",
+        },
+        "hero": {
+            "eyebrow_num": "01",
+            "eyebrow_text": ville,
+            "h1_html": f"<em class=\"acc\">{nom}.</em>",
+            "tagline": f"[A REDIGER] Description de {nom} a {ville}.",
+            "ctas": [
+                {"label": "Prendre rendez-vous", "url": req.planity_url or f"https://www.instagram.com/{insta_handle}/", "style": "primary", "external": True},
+                {"label": "Voir les soins", "url": "#protocoles", "style": "light"},
+            ],
+            "image": {"src": "assets/post_004.jpg", "alt": nom, "caption": ville},
+        },
+        "marquee": {"tags": ["Prestations", "Soins", "Bien-etre"]},
+        "about": {
+            "id": "approche",
+            "eyebrow_num": "02",
+            "eyebrow_text": "L'approche",
+            "h2_html": "Bienvenue.",
+            "signature": f"{nom}. {ville}.",
+            "paragraphs": [
+                f"[A REDIGER] Presentation de {nom} a {ville}.",
+                "[A REDIGER] Approche, savoir-faire, ambiance.",
+            ],
+        },
+        "services": {
+            "id": "protocoles",
+            "eyebrow_num": "03",
+            "eyebrow_text": "Les soins",
+            "h2_html": "Le catalogue,<br>en détail.",
+            "intro": "[A REDIGER] Liste des prestations.",
+            "families": [{"name": "Prestations", "items": []}],
+        },
+        "faq": {
+            "id": "questions",
+            "eyebrow_num": "05",
+            "eyebrow_text": "Questions",
+            "h2_html": "Les questions<br>qui reviennent.",
+            "items": [
+                {"q": "Comment réserver ?", "a": "[A REDIGER]"},
+                {"q": "Où se trouve l'institut ?", "a": req.adresse or f"À {ville}."},
+            ],
+        },
+        "contact": {
+            "id": "contact",
+            "eyebrow_num": "06",
+            "eyebrow_text": "Contact",
+            "h2_html": "Prendre rendez-vous.",
+            "intro": "[A REDIGER] Modalites de reservation.",
+            "cards": _skeleton_contact_cards(req),
+        },
+        "footer": {
+            "coords": [
+                {"label": f"@{insta_handle}", "url": f"https://www.instagram.com/{insta_handle}/", "external": True},
+            ],
+        },
+    }
+
+
+def _name_html(name: str) -> str:
+    parts = name.split(" ", 1)
+    if len(parts) == 2:
+        return f"{parts[0]} <em>{parts[1]}</em>"
+    return name
+
+
+def _skeleton_contact_cards(req: GenerateFromLeadRequest) -> list:
+    cards = []
+    if req.planity_url:
+        cards.append({"lbl": "Réserver en ligne", "val_html": f'<a href="{req.planity_url}" target="_blank">Sur Planity ↗</a>'})
+    if req.telephone:
+        cards.append({"lbl": "Téléphone", "val_html": req.telephone.replace(" ", "&nbsp;")})
+    if req.adresse:
+        cards.append({"lbl": "Adresse", "val_html": req.adresse.replace(", ", ",<br>")})
+    if not cards:
+        cards.append({"lbl": "Contact", "val_html": "[A REDIGER]"})
+    return cards
+
+
 @app.get("/api/sites/{slug}/netlify")
 def get_netlify_info(slug: str):
     slug = _safe_slug(slug)

@@ -39,22 +39,8 @@
 
 <main class="max-w-[1600px] mx-auto px-6 py-6 grid gap-6" style="grid-template-columns: 260px 1fr 360px;">
 
-  <!-- COLONNE 1 : Liste des sites + Import -->
+  <!-- COLONNE 1 : Liste des sites -->
   <aside class="space-y-4">
-    <!-- Import section -->
-    <div class="section-card !p-3">
-      <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-2">Nouveau prospect</h2>
-      <form id="import-form" class="space-y-2">
-        <input type="url" id="import-url" placeholder="https://www.planity.com/..." class="w-full px-2 py-1.5 text-sm border border-paper-300 rounded focus:outline-none focus:border-accent" required>
-        <select id="import-theme" class="w-full px-2 py-1.5 text-sm border border-paper-300 rounded">
-          <!-- populated by JS -->
-        </select>
-        <button type="submit" class="w-full px-3 py-2 bg-accent text-white text-xs uppercase tracking-wider rounded hover:bg-accent-600 transition">Importer + Générer</button>
-        <div id="import-status" class="text-xs text-ink-600 mt-1 hidden"></div>
-      </form>
-    </div>
-
-    <!-- Sites list -->
     <div>
       <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-3 px-2 flex items-center justify-between">
         <span>Sites</span>
@@ -68,18 +54,54 @@
   <section class="space-y-4 min-w-0">
     <!-- Tabs -->
     <div class="flex items-center gap-1 border-b border-paper-300">
-      <button data-tab="preview" class="tab-btn px-4 py-2 text-sm border-b-2 border-accent text-ink-900 font-medium">Apercu</button>
-      <button data-tab="edit" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Edition</button>
-      <button data-tab="theme" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Theme</button>
+      <button data-tab="prospect" class="tab-btn px-4 py-2 text-sm border-b-2 border-accent text-ink-900 font-medium">🔍 Prospection</button>
+      <button data-tab="preview" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Aperçu</button>
+      <button data-tab="edit" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Édition</button>
+      <button data-tab="theme" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Thème</button>
       <button data-tab="raw" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">JSON</button>
+      <button data-tab="import" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Import URL</button>
       <div class="ml-auto flex items-center gap-2 pb-2">
-        <button id="btn-regenerate" class="text-xs px-3 py-1.5 border border-ink-900 rounded-full hover:bg-ink-900 hover:text-white transition">Regenerer</button>
+        <button id="btn-regenerate" class="text-xs px-3 py-1.5 border border-ink-900 rounded-full hover:bg-ink-900 hover:text-white transition">Régénérer</button>
         <button id="btn-save" class="text-xs px-3 py-1.5 bg-accent text-white rounded-full hover:bg-accent-600 transition">Sauver</button>
       </div>
     </div>
 
+    <!-- Tab : Prospection -->
+    <div data-panel="prospect" class="tab-panel space-y-4">
+      <div class="section-card">
+        <h3>Rechercher des prospects</h3>
+        <form id="search-form" class="grid grid-cols-4 gap-3 items-end">
+          <div class="field !mb-0">
+            <label>Ville</label>
+            <input type="text" id="search-city" placeholder="Bordeaux" list="villes-list" required>
+            <datalist id="villes-list"></datalist>
+          </div>
+          <div class="field !mb-0">
+            <label>Métier</label>
+            <select id="search-metier" required>
+              <option value="">— Choisir —</option>
+            </select>
+          </div>
+          <div class="field !mb-0">
+            <label>Nb max</label>
+            <input type="number" id="search-limit" value="20" min="5" max="100">
+          </div>
+          <button type="submit" class="px-4 py-2.5 bg-accent text-white text-sm rounded-full hover:bg-accent-600 transition">🔍 Chercher</button>
+        </form>
+        <div class="flex items-center gap-4 mt-3 text-xs">
+          <label class="flex items-center gap-2 text-ink-600">
+            <input type="checkbox" id="search-only-no-site" class="accent-accent" checked>
+            Seulement les prospects sans vrai site
+          </label>
+          <span id="search-status" class="ml-auto text-ink-600"></span>
+        </div>
+      </div>
+
+      <div id="leads-results" class="space-y-2"></div>
+    </div>
+
     <!-- Tab : Preview -->
-    <div data-panel="preview" class="tab-panel">
+    <div data-panel="preview" class="tab-panel hidden">
       <div class="flex items-center gap-3 mb-3 text-xs">
         <button data-viewport="mobile" class="vp-btn px-3 py-1.5 border border-paper-300 rounded">Mobile</button>
         <button data-viewport="tablet" class="vp-btn px-3 py-1.5 border border-paper-300 rounded">Tablet</button>
@@ -105,6 +127,26 @@
     <!-- Tab : JSON brut -->
     <div data-panel="raw" class="tab-panel hidden">
       <textarea id="raw-json" class="w-full h-[70vh] font-mono text-xs p-4 bg-ink-900 text-paper-100 rounded-lg" spellcheck="false"></textarea>
+    </div>
+
+    <!-- Tab : Import URL -->
+    <div data-panel="import" class="tab-panel hidden">
+      <div class="section-card max-w-xl">
+        <h3>Importer un prospect depuis une URL Planity</h3>
+        <p class="text-sm text-ink-600 mb-4">Pour un prospect spécifique dont tu as déjà l'URL Planity. Sinon, utilise l'onglet <strong>Prospection</strong>.</p>
+        <form id="import-form" class="space-y-3">
+          <div class="field !mb-0">
+            <label>URL Planity</label>
+            <input type="url" id="import-url" placeholder="https://www.planity.com/..." required>
+          </div>
+          <div class="field !mb-0">
+            <label>Theme</label>
+            <select id="import-theme"></select>
+          </div>
+          <button type="submit" class="px-4 py-2.5 bg-accent text-white text-sm rounded-full hover:bg-accent-600 transition">Importer + Générer</button>
+          <div id="import-status" class="text-xs text-ink-600 mt-1 hidden"></div>
+        </form>
+      </div>
     </div>
   </section>
 
