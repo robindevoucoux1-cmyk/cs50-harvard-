@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Institut Beauty Bar – Onglerie &amp; Soins à Bordeaux</title>
-<meta name="description" content="Onglerie, extensions de cils, soins visage et épilation à Bordeaux Caudéran. Un institut chaleureux, des résultats soignés. Réservation en ligne sur Planity.">
-<meta property="og:title" content="Institut Beauty Bar – Onglerie &amp; Soins à Bordeaux">
-<meta property="og:description" content="Onglerie, extensions de cils, soins visage et épilation à Bordeaux Caudéran. Un institut chaleureux, des résultats soignés. Réservation en ligne sur Planity.">
+<title>Institut Beauty Bar – Onglerie &amp; Cils à Bordeaux</title>
+<meta name="description" content="Institut Beauty Bar à Bordeaux Caudéran : onglerie, extensions de cils et soins visage dans un espace chaleureux. Réservez en ligne sur Planity.">
+<meta property="og:title" content="Institut Beauty Bar – Onglerie &amp; Cils à Bordeaux">
+<meta property="og:description" content="Institut Beauty Bar à Bordeaux Caudéran : onglerie, extensions de cils et soins visage dans un espace chaleureux. Réservez en ligne sur Planity.">
 <meta property="og:type" content="business.business">
 <meta property="og:image" content="assets/post_004.jpg">
 <link rel="icon" href="assets/profil.jpg">
@@ -15,9 +15,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primaire: #9B1C2E;
-  --secondaire: #E8C9CE;
-  --neutre-fonce: #2C2222;
+  --primaire: #8B1A2F;
+  --secondaire: #E8C4C0;
+  --neutre-fonce: #2C2C2C;
   --neutre-clair: #FAF6F4;
   --blanc: #ffffff;
   --font-titre: "Playfair Display", serif;
@@ -33,6 +33,7 @@ body {
   background: var(--neutre-clair);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -47,18 +48,32 @@ p { font-size: 1.05rem; }
 header.nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-  padding: 14px 24px; border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 header.nav .inner {
   max-width: var(--max-content); margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
 }
-header.nav .logo { font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire); }
+header.nav .logo {
+  font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0; flex: 1 1 auto;
+}
+header.nav nav { flex: 0 0 auto; }
 header.nav nav a { margin-left: 28px; font-size: 0.95rem; opacity: 0.8; transition: opacity .2s; }
 header.nav nav a:hover { opacity: 1; }
-header.nav .btn-reserve { margin-left: 32px; }
-@media (max-width: 720px) {
+header.nav .btn-reserve { margin-left: 12px; flex: 0 0 auto; white-space: nowrap; padding: 10px 18px; font-size: 0.88rem; }
+@media (max-width: 860px) {
   header.nav nav { display: none; }
+}
+.btn-reserve .cta-short { display: none; }
+@media (max-width: 480px) {
+  header.nav { padding: 12px 14px; }
+  header.nav .logo { font-size: 1.05rem; max-width: 55vw; }
+  header.nav .btn-reserve { padding: 8px 14px; font-size: 0.82rem; }
+  .btn-reserve .cta-full { display: none; }
+  .btn-reserve .cta-short { display: inline; }
 }
 
 /* Bouton */
@@ -68,6 +83,7 @@ header.nav .btn-reserve { margin-left: 32px; }
   border: none; border-radius: var(--rayon);
   font-family: var(--font-texte); font-weight: 500; font-size: 0.95rem;
   letter-spacing: 0.02em; cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
+  white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 .btn-outline { background: transparent; color: var(--primaire); border: 1.5px solid var(--primaire); }
@@ -328,13 +344,13 @@ footer.footer .copy {
       <a href="#galerie">Galerie</a>
       <a href="#contact">Contact</a>
     </nav>
-<a href="https://www.planity.com/beauty-bar-33200-bordeaux-rg7" target="_blank" rel="noopener" class="btn btn-reserve">Réserver mon rendez-vous</a>  </div>
+<a href="https://www.planity.com/beauty-bar-33200-bordeaux-rg7" target="_blank" rel="noopener" class="btn btn-reserve"><span class="cta-full">Réserver mon rendez-vous</span><span class="cta-short">Réserver</span></a>  </div>
 </header>
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>Vos ongles méritent le meilleur.</h1>
-    <p class="tagline">Onglerie, extensions de cils et soins – votre cocon beauté à Caudéran.</p>
+    <h1>Des mains et des cils qui vous ressemblent.</h1>
+    <p class="tagline">Onglerie, extensions de cils et soins — votre cocon beauté à Caudéran.</p>
     <div class="ctas">
 <a href="https://www.planity.com/beauty-bar-33200-bordeaux-rg7" target="_blank" rel="noopener" class="btn">Réserver mon rendez-vous</a>      <a href="#services" class="btn btn-outline">Voir les prestations</a>
     </div>
@@ -349,7 +365,7 @@ footer.footer .copy {
 <img src="assets/post_006.jpg" alt="Bienvenue à l&#39;Institut Beauty Bar" loading="lazy">  </div>
   <div class="reveal">
     <h2>Bienvenue à l&#39;Institut Beauty Bar</h2>
-    <p class="lead">Niché au cœur de Caudéran, l&#39;Institut Beauty Bar est bien plus qu&#39;un salon : c&#39;est votre rendez-vous beauté de confiance. Dans une cabine chaleureuse et soignée, nous prenons le temps de vous écouter et de sublimer votre quotidien, des pointes des doigts jusqu&#39;au regard. Membre du Club Nicolas Waldorf, nous plaçons l&#39;exigence au service de votre bien-être.</p>
+    <p class="lead">Ici, à Bordeaux Caudéran, chaque rendez-vous est pensé comme un moment rien que pour vous. Que ce soit pour sublimer vos ongles, poser des extensions de cils volumineuses ou prendre soin de votre peau, vous trouverez une ambiance chaleureuse et un savoir-faire attentif. Membre du Club Nicolas Waldorf, l&#39;Institut Beauty Bar s&#39;inscrit dans une exigence de qualité que vous méritez.</p>
   </div>
 </section>
 
@@ -357,69 +373,69 @@ footer.footer .copy {
   <div class="container">
     <div class="header reveal">
       <h2>Nos prestations</h2>
-      <p class="intro">Un institut de quartier à Caudéran où chaque rendez-vous devient un vrai moment pour soi, des ongles aux cils.</p>
+      <p class="intro">Un institut de quartier à Caudéran où chaque détail est soigné pour que vous repartiez fière et comblée.</p>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_004.jpg" alt="Pose d&#39;ongles &amp; nail art" loading="lazy">
+        <img src="assets/post_004.jpg" alt="Manucure &amp; Nail Art" loading="lazy">
         <span class="num-overlay">01</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 1</span>
-        <h3>Pose d&#39;ongles &amp; nail art</h3>
-        <p class="desc">Pose en gel, résine ou semi-permanent, avec finitions soignées et designs sur mesure pour refléter votre personnalité.</p>
+        <h3>Manucure &amp; Nail Art</h3>
+        <p class="desc">Une manucure soignée du bout des doigts, avec finitions brillantes, dégradés ou nail art selon vos envies.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_006.jpg" alt="Extensions de cils" loading="lazy">
+        <img src="assets/post_009.jpg" alt="Pose d&#39;ongles" loading="lazy">
         <span class="num-overlay">02</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 2</span>
-        <h3>Extensions de cils</h3>
-        <p class="desc">Volume russe ou effet naturel : des cils qui encadrent votre regard pour une beauté qui dure sans effort.</p>
+        <h3>Pose d&#39;ongles</h3>
+        <p class="desc">Une pose résine ou gel pour des ongles parfaits qui durent, adaptée à votre morphologie et à votre style.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_010.jpg" alt="Soins du visage" loading="lazy">
+        <img src="assets/post_010.jpg" alt="Extensions de cils" loading="lazy">
         <span class="num-overlay">03</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 3</span>
-        <h3>Soins du visage</h3>
-        <p class="desc">Des soins adaptés à votre peau pour vous offrir un vrai moment de douceur et un teint éclatant.</p>
+        <h3>Extensions de cils</h3>
+        <p class="desc">Un regard volumisé et naturellement magnifié grâce à des extensions posées avec précision et soin.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_009.jpg" alt="Épilation" loading="lazy">
+        <img src="assets/post_001.jpg" alt="Soins du visage" loading="lazy">
         <span class="num-overlay">04</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 4</span>
-        <h3>Épilation</h3>
-        <p class="desc">Un protocole précis et doux pour une peau parfaitement lisse, réalisé avec soin à chaque séance.</p>
+        <h3>Soins du visage</h3>
+        <p class="desc">Des soins personnalisés pour nourrir, éclater et révéler la beauté naturelle de votre peau.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_012.jpg" alt="Bain de pieds &amp; pédicure" loading="lazy">
+        <img src="assets/post_005.jpg" alt="Bain de pieds &amp; Pédicure" loading="lazy">
         <span class="num-overlay">05</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 5</span>
-        <h3>Bain de pieds &amp; pédicure</h3>
-        <p class="desc">Un moment de détente pure pour chouchouter vos pieds, de la mise en beauté au vernis.</p>
+        <h3>Bain de pieds &amp; Pédicure</h3>
+        <p class="desc">Un moment de détente pure pour des pieds doux et une finition impeccable du premier orteil au dernier.</p>
         <div class="meta">
         </div>
       </div>
@@ -433,18 +449,18 @@ footer.footer .copy {
     <div class="grid">
       <div class="item reveal">
         <div class="num-grand">01</div>
-        <h3>Un accueil sincère et chaleureux</h3>
-        <p>Ici, chaque cliente est accueillie avec attention : nous prenons le temps de comprendre vos envies avant chaque prestation.</p>
+        <h3>Un espace chaleureux et pro</h3>
+        <p>L&#39;institut a été pensé pour vous accueillir dans un cadre épuré, propre et apaisant où vous vous sentez immédiatement chez vous.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
-        <h3>Un cadre soigné et rassurant</h3>
-        <p>Notre espace épuré et lumineux à Bordeaux Caudéran a été pensé pour que vous vous sentiez à l&#39;aise dès la première visite.</p>
+        <h3>Membre du Club Nicolas Waldorf</h3>
+        <p>Une appartenance à un réseau d&#39;excellence qui garantit des produits et des méthodes sélectionnés avec rigueur.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
-        <h3>Une réservation simple, à tout moment</h3>
-        <p>Prenez rendez-vous en ligne sur Planity en quelques secondes, selon vos disponibilités, sans attente ni déplacement.</p>
+        <h3>Réservation simple et rapide</h3>
+        <p>Prenez rendez-vous en ligne sur Planity à tout moment, sans attente, en quelques clics seulement.</p>
       </div>
     </div>
   </div>
@@ -452,7 +468,7 @@ footer.footer .copy {
 
 <section id="galerie" class="galerie">
   <div class="container">
-    <h2 class="reveal">Nos réalisations</h2>
+    <h2 class="reveal">Mes réalisations</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_004.jpg')">
@@ -501,14 +517,14 @@ footer.footer .copy {
 
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Un institut de quartier à Caudéran où chaque rendez-vous devient un vrai moment pour soi, des ongles aux cils.</p>
+  <p class="reveal">Un institut de quartier à Caudéran où chaque détail est soigné pour que vous repartiez fière et comblée.</p>
 <a href="https://www.planity.com/beauty-bar-33200-bordeaux-rg7" target="_blank" rel="noopener" class="btn reveal">Réserver mon rendez-vous</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
       <div class="brand-name">Institut Beauty Bar</div>
-      <p class="brand-tagline">Institut Beauty Bar · Votre cocon beauté à Caudéran, Bordeaux.</p>
+      <p class="brand-tagline">Institut Beauty Bar — Votre cocon beauté à Bordeaux Caudéran.</p>
     </div>
     <div>
       <h4>Navigation</h4>

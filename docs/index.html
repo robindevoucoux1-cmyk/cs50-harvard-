@@ -3,140 +3,92 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sites generes - Pipeline lead-finder</title>
-<meta name="description" content="6 sites web personnalises generes automatiquement a partir de profils Instagram d'estheticiennes a Bordeaux">
+<title>6 sites generes - Pipeline lead-finder v3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #fafafa 0%, #fdfaf6 100%);
-  color: #1a1a1a; line-height: 1.6;
-  min-height: 100vh;
-}
+body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #fafafa 0%, #fdfaf6 100%); color: #1a1a1a; line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
 .hero { padding: 80px 24px 60px; text-align: center; max-width: 900px; margin: 0 auto; }
-.hero .tag-top {
-  display: inline-block; padding: 6px 16px; background: rgba(30,58,95,0.08);
-  color: #1E3A5F; border-radius: 100px; font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px;
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.4rem);
-  font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em;
-}
+.hero .tag-top { display: inline-block; padding: 6px 16px; background: rgba(30,58,95,0.08); color: #1E3A5F; border-radius: 100px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
 .hero .lead { font-size: 1.15rem; opacity: 0.78; max-width: 700px; margin: 0 auto 40px; }
-.stats {
-  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-  margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.06);
-}
+.stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.06); }
 .stat .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #1E3A5F; display: block; line-height: 1; }
 .stat .label { font-size: 0.85rem; opacity: 0.65; margin-top: 6px; display: block; }
-.grid {
-  max-width: 1320px; margin: 0 auto; padding: 40px 24px 100px;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px;
-}
-.card {
-  display: block; background: white; border-radius: 16px; overflow: hidden;
-  text-decoration: none; color: inherit;
-  box-shadow: 0 4px 20px -8px rgba(0,0,0,0.08);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -15px rgba(0,0,0,0.18); }
-.thumb {
-  position: relative; aspect-ratio: 16/9;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
-}
-.thumb img {
-  width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
-  border: 4px solid white; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-.note-badge {
-  position: absolute; top: 14px; right: 14px;
-  background: rgba(0,0,0,0.7); color: white; padding: 4px 12px;
-  border-radius: 100px; font-size: 0.78rem; font-weight: 500;
-}
-.palette-strip { position: absolute; bottom: 0; left: 0; right: 0; display: flex; height: 4px; }
-.palette-strip span { flex: 1; }
-.card-body { padding: 24px 24px 28px; }
-.meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; opacity: 0.65; margin-bottom: 14px; }
-.handle { font-weight: 500; color: var(--accent); opacity: 1; }
-.card h3 { font-family: 'Playfair Display', serif; font-size: 1.18rem; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
-.tagline {
-  font-size: 0.92rem; opacity: 0.7; margin-bottom: 18px;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.tags { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
-.tag {
-  font-size: 0.72rem; padding: 4px 10px; border-radius: 100px;
-  letter-spacing: 0.03em; text-transform: lowercase;
-}
-.tag-sous { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 500; }
-.tag-soncas { background: rgba(0,0,0,0.04); color: rgba(0,0,0,0.55); }
-.cta { display: inline-block; font-size: 0.92rem; color: var(--accent); font-weight: 500; letter-spacing: 0.02em; }
-footer { text-align: center; padding: 40px 24px; font-size: 0.85rem; opacity: 0.55; border-top: 1px solid rgba(0,0,0,0.05); background: white; }
-footer a { color: #1E3A5F; text-decoration: none; }
-.changelog {
-  max-width: 760px; margin: 0 auto 60px; padding: 28px 32px;
-  background: white; border-radius: 12px; box-shadow: 0 4px 20px -8px rgba(0,0,0,0.05);
-}
+.changelog { max-width: 760px; margin: 0 auto 60px; padding: 28px 32px; background: white; border-radius: 12px; box-shadow: 0 4px 20px -8px rgba(0,0,0,0.05); }
 .changelog h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 14px; color: #1E3A5F; }
 .changelog ul { list-style: none; }
 .changelog li { padding: 6px 0; font-size: 0.92rem; opacity: 0.82; }
 .changelog li::before { content: "→ "; color: #1E3A5F; font-weight: 600; }
+.grid { max-width: 1320px; margin: 0 auto; padding: 40px 24px 100px; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
+.card { display: block; background: white; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 4px 20px -8px rgba(0,0,0,0.08); transition: transform .25s ease, box-shadow .25s ease; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -15px rgba(0,0,0,0.18); }
+.thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.thumb img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.note-badge { position: absolute; top: 14px; right: 14px; background: rgba(0,0,0,0.7); color: white; padding: 4px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 500; }
+.palette-strip { position: absolute; bottom: 0; left: 0; right: 0; display: flex; height: 4px; }
+.palette-strip span { flex: 1; }
+.card-body { padding: 24px 24px 28px; }
+.meta { font-size: 0.78rem; color: var(--accent); opacity: 1; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+.meta2 { font-size: 0.78rem; opacity: 0.55; margin: 14px 0 12px; display: flex; gap: 8px; }
+.meta2 .handle { font-weight: 500; }
+.card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+.tagline { font-size: 0.92rem; opacity: 0.7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.tags { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+.tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.03em; text-transform: lowercase; }
+.tag-sous { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 500; }
+.tag-soncas { background: rgba(0,0,0,0.04); color: rgba(0,0,0,0.55); }
+.cta { display: inline-block; font-size: 0.92rem; color: var(--accent); font-weight: 500; }
+footer { text-align: center; padding: 40px 24px; font-size: 0.85rem; opacity: 0.55; border-top: 1px solid rgba(0,0,0,0.05); background: white; }
+footer a { color: #1E3A5F; text-decoration: none; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <span class="tag-top">Pipeline lead-finder • v2</span>
-  <h1>6 sites web personnalises par sous-metier et SONCAS</h1>
-  <p class="lead">Chaque marque a un sous-metier identifie automatiquement (onglerie, lash, epilation laser, soins peau, massage),
-  une palette adaptee aux codes du sous-metier, et une copy teintee SONCAS (motivations d'achat dominantes).
-  La section services est en editorial alterne, plus magazine que catalogue.</p>
+  <span class="tag-top">Pipeline lead-finder • v3</span>
+  <h1>6 sites web — noms commerciaux, palettes et photos personnalises</h1>
+  <p class="lead">Chaque site a un sous-metier auto-detecte, une palette propre au sous-metier, une copy SONCAS-teintee, des services en editorial alterne avec une photo specifique par service, et un nom commercial propre (jamais un titre descriptif metier).</p>
   <div class="stats">
     <div class="stat"><span class="num">6</span><span class="label">sites generes</span></div>
-    <div class="stat"><span class="num">5</span><span class="label">sous-metiers detectes</span></div>
+    <div class="stat"><span class="num">4</span><span class="label">sous-metiers</span></div>
     <div class="stat"><span class="num">$0.11</span><span class="label">cout par site</span></div>
-    <div class="stat"><span class="num">100%</span><span class="label">unique par marque</span></div>
+    <div class="stat"><span class="num">100%</span><span class="label">mobile friendly</span></div>
   </div>
 </header>
 
 <div class="changelog">
-  <h3>Nouveautes v2 (par rapport a v1)</h3>
+  <h3>Corrections v3</h3>
   <ul>
-    <li>Detection auto du sous-metier (epilation laser, onglerie, soins peau...)</li>
-    <li>Palettes corrigees : bleu clinique pour le medico, vert sauge pour le naturel, etc.</li>
-    <li>Integration SONCAS (Securite/Orgueil/Nouveaute/Confort/Argent/Sympathie) dans la copy</li>
-    <li>Section services en editorial alterne photo+texte (au lieu de la grille uniforme)</li>
-    <li>Section avis Google conditionnelle (note + lien fiche)</li>
-    <li>Nom commercial Insta toujours utilise (plus de generation generique)</li>
+    <li>Nom commercial : extrait proprement (Beauté OKS, Marianne, Nelly) au lieu de copier "Esthéticienne Bordeaux diplômée, certifié"</li>
+    <li>Photo par service : Claude mappe chaque service a la photo la plus pertinente de la galerie</li>
+    <li>Mobile fix : header logo ellipsis + bouton court "Reserver" + photos services pleine largeur</li>
+    <li>H1 generique INTERDIT : exit "Estheticienne Bordeaux", place a des promesses emotionnelles SONCAS</li>
   </ul>
 </div>
 
 <main class="grid">
 
-    <a class="card" href="art-innel/" style="--accent: #C9A0A0; --accent2: #F2E4DC;">
+    <a class="card" href="art-innel/" style="--accent: #C2185B; --accent2: #F8BBD0;">
       <div class="thumb">
-        <img src="art-innel/assets/profil.jpg" alt="ESTHÉTICIENNE À BDX">
-        <div class="palette-strip">
-          <span style="background:#C9A0A0"></span>
-          <span style="background:#F2E4DC"></span>
-        </div>
+        <img src="art-innel/assets/profil.jpg" alt="ART-INNEL">
+        <div class="palette-strip"><span style="background:#C2185B"></span><span style="background:#F8BBD0"></span></div>
         
       </div>
       <div class="card-body">
         <div class="meta">
+          <span class="brand-name">ART-INNEL</span>
+        </div>
+        <h3>Des ongles qui en disent long sur vous.</h3>
+        <p class="tagline">Technique ukrainienne haut de gamme — résultat impeccable à chaque pose.</p>
+        <div class="meta2">
           <span class="handle">@art_innel</span>
           <span class="followers">1649 followers</span>
         </div>
-        <h3>L'excellence à la pointe de vos ongles</h3>
-        <p class="tagline">Technique ukrainienne haut de gamme — résultats impeccables, à chaque rendez-vous.</p>
         <div class="tags">
           <span class="tag tag-sous">onglerie</span>
-          <span class="tag tag-soncas">SONCAS Orgueil · Sympathie</span>
+          <span class="tag tag-soncas">Orgueil · Sympathie</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
@@ -144,95 +96,95 @@ footer a { color: #1E3A5F; text-decoration: none; }
 
     <a class="card" href="beaute-oks/" style="--accent: #1E3A5F; --accent2: #4A8BC2;">
       <div class="thumb">
-        <img src="beaute-oks/assets/profil.jpg" alt="Esthéticienne Bordeaux diplômée, certifié">
-        <div class="palette-strip">
-          <span style="background:#1E3A5F"></span>
-          <span style="background:#4A8BC2"></span>
-        </div>
+        <img src="beaute-oks/assets/profil.jpg" alt="Beauté OKS">
+        <div class="palette-strip"><span style="background:#1E3A5F"></span><span style="background:#4A8BC2"></span></div>
         
       </div>
       <div class="card-body">
         <div class="meta">
+          <span class="brand-name">Beauté OKS</span>
+        </div>
+        <h3>Des résultats visibles. Un protocole maîtrisé.</h3>
+        <p class="tagline">Épilation laser, soins avancés et traitements certifiés — à Bordeaux.</p>
+        <div class="meta2">
           <span class="handle">@beaute_oks</span>
           <span class="followers">891 followers</span>
         </div>
-        <h3>La technologie au service de votre peau</h3>
-        <p class="tagline">Laser Diode, IPL, DMK, Hydrafacial — des protocoles certifiés pour des résultats qui durent.</p>
         <div class="tags">
           <span class="tag tag-sous">epilation laser</span>
-          <span class="tag tag-soncas">SONCAS Securite · Nouveaute</span>
+          <span class="tag tag-soncas">Securite · Nouveaute</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="beautepureinstitut/" style="--accent: #7A9E7E; --accent2: #D4B8A0;">
+    <a class="card" href="beautepureinstitut/" style="--accent: #7A9E7E; --accent2: #E8C9A0;">
       <div class="thumb">
-        <img src="beautepureinstitut/assets/profil.jpg" alt="NELLY | ESTHÉTICIENNE BORDEAUX">
-        <div class="palette-strip">
-          <span style="background:#7A9E7E"></span>
-          <span style="background:#D4B8A0"></span>
-        </div>
+        <img src="beautepureinstitut/assets/profil.jpg" alt="Nelly">
+        <div class="palette-strip"><span style="background:#7A9E7E"></span><span style="background:#E8C9A0"></span></div>
         
       </div>
       <div class="card-body">
         <div class="meta">
+          <span class="brand-name">Nelly</span>
+        </div>
+        <h3>Prenez soin de vous, naturellement.</h3>
+        <p class="tagline">Soins visage Kobido, maquillage & beauté douce — dans un cocon rien que pour vous.</p>
+        <div class="meta2">
           <span class="handle">@beautepureinstitut</span>
           <span class="followers">593 followers</span>
         </div>
-        <h3>La beauté dans toute sa douceur</h3>
-        <p class="tagline">Soins 100 % naturels, méthode Kobido & makeup artist — un moment rien que pour vous.</p>
         <div class="tags">
           <span class="tag tag-sous">soins peau</span>
-          <span class="tag tag-soncas">SONCAS Confort · Sympathie</span>
+          <span class="tag tag-soncas">Confort · Sympathie</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="institut-beauty-bar/" style="--accent: #9B1C2E; --accent2: #E8C9CE;">
+    <a class="card" href="institut-beauty-bar/" style="--accent: #8B1A2F; --accent2: #E8C4C0;">
       <div class="thumb">
         <img src="institut-beauty-bar/assets/profil.jpg" alt="Institut Beauty Bar">
-        <div class="palette-strip">
-          <span style="background:#9B1C2E"></span>
-          <span style="background:#E8C9CE"></span>
-        </div>
+        <div class="palette-strip"><span style="background:#8B1A2F"></span><span style="background:#E8C4C0"></span></div>
         <span class="note-badge">★ 4.9/5 Google</span>
       </div>
       <div class="card-body">
         <div class="meta">
+          <span class="brand-name">Institut Beauty Bar</span>
+        </div>
+        <h3>Des mains et des cils qui vous ressemblent.</h3>
+        <p class="tagline">Onglerie, extensions de cils et soins — votre cocon beauté à Caudéran.</p>
+        <div class="meta2">
           <span class="handle">@institut_beauty_bar</span>
           <span class="followers">2077 followers</span>
         </div>
-        <h3>Vos ongles méritent le meilleur.</h3>
-        <p class="tagline">Onglerie, extensions de cils et soins – votre cocon beauté à Caudéran.</p>
         <div class="tags">
           <span class="tag tag-sous">onglerie</span>
-          <span class="tag tag-soncas">SONCAS Sympathie · Confort</span>
+          <span class="tag tag-soncas">Sympathie · Orgueil</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
     </a>
 
-    <a class="card" href="mari-estheticienne-bordeaux/" style="--accent: #8B7355; --accent2: #D4C5B0;">
+    <a class="card" href="mari-estheticienne-bordeaux/" style="--accent: #8B7355; --accent2: #D4C4A8;">
       <div class="thumb">
-        <img src="mari-estheticienne-bordeaux/assets/profil.jpg" alt="Soin & massage visage • Maquillage mariage • Bordeaux">
-        <div class="palette-strip">
-          <span style="background:#8B7355"></span>
-          <span style="background:#D4C5B0"></span>
-        </div>
+        <img src="mari-estheticienne-bordeaux/assets/profil.jpg" alt="Mari">
+        <div class="palette-strip"><span style="background:#8B7355"></span><span style="background:#D4C4A8"></span></div>
         
       </div>
       <div class="card-body">
         <div class="meta">
+          <span class="brand-name">Mari</span>
+        </div>
+        <h3>Votre peau mérite un rituel, pas une routine.</h3>
+        <p class="tagline">Soins visage avec massage manuel approfondi · Studio privé aux Chartrons, Bordeaux.</p>
+        <div class="meta2">
           <span class="handle">@mari_estheticienne_bordeaux</span>
           <span class="followers">528 followers</span>
         </div>
-        <h3>Votre peau mérite un vrai rituel.</h3>
-        <p class="tagline">Soins visage avec massage manuel approfondi — studio privé aux Chartrons, Bordeaux.</p>
         <div class="tags">
           <span class="tag tag-sous">soins peau</span>
-          <span class="tag tag-soncas">SONCAS Confort · Sympathie</span>
+          <span class="tag tag-soncas">Confort · Sympathie</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
@@ -240,23 +192,23 @@ footer a { color: #1E3A5F; text-decoration: none; }
 
     <a class="card" href="marianne-miseenbeaute/" style="--accent: #1E3A5F; --accent2: #4A8BC2;">
       <div class="thumb">
-        <img src="marianne-miseenbeaute/assets/profil.jpg" alt="Marianne | Esthéticienne | Spécialiste peau et laser | Bordeaux">
-        <div class="palette-strip">
-          <span style="background:#1E3A5F"></span>
-          <span style="background:#4A8BC2"></span>
-        </div>
+        <img src="marianne-miseenbeaute/assets/profil.jpg" alt="Marianne">
+        <div class="palette-strip"><span style="background:#1E3A5F"></span><span style="background:#4A8BC2"></span></div>
         
       </div>
       <div class="card-body">
         <div class="meta">
+          <span class="brand-name">Marianne</span>
+        </div>
+        <h3>Et si ta peau devenait enfin ta force ?</h3>
+        <p class="tagline">Spécialiste laser et soins peau à Bordeaux — fini les compromis, place aux résultats.</p>
+        <div class="meta2">
           <span class="handle">@marianne_miseenbeaute</span>
           <span class="followers">893 followers</span>
         </div>
-        <h3>Ta peau mérite enfin de te ressembler.</h3>
-        <p class="tagline">Spécialiste laser et soins visage à Mérignac — pour les peaux qui ont tout essayé.</p>
         <div class="tags">
           <span class="tag tag-sous">epilation laser</span>
-          <span class="tag tag-soncas">SONCAS Securite · Confort</span>
+          <span class="tag tag-soncas">Securite · Nouveaute</span>
         </div>
         <span class="cta">Ouvrir le site →</span>
       </div>
@@ -264,10 +216,7 @@ footer a { color: #1E3A5F; text-decoration: none; }
 
 </main>
 
-<footer>
-  Code source : <a href="https://github.com/robindevoucoux1-cmyk/cs50-harvard-/tree/claude/lead-finder-tool-YijRs">github.com/robindevoucoux1-cmyk/cs50-harvard-</a>
-  &nbsp;·&nbsp; Apify + Claude Vision + Claude Sonnet 4.6 + Playwright + Jinja2
-</footer>
+<footer>Code source : <a href="https://github.com/robindevoucoux1-cmyk/cs50-harvard-/tree/claude/lead-finder-tool-YijRs">github.com/robindevoucoux1-cmyk/cs50-harvard-</a></footer>
 
 </body>
 </html>

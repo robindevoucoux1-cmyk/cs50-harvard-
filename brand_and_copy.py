@@ -216,13 +216,48 @@ REGLES POUR LE TON DE LA COPY :
 - ATTENTION ORTHOGRAPHE : francais impeccable. Verifie les accents (e/e/e),
   les accords sujet-verbe, les apostrophes typographiques ('). Pas de fautes.
 
-REGLES POUR LE NOM COMMERCIAL :
-- Le "nom_commercial" a afficher dans le header et footer est EXACTEMENT
-  le fullName Insta de la marque (donne dans le contexte). Ne le reformule
-  PAS, ne le remplace PAS par un titre metier generique (ex : NE JAMAIS mettre
-  "Prothesiste Ongulaire Bordeaux" si le fullName est "Beauty Bar Caudéran").
-- Si le fullName Insta contient des emojis ou symboles bizarres, retire-les
-  mais garde les mots.
+REGLES POUR LE NOM COMMERCIAL (CRITIQUE) :
+- Ce nom est affiche partout (logo header, footer, SEO title). Il DOIT etre
+  un vrai nom de marque court, pas un titre de profil descriptif.
+- Logique d'extraction depuis le fullName Insta :
+  1. Si le fullName contient un VRAI prenom (Marianne, Nelly, Claire...) avec
+     ou sans separateur, utilise juste le prenom (ou prenom + nom court de
+     salon s'il y en a un). Ex : "Marianne | Esthéticienne | Spécialiste peau"
+     -> nom_commercial = "Marianne".
+  2. Si le fullName est un nom de salon clair (Beauty Bar Caudéran,
+     Institut Beauty Pure, ART-INNEL, La Maison de Sophie), utilise-le tel
+     quel (debarrasse des "•","|","🇫🇷" etc).
+  3. Si le fullName est juste une description metier ("Esthéticienne
+     Bordeaux diplômée, certifié", "Prothésiste ongulaire", "Coach mental")
+     SANS nom propre, alors invente un nom propre court a partir du handle
+     Instagram, en le rendant elegant :
+       @beaute_oks -> "Beauté OKS"
+       @marianne_miseenbeaute -> "Marianne Mise en Beauté"
+       @institut_zen_33 -> "Institut Zen"
+     Garde 1-3 mots max, capitalisation propre.
+  4. Le nom_commercial NE DOIT JAMAIS contenir :
+     - Des mots metier generiques (Esthéticienne, Prothésiste, Coach) SAUF
+       s'ils font partie d'un vrai nom de salon ("Institut Beauty Pure" OK).
+     - Des virgules ou enumerations ("Diplomee, certifie" = INTERDIT).
+     - Des emojis, separateurs |, •, /, -.
+     - Plus de 4 mots.
+- Le H1 (titre principal hero) NE DOIT JAMAIS etre un titre metier generique.
+  INTERDIT : "Estheticienne Bordeaux", "Prothesiste Ongulaire", "Coach
+  Sportif", "Sophrologue Diplomee". Le H1 doit etre une promesse client
+  emotionnelle teintee SONCAS.
+
+REGLES POUR LES PHOTOS DE SERVICES (NOUVEAU) :
+- Chaque service DOIT etre associe a la photo de la galerie la plus
+  pertinente visuellement. Tu vois les descriptions de chaque photo dans
+  l'ordre_galerie.
+- Pour CHAQUE service tu fournis dans le champ "photo_index" : l'index 0-based
+  de la photo dans ordre_galerie (0 = 1ere photo, 1 = 2eme, etc.).
+- Une photo peut servir plusieurs services (si elle correspond), mais
+  privilegie la diversite si possible.
+- Si aucune photo ne colle, mets photo_index: 0 (par defaut).
+- Exemples : service "Manucure" -> photo decrite comme "manucure rouge gros plan",
+  service "Extensions cils" -> photo "extensions cils close-up", service
+  "Epilation laser" -> photo "seance laser cabine", etc.
 
 FORMAT DE REPONSE : JSON STRICT, rien autour, rien dans des balises ``` :
 {{
@@ -253,7 +288,7 @@ FORMAT DE REPONSE : JSON STRICT, rien autour, rien dans des balises ``` :
     "about_texte": "3-4 phrases (200-400 char) qui presentent la marque, dans le ton + SONCAS",
     "services_titre": "Titre de la section services",
     "services": [
-      {{"nom": "Nom court du service", "description": "1 phrase descriptive teintee SONCAS", "prix": "ex: A partir de 35 EUR ou ''", "duree": "ex: 1h ou ''"}}
+      {{"nom": "Nom court du service", "description": "1 phrase descriptive teintee SONCAS", "prix": "ex: A partir de 35 EUR ou ''", "duree": "ex: 1h ou ''", "photo_index": 0}}
     ],
     "raisons_titre": "Titre de la section pourquoi me choisir (ex: 'Pourquoi choisir le Beauty Bar ?')",
     "raisons": [

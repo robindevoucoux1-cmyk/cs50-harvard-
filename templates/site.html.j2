@@ -33,6 +33,7 @@ body {
   background: var(--neutre-clair);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -47,18 +48,32 @@ p { font-size: 1.05rem; }
 header.nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-  padding: 14px 24px; border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 header.nav .inner {
   max-width: var(--max-content); margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
 }
-header.nav .logo { font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire); }
+header.nav .logo {
+  font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0; flex: 1 1 auto;
+}
+header.nav nav { flex: 0 0 auto; }
 header.nav nav a { margin-left: 28px; font-size: 0.95rem; opacity: 0.8; transition: opacity .2s; }
 header.nav nav a:hover { opacity: 1; }
-header.nav .btn-reserve { margin-left: 32px; }
-@media (max-width: 720px) {
+header.nav .btn-reserve { margin-left: 12px; flex: 0 0 auto; white-space: nowrap; padding: 10px 18px; font-size: 0.88rem; }
+@media (max-width: 860px) {
   header.nav nav { display: none; }
+}
+.btn-reserve .cta-short { display: none; }
+@media (max-width: 480px) {
+  header.nav { padding: 12px 14px; }
+  header.nav .logo { font-size: 1.05rem; max-width: 55vw; }
+  header.nav .btn-reserve { padding: 8px 14px; font-size: 0.82rem; }
+  .btn-reserve .cta-full { display: none; }
+  .btn-reserve .cta-short { display: inline; }
 }
 
 /* Bouton */
@@ -68,6 +83,7 @@ header.nav .btn-reserve { margin-left: 32px; }
   border: none; border-radius: var(--rayon);
   font-family: var(--font-texte); font-weight: 500; font-size: 0.95rem;
   letter-spacing: 0.02em; cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
+  white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 .btn-outline { background: transparent; color: var(--primaire); border: 1.5px solid var(--primaire); }
@@ -328,7 +344,7 @@ footer.footer .copy {
       <a href="#galerie">Galerie</a>
       <a href="#contact">Contact</a>
     </nav>
-    {% if booking_url %}<a href="{{ booking_url }}" target="_blank" rel="noopener" class="btn btn-reserve">{{ copy.cta_principal }}</a>{% endif %}
+    {% if booking_url %}<a href="{{ booking_url }}" target="_blank" rel="noopener" class="btn btn-reserve"><span class="cta-full">{{ copy.cta_principal }}</span><span class="cta-short">Réserver</span></a>{% endif %}
   </div>
 </header>
 
@@ -363,9 +379,9 @@ footer.footer .copy {
       <p class="intro">{{ brand.argument_unique }}</p>
     </div>
     {% for s in copy.services %}
+    {% set photo_idx = s.photo_index if s.photo_index is defined and s.photo_index < galerie|length else (loop.index0 % galerie|length) %}
     <div class="item {% if loop.index is even %}reverse{% endif %} reveal">
       <div class="photo">
-        {% set photo_idx = (loop.index0 % galerie|length) %}
         <img src="assets/{{ galerie[photo_idx].fichier_local }}" alt="{{ s.nom }}" loading="lazy">
         <span class="num-overlay">0{{ loop.index }}</span>
       </div>

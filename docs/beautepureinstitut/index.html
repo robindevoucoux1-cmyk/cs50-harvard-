@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NELLY Esthéticienne Bordeaux | Soins naturels Kobido</title>
-<meta name="description" content="Esthéticienne à Bordeaux, Nelly vous accueille dans un cocon chaleureux pour des soins 100 % naturels, la méthode Kobido, la manucure et le maquillage.">
-<meta property="og:title" content="NELLY Esthéticienne Bordeaux | Soins naturels Kobido">
-<meta property="og:description" content="Esthéticienne à Bordeaux, Nelly vous accueille dans un cocon chaleureux pour des soins 100 % naturels, la méthode Kobido, la manucure et le maquillage.">
+<title>Nelly – Soins naturels &amp; Kobido à Bordeaux</title>
+<meta name="description" content="Soins visage Kobido 100 % naturels, maquillage et manucure dans un cocon chaleureux près de Bordeaux. Prenez soin de vous avec Nelly, esthéticienne à l&#39;écoute.">
+<meta property="og:title" content="Nelly – Soins naturels &amp; Kobido à Bordeaux">
+<meta property="og:description" content="Soins visage Kobido 100 % naturels, maquillage et manucure dans un cocon chaleureux près de Bordeaux. Prenez soin de vous avec Nelly, esthéticienne à l&#39;écoute.">
 <meta property="og:type" content="business.business">
 <meta property="og:image" content="assets/post_002.jpg">
 <link rel="icon" href="assets/profil.jpg">
@@ -16,9 +16,9 @@
 <style>
 :root {
   --primaire: #7A9E7E;
-  --secondaire: #D4B8A0;
-  --neutre-fonce: #2C2C2C;
-  --neutre-clair: #F7F3EE;
+  --secondaire: #E8C9A0;
+  --neutre-fonce: #3A3530;
+  --neutre-clair: #FAF6F1;
   --blanc: #ffffff;
   --font-titre: "Cormorant Garamond", serif;
   --font-texte: "Inter", sans-serif;
@@ -33,6 +33,7 @@ body {
   background: var(--neutre-clair);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -47,18 +48,32 @@ p { font-size: 1.05rem; }
 header.nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-  padding: 14px 24px; border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 header.nav .inner {
   max-width: var(--max-content); margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
 }
-header.nav .logo { font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire); }
+header.nav .logo {
+  font-family: var(--font-titre); font-size: 1.25rem; font-weight: 600; color: var(--primaire);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0; flex: 1 1 auto;
+}
+header.nav nav { flex: 0 0 auto; }
 header.nav nav a { margin-left: 28px; font-size: 0.95rem; opacity: 0.8; transition: opacity .2s; }
 header.nav nav a:hover { opacity: 1; }
-header.nav .btn-reserve { margin-left: 32px; }
-@media (max-width: 720px) {
+header.nav .btn-reserve { margin-left: 12px; flex: 0 0 auto; white-space: nowrap; padding: 10px 18px; font-size: 0.88rem; }
+@media (max-width: 860px) {
   header.nav nav { display: none; }
+}
+.btn-reserve .cta-short { display: none; }
+@media (max-width: 480px) {
+  header.nav { padding: 12px 14px; }
+  header.nav .logo { font-size: 1.05rem; max-width: 55vw; }
+  header.nav .btn-reserve { padding: 8px 14px; font-size: 0.82rem; }
+  .btn-reserve .cta-full { display: none; }
+  .btn-reserve .cta-short { display: inline; }
 }
 
 /* Bouton */
@@ -68,6 +83,7 @@ header.nav .btn-reserve { margin-left: 32px; }
   border: none; border-radius: var(--rayon);
   font-family: var(--font-texte); font-weight: 500; font-size: 0.95rem;
   letter-spacing: 0.02em; cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
+  white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 .btn-outline { background: transparent; color: var(--primaire); border: 1.5px solid var(--primaire); }
@@ -321,26 +337,26 @@ footer.footer .copy {
 
 <header class="nav">
   <div class="inner">
-    <a href="#" class="logo">NELLY | ESTHÉTICIENNE BORDEAUX</a>
+    <a href="#" class="logo">Nelly</a>
     <nav>
       <a href="#about">À propos</a>
       <a href="#services">Prestations</a>
       <a href="#galerie">Galerie</a>
       <a href="#contact">Contact</a>
     </nav>
-<a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn btn-reserve">Réserver mon soin</a>  </div>
+<a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn btn-reserve"><span class="cta-full">Réserver mon soin</span><span class="cta-short">Réserver</span></a>  </div>
 </header>
 
 <section class="hero">
   <div class="h1-block reveal">
-    <h1>La beauté dans toute sa douceur</h1>
-    <p class="tagline">Soins 100 % naturels, méthode Kobido &amp; makeup artist — un moment rien que pour vous.</p>
+    <h1>Prenez soin de vous, naturellement.</h1>
+    <p class="tagline">Soins visage Kobido, maquillage &amp; beauté douce — dans un cocon rien que pour vous.</p>
     <div class="ctas">
 <a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn">Réserver mon soin</a>      <a href="#services" class="btn btn-outline">Découvrir les prestations</a>
     </div>
   </div>
   <div class="img-wrap reveal">
-    <img src="assets/post_002.jpg" alt="NELLY | ESTHÉTICIENNE BORDEAUX" loading="eager">
+    <img src="assets/post_002.jpg" alt="Nelly" loading="eager">
   </div>
 </section>
 
@@ -349,7 +365,7 @@ footer.footer .copy {
 <img src="assets/post_011.jpg" alt="Bienvenue chez Nelly" loading="lazy">  </div>
   <div class="reveal">
     <h2>Bienvenue chez Nelly</h2>
-    <p class="lead">Ici, tout est pensé pour que vous vous sentiez bien : un lieu simple, lumineux et chaleureux où la beauté s&#39;exprime en douceur. Passionnée par les soins naturels et la méthode Kobido, je vous accompagne avec des protocoles respectueux de votre peau et de votre bien-être. Un instant à vous, loin du quotidien.</p>
+    <p class="lead">Ici, tout est pensé pour que vous vous sentiez bien dès le premier instant. Dans un espace simple et chaleureux, je vous propose des soins 100 % naturels et la méthode Kobido pour prendre soin de votre peau en profondeur. Chaque séance est un moment à vous, loin de l&#39;agitation du quotidien.</p>
   </div>
 </section>
 
@@ -357,69 +373,69 @@ footer.footer .copy {
   <div class="container">
     <div class="header reveal">
       <h2>Mes prestations</h2>
-      <p class="intro">Un cocon chaleureux à Bordeaux où la beauté rime avec douceur, grâce à des soins 100 % naturels et une méthode Kobido d&#39;exception.</p>
+      <p class="intro">Un cocon chaleureux où chaque soin naturel Kobido devient un véritable rituel de bien-être pensé pour vous.</p>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_002.jpg" alt="Soin visage Kobido" loading="lazy">
+        <img src="assets/post_001.jpg" alt="Soin visage Kobido" loading="lazy">
         <span class="num-overlay">01</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 1</span>
         <h3>Soin visage Kobido</h3>
-        <p class="desc">Massage ancestral japonais aux effets liftants naturels, pour une peau lumineuse et détendue.</p>
+        <p class="desc">Un massage japonais ancestral qui redonne éclat et tonus au visage, avec des produits 100 % naturels.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_011.jpg" alt="Soin visage naturel" loading="lazy">
+        <img src="assets/post_010.jpg" alt="Soin du visage personnalisé" loading="lazy">
         <span class="num-overlay">02</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 2</span>
-        <h3>Soin visage naturel</h3>
-        <p class="desc">Un rituel doux et apaisant, formulé avec des actifs 100 % naturels adaptés à votre type de peau.</p>
+        <h3>Soin du visage personnalisé</h3>
+        <p class="desc">Un rituel sur mesure adapté à votre peau pour un résultat doux, durable et naturellement beau.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_012.jpg" alt="Manucure &amp; nail art" loading="lazy">
+        <img src="assets/post_007.jpg" alt="Maquillage &amp; Makeup Artist" loading="lazy">
         <span class="num-overlay">03</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 3</span>
-        <h3>Manucure &amp; nail art</h3>
-        <p class="desc">Pose soignée et finitions précises, du nude élégant au nail art personnalisé selon vos envies.</p>
+        <h3>Maquillage &amp; Makeup Artist</h3>
+        <p class="desc">Un maquillage professionnel qui sublime vos traits pour toutes vos occasions spéciales ou quotidiennes.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item reverse reveal">
       <div class="photo">
-        <img src="assets/post_006.jpg" alt="Maquillage &amp; makeup artist" loading="lazy">
+        <img src="assets/post_011.jpg" alt="Manucure &amp; Nail Art" loading="lazy">
         <span class="num-overlay">04</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 4</span>
-        <h3>Maquillage &amp; makeup artist</h3>
-        <p class="desc">Un maquillage sublimé et sur mesure pour chaque occasion, réalisé avec soin et expertise.</p>
+        <h3>Manucure &amp; Nail Art</h3>
+        <p class="desc">Des mains soignées et des créations onglées délicates, du nude élégant aux détails artistiques.</p>
         <div class="meta">
         </div>
       </div>
     </div>
     <div class="item  reveal">
       <div class="photo">
-        <img src="assets/post_001.jpg" alt="Épilation &amp; soins du corps" loading="lazy">
+        <img src="assets/post_006.jpg" alt="Moment détente &amp; bien-être" loading="lazy">
         <span class="num-overlay">05</span>
       </div>
       <div class="content">
         <span class="eyebrow">Prestation 5</span>
-        <h3>Épilation &amp; soins du corps</h3>
-        <p class="desc">Des soins doux et efficaces pour prendre soin de vous de la tête aux pieds, en toute sérénité.</p>
+        <h3>Moment détente &amp; bien-être</h3>
+        <p class="desc">Un espace calme et lumineux pour souffler, se ressourcer et repartir légère après chaque visite.</p>
         <div class="meta">
         </div>
       </div>
@@ -433,18 +449,18 @@ footer.footer .copy {
     <div class="grid">
       <div class="item reveal">
         <div class="num-grand">01</div>
-        <h3>Des soins vraiment naturels</h3>
-        <p>Chaque produit et protocole est choisi pour sa composition saine, parce que votre peau mérite ce qu&#39;il y a de meilleur.</p>
+        <h3>100 % naturel, sans compromis</h3>
+        <p>Tous les soins sont réalisés avec des produits naturels soigneusement sélectionnés, respectueux de votre peau et de votre santé.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">02</div>
-        <h3>Un accueil qui fait la différence</h3>
-        <p>Dès que vous franchissez la porte, vous êtes reçue dans un espace calme et bienveillant, pensé pour que vous vous sentiez immédiatement à l&#39;aise.</p>
+        <h3>Un accueil sincèrement chaleureux</h3>
+        <p>À Bordeaux, vous trouverez ici un lieu à taille humaine où l&#39;écoute et la bienveillance guident chaque séance.</p>
       </div>
       <div class="item reveal">
         <div class="num-grand">03</div>
         <h3>La méthode Kobido, une expertise rare</h3>
-        <p>Technique de massage facial japonais à la fois relaxante et remodelante, le Kobido est une approche d&#39;exception que peu de professionnelles maîtrisent à Bordeaux.</p>
+        <p>Technique de massage japonais du visage, le Kobido est pratiqué avec soin pour un résultat visible et un vrai moment de lâcher-prise.</p>
       </div>
     </div>
   </div>
@@ -452,7 +468,7 @@ footer.footer .copy {
 
 <section id="galerie" class="galerie">
   <div class="container">
-    <h2 class="reveal">Mes réalisations</h2>
+    <h2 class="reveal">L&#39;univers Beauté Pure</h2>
     <p class="intro reveal">Quelques realisations recentes</p>
     <div class="grid">
       <div class="photo reveal" onclick="ouvreLightbox('assets/post_002.jpg')">
@@ -489,14 +505,14 @@ footer.footer .copy {
 
 <section id="contact" class="cta-banner">
   <h2 class="reveal">Prêt à prendre soin de vous ?</h2>
-  <p class="reveal">Un cocon chaleureux à Bordeaux où la beauté rime avec douceur, grâce à des soins 100 % naturels et une méthode Kobido d&#39;exception.</p>
+  <p class="reveal">Un cocon chaleureux où chaque soin naturel Kobido devient un véritable rituel de bien-être pensé pour vous.</p>
 <a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener" class="btn reveal">Réserver mon soin</a></section>
 
 <footer class="footer">
   <div class="container">
     <div>
-      <div class="brand-name">NELLY | ESTHÉTICIENNE BORDEAUX</div>
-      <p class="brand-tagline">Beauté &amp; douceur, 100 % naturelles — Nelly, esthéticienne à Bordeaux.</p>
+      <div class="brand-name">Nelly</div>
+      <p class="brand-tagline">Beauté douce &amp; soins naturels — parce que vous le méritez vraiment.</p>
     </div>
     <div>
       <h4>Navigation</h4>
@@ -508,7 +524,7 @@ footer.footer .copy {
       <h4>Suivez-nous</h4>
       <a href="https://www.instagram.com/beautepureinstitut/" target="_blank" rel="noopener">Instagram (@beautepureinstitut)</a>
 <a href="https://www.planity.com/beaute-pure-33750-saint-quentin-de-baron" target="_blank" rel="noopener">Reserver en ligne</a>    </div>
-    <div class="copy">© 2026 NELLY | ESTHÉTICIENNE BORDEAUX — Site genere automatiquement</div>
+    <div class="copy">© 2026 Nelly — Site genere automatiquement</div>
   </div>
 </footer>
 
