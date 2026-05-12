@@ -30,3 +30,18 @@
 .chat-msg .patch-preview { font-family: monospace; font-size: 11px; background: #1A1A1D; color: #FAFAF7; padding: 8px; border-radius: 4px; margin-top: 8px; max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
 .chat-msg button { font-size: 11px; padding: 4px 10px; border-radius: 999px; margin-top: 6px; margin-right: 6px; cursor: pointer; border: 1px solid #999; background: white; }
 .chat-msg button.primary { background: #8B3556; color: white; border-color: #8B3556; }
+
+/* Sites grid (HOME) */
+.site-grid-card { display: flex; flex-direction: column; gap: 12px; padding: 18px; background: white; border: 1px solid #E5E3D9; border-radius: 10px; cursor: pointer; transition: all 0.18s; min-height: 140px; }
+.site-grid-card:hover { border-color: #8B3556; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
+.site-grid-card.active { border-color: #8B3556; border-width: 2px; padding: 17px; }
+.site-grid-name { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 400; color: #1A1A1D; line-height: 1.2; margin-bottom: 4px; }
+.site-grid-meta { font-size: 12px; color: #777; letter-spacing: 0.04em; }
+.site-grid-theme { font-size: 11px; color: #999; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
+.site-grid-actions { display: flex; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid #F2F1EB; }
+.site-grid-actions button { padding: 6px 12px; font-size: 12px; border-radius: 999px; cursor: pointer; transition: all 0.15s; }
+.site-grid-actions .action-open { flex: 1; background: #1A1A1D; color: white; border: 1px solid #1A1A1D; }
+.site-grid-actions .action-open:hover { background: #8B3556; border-color: #8B3556; }
+.site-grid-actions .action-deploy { background: white; border: 1px solid #E5E3D9; }
+.site-grid-actions .action-deploy:hover { border-color: #8B3556; }
+.site-grid-actions button:disabled { opacity: 0.6; cursor: wait; }

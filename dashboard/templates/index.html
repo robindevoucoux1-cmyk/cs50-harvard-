@@ -28,10 +28,7 @@
   <div class="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
     <div class="flex items-center gap-3">
       <span class="font-display text-2xl tracking-tight">Vitriz <em class="text-accent not-italic font-light">Dashboard</em></span>
-    </div>
-    <div class="flex items-center gap-3 flex-1 max-w-md mx-auto">
-      <label class="text-xs uppercase tracking-widest text-ink-600 whitespace-nowrap">Site actif</label>
-      <select id="site-picker" class="flex-1 px-3 py-2 text-sm border border-paper-300 rounded bg-white focus:outline-none focus:border-accent"></select>
+      <span id="current-site-label" class="ml-3 text-sm text-ink-600 hidden">— <span id="current-site-name" class="font-medium text-ink-900"></span></span>
     </div>
     <div class="flex items-center gap-4 text-sm">
       <span id="status" class="text-ink-600">Pret</span>
@@ -46,7 +43,8 @@
   <section class="space-y-4 min-w-0">
     <!-- Tabs -->
     <div class="flex items-center gap-1 border-b border-paper-300">
-      <button data-tab="prospect" class="tab-btn px-4 py-2 text-sm border-b-2 border-accent text-ink-900 font-medium">🔍 Prospection</button>
+      <button data-tab="sites" class="tab-btn px-4 py-2 text-sm border-b-2 border-accent text-ink-900 font-medium">📁 Sites</button>
+      <button data-tab="prospect" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">🔍 Prospection</button>
       <button data-tab="preview" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Aperçu</button>
       <button data-tab="edit" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Édition</button>
       <button data-tab="theme" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Thème</button>
@@ -58,8 +56,19 @@
       </div>
     </div>
 
+    <!-- Tab : Sites (HOME) -->
+    <div data-panel="sites" class="tab-panel space-y-4">
+      <div class="section-card">
+        <div class="flex items-center justify-between mb-4">
+          <h3 style="margin: 0;">Tous les sites</h3>
+          <input type="search" id="sites-filter-grid" placeholder="Filtrer..." class="text-sm px-3 py-1.5 border border-paper-300 rounded focus:outline-none focus:border-accent">
+        </div>
+        <div id="sites-grid" class="grid grid-cols-3 gap-4"></div>
+      </div>
+    </div>
+
     <!-- Tab : Prospection -->
-    <div data-panel="prospect" class="tab-panel space-y-4">
+    <div data-panel="prospect" class="tab-panel hidden space-y-4">
       <div class="section-card">
         <h3>Rechercher des prospects</h3>
         <form id="search-form" class="grid grid-cols-4 gap-3 items-end">

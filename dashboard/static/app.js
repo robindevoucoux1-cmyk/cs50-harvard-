@@ -40,33 +40,82 @@ async function loadSites() {
 }
 
 function renderSitesList() {
-  // Sidebar list (legacy, may not exist after refonte)
-  const list = $('#sites-list');
-  if (list) {
-    list.innerHTML = '';
-    for (const s of state.sites) {
-      const el = document.createElement('div');
-      el.className = 'site-item' + (s.slug === state.currentSlug ? ' active' : '');
-      el.innerHTML = `<span class="site-name">${s.name}</span><span class="site-meta">${s.city || s.theme}</span>`;
-      el.onclick = () => selectSite(s.slug);
-      list.appendChild(el);
+  renderSitesGrid();
+  // Met a jour le label du site actif dans le header
+  const lbl = $('#current-site-label');
+  const name = $('#current-site-name');
+  const current = state.sites.find(s => s.slug === state.currentSlug);
+  if (lbl && name) {
+    if (current) {
+      lbl.classList.remove('hidden');
+      name.textContent = current.name;
+    } else {
+      lbl.classList.add('hidden');
     }
   }
-  // Header picker
-  const picker = $('#site-picker');
-  if (picker) {
-    const cur = picker.value;
-    picker.innerHTML = '';
-    for (const s of state.sites) {
-      const opt = document.createElement('option');
-      opt.value = s.slug;
-      opt.textContent = `${s.name} — ${s.city || s.theme}`;
-      if (s.slug === state.currentSlug) opt.selected = true;
-      picker.appendChild(opt);
-    }
-    picker.value = state.currentSlug || (state.sites[0] && state.sites[0].slug) || '';
-    picker.onchange = () => selectSite(picker.value);
+}
+
+function renderSitesGrid() {
+  const grid = $('#sites-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (!state.sites.length) {
+    grid.innerHTML = '<div class="col-span-3 text-center py-8 text-ink-600 text-sm">Aucun site encore. Va dans l\'onglet 🔍 Prospection pour en créer.</div>';
+    return;
   }
+  for (const s of state.sites) {
+    const card = document.createElement('div');
+    card.className = 'site-grid-card' + (s.slug === state.currentSlug ? ' active' : '');
+    card.dataset.slug = s.slug;
+    card.dataset.name = (s.name || '').toLowerCase();
+    card.dataset.city = (s.city || '').toLowerCase();
+    card.innerHTML = `
+      <div class="grow">
+        <div class="site-grid-name">${escapeHtml(s.name)}</div>
+        <div class="site-grid-meta">${escapeHtml(s.city || '')}</div>
+        <div class="site-grid-theme">Theme : ${escapeHtml(s.theme || '')}</div>
+      </div>
+      <div class="site-grid-actions">
+        <button class="action-open">Ouvrir →</button>
+        <button class="action-deploy" title="Deployer sur Netlify">🚀</button>
+      </div>
+    `;
+    card.querySelector('.action-open').onclick = (e) => {
+      e.stopPropagation();
+      selectSite(s.slug);
+      // Bascule sur Apercu
+      document.querySelector('.tab-btn[data-tab="preview"]')?.click();
+    };
+    card.querySelector('.action-deploy').onclick = async (e) => {
+      e.stopPropagation();
+      if (!confirm(`Deployer "${s.name}" sur Netlify ?`)) return;
+      const btn = e.currentTarget;
+      btn.disabled = true;
+      btn.textContent = '⏳';
+      try {
+        const resp = await api(`/api/sites/${s.slug}/deploy`, { method: 'POST' });
+        btn.textContent = '✓';
+        window.open(resp.url, '_blank');
+      } catch (err) {
+        btn.textContent = '✗';
+        alert('Erreur : ' + err.message);
+      }
+    };
+    card.onclick = () => selectSite(s.slug);
+    grid.appendChild(card);
+  }
+}
+
+// Filtre de l'onglet Sites
+const filterInput = $('#sites-filter-grid');
+if (filterInput) {
+  filterInput.oninput = (e) => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('.site-grid-card').forEach(el => {
+      const match = (el.dataset.name || '').includes(q) || (el.dataset.city || '').includes(q);
+      el.style.display = match ? '' : 'none';
+    });
+  };
 }
 
 // --- LOAD A SITE ---
