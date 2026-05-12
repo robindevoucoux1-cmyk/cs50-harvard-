@@ -1,0 +1,130 @@
+{
+  "slug": "beaute-oks",
+  "theme": "esthetique-rose",
+  "brand": {
+    "name": "Beauté Oks",
+    "name_html": "Beauté <em>Oks</em>",
+    "title": "Beauté Oks, médecine esthétique à Talence (Bordeaux)",
+    "meta_description": "Cabinet de médecine esthétique à Talence : épilation laser DIODE, peelings PRX-T33 et BioRePeel, protocoles DMK et Hydrafacial. Sur rendez-vous.",
+    "og_title": "Beauté Oks, médecine esthétique à Talence",
+    "og_description": "Des protocoles, pas des promesses. Cabinet à Talence, sur rendez-vous.",
+    "og_image": "assets/post_005.jpg",
+    "favicon": "assets/profil.jpg",
+    "footer_description": "Cabinet d'esthétique. Soins du visage, maquillage permanent. Talence, Bordeaux Métropole.",
+    "copyright_name": "Beauté Oks"
+  },
+  "nav": [
+    {"label": "Approche", "href": "#approche"},
+    {"label": "Protocoles", "href": "#protocoles"},
+    {"label": "Questions", "href": "#questions"},
+    {"label": "Contact", "href": "#contact"}
+  ],
+  "cta_primary": {
+    "label_long": "Prendre rendez-vous",
+    "label_short": "Réserver",
+    "url": "https://www.planity.com/beaute-oks-33400-talence"
+  },
+  "hero": {
+    "eyebrow_num": "01",
+    "eyebrow_text": "Médecine esthétique, Talence",
+    "h1_html": "Des protocoles,<br><em class=\"acc\">pas des promesses.</em>",
+    "tagline": "Cabinet d'esthétique à Talence. Soins du visage DMK, maquillage permanent, peeling BioRePeel. Réservation en ligne sur Planity.",
+    "ctas": [
+      {"label": "Réserver sur Planity", "url": "https://www.planity.com/beaute-oks-33400-talence", "style": "primary", "external": true},
+      {"label": "Voir les soins", "url": "#protocoles", "style": "light"}
+    ],
+    "image": {
+      "src": "assets/post_008.jpg",
+      "alt": "La praticienne dans son cabinet à Talence",
+      "caption": "Au cabinet, Talence"
+    }
+  },
+  "marquee": {
+    "tags": ["DMK Enzyme", "BioRePeel", "Massage facial", "Lèvres Aquarelle", "Eye-liner", "Magic Shading"]
+  },
+  "about": {
+    "id": "approche",
+    "eyebrow_num": "02",
+    "eyebrow_text": "Approche",
+    "h2_html": "Le bon protocole.<br>Pas un de plus.",
+    "signature": "Une praticienne, deux convictions, six protocoles.",
+    "paragraphs": [
+      "Cabinet d'esthétique à Talence, dans la métropole bordelaise. Je reçois sur rendez‑vous, au 25 rue Gérard Blot.",
+      "Trois familles de soins : <strong>visage</strong> (DMK Enzyme, peelings nouvelle génération, massage facial), <strong>maquillage permanent</strong> (lèvres aquarelle, eye‑liner, sourcils Magic Shading) et <strong>regard</strong> (teinture des cils).",
+      "Le choix du soin dépend de votre peau et de l'objectif. Nous le fixons ensemble lors du premier rendez‑vous."
+    ]
+  },
+  "services": {
+    "id": "protocoles",
+    "eyebrow_num": "03",
+    "eyebrow_text": "Les protocoles",
+    "h2_html": "Huit soins,<br>trois familles.",
+    "intro": "Visage, maquillage permanent, regard. Tous les soins sont réservables en ligne sur Planity. Le bilan reste la première étape pour les soins du visage.",
+    "families": [
+      {
+        "name": "Visage",
+        "items": [
+          {"num": "01", "nom": "Nettoyage du visage profond DMK <em>Enzyme</em>", "note": "Soin signature DMK Enzyme. Travail en profondeur sur les pores, l'éclat et le grain de peau.", "duree": "", "prix": "130 €"},
+          {"num": "02", "nom": "Traitement anti‑âge DMK <em>Enzyme</em> + peeling", "note": "Le DMK Enzyme combiné à un peeling. Fermeté, lissé, éclat retrouvé.", "duree": "", "prix": "180 €"},
+          {"num": "03", "nom": "Peeling BioRePeel <em>CI3</em>", "note": "Peeling nouvelle génération, sans desquamation visible. Peau lissée dès la première séance.", "duree": "", "prix": "80 €"},
+          {"num": "04", "nom": "Massage facial + masque d'alginate", "note": "Modelage drainant suivi d'un masque alginate effet liftant et hydratant.", "duree": "", "prix": "50 €"}
+        ]
+      },
+      {
+        "name": "Maquillage permanent",
+        "items": [
+          {"num": "05", "nom": "Maquillage permanent <em>Lèvres Aquarelle</em>", "note": "Technique aquarelle pour redessiner le contour, raviver la couleur, naturellement.", "duree": "", "prix": "300 €"},
+          {"num": "06", "nom": "Maquillage permanent <em>Eye‑liner</em>", "note": "Trait classique tracé à la main. Précision, intensité, tenue dans le temps.", "duree": "", "prix": "150 €"},
+          {"num": "07", "nom": "Maquillage permanent <em>Sourcils Magic Shading</em>", "note": "Effet ombré naturel, comme un sourcil maquillé. Résultat doux et structuré.", "duree": "", "prix": "50 €"}
+        ]
+      },
+      {
+        "name": "Regard",
+        "items": [
+          {"num": "08", "nom": "Teinture des cils", "note": "Pigmentation des cils. Regard plus intense, sans mascara.", "duree": "", "prix": "10 €"}
+        ]
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow_num": "04",
+    "eyebrow_text": "Sur Planity",
+    "score": "4,8",
+    "max": "5",
+    "label": "Note moyenne sur 46 avis Planity",
+    "link_label": "Lire les avis sur Planity",
+    "link_url": "https://www.planity.com/beaute-oks-33400-talence"
+  },
+  "faq": {
+    "id": "questions",
+    "eyebrow_num": "05",
+    "eyebrow_text": "Questions",
+    "h2_html": "Les questions<br>qui reviennent.",
+    "items": [
+      {"q": "Comment réserver une séance ?", "a": "Tous les soins se réservent en ligne sur Planity. Vous pouvez aussi appeler le cabinet au 06 15 28 65 21."},
+      {"q": "Comment se passe un premier soin du visage ?", "a": "Le premier rendez‑vous commence par un échange. Nous analysons votre peau, vos antécédents et l'objectif. Le soin adapté (DMK Enzyme, peeling BioRePeel ou massage facial) est défini à partir de là."},
+      {"q": "Le maquillage permanent dure combien de temps ?", "a": "La tenue varie selon la peau et la technique. Une retouche est généralement prévue entre douze et trente mois. Le détail vous est précisé lors du rendez‑vous."},
+      {"q": "Faut-il prévoir un soin préparatoire ?", "a": "Pour les peelings et le maquillage permanent, des consignes vous sont transmises en amont (exposition au soleil, produits à éviter). Tout est précisé lors de la réservation."},
+      {"q": "Comment venir au cabinet ?", "a": "Le cabinet se situe au 25 rue Gérard Blot à Talence, accessible en tram T1, en voiture (parking dans la rue) et à pied depuis le centre de Talence."}
+    ]
+  },
+  "contact": {
+    "id": "contact",
+    "eyebrow_num": "06",
+    "eyebrow_text": "Contact",
+    "h2_html": "Prendre rendez-vous.",
+    "intro": "Toutes les prestations se font sur rendez-vous. Vous pouvez réserver par téléphone, ou directement au cabinet.",
+    "cards": [
+      {"lbl": "Réserver en ligne", "val_html": "<a href=\"https://www.planity.com/beaute-oks-33400-talence\" target=\"_blank\" rel=\"noopener\">Sur Planity ↗</a>"},
+      {"lbl": "Téléphone", "val_html": "<a href=\"tel:+33615286521\">06 15 28 65 21</a>"},
+      {"lbl": "Au cabinet", "val_html": "25 rue Gérard Blot,<br>33400 Talence"}
+    ]
+  },
+  "footer": {
+    "coords": [
+      {"label": "Réserver sur Planity ↗", "url": "https://www.planity.com/beaute-oks-33400-talence", "external": true},
+      {"label": "06 15 28 65 21", "url": "tel:+33615286521"},
+      {"label": "@beaute_oks", "url": "https://www.instagram.com/beaute_oks/", "external": true}
+    ]
+  }
+}
