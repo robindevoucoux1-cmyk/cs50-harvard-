@@ -113,14 +113,46 @@ section.services .header .right p { font-size: 16px; line-height: 1.7; color: co
 section.services .famille { margin-top: 70px; }
 section.services .famille:first-of-type { margin-top: 0; }
 section.services .famille-titre { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); }
-section.services .item { border-bottom: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: grid; grid-template-columns: 60px 1fr 130px; gap: 40px; padding: 32px 0; align-items: center; transition: background var(--t-mid); }
+section.services .item { border-bottom: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: grid; grid-template-columns: 48px 1fr 90px 130px; gap: 32px; padding: 28px 0; align-items: center; transition: background var(--t-mid); }
 section.services .item:hover { background: color-mix(in srgb, var(--paper) 4%, transparent); }
-section.services .item .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 24px; color: var(--warm); opacity: 0.85; }
-section.services .item .nom { font-family: var(--font-display); font-weight: 400; font-size: clamp(20px, 2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; color: var(--paper); }
-section.services .item .prix { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--warm); text-align: right; }
+section.services .item .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 22px; color: var(--warm); opacity: 0.85; }
+section.services .item .body .nom { font-family: var(--font-display); font-weight: 400; font-size: clamp(18px, 1.7vw, 24px); letter-spacing: -0.02em; line-height: 1.2; color: var(--paper); margin-bottom: 6px; }
+section.services .item .body .note { font-size: 13px; line-height: 1.5; color: color-mix(in srgb, var(--paper) 60%, transparent); font-family: var(--font-display); font-style: italic; }
+section.services .item .duree { font-family: var(--font-body); font-size: 13px; color: color-mix(in srgb, var(--paper) 55%, transparent); letter-spacing: 0.04em; text-align: right; }
+section.services .item .prix { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--warm); text-align: right; white-space: nowrap; }
 section.services .item .prix.sur-rdv { font-size: 13px; opacity: 0.85; }
+section.services .item .prix small { font-size: 12px; opacity: 0.8; font-style: italic; }
+section.services .offre-banner {
+  margin-bottom: 60px;
+  padding: 40px;
+  background: color-mix(in srgb, var(--warm) 16%, var(--ink-strong));
+  border: 1px solid color-mix(in srgb, var(--warm) 40%, transparent);
+  display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+}
+section.services .offre-banner .lbl { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 12px; }
+section.services .offre-banner h3 { color: var(--paper); margin-bottom: 12px; }
+section.services .offre-banner p { font-size: 14px; line-height: 1.6; color: color-mix(in srgb, var(--paper) 78%, transparent); max-width: 540px; margin: 0; }
+section.services .offre-banner .badge {
+  font-family: var(--font-display); font-style: italic; font-weight: 300;
+  font-size: 56px; color: var(--warm); line-height: 1; letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+section.services .offre-banner .badge small { font-size: 18px; opacity: 0.85; display: block; margin-top: 6px; text-align: right; }
+@media (max-width: 860px) {
+  section.services .offre-banner { grid-template-columns: 1fr; gap: 16px; padding: 28px 22px; }
+  section.services .offre-banner .badge { font-size: 44px; }
+}
 
-@media (max-width: 860px) { section.services { padding: 100px 24px; } section.services .header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; } section.services .item { grid-template-columns: 40px 1fr; grid-template-rows: auto auto; gap: 8px 16px; padding: 22px 0; } section.services .item .num { font-size: 18px; } section.services .item .nom { grid-column: 1 / -1; font-size: 20px; } section.services .item .prix { grid-column: 1 / -1; text-align: left; font-size: 16px; } }
+@media (max-width: 860px) {
+  section.services { padding: 100px 24px; }
+  section.services .header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+  section.services .item { grid-template-columns: 36px 1fr auto; grid-template-rows: auto auto; gap: 4px 14px; padding: 22px 0; }
+  section.services .item .num { font-size: 17px; grid-row: 1 / 3; }
+  section.services .item .body { grid-column: 2 / 4; }
+  section.services .item .body .nom { font-size: 18px; }
+  section.services .item .duree { grid-column: 2 / 3; text-align: left; grid-row: 2; }
+  section.services .item .prix { grid-column: 3 / 4; grid-row: 2; font-size: 16px; }
+}
 
 section.avis { padding: 140px 32px; background: var(--ink-strong); color: var(--paper); text-align: center; border-top: 1px solid color-mix(in srgb, var(--paper) 8%, transparent); }
 .avis .container { max-width: 760px; margin: 0 auto; }
@@ -247,54 +279,74 @@ footer .legal { grid-column: 1 / -1; margin-top: 48px; padding-top: 24px; border
     <div class="header">
       <div>
         <span class="eyebrow reveal"><span class="num">03</span><span class="bar"></span>Les soins</span>
-        <h2 class="reveal reveal-d-1">Sept prestations,<br>deux familles.</h2>
+        <h2 class="reveal reveal-d-1">Le catalogue,<br>en détail.</h2>
       </div>
       <div class="right reveal reveal-d-2">
-        <p>Toutes les prestations se réservent sur Planity. Les prix précis et les longueurs disponibles sont indiqués au moment de la réservation.</p>
+        <p>Vingt-cinq prestations, regroupées en sept familles. Garantie 3 jours sur extensions et manucure. Café offert pendant le rendez-vous.</p>
       </div>
     </div>
 
-    <div class="famille">
-      <div class="famille-titre">Extensions de cils</div>
-      <div class="item reveal">
-        <div class="num">01</div>
-        <div class="nom">Pose initiale Cil à Cil</div>
-        <div class="prix sur-rdv"><em>sur Planity</em></div>
+    <div class="offre-banner reveal">
+      <div>
+        <div class="lbl">Offre combo</div>
+        <h3>Ongles + Cils ou Sourcils</h3>
+        <p>Manucure avec vernis semi-permanent et une prestation regard au choix : extensions, rehaussement de cils ou laminage des sourcils. Durée 2 à 3 heures.</p>
       </div>
-      <div class="item reveal">
-        <div class="num">02</div>
-        <div class="nom">Remplissage Cil à Cil <em>(jusqu'à 3 semaines)</em></div>
-        <div class="prix"><em>55 €</em></div>
-      </div>
-      <div class="item reveal">
-        <div class="num">03</div>
-        <div class="nom">Remplissage Volume <em>(jusqu'à 3 semaines)</em></div>
-        <div class="prix"><em>65 €</em></div>
-      </div>
-      <div class="item reveal">
-        <div class="num">04</div>
-        <div class="nom">Remplissage Mega Volume</div>
-        <div class="prix"><em>85 €</em></div>
-      </div>
+      <div class="badge">−15%<small>sur la réservation</small></div>
     </div>
 
     <div class="famille">
-      <div class="famille-titre">Ongles</div>
-      <div class="item reveal">
-        <div class="num">05</div>
-        <div class="nom">Pose en gel, avec longueur au choix</div>
-        <div class="prix sur-rdv"><em>sur Planity</em></div>
-      </div>
-      <div class="item reveal">
-        <div class="num">06</div>
-        <div class="nom">Vernis semi-permanent</div>
-        <div class="prix sur-rdv"><em>sur Planity</em></div>
-      </div>
-      <div class="item reveal">
-        <div class="num">07</div>
-        <div class="nom">Manucure complète + semi-permanent</div>
-        <div class="prix sur-rdv"><em>sur Planity</em></div>
-      </div>
+      <div class="famille-titre">Offre combo (−15%)</div>
+      <div class="item reveal"><div class="num">01</div><div class="body"><div class="nom">Extension de cils + Pose vernis semi-permanent</div></div><div class="duree">2h 30</div><div class="prix"><em>94 €</em></div></div>
+      <div class="item reveal"><div class="num">02</div><div class="body"><div class="nom">Extension de cils + Manucure + Vernis semi-permanent</div></div><div class="duree">3h</div><div class="prix"><em>107 €</em></div></div>
+      <div class="item reveal"><div class="num">03</div><div class="body"><div class="nom">Rehaussement de cils + Vernis semi-permanent</div></div><div class="duree">1h 40</div><div class="prix"><em>80 €</em></div></div>
+      <div class="item reveal"><div class="num">04</div><div class="body"><div class="nom">Rehaussement de cils + Manucure + Vernis semi-permanent</div></div><div class="duree">2h 20</div><div class="prix"><em>90 €</em></div></div>
+      <div class="item reveal"><div class="num">05</div><div class="body"><div class="nom">Rehaussement des sourcils + Vernis semi-permanent</div></div><div class="duree">1h 50</div><div class="prix"><em>90 €</em></div></div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Extensions de cils (pose initiale)</div>
+      <div class="item reveal"><div class="num">06</div><div class="body"><div class="nom">Extension classique <em>(cil à cil)</em></div></div><div class="duree">1h 15</div><div class="prix"><em>70 €</em></div></div>
+      <div class="item reveal"><div class="num">07</div><div class="body"><div class="nom">Volume <em>(2D à 3D)</em></div></div><div class="duree">1h 30</div><div class="prix"><em>85 €</em></div></div>
+      <div class="item reveal"><div class="num">08</div><div class="body"><div class="nom">Méga volume <em>(4D à 7D)</em></div></div><div class="duree">2h</div><div class="prix"><em>100 €</em></div></div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Correction (remplissages, jusqu'à 3 semaines)</div>
+      <div class="item reveal"><div class="num">09</div><div class="body"><div class="nom">Remplissage Cil à Cil</div></div><div class="duree">1h 25</div><div class="prix"><em>55 €</em></div></div>
+      <div class="item reveal"><div class="num">10</div><div class="body"><div class="nom">Remplissage Volume</div></div><div class="duree">1h 45</div><div class="prix"><em>65 à 70 €</em></div></div>
+      <div class="item reveal"><div class="num">11</div><div class="body"><div class="nom">Remplissage Méga Volume</div></div><div class="duree">2h 10</div><div class="prix"><em>85 à 90 €</em></div></div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Cils et sourcils</div>
+      <div class="item reveal"><div class="num">12</div><div class="body"><div class="nom">Création ligne des sourcils</div></div><div class="duree">20 min</div><div class="prix"><em>17 à 20 €</em></div></div>
+      <div class="item reveal"><div class="num">13</div><div class="body"><div class="nom">Teinture des sourcils</div></div><div class="duree">15 min</div><div class="prix"><em>18 à 23 €</em></div></div>
+      <div class="item reveal"><div class="num">14</div><div class="body"><div class="nom">Lash lift</div></div><div class="duree">35 min</div><div class="prix"><em>50 €</em></div></div>
+      <div class="item reveal"><div class="num">15</div><div class="body"><div class="nom">Lash lift et teinture</div></div><div class="duree">45 min</div><div class="prix"><em>60 €</em></div></div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Manucure</div>
+      <div class="item reveal"><div class="num">16</div><div class="body"><div class="nom">Manucure classique <em>(technique ukrainienne)</em></div></div><div class="duree">45 min</div><div class="prix"><em>30 €</em></div></div>
+      <div class="item reveal"><div class="num">17</div><div class="body"><div class="nom">Vernis semi-permanent</div><div class="note">+7 € si dépose d'un travail extérieur</div></div><div class="duree">1h 15</div><div class="prix"><em>38 à 45 €</em></div></div>
+      <div class="item reveal"><div class="num">18</div><div class="body"><div class="nom">Vernis semi-permanent + Manucure complète</div><div class="note">+5 € si dépose d'un travail extérieur</div></div><div class="duree">1h 40</div><div class="prix"><em>55 €</em></div></div>
+      <div class="item reveal"><div class="num">19</div><div class="body"><div class="nom">Pose d'ongles, technique <em>Upper Forms</em></div><div class="note">Longueur S naturelle, M (+10 €), L (+20 €)</div></div><div class="duree">3h</div><div class="prix"><em>80 à 100 €</em></div></div>
+      <div class="item reveal"><div class="num">20</div><div class="body"><div class="nom">Dépose de vernis semi-permanent</div></div><div class="duree">35 min</div><div class="prix"><em>27 €</em></div></div>
+      <div class="item reveal"><div class="num">21</div><div class="body"><div class="nom">Retrait d'extensions de cils</div></div><div class="duree">10 min</div><div class="prix"><em>7 à 20 €</em></div></div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Maquillage</div>
+      <div class="item reveal"><div class="num">22</div><div class="body"><div class="nom">Maquillage Express <em>(après procédure)</em></div></div><div class="duree">20 min</div><div class="prix"><em>20 €</em></div></div>
+      <div class="item reveal"><div class="num">23</div><div class="body"><div class="nom">Maquillage Jour, Soirée, Hollywood ou Mariée</div></div><div class="duree">1h 30</div><div class="prix"><em>40 à 120 €</em></div></div>
+    </div>
+
+    <div class="famille">
+      <div class="famille-titre">Maquillage permanent (dermopigmentation)</div>
+      <div class="item reveal"><div class="num">24</div><div class="body"><div class="nom">Permanent sourcils effet poudre</div><div class="note">Tenue 1,5 à 2 ans. Retouche obligatoire après 4 à 8 semaines.</div></div><div class="duree">2h 30</div><div class="prix"><em>250 €</em></div></div>
+      <div class="item reveal"><div class="num">25</div><div class="body"><div class="nom">Permanent lèvres</div><div class="note">Tenue 1,5 à 2 ans. Retouche obligatoire après 4 à 8 semaines.</div></div><div class="duree">3h</div><div class="prix"><em>250 €</em></div></div>
+      <div class="item reveal"><div class="num">26</div><div class="body"><div class="nom">Consultation maquillage permanent</div></div><div class="duree">15 min</div><div class="prix sur-rdv"><em>gratuite</em></div></div>
     </div>
   </div>
 </section>
@@ -362,8 +414,12 @@ footer .legal { grid-column: 1 / -1; margin-top: 48px; padding-top: 24px; border
         <div class="val">7 rue Lafaurie de Monbadon,<br>33000 Bordeaux</div>
       </div>
       <div class="card reveal reveal-d-2">
-        <div class="lbl">Instagram</div>
-        <div class="val"><a href="https://www.instagram.com/art_innel/" target="_blank" rel="noopener">@art_innel</a></div>
+        <div class="lbl">Horaires</div>
+        <div class="val" style="font-size: 15px; line-height: 1.6;">
+          Lun à Ven&nbsp;: 10h-19h<br>
+          Samedi&nbsp;: 10h-17h<br>
+          <span style="opacity: 0.7;">Dimanche fermé</span>
+        </div>
       </div>
     </div>
   </div>
