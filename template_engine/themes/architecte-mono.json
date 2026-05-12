@@ -1,0 +1,26 @@
+{
+  "name": "architecte-mono",
+  "profession": "architecte",
+  "description": "Noir et blanc, accent ocre minimaliste, grotesque pure. Pour architectes, designers, studios creatifs.",
+  "colors": {
+    "ink-strong": "#0A0A0A",
+    "ink-mid": "#333333",
+    "ink-soft": "#888888",
+    "paper": "#F5F5F4",
+    "paper-warm": "#EAEAE7",
+    "white": "#FFFFFF",
+    "black": "#000000",
+    "accent": "#B8732F",
+    "accent-soft": "#D9A063",
+    "warm": "#C4A57A",
+    "border": "#E5E5E2",
+    "border-mid": "#B8B8B5"
+  },
+  "fonts": {
+    "display": "Inter",
+    "display_fallback": "system-ui, sans-serif",
+    "body": "Inter",
+    "body_fallback": "system-ui, sans-serif",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+  }
+}

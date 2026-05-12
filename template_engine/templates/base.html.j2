@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ brand.title }}</title>
+<meta name="description" content="{{ brand.meta_description }}">
+<meta property="og:title" content="{{ brand.og_title }}">
+<meta property="og:description" content="{{ brand.og_description }}">
+<meta property="og:image" content="{{ brand.og_image }}">
+<link rel="icon" href="{{ brand.favicon | default('assets/profil.jpg') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="{{ theme.fonts.google_fonts_url }}" rel="stylesheet">
+<style>
+:root {
+  --ink-strong: {{ theme.colors['ink-strong'] }};
+  --ink-mid:    {{ theme.colors['ink-mid'] }};
+  --ink-soft:   {{ theme.colors['ink-soft'] }};
+  --paper:      {{ theme.colors.paper }};
+  --paper-warm: {{ theme.colors['paper-warm'] }};
+  --white:      {{ theme.colors.white }};
+  --black:      {{ theme.colors.black }};
+  --accent:     {{ theme.colors.accent }};
+  --accent-soft:{{ theme.colors['accent-soft'] }};
+  --warm:       {{ theme.colors.warm }};
+  --border:     {{ theme.colors.border }};
+  --border-mid: {{ theme.colors['border-mid'] }};
+  --font-display: "{{ theme.fonts.display }}", {{ theme.fonts.display_fallback }};
+  --font-body:    "{{ theme.fonts.body }}", {{ theme.fonts.body_fallback }};
+  --container: 1280px;
+  --t-fast: 0.25s cubic-bezier(.2,.7,.2,1);
+  --t-mid:  0.55s cubic-bezier(.2,.7,.2,1);
+  --t-slow: 0.95s cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+*::selection { background: var(--accent); color: var(--white); }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font-body); font-weight: 400; font-size: 17px; line-height: 1.65; color: var(--ink-strong); background: var(--paper); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: "ss01", "ss02", "kern", "liga"; }
+a { color: inherit; text-decoration: none; transition: opacity var(--t-fast); }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+.eyebrow .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 16px; letter-spacing: 0; color: var(--ink-soft); }
+.eyebrow .bar { display: none; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1; letter-spacing: -0.025em; color: var(--ink-strong); }
+h1 { font-size: clamp(48px, 7.5vw, 120px); font-weight: 300; font-style: italic; letter-spacing: -0.04em; line-height: 0.92; }
+h2 { font-size: clamp(34px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.03em; }
+h3 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; }
+p { line-height: 1.7; color: var(--ink-mid); }
+em { font-family: var(--font-display); font-style: italic; font-weight: 400; }
+
+header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 80; padding: 18px 32px; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--ink-strong) 6%, transparent); }
+header.nav .inner { max-width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--ink-strong); letter-spacing: -0.01em; white-space: nowrap; }
+.logo em { font-style: italic; font-weight: 300; color: var(--accent); }
+nav.primary { display: flex; gap: 36px; }
+nav.primary a { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink-mid); position: relative; }
+nav.primary a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--t-mid); }
+nav.primary a:hover { color: var(--ink-strong); }
+nav.primary a:hover::after { transform: scaleX(1); }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; background: var(--ink-strong); color: var(--white); border: 1px solid var(--ink-strong); border-radius: 999px; cursor: pointer; transition: transform var(--t-fast), background var(--t-fast); white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); background: var(--accent); border-color: var(--accent); }
+.btn .arr { transition: transform var(--t-fast); }
+.btn:hover .arr { transform: translateX(4px); }
+.btn-light { background: transparent; color: var(--ink-strong); border-color: color-mix(in srgb, var(--ink-strong) 25%, transparent); }
+.btn-light:hover { background: var(--ink-strong); color: var(--white); }
+.btn-reserve .lbl-short { display: none; }
+@media (max-width: 860px) { nav.primary { display: none; } header.nav { padding: 14px 18px; } .logo { font-size: 18px; } .btn { padding: 10px 16px; font-size: 12px; } .btn-reserve .lbl-long { display: none; } .btn-reserve .lbl-short { display: inline; } }
+
+section.hero { margin-top: 64px; min-height: calc(100vh - 64px); padding: 80px 32px 120px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center; max-width: var(--container); margin-inline: auto; }
+.hero .copy { max-width: 620px; }
+.hero .eyebrow { margin-bottom: 36px; }
+.hero h1 { margin-bottom: 32px; }
+.hero h1 .acc { color: var(--accent); }
+.hero .tagline { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.5; color: var(--ink-mid); max-width: 460px; margin-bottom: 48px; }
+.hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.hero .img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--accent); }
+.hero .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96); transition: transform var(--t-slow); }
+.hero:hover .img-wrap img { transform: scale(1.02); }
+.hero .img-caption { position: absolute; left: -64px; bottom: 32px; writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.05em; }
+
+.marquee { overflow: hidden; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--paper); }
+.marquee-track { display: flex; gap: 80px; animation: marquee 45s linear infinite; white-space: nowrap; width: max-content; }
+.marquee-track span { font-family: var(--font-display); font-size: clamp(28px, 4vw, 56px); font-style: italic; font-weight: 300; letter-spacing: -0.02em; color: var(--ink-strong); }
+.marquee-track span::after { content: "·"; margin-left: 80px; color: var(--accent); font-style: normal; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+section.about { padding: 160px 32px; background: var(--paper); }
+.about .grid { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start; }
+.about .left { position: sticky; top: 120px; }
+.about .left .eyebrow { margin-bottom: 28px; }
+.about .left h2 { margin-bottom: 32px; }
+.about .left .signature { font-family: var(--font-display); font-style: italic; color: var(--ink-soft); font-size: 18px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+.about .right { font-size: 19px; line-height: 1.75; color: var(--ink-mid); }
+.about .right p { margin-bottom: 24px; }
+.about .right p strong { color: var(--ink-strong); font-weight: 500; }
+.about .right p:first-of-type::first-letter { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 90px; float: left; line-height: 0.85; margin: 8px 12px 0 -4px; color: var(--accent); }
+.about .photo-side { margin-top: 40px; aspect-ratio: 4/3; overflow: hidden; }
+.about .photo-side img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.96); }
+.about .cap { margin-top: 12px; font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--ink-soft); }
+@media (max-width: 860px) { section.about { padding: 100px 24px; } .about .grid { grid-template-columns: 1fr; gap: 48px; } .about .left { position: static; } .about .right { font-size: 17px; } .about .right p:first-of-type::first-letter { font-size: 64px; } section.hero { grid-template-columns: 1fr; gap: 60px; min-height: auto; padding: 60px 24px 80px; } .hero .img-caption { display: none; } }
+
+section.services { padding: 160px 32px; background: var(--ink-strong); color: var(--paper); }
+section.services .container { max-width: var(--container); margin: 0 auto; }
+section.services .header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; align-items: end; }
+section.services .header .eyebrow { color: var(--warm); margin-bottom: 28px; }
+section.services .header .eyebrow .num { color: var(--paper); opacity: 0.6; }
+section.services .header h2 { color: var(--paper); }
+section.services .header .right p { font-size: 16px; line-height: 1.7; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+section.services .famille { margin-top: 70px; }
+section.services .famille:first-of-type { margin-top: 0; }
+section.services .famille-titre { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); }
+section.services .item { border-bottom: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: grid; grid-template-columns: 48px 1fr 90px 130px; gap: 32px; padding: 28px 0; align-items: center; transition: background var(--t-mid); }
+section.services .item:hover { background: color-mix(in srgb, var(--paper) 4%, transparent); }
+section.services .item .num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 22px; color: var(--warm); opacity: 0.85; }
+section.services .item .body .nom { font-family: var(--font-display); font-weight: 400; font-size: clamp(18px, 1.7vw, 24px); letter-spacing: -0.02em; line-height: 1.2; color: var(--paper); margin-bottom: 6px; }
+section.services .item .body .note { font-size: 13px; line-height: 1.5; color: color-mix(in srgb, var(--paper) 60%, transparent); font-family: var(--font-display); font-style: italic; }
+section.services .item .duree { font-family: var(--font-body); font-size: 13px; color: color-mix(in srgb, var(--paper) 55%, transparent); letter-spacing: 0.04em; text-align: right; }
+section.services .item .prix { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--warm); text-align: right; white-space: nowrap; }
+section.services .item .prix.sur-rdv { font-size: 13px; opacity: 0.85; }
+section.services .offre-banner { margin-bottom: 60px; padding: 40px; background: color-mix(in srgb, var(--warm) 16%, var(--ink-strong)); border: 1px solid color-mix(in srgb, var(--warm) 40%, transparent); display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+section.services .offre-banner .lbl { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 12px; }
+section.services .offre-banner h3 { color: var(--paper); margin-bottom: 12px; }
+section.services .offre-banner p { font-size: 14px; line-height: 1.6; color: color-mix(in srgb, var(--paper) 78%, transparent); max-width: 540px; margin: 0; }
+section.services .offre-banner .badge { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 56px; color: var(--warm); line-height: 1; letter-spacing: -0.03em; white-space: nowrap; }
+section.services .offre-banner .badge small { font-size: 18px; opacity: 0.85; display: block; margin-top: 6px; text-align: right; }
+@media (max-width: 860px) {
+  section.services { padding: 100px 24px; }
+  section.services .header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+  section.services .item { grid-template-columns: 36px 1fr auto; grid-template-rows: auto auto; gap: 4px 14px; padding: 22px 0; }
+  section.services .item .num { font-size: 17px; grid-row: 1 / 3; }
+  section.services .item .body { grid-column: 2 / 4; }
+  section.services .item .body .nom { font-size: 18px; }
+  section.services .item .duree { grid-column: 2 / 3; text-align: left; grid-row: 2; }
+  section.services .item .prix { grid-column: 3 / 4; grid-row: 2; font-size: 16px; }
+  section.services .offre-banner { grid-template-columns: 1fr; gap: 16px; padding: 28px 22px; }
+  section.services .offre-banner .badge { font-size: 44px; }
+}
+
+section.avis { padding: 140px 32px; background: var(--ink-strong); color: var(--paper); text-align: center; border-top: 1px solid color-mix(in srgb, var(--paper) 8%, transparent); }
+.avis .container { max-width: 760px; margin: 0 auto; }
+.avis .eyebrow { color: var(--warm); margin-bottom: 28px; }
+.avis .eyebrow .num { color: var(--paper); opacity: 0.6; }
+.avis .stars { font-family: var(--font-display); font-size: clamp(56px, 8vw, 96px); font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 16px; color: var(--paper); letter-spacing: -0.02em; }
+.avis .note-num { color: var(--warm); }
+.avis .lbl-note { font-family: var(--font-body); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 60%, transparent); margin-bottom: 36px; }
+.avis .link { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--paper); padding-bottom: 4px; border-bottom: 1px solid color-mix(in srgb, var(--paper) 40%, transparent); }
+.avis .link:hover { border-bottom-color: var(--warm); }
+
+section.faq { padding: 160px 32px; background: var(--paper); }
+.faq .container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 4fr 7fr; gap: 80px; align-items: start; }
+.faq .head { position: sticky; top: 120px; }
+.faq .head .eyebrow { margin-bottom: 28px; }
+.faq .list { border-top: 1px solid var(--ink-strong); }
+.faq details { border-bottom: 1px solid var(--border-mid); padding: 28px 0; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 400; line-height: 1.25; letter-spacing: -0.015em; color: var(--ink-strong); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ic { flex: 0 0 24px; width: 24px; height: 24px; position: relative; margin-top: 8px; transition: transform var(--t-mid); }
+.faq summary .ic::before, .faq summary .ic::after { content: ""; position: absolute; background: var(--accent); }
+.faq summary .ic::before { top: 11px; left: 0; right: 0; height: 2px; }
+.faq summary .ic::after { top: 0; bottom: 0; left: 11px; width: 2px; transition: transform var(--t-mid); }
+.faq details[open] summary .ic::after { transform: scaleY(0); }
+.faq .r { margin-top: 18px; font-size: 16px; line-height: 1.7; color: var(--ink-mid); max-width: 640px; }
+@media (max-width: 860px) { section.faq { padding: 100px 24px; } .faq .container { grid-template-columns: 1fr; gap: 40px; } .faq .head { position: static; } }
+
+section.contact { padding: 140px 32px; background: var(--accent); color: var(--paper); }
+.contact .container { max-width: var(--container); margin: 0 auto; }
+.contact .head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
+.contact .head .left h2 { color: var(--paper); }
+.contact .head .left .eyebrow { color: var(--warm); margin-bottom: 28px; }
+.contact .head .left .eyebrow .num { color: var(--paper); opacity: 0.7; }
+.contact .head .right p { font-size: 16px; line-height: 1.7; color: color-mix(in srgb, var(--paper) 78%, transparent); }
+.contact .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.contact .card { padding: 36px 32px; background: color-mix(in srgb, var(--paper) 8%, transparent); border: 1px solid color-mix(in srgb, var(--paper) 14%, transparent); }
+.contact .card .lbl { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 16px; }
+.contact .card .val { font-family: var(--font-display); font-size: clamp(20px, 1.6vw, 24px); font-weight: 400; line-height: 1.3; letter-spacing: -0.015em; color: var(--paper); }
+.contact .card a { color: inherit; border-bottom: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); padding-bottom: 2px; }
+.contact .card a:hover { border-bottom-color: var(--warm); }
+@media (max-width: 860px) { section.contact { padding: 100px 24px; } .contact .head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; } .contact .grid { grid-template-columns: 1fr; gap: 20px; } }
+
+footer { padding: 60px 32px 40px; background: var(--black); color: color-mix(in srgb, var(--paper) 60%, transparent); font-size: 13px; }
+footer .container { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+footer .brand .logo { color: var(--paper); margin-bottom: 12px; display: block; }
+footer .brand p { color: inherit; font-size: 13px; max-width: 320px; }
+footer .col h4 { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 18px; }
+footer a { display: block; padding: 4px 0; color: color-mix(in srgb, var(--paper) 70%, transparent); }
+footer a:hover { color: var(--paper); }
+footer .legal { grid-column: 1 / -1; margin-top: 48px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 12px; color: color-mix(in srgb, var(--paper) 45%, transparent); }
+@media (max-width: 860px) { footer .container { grid-template-columns: 1fr; } }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d-1 { transition-delay: 0.08s; }
+.reveal-d-2 { transition-delay: 0.16s; }
+.reveal-d-3 { transition-delay: 0.24s; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="inner">
+    <a href="#" class="logo">{{ brand.name_html | safe }}</a>
+    <nav class="primary">
+      {%- for item in nav %}
+      <a href="{{ item.href }}">{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+    <a href="{{ cta_primary.url }}" target="_blank" rel="noopener" class="btn btn-reserve">
+      <span class="lbl-long">{{ cta_primary.label_long }}</span>
+      <span class="lbl-short">{{ cta_primary.label_short }}</span>
+      <span class="arr">→</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="copy">
+    <span class="eyebrow reveal"><span class="num">{{ hero.eyebrow_num }}</span><span class="bar"></span>{{ hero.eyebrow_text }}</span>
+    <h1 class="reveal reveal-d-1">{{ hero.h1_html | safe }}</h1>
+    <p class="tagline reveal reveal-d-2">{{ hero.tagline }}</p>
+    <div class="ctas reveal reveal-d-3">
+      {%- for cta in hero.ctas %}
+      <a href="{{ cta.url }}"{% if cta.external %} target="_blank" rel="noopener"{% endif %} class="btn{% if cta.style == 'light' %} btn-light{% endif %}">{{ cta.label }}{% if cta.style != 'light' %} <span class="arr">→</span>{% endif %}</a>
+      {%- endfor %}
+    </div>
+  </div>
+  <div class="img-wrap reveal reveal-d-2">
+    <img src="{{ hero.image.src }}" alt="{{ hero.image.alt }}">
+    {%- if hero.image.caption %}
+    <span class="img-caption">{{ hero.image.caption }}</span>
+    {%- endif %}
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    {%- for tag in marquee.tags %}<span>{{ tag }}</span>{% endfor %}
+    {%- for tag in marquee.tags %}<span>{{ tag }}</span>{% endfor %}
+  </div>
+</div>
+
+<section class="about" id="{{ about.id }}">
+  <div class="grid">
+    <div class="left">
+      <span class="eyebrow reveal"><span class="num">{{ about.eyebrow_num }}</span><span class="bar"></span>{{ about.eyebrow_text }}</span>
+      <h2 class="reveal reveal-d-1">{{ about.h2_html | safe }}</h2>
+      <p class="signature reveal reveal-d-2">{{ about.signature }}</p>
+    </div>
+    <div class="right reveal reveal-d-1">
+      {%- for p in about.paragraphs %}
+      <p>{{ p | safe }}</p>
+      {%- endfor %}
+      {%- if about.photo %}
+      <div class="photo-side reveal reveal-d-3">
+        <img src="{{ about.photo.src }}" alt="{{ about.photo.alt }}">
+        <p class="cap">{{ about.photo.caption }}</p>
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+
+<section class="services" id="{{ services.id }}">
+  <div class="container">
+    <div class="header">
+      <div>
+        <span class="eyebrow reveal"><span class="num">{{ services.eyebrow_num }}</span><span class="bar"></span>{{ services.eyebrow_text }}</span>
+        <h2 class="reveal reveal-d-1">{{ services.h2_html | safe }}</h2>
+      </div>
+      <div class="right reveal reveal-d-2">
+        <p>{{ services.intro }}</p>
+      </div>
+    </div>
+    {%- if services.offre_banner %}
+    <div class="offre-banner reveal">
+      <div>
+        <div class="lbl">{{ services.offre_banner.lbl }}</div>
+        <h3>{{ services.offre_banner.title }}</h3>
+        <p>{{ services.offre_banner.description }}</p>
+      </div>
+      <div class="badge">{{ services.offre_banner.badge }}<small>{{ services.offre_banner.badge_small }}</small></div>
+    </div>
+    {%- endif %}
+    {%- for famille in services.families %}
+    <div class="famille">
+      <div class="famille-titre">{{ famille.name }}</div>
+      {%- for item in famille['items'] %}
+      <div class="item reveal">
+        <div class="num">{{ item.num }}</div>
+        <div class="body">
+          <div class="nom">{{ item.nom | safe }}</div>
+          {%- if item.note %}<div class="note">{{ item.note }}</div>{% endif %}
+        </div>
+        <div class="duree">{{ item.duree }}</div>
+        <div class="prix{% if item.prix_modifier %} {{ item.prix_modifier }}{% endif %}"><em>{{ item.prix }}</em></div>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+
+{%- if reviews %}
+<section class="avis">
+  <div class="container">
+    <span class="eyebrow reveal"><span class="num">{{ reviews.eyebrow_num }}</span><span class="bar"></span>{{ reviews.eyebrow_text }}</span>
+    <div class="stars reveal reveal-d-1"><span class="note-num">{{ reviews.score }}</span><span style="color: color-mix(in srgb, var(--paper) 30%, transparent); font-size: 0.65em;">&nbsp;/ {{ reviews.max | default('5') }}</span></div>
+    <div class="lbl-note reveal reveal-d-2">{{ reviews.label }}</div>
+    <a href="{{ reviews.link_url }}" target="_blank" rel="noopener" class="link reveal reveal-d-3">
+      {{ reviews.link_label }} <span class="arr">↗</span>
+    </a>
+  </div>
+</section>
+{%- endif %}
+
+<section class="faq" id="{{ faq.id }}">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow reveal"><span class="num">{{ faq.eyebrow_num }}</span><span class="bar"></span>{{ faq.eyebrow_text }}</span>
+      <h2 class="reveal reveal-d-1">{{ faq.h2_html | safe }}</h2>
+    </div>
+    <div class="list">
+      {%- for item in faq['items'] %}
+      <details class="reveal">
+        <summary>{{ item.q }}<span class="ic"></span></summary>
+        <p class="r">{{ item.a | safe }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="{{ contact.id }}">
+  <div class="container">
+    <div class="head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="num">{{ contact.eyebrow_num }}</span><span class="bar"></span>{{ contact.eyebrow_text }}</span>
+        <h2 class="reveal reveal-d-1">{{ contact.h2_html | safe }}</h2>
+      </div>
+      <div class="right reveal reveal-d-2">
+        <p>{{ contact.intro }}</p>
+      </div>
+    </div>
+    <div class="grid">
+      {%- for card in contact.cards %}
+      <div class="card reveal{% if loop.index0 > 0 %} reveal-d-{{ loop.index0 }}{% endif %}">
+        <div class="lbl">{{ card.lbl }}</div>
+        <div class="val"{% if card.style %} style="{{ card.style }}"{% endif %}>{{ card.val_html | safe }}</div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">
+      <a href="#" class="logo">{{ brand.name_html | safe }}</a>
+      <p>{{ brand.footer_description }}</p>
+    </div>
+    <div class="col">
+      <h4>Navigation</h4>
+      {%- for item in nav %}
+      <a href="{{ item.href }}">{{ item.label }}</a>
+      {%- endfor %}
+    </div>
+    <div class="col">
+      <h4>Coordonnées</h4>
+      {%- for coord in footer.coords %}
+      <a href="{{ coord.url }}"{% if coord.external %} target="_blank" rel="noopener"{% endif %}>{{ coord.label }}</a>
+      {%- endfor %}
+    </div>
+    <div class="legal">
+      <span>© <span id="annee">2026</span> {{ brand.copyright_name }}. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('annee').textContent = new Date().getFullYear();
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

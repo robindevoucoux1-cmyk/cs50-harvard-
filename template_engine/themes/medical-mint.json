@@ -1,0 +1,26 @@
+{
+  "name": "medical-mint",
+  "profession": "medical-esthetique",
+  "description": "Vert mint, ink froid, sans-serif precise. Pour cabinets de medecine esthetique, dermato, cabinet medical.",
+  "colors": {
+    "ink-strong": "#0F1F1A",
+    "ink-mid": "#2F4A40",
+    "ink-soft": "#7A8F87",
+    "paper": "#F4F7F4",
+    "paper-warm": "#E5EEE7",
+    "white": "#FFFFFF",
+    "black": "#06120C",
+    "accent": "#2D7D5F",
+    "accent-soft": "#5BAA8A",
+    "warm": "#A8C8B5",
+    "border": "#DDE8DE",
+    "border-mid": "#B8CCBE"
+  },
+  "fonts": {
+    "display": "DM Serif Display",
+    "display_fallback": "Georgia, serif",
+    "body": "DM Sans",
+    "body_fallback": "system-ui, sans-serif",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+  }
+}

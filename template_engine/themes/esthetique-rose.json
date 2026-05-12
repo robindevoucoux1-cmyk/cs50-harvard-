@@ -1,0 +1,26 @@
+{
+  "name": "esthetique-rose",
+  "profession": "esthetique",
+  "description": "Rose poudre, ink chaud, serif italique editorial. Pour instituts de beaute, esthetique haut de gamme.",
+  "colors": {
+    "ink-strong": "#1A1216",
+    "ink-mid": "#4D3A41",
+    "ink-soft": "#968088",
+    "paper": "#FAF5F2",
+    "paper-warm": "#F2E5DD",
+    "white": "#FFFFFF",
+    "black": "#100A0D",
+    "accent": "#8B3556",
+    "accent-soft": "#C0768C",
+    "warm": "#C9A87C",
+    "border": "#EFE0DD",
+    "border-mid": "#D4BFC1"
+  },
+  "fonts": {
+    "display": "Fraunces",
+    "display_fallback": "\"Cormorant Garamond\", Georgia, serif",
+    "body": "Inter Tight",
+    "body_fallback": "\"Inter\", system-ui, sans-serif",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "coiffure-burgundy",
+  "profession": "coiffure",
+  "description": "Bordeaux profond, ink chaud, serif gras + grotesque epais. Pour coiffeurs, barbershops, salons hommes.",
+  "colors": {
+    "ink-strong": "#1A0F12",
+    "ink-mid": "#3D2A2F",
+    "ink-soft": "#8B7479",
+    "paper": "#F7F2EE",
+    "paper-warm": "#EDE0D6",
+    "white": "#FFFFFF",
+    "black": "#0F0608",
+    "accent": "#6B1F2E",
+    "accent-soft": "#A3525E",
+    "warm": "#D4A574",
+    "border": "#E8DDD5",
+    "border-mid": "#CDBAB0"
+  },
+  "fonts": {
+    "display": "Playfair Display",
+    "display_fallback": "Georgia, serif",
+    "body": "Manrope",
+    "body_fallback": "system-ui, sans-serif",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Manrope:wght@300;400;500;600&display=swap"
+  }
+}

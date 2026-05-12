@@ -1,0 +1,26 @@
+{
+  "name": "restaurant-terracotta",
+  "profession": "restaurant",
+  "description": "Terracotta chaleureux, ink brun riche, serif rustique et grotesque. Pour restaurants, bistros, traiteurs.",
+  "colors": {
+    "ink-strong": "#1F1410",
+    "ink-mid": "#4A3328",
+    "ink-soft": "#8B7468",
+    "paper": "#FAF5EE",
+    "paper-warm": "#F2E5D2",
+    "white": "#FFFFFF",
+    "black": "#120A06",
+    "accent": "#B85230",
+    "accent-soft": "#D88060",
+    "warm": "#D4A574",
+    "border": "#ECDCC8",
+    "border-mid": "#C9B294"
+  },
+  "fonts": {
+    "display": "Cormorant Garamond",
+    "display_fallback": "Georgia, serif",
+    "body": "Work Sans",
+    "body_fallback": "system-ui, sans-serif",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap"
+  }
+}
