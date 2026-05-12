@@ -27,7 +27,7 @@ try:
 except ImportError:  # pragma: no cover
     anthropic = None  # type: ignore[assignment]
 
-MODELE_COPY = "claude-sonnet-4-6"
+MODELE_COPY = "claude-opus-4-7"
 
 
 FAMILLE_PAR_METIER = {
@@ -205,16 +205,79 @@ REGLES PALETTE (CRITIQUE) :
 - 4 couleurs hex : primaire (accent fort), secondaire (accent doux),
   neutre_fonce (texte), neutre_clair (fond).
 
-REGLES POUR LE TON DE LA COPY :
-- Detecte si la bio est formelle (vous) ou casual (tu, tutoiement) et garde ce ton.
-- Adapte le vocabulaire au levier SONCAS dominant (ex : Securite => "materiel
-  certifie", "protocole maitrise" ; Sympathie => "ma cabine", "vous accueillir
-  chez moi").
-- Mentionne la ville {ville} naturellement (1 a 2 fois max sur l'ensemble).
-- Reste FACTUEL : ne pas inventer des services, chiffres, certifications qui
-  ne sont pas dans la bio/photos.
-- ATTENTION ORTHOGRAPHE : francais impeccable. Verifie les accents (e/e/e),
-  les accords sujet-verbe, les apostrophes typographiques ('). Pas de fautes.
+REGLES STYLE EDITORIAL MAGAZINE (CRITIQUE) :
+Tu ecris comme un journaliste de M le magazine du Monde, Vogue France ou
+Numero. Pas comme une IA, pas comme un brief marketing. Pas comme un site
+web ordinaire. Plus haut.
+
+# Le ton attendu, exemples concrets :
+
+❌ NE JAMAIS ecrire ces tics IA et marketingues plats :
+"Forte de X ans d'experience" / "Veritable expertise" / "Une experience
+unique" / "Au coeur de" / "Un univers de" / "Un ecrin de" / "Plonger dans"
+/ "Sublimer" / "Faire rayonner" / "Reveler votre" / "Magnifier" / "Sur-mesure"
+(usage par defaut) / "Excellence" (en titre) / "Passion" (sauf justifie) /
+"Maitresse" / "Une touche de" / "Pour une experience" / "L'art de" /
+"Le pouvoir des" / "L'eclat de" / "Boost" / "Cocon" (sauf justifie) /
+"Inedit" / "Notre passion" / "L'authenticite" / "Le savoir-faire d'exception"
+/ "Inviter a un voyage" / "Une parenthese" / "L'alliance subtile" /
+"En toute" + adj / "Une signature" / "Une approche unique" / "Le geste juste".
+Ces formules sont moches, vues mille fois. Si tu en utilises une, retire-la.
+
+✅ Tu privilegies des phrases :
+- Concretes et incarnees (un detail technique, un nom de geste, un mot du metier)
+- Rythmees, qui respirent : alternance phrases courtes et phrases moyennes
+- Sensorielles quand approprie (un toucher, une odeur, une lumiere)
+- Avec un point de vue, jamais neutres
+- Vocabulaire choisi, pas commun, mais jamais pompeux
+
+# Exemples de niveau attendu (pour t'inspirer du registre) :
+
+[Onglerie haut de gamme]
+Mauvais (a eviter) : "Sublimez vos ongles avec une experience d'excellence
+au coeur d'un veritable ecrin de beaute."
+Bon (registre vise) : "On choisit la forme avec vous. La couleur, la
+finition. Une heure plus tard, vos mains ne se ressemblent plus."
+
+[Soins peau]
+Mauvais : "Une parenthese cocooning pour magnifier votre peau."
+Bon : "Diagnostic d'abord. Le bon protocole vient ensuite. Vos resultats
+sont mesurables, pas seulement ressentis."
+
+[Sophrologie]
+Mauvais : "Plongez dans un univers de bien-etre et retrouvez l'harmonie
+au coeur de vous-meme."
+Bon : "Vingt minutes pour relacher les epaules. Une heure pour comprendre
+pourquoi elles se serrent."
+
+# Regles d'ecriture francaise impeccables :
+
+- Vouvoiement ou tutoiement : detecte le registre dans la bio Insta et
+  TIENS-LE. Ne melange jamais. Tu vouvoies dans toute la copy ou tu tutoies
+  dans toute la copy.
+- Pas de "etc.", pas de "...", pas de tirets cadratins.
+- Apostrophes typographiques : utilise ' (U+2019), pas ' (apostrophe ASCII).
+  Note : meme regle pour les guillemets francais << >>.
+- Accents OBLIGATOIRES partout, y compris sur les majuscules au debut de
+  phrase si necessaire (sauf si la marque ecrit deja sans).
+- Accords parfaits : sujet-verbe, participes passes, adjectifs.
+- Eviter les passifs lourds ("est realise par", "sont effectues") au
+  profit de l'actif ("je realise", "je propose").
+- Phrases courtes preferees aux phrases longues. Une idee par phrase.
+
+# Specificite par sous-metier identifie :
+
+- Tu adaptes le vocabulaire : une onglerie ne parle pas comme un cabinet
+  laser. Une sophrologue ne parle pas comme une coach sportive.
+- Tu utilises le vocabulaire SIGNATURE du metier quand il existe (Kobido,
+  Hydrafacial, DMK, semi-permanent, capsule, BBL, etc.) mais sans surcharger.
+
+# FACTUEL :
+- Ne JAMAIS inventer chiffres, certifications, annees d'experience, nombre
+  de clients, distinctions. Si ce n'est pas dans la bio explicitement, tu
+  n'ecris rien la-dessus.
+- Si tu es tente d'ecrire "Forte de X ans" ou similaire, c'est que tu
+  inventes. Reformule sans cette structure.
 
 REGLES POUR LE NOM COMMERCIAL (CRITIQUE) :
 - Ce nom est affiche partout (logo header, footer, SEO title). Il DOIT etre
@@ -449,7 +512,8 @@ SYNTHESE DU CURATEUR PHOTO :
     # POST-PROCESS : nettoie les tirets cadratins/demi-cadratins et normalise
     _nettoie_brief(brief)
 
-    cout = (resp.usage.input_tokens / 1_000_000 * 3.0) + (resp.usage.output_tokens / 1_000_000 * 15.0)
+    # Tarification Opus 4.7 : $15/MTok input, $75/MTok output
+    cout = (resp.usage.input_tokens / 1_000_000 * 15.0) + (resp.usage.output_tokens / 1_000_000 * 75.0)
     brief["_meta"] = {
         "modele": resp.model,
         "input_tokens": resp.usage.input_tokens,

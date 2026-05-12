@@ -20,10 +20,10 @@
   --neutre-fonce: {{ palette.neutre_fonce }};
   --neutre-clair: {{ palette.neutre_clair|default('#fdfaf6') }};
   --blanc: #ffffff;
-  --font-titre: "{{ typo.titre_font }}", serif;
-  --font-texte: "{{ typo.texte_font }}", sans-serif;
-  --max-content: 1200px;
-  --rayon: 8px;
+  --font-titre: "{{ typo.titre_font }}", "Cormorant Garamond", "Playfair Display", serif;
+  --font-texte: "{{ typo.texte_font }}", "Inter Tight", "Inter", system-ui, sans-serif;
+  --max-content: 1180px;
+  --rayon: 4px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -31,18 +31,33 @@ body {
   font-family: var(--font-texte);
   color: var(--neutre-fonce);
   background: var(--neutre-clair);
-  line-height: 1.65;
+  line-height: 1.7;
+  font-weight: 400;
+  font-size: 17px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-h1, h2, h3, h4 { font-family: var(--font-titre); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: var(--neutre-fonce); }
-h1 { font-size: clamp(2rem, 5vw, 3.8rem); }
-h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); margin-bottom: 0.5em; }
-h3 { font-size: 1.25rem; margin-bottom: 0.4em; }
-p { font-size: 1.05rem; }
-.container { max-width: var(--max-content); margin: 0 auto; padding: 0 24px; }
+a { color: inherit; text-decoration: none; transition: opacity .2s; }
+h1, h2, h3, h4 {
+  font-family: var(--font-titre); font-weight: 500;
+  line-height: 1.08; letter-spacing: -0.02em;
+  color: var(--neutre-fonce);
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 400; }
+h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-bottom: 0.45em; font-weight: 500; }
+h3 { font-size: 1.4rem; margin-bottom: 0.4em; font-weight: 500; }
+p { font-size: 1.05rem; line-height: 1.7; }
+.container { max-width: var(--max-content); margin: 0 auto; padding: 0 32px; }
+.eyebrow-top {
+  display: inline-block; font-family: var(--font-texte); font-size: 0.78rem;
+  font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--primaire); margin-bottom: 18px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid color-mix(in srgb, var(--primaire) 30%, transparent);
+}
 
 /* Header */
 header.nav {
@@ -89,28 +104,31 @@ header.nav .btn-reserve { margin-left: 12px; flex: 0 0 auto; white-space: nowrap
 .btn-outline { background: transparent; color: var(--primaire); border: 1.5px solid var(--primaire); }
 .btn-outline:hover { background: var(--primaire); color: var(--blanc); }
 
-/* Hero */
+/* Hero magazine */
 section.hero {
-  margin-top: 60px; padding: 80px 24px 100px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
+  margin-top: 64px; padding: 90px 32px 110px;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center;
   max-width: var(--max-content); margin-left: auto; margin-right: auto;
 }
-section.hero .h1-block { max-width: 560px; }
-section.hero h1 { margin-bottom: 0.4em; }
-section.hero .tagline { font-size: clamp(1.05rem, 1.7vw, 1.25rem); opacity: 0.78; margin-bottom: 2em; }
-section.hero .ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+section.hero .h1-block { max-width: 580px; }
+section.hero h1 { margin-bottom: 0.5em; }
+section.hero .tagline {
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem); line-height: 1.55;
+  color: color-mix(in srgb, var(--neutre-fonce) 78%, transparent);
+  margin-bottom: 2.4em; max-width: 480px;
+}
+section.hero .ctas { display: flex; gap: 18px; flex-wrap: wrap; }
 section.hero .img-wrap {
-  position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.25);
+  position: relative; aspect-ratio: 4/5; overflow: hidden;
 }
 section.hero .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
 section.hero .img-wrap::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--primaire) 25%, transparent));
+  background: linear-gradient(180deg, transparent 65%, color-mix(in srgb, var(--primaire) 18%, transparent));
 }
 @media (max-width: 860px) {
-  section.hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-  section.hero .img-wrap { aspect-ratio: 1/1; }
+  section.hero { grid-template-columns: 1fr; gap: 50px; padding: 70px 24px 80px; }
+  section.hero .img-wrap { aspect-ratio: 4/5; max-height: 70vh; }
 }
 
 /* About */
