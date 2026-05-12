@@ -1,0 +1,142 @@
+{
+  "slug": "institut-beauty-bar",
+  "theme": "esthetique-rose",
+  "brand": {
+    "name": "Institut Beauty Bar",
+    "name_html": "Institut <em>Beauty Bar</em>",
+    "title": "Institut Beauty Bar, onglerie et extensions cils à Bordeaux Caudéran",
+    "meta_description": "Onglerie, manucure semi-permanent et extensions de cils à Caudéran, Bordeaux. Réservation Planity.",
+    "og_title": "Institut Beauty Bar, Caudéran",
+    "og_description": "Onglerie et cils. Bordeaux Caudéran. Sur rendez-vous Planity.",
+    "og_image": "assets/post_004.jpg",
+    "favicon": "assets/profil.jpg",
+    "footer_description": "Onglerie et extensions de cils. Bordeaux Caudéran, sur rendez-vous Planity.",
+    "copyright_name": "Institut Beauty Bar"
+  },
+  "nav": [
+    {"label": "L'approche", "href": "#approche"},
+    {"label": "Soins", "href": "#protocoles"},
+    {"label": "Questions", "href": "#questions"},
+    {"label": "Contact", "href": "#contact"}
+  ],
+  "cta_primary": {
+    "label_long": "Réserver sur Planity",
+    "label_short": "Réserver",
+    "url": "https://www.planity.com/beauty-bar-33200-bordeaux-rg7"
+  },
+  "hero": {
+    "eyebrow_num": "01",
+    "eyebrow_text": "Bordeaux Caudéran",
+    "h1_html": "Onglerie<br>et <em class=\"acc\">extensions cils.</em>",
+    "tagline": "Manucures, semi-permanent, extensions de cils volume et cil à cil. À Caudéran, sur rendez-vous.",
+    "ctas": [
+      {"label": "Réserver sur Planity", "url": "https://www.planity.com/beauty-bar-33200-bordeaux-rg7", "style": "primary", "external": true},
+      {"label": "Voir les soins", "url": "#protocoles", "style": "light"}
+    ],
+    "image": {
+      "src": "assets/post_004.jpg",
+      "alt": "Manucure rouge éclatant Institut Beauty Bar",
+      "caption": "Manucure rouge, Caudéran"
+    }
+  },
+  "marquee": {
+    "tags": ["Manucure", "Semi-permanent", "French", "Baby Boomer", "Volume Russe", "Cil à Cil"]
+  },
+  "about": {
+    "id": "approche",
+    "eyebrow_num": "02",
+    "eyebrow_text": "L'approche",
+    "h2_html": "Le bon geste,<br>au bon endroit.",
+    "signature": "Institut Beauty Bar, onglerie et extensions cils à Caudéran. Sur rendez-vous Planity.",
+    "paragraphs": [
+      "Ici, deux spécialités à la fois. Les <strong>ongles</strong> d'abord, soignés dans toutes leurs formes : manucure classique, semi-permanent, French, Baby Boomer, déposes propres et reposes nettes.",
+      "Les <strong>cils</strong> ensuite, en extensions : pose complète, remplissages Cil à Cil ou Volume Russe selon le résultat recherché.",
+      "Pour celles qui veulent tout d'un coup, des forfaits combinés rendent la visite plus simple : extensions cils + semi-permanent mains, ou mains et pieds."
+    ],
+    "photo": {
+      "src": "assets/post_001.jpg",
+      "alt": "La praticienne dans son cabinet",
+      "caption": "Au cabinet, vitrine de vernis signature."
+    }
+  },
+  "services": {
+    "id": "protocoles",
+    "eyebrow_num": "03",
+    "eyebrow_text": "Les soins",
+    "h2_html": "Onze prestations,<br>quatre familles.",
+    "intro": "Sélection des prestations principales. Le catalogue complet (manucures détaillées, déposes, options nail art) est sur la fiche Planity.",
+    "families": [
+      {
+        "name": "Manucures",
+        "items": [
+          {"num": "01", "nom": "Basic Manucure", "duree": "", "prix": "25 €"},
+          {"num": "02", "nom": "Manucure complète", "duree": "", "prix": "28 €"},
+          {"num": "03", "nom": "Manucure des pieds", "duree": "", "prix": "28 €"}
+        ]
+      },
+      {
+        "name": "Semi-permanent",
+        "items": [
+          {"num": "04", "nom": "Pose semi-permanent French ou Baby Boomer", "duree": "", "prix": "47 €"},
+          {"num": "05", "nom": "Dépose + Pose semi-permanent", "duree": "", "prix": "57 €"},
+          {"num": "06", "nom": "Pose semi-permanent pieds", "duree": "", "prix": "35 €"}
+        ]
+      },
+      {
+        "name": "Extensions de cils",
+        "items": [
+          {"num": "07", "nom": "Pose complète extensions de cils", "duree": "", "prix": "99 €"},
+          {"num": "08", "nom": "Remplissage Cil à Cil <em>(3 semaines)</em>", "duree": "", "prix": "49 €"},
+          {"num": "09", "nom": "Remplissage Volume Russe <em>(3 semaines)</em>", "duree": "", "prix": "59 €"}
+        ]
+      },
+      {
+        "name": "Forfaits combinés",
+        "items": [
+          {"num": "10", "nom": "Extensions cils + semi-permanent mains", "duree": "", "prix": "129 €"},
+          {"num": "11", "nom": "Extensions cils + semi-permanent mains et pieds", "duree": "", "prix": "159 €"}
+        ]
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow_num": "04",
+    "eyebrow_text": "Sur Planity",
+    "score": "5,0",
+    "max": "5",
+    "label": "Note moyenne sur 47 avis Planity",
+    "link_label": "Lire les avis sur Planity",
+    "link_url": "https://www.planity.com/beauty-bar-33200-bordeaux-rg7"
+  },
+  "faq": {
+    "id": "questions",
+    "eyebrow_num": "05",
+    "eyebrow_text": "Questions",
+    "h2_html": "Les questions<br>qui reviennent.",
+    "items": [
+      {"q": "Quelle est la différence entre Cil à Cil et Volume Russe ?", "a": "Le Cil à Cil pose une seule extension par cil naturel pour un effet allongé naturel. Le Volume Russe colle plusieurs extensions très fines par cil pour un effet dense et intense."},
+      {"q": "Tous les combien faut-il revenir pour un remplissage ?", "a": "Trois semaines en règle générale. Au-delà, une nouvelle pose complète est souvent préférable à un remplissage."},
+      {"q": "French ou Baby Boomer, comment choisir ?", "a": "La French dessine une pointe blanche nette. Le Baby Boomer fond la pointe en dégradé doux sur le rose de l'ongle. Plus naturel pour Baby Boomer, plus graphique pour French."},
+      {"q": "Comment se passe la dépose ?", "a": "La dépose est toujours réalisée en cabine pour préserver l'ongle naturel. Le tarif dépend du type de pose à retirer (gel, gainage, capsule, semi-permanent)."},
+      {"q": "Où se trouve l'Institut Beauty Bar ?", "a": "Au 50 avenue Louis Barthou, à Caudéran (Bordeaux). Quartier calme, accessible en voiture et en bus."}
+    ]
+  },
+  "contact": {
+    "id": "contact",
+    "eyebrow_num": "06",
+    "eyebrow_text": "Contact",
+    "h2_html": "Prendre rendez-vous.",
+    "intro": "Réservation en ligne sur Planity. Vous pouvez aussi passer directement au salon.",
+    "cards": [
+      {"lbl": "Réserver en ligne", "val_html": "<a href=\"https://www.planity.com/beauty-bar-33200-bordeaux-rg7\" target=\"_blank\" rel=\"noopener\">Sur Planity ↗</a>"},
+      {"lbl": "Au salon", "val_html": "50 av. Louis Barthou,<br>33200 Bordeaux Caudéran"},
+      {"lbl": "Instagram", "val_html": "<a href=\"https://www.instagram.com/institut_beauty_bar/\" target=\"_blank\" rel=\"noopener\">@institut_beauty_bar</a>"}
+    ]
+  },
+  "footer": {
+    "coords": [
+      {"label": "Réserver sur Planity ↗", "url": "https://www.planity.com/beauty-bar-33200-bordeaux-rg7", "external": true},
+      {"label": "@institut_beauty_bar", "url": "https://www.instagram.com/institut_beauty_bar/", "external": true}
+    ]
+  }
+}
