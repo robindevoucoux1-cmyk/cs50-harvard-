@@ -1,0 +1,32 @@
+/* Vitriz Dashboard custom styles */
+.site-item { padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s; display: flex; flex-direction: column; gap: 2px; }
+.site-item:hover { background: #F2F1EB; }
+.site-item.active { background: #1A1A1D; color: #FAFAF7; }
+.site-item.active .site-meta { color: #B8B5AC; }
+.site-name { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 400; }
+.site-meta { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #555; font-weight: 500; }
+.field input, .field textarea, .field select { padding: 10px 12px; border: 1px solid #E5E3D9; border-radius: 6px; font-family: inherit; font-size: 14px; background: white; }
+.field textarea { resize: vertical; min-height: 64px; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: #8B3556; }
+
+.section-card { background: white; border: 1px solid #E5E3D9; border-radius: 10px; padding: 20px; }
+.section-card h3 { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 16px; font-weight: 400; }
+
+.theme-card { padding: 16px; border: 1px solid #E5E3D9; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+.theme-card:hover { border-color: #8B3556; }
+.theme-card.active { border-color: #8B3556; border-width: 2px; padding: 15px; }
+.theme-card .swatch { display: flex; gap: 4px; margin-bottom: 10px; }
+.theme-card .swatch span { width: 24px; height: 24px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); }
+.theme-card .name { font-family: 'Fraunces', serif; font-size: 17px; }
+.theme-card .desc { font-size: 12px; color: #666; margin-top: 4px; }
+
+.chat-msg { padding: 10px 12px; border-radius: 8px; line-height: 1.5; }
+.chat-msg.user { background: #F4E6EC; align-self: flex-end; }
+.chat-msg.ai { background: #F2F1EB; }
+.chat-msg.system { background: #FFF7E6; color: #8B5500; font-size: 12px; }
+.chat-msg .patch-preview { font-family: monospace; font-size: 11px; background: #1A1A1D; color: #FAFAF7; padding: 8px; border-radius: 4px; margin-top: 8px; max-height: 200px; overflow-y: auto; white-space: pre-wrap; }
+.chat-msg button { font-size: 11px; padding: 4px 10px; border-radius: 999px; margin-top: 6px; margin-right: 6px; cursor: pointer; border: 1px solid #999; background: white; }
+.chat-msg button.primary { background: #8B3556; color: white; border-color: #8B3556; }

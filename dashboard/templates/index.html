@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitriz Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { 900: '#0F0F10', 800: '#1A1A1D', 700: '#26262B', 600: '#3A3A42' },
+          paper: { 100: '#FAFAF7', 200: '#F2F1EB', 300: '#E5E3D9' },
+          accent: { DEFAULT: '#8B3556', 600: '#7A2D4B', 100: '#F4E6EC' }
+        },
+        fontFamily: { display: ['Fraunces', 'Georgia', 'serif'], sans: ['Inter Tight', 'Inter', 'system-ui'] }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="bg-paper-100 text-ink-900 font-sans antialiased min-h-screen">
+
+<header class="border-b border-paper-300 bg-white/80 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="font-display text-2xl tracking-tight">Vitriz <em class="text-accent not-italic font-light">Dashboard</em></span>
+      <span class="ml-2 text-xs uppercase tracking-widest text-ink-600">MVP</span>
+    </div>
+    <div class="flex items-center gap-4 text-sm">
+      <span id="status" class="text-ink-600">Pret</span>
+      <button id="btn-deploy" class="px-4 py-2 bg-ink-900 text-white text-xs uppercase tracking-wider rounded-full hover:bg-accent transition">Deployer Netlify</button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-[1600px] mx-auto px-6 py-6 grid gap-6" style="grid-template-columns: 260px 1fr 360px;">
+
+  <!-- COLONNE 1 : Liste des sites -->
+  <aside class="space-y-2">
+    <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-3 px-2">Sites</h2>
+    <div id="sites-list" class="space-y-1"></div>
+  </aside>
+
+  <!-- COLONNE 2 : Preview + edition -->
+  <section class="space-y-4 min-w-0">
+    <!-- Tabs -->
+    <div class="flex items-center gap-1 border-b border-paper-300">
+      <button data-tab="preview" class="tab-btn px-4 py-2 text-sm border-b-2 border-accent text-ink-900 font-medium">Apercu</button>
+      <button data-tab="edit" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Edition</button>
+      <button data-tab="theme" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">Theme</button>
+      <button data-tab="raw" class="tab-btn px-4 py-2 text-sm border-b-2 border-transparent text-ink-600 hover:text-ink-900">JSON</button>
+      <div class="ml-auto flex items-center gap-2 pb-2">
+        <button id="btn-regenerate" class="text-xs px-3 py-1.5 border border-ink-900 rounded-full hover:bg-ink-900 hover:text-white transition">Regenerer</button>
+        <button id="btn-save" class="text-xs px-3 py-1.5 bg-accent text-white rounded-full hover:bg-accent-600 transition">Sauver</button>
+      </div>
+    </div>
+
+    <!-- Tab : Preview -->
+    <div data-panel="preview" class="tab-panel">
+      <div class="flex items-center gap-3 mb-3 text-xs">
+        <button data-viewport="mobile" class="vp-btn px-3 py-1.5 border border-paper-300 rounded">Mobile</button>
+        <button data-viewport="tablet" class="vp-btn px-3 py-1.5 border border-paper-300 rounded">Tablet</button>
+        <button data-viewport="desktop" class="vp-btn px-3 py-1.5 border border-ink-900 bg-ink-900 text-white rounded">Desktop</button>
+        <span id="preview-url" class="ml-auto text-ink-600 truncate"></span>
+      </div>
+      <div id="preview-wrap" class="bg-white border border-paper-300 rounded-lg overflow-hidden mx-auto transition-all" style="width: 100%; height: 75vh;">
+        <iframe id="preview" class="w-full h-full" src="about:blank"></iframe>
+      </div>
+    </div>
+
+    <!-- Tab : Edition -->
+    <div data-panel="edit" class="tab-panel hidden space-y-6">
+      <div id="edit-form" class="space-y-6"></div>
+    </div>
+
+    <!-- Tab : Theme -->
+    <div data-panel="theme" class="tab-panel hidden space-y-4">
+      <p class="text-sm text-ink-600">Le theme controle les couleurs et les polices. Selectionne un preset, ou modifie les couleurs a la main.</p>
+      <div id="themes-grid" class="grid grid-cols-2 gap-3"></div>
+    </div>
+
+    <!-- Tab : JSON brut -->
+    <div data-panel="raw" class="tab-panel hidden">
+      <textarea id="raw-json" class="w-full h-[70vh] font-mono text-xs p-4 bg-ink-900 text-paper-100 rounded-lg" spellcheck="false"></textarea>
+    </div>
+  </section>
+
+  <!-- COLONNE 3 : Chat IA -->
+  <aside class="space-y-3">
+    <h2 class="text-xs uppercase tracking-widest text-ink-600 mb-1 px-1">Discuter avec l'IA</h2>
+    <div id="chat-log" class="bg-white border border-paper-300 rounded-lg p-3 h-[55vh] overflow-y-auto space-y-3 text-sm"></div>
+    <form id="chat-form" class="flex flex-col gap-2">
+      <textarea id="chat-input" rows="3" placeholder="Ex : Change la couleur principale en bleu marine. Ou : Reecris le hero plus chaleureux." class="w-full p-3 border border-paper-300 rounded-lg text-sm resize-none focus:outline-none focus:border-accent"></textarea>
+      <div class="flex items-center gap-2">
+        <label class="flex items-center gap-2 text-xs text-ink-600">
+          <input type="checkbox" id="auto-apply" class="accent-accent">
+          Appliquer automatiquement
+        </label>
+        <button type="submit" class="ml-auto px-4 py-2 bg-ink-900 text-white text-xs uppercase tracking-wider rounded-full hover:bg-accent transition">Envoyer</button>
+      </div>
+    </form>
+  </aside>
+</main>
+
+<!-- Modal patch preview -->
+<div id="patch-modal" class="hidden fixed inset-0 bg-ink-900/60 z-50 flex items-center justify-center p-6">
+  <div class="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+    <h3 class="font-display text-2xl mb-2">Modification proposee</h3>
+    <p id="patch-explanation" class="text-sm text-ink-600 mb-4"></p>
+    <pre id="patch-content" class="bg-ink-900 text-paper-100 p-4 rounded text-xs overflow-x-auto"></pre>
+    <div class="flex gap-3 mt-4">
+      <button id="patch-apply" class="px-4 py-2 bg-accent text-white text-sm rounded-full">Appliquer</button>
+      <button id="patch-cancel" class="px-4 py-2 border border-paper-300 text-sm rounded-full">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
